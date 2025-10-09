@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://agenditapp.com"),
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  icons: [{ rel: "icon", url: "/logo-sin-text.png" }],
 };
 
 export const viewport: Viewport = {
