@@ -5,6 +5,7 @@ import { useState } from "react";
 import ExternalLink from "../components/ui/ExternalLink";
 import Badge from "../components/ui/Badge";
 import { WHATSAPP_HREF } from "../components/constants";
+import { PhoneMockup } from "../components/ui/PhoneMockup"; // <- usamos tu componente
 
 const ImageLightbox = dynamic(
   () => import("../components/images/ImageLightbox"),
@@ -24,6 +25,7 @@ export default function Hero() {
 
   return (
     <section className="relative">
+      {/* Fondo */}
       <div className="absolute inset-0 -z-10">
         <Image
           src="/fondo.png"
@@ -35,9 +37,16 @@ export default function Hero() {
         <div className="absolute inset-0 bg-slate-900/60" />
       </div>
 
+      {/* Header */}
       <header className="px-6 pt-6 max-w-6xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <Image src="/logo_dorado.png" alt="AgenditApp" width={250} height={250} />
+          <Image
+            src="/logo_dorado.png"
+            alt="AgenditApp"
+            width={250}
+            height={250}
+            priority
+          />
         </div>
         <nav className="hidden md:flex items-center gap-6 text-sm">
           <ExternalLink href="#reserva" className="hover:underline">
@@ -50,7 +59,7 @@ export default function Hero() {
             Ubicación
           </ExternalLink>
           <ExternalLink href="#precio" className="hover:underline">
-            Precio
+            Membresía
           </ExternalLink>
           <ExternalLink href="#faq" className="hover:underline">
             FAQ
@@ -59,11 +68,12 @@ export default function Hero() {
             href={WHATSAPP_HREF}
             className="px-3 py-2 rounded-xl bg-sky-400 text-black font-bold"
           >
-            Demo por WhatsApp
+            Contactar ventas
           </ExternalLink>
         </nav>
       </header>
 
+      {/* Contenido */}
       <div className="px-6 py-20 max-w-6xl mx-auto">
         <div className="max-w-3xl">
           <Badge>Reserva en línea 24/7 · Landing de bienvenida incluida</Badge>
@@ -72,27 +82,30 @@ export default function Hero() {
           </h1>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-10 mt-10 ">
+        <div className="grid md:grid-cols-2 gap-10 mt-10">
+          {/* Columna IZQ: texto + CTAs */}
           <div>
             <p className="mt-4 text-slate-200/90">
               Recibe reservas online 24/7 en tu <b>landing de bienvenida</b>,
               organiza tu agenda y evita ausencias con recordatorios enviados
               desde tu número. Sin instalaciones ni permanencias.
             </p>
+
             <div className="mt-6 flex flex-wrap gap-3">
               <a
-                href="#precio"
+                href={WHATSAPP_HREF}
                 className="px-5 py-3 rounded-xl bg-sky-400 text-black font-bold"
               >
-                Ver precio
+                Contactar ventas
               </a>
               <a
-                href={WHATSAPP_HREF}
+                href="#precio"
                 className="px-5 py-3 rounded-xl border border-slate-300/50 text-white"
               >
-                Agendar demo por WhatsApp
+                Ver membresía
               </a>
             </div>
+
             <ul className="mt-6 grid gap-2 text-sm text-slate-200/90">
               <li>
                 • Página personalizada (marca blanca) + landing de bienvenida
@@ -133,41 +146,43 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="relative space-y-6">
+          {/* Columna DER: mockups + lightbox */}
+          <div className="relative flex flex-col md:flex-row items-center md:items-end justify-center md:justify-end gap-6">
             <button
               onClick={() =>
                 openLightbox(
-                  "/inicio_page.png",
-                  "Catálogo de servicios y precios"
+                  "/screenshots/home.png",
+                  "Inicio de bienvenida con botón de reserva"
                 )
               }
-              className="block w-full text-left"
-              aria-label="Ampliar imagen: catálogo"
+              className="block focus:outline-none"
+              aria-label="Ampliar: inicio de bienvenida"
             >
-              <Image
-                src="/inicio_page.png"
-                alt="Panel de AgenditApp mostrando una agenda y recordatorios"
-                width={1200}
-                height={845}
-                priority
-                className="rounded-2xl border border-white/15 mx-auto block shadow-2xl shadow-black/30"
-              />
+              <div className="md:rotate-[-3deg]">
+                <PhoneMockup
+                  src="/screenshots/home.png"
+                  alt="Inicio de bienvenida con botón de reserva"
+                  priority
+                />
+              </div>
             </button>
+
             <button
               onClick={() =>
-                openLightbox("/agenda.png", "Catálogo de servicios y precios")
+                openLightbox(
+                  "/screenshots/calendario.png",
+                  "Calendario de citas de AgenditApp mostrando citas agendadas"
+                )
               }
-              className="block w-full text-left"
-              aria-label="Ampliar imagen: catálogo"
+              className="block focus:outline-none"
+              aria-label="Ampliar: calendario de citas"
             >
-              <Image
-                src="/agenda.png"
-                alt="Panel de AgenditApp mostrando una agenda y recordatorios"
-                width={1200}
-                height={845}
-                priority
-                className="rounded-2xl border border-white/15 mx-auto block shadow-2xl shadow-black/30"
-              />
+              <div className="md:translate-y-2 md:rotate-2">
+                <PhoneMockup
+                  src="/screenshots/calendario.png"
+                  alt="Panel de AgenditApp mostrando una agenda y recordatorios"
+                />
+              </div>
             </button>
           </div>
         </div>
@@ -186,7 +201,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Ligthbox */}
+      {/* Lightbox */}
       <ImageLightbox
         src={src}
         alt={alt}
