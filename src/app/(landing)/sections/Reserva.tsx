@@ -23,22 +23,22 @@ type Item = {
 
 const items: Item[] = [
   {
-    src: "/screenshots/reserva-paso-1.png",
+    src: "/screenshots/reserva-paso-1-mockup.png",
     alt: "Paso 1: Selecciona uno o varios servicios y el trabajador",
     caption: "1. Selecciona uno o varios servicios y el trabajador",
   },
   {
-    src: "/screenshots/reserva-paso-2.png",
+    src: "/screenshots/reserva-paso-2-mockup.png",
     alt: "Paso 2: Seleccionar fecha y hora (mismo día o diferentes días)",
     caption: "2. Elige fecha y hora (mismo día o diferentes días)",
   },
   {
-    src: "/screenshots/reserva-paso-3.png",
+    src: "/screenshots/reserva-paso-3-mockup.png",
     alt: "Paso 3: Ve el resumen de la reserva",
     caption: "3. Revisa el resumen antes de confirmar",
   },
   {
-    src: "/screenshots/reserva-paso-4.png",
+    src: "/screenshots/reserva-paso-4-mockup.png",
     alt: "Paso 4: Confirmación automática o por aprobación según configuración del negocio",
     caption: "4. Confirmación automática o por aprobación",
   },

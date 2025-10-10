@@ -110,7 +110,7 @@ export default function Ubicacion() {
             type="button"
             onClick={() =>
               openLightbox(
-                "/screenshots/ubicacion.png",
+                "/screenshots/ubicacion-mockup.png",
                 "Ubicación del negocio"
               )
             }
@@ -121,7 +121,7 @@ export default function Ubicacion() {
             transition={{ type: "spring", stiffness: 280, damping: 20 }}
           >
             <PhoneMockup
-              src="/screenshots/ubicacion.png"
+              src="/screenshots/ubicacion-mockup.png"
               alt="Ubicación del negocio"
               priority
             />

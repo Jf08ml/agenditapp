@@ -261,7 +261,7 @@ export default function Hero() {
               >
                 <div className="md:rotate-[-3deg]">
                   <PhoneMockup
-                    src="/screenshots/home.png"
+                    src="/screenshots/home-mockup.png"
                     alt="Inicio de bienvenida con botón de reserva"
                     priority
                   />
@@ -271,7 +271,7 @@ export default function Hero() {
               <motion.button
                 onClick={() =>
                   openLightbox(
-                    "/screenshots/calendario.png",
+                    "/screenshots/calendario-mockup.png",
                     "Calendario de citas de AgenditApp mostrando citas agendadas"
                   )
                 }
@@ -283,7 +283,7 @@ export default function Hero() {
               >
                 <div className="md:translate-y-2 md:rotate-2">
                   <PhoneMockup
-                    src="/screenshots/calendario.png"
+                    src="/screenshots/calendario-mockup.png"
                     alt="Panel de AgenditApp mostrando una agenda y recordatorios"
                   />
                 </div>

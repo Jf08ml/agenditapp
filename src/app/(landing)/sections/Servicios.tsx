@@ -174,7 +174,7 @@ export default function Servicios() {
             type="button"
             onClick={() =>
               openLightbox(
-                "/screenshots/servicios-precios.png",
+                "/screenshots/servicios-precios-mockup.png",
                 "Catálogo de servicios y precios"
               )
             }
@@ -185,7 +185,7 @@ export default function Servicios() {
             transition={{ type: "spring", stiffness: 280, damping: 20 }}
           >
             <PhoneMockup
-              src="/screenshots/servicios-precios.png"
+              src="/screenshots/servicios-precios-mockup.png"
               alt="Catálogo de servicios y precios"
               priority
             />
