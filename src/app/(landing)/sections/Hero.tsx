@@ -249,7 +249,7 @@ export default function Hero() {
               <motion.button
                 onClick={() =>
                   openLightbox(
-                    "/screenshots/home.png",
+                    "/screenshots/home-mockup.png",
                     "Inicio de bienvenida con botón de reserva"
                   )
                 }

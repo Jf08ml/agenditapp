@@ -48,8 +48,15 @@ export default function ImageLightbox({ src, alt, open, onClose }: Props) {
       >
         ✕ Cerrar
       </button>
-      <div className="max-w-6xl w-full">
-        <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+      <div className="w-full max-w-[90vw] md:max-w-6xl">
+        <div
+          className="
+            relative 
+            w-full 
+            h-[90vh]           /* mobile: usar casi todo el alto */
+            md:h-[80vh]        /* desktop: un poco menos */
+          "
+        >
           <Image
             src={src}
             alt={alt}
