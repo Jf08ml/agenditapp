@@ -4,7 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://agenditapp.com"),
-  icons: [{ rel: "icon", url: "/logo-sin-text.png" }],
+  icons: [{ rel: "icon", url: "/logo.png" }],
 };
 
 export const viewport: Viewport = {

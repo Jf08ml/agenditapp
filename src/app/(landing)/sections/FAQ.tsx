@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import ExternalLink from "../components/ui/ExternalLink";
+import { WHATSAPP_HREF } from "../components/constants";
 import {
   motion,
   easeOut,
@@ -10,12 +12,34 @@ import {
 type Faq = { q: string; a: string };
 
 const FAQS: Faq[] = [
-  { q: "¿Puedo cancelar cuando quiera?", a: "Sí, es mes a mes." },
+  {
+    q: "¿Puedo cancelar cuando quiera?",
+    a: "Sí. La membresía es mes a mes. Si decides cancelar, no hay cláusulas de permanencia ni cobros ocultos: simplemente dejas de renovar el siguiente mes.",
+  },
+  {
+    q: "¿Cómo funciona la promo de Black Friday?",
+    a: "Si te suscribes al plan de $50.000/mes durante lo que queda de este año, pagas $30.000/mes por los primeros 6 meses. Después de esos 6 meses, el plan vuelve al precio normal de $50.000/mes.",
+  },
+  {
+    q: "¿Cuál es la diferencia entre subdominio y dominio propio?",
+    a: "Con subdominio, tu página queda por ejemplo como tu-salon.agenditapp.com (incluido en el plan de $50.000). Con dominio propio, tu página queda como tusalon.com o tusalon.com.co (plan de $100.000), lo que da más posicionamiento de marca y confianza al cliente.",
+  },
   {
     q: "¿Los recordatorios salen desde mi número?",
-    a: "Sí, configuramos el envío con tu línea.",
+    a: "Sí. Configuramos los recordatorios para que salgan desde tu línea de WhatsApp, de manera que tus clientes reconozcan tu negocio y puedan responderte directamente.",
   },
-  { q: "¿Necesito instalar algo?", a: "No. Todo funciona en la web." },
+  {
+    q: "¿Necesito instalar algo o comprar equipos?",
+    a: "No. AgenditApp funciona 100% en la web. Puedes usarlo desde tu celular, tablet o computador con conexión a internet, sin instalaciones complicadas.",
+  },
+  {
+    q: "¿Puedo cambiar de plan después (de subdominio a dominio)?",
+    a: "Claro. Si empiezas con el plan de subdominio y luego quieres usar dominio propio, podemos migrarte al plan de $100.000/mes y ayudarte con la configuración técnica.",
+  },
+  {
+    q: "¿Incluye soporte y ayuda para configurarlo?",
+    a: "Sí. Te acompañamos en la configuración inicial de tu landing, servicios y agenda, y tienes soporte por WhatsApp para dudas del día a día.",
+  },
 ];
 
 export default function FAQ() {
@@ -40,16 +64,25 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="px-6 py-12 max-w-6xl mx-auto">
-      <motion.h2
-        className="text-2xl md:text-3xl font-bold"
+    <section id="faq" className="px-6 py-16 max-w-6xl mx-auto">
+      <motion.div
         variants={titleIn}
         initial="initial"
         whileInView="animate"
         viewport={{ once: true, amount: 0.4 }}
+        className="max-w-3xl"
       >
-        Preguntas frecuentes
-      </motion.h2>
+        <span className="inline-flex items-center rounded-full border border-sky-500/30 bg-sky-500/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-300 mb-3">
+          Preguntas frecuentes
+        </span>
+        <h2 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
+          Resolvemos tus dudas antes de empezar
+        </h2>
+        <p className="mt-3 text-slate-400 text-sm sm:text-base">
+          Aquí tienes respuestas rápidas sobre la membresía, la promo de Black
+          Friday y cómo funciona AgenditApp en el día a día.
+        </p>
+      </motion.div>
 
       <motion.div
         className="mt-6 grid gap-4"
@@ -64,6 +97,23 @@ export default function FAQ() {
           </motion.div>
         ))}
       </motion.div>
+
+      {/* CTA de contacto al final */}
+      <motion.div
+        className="mt-8 inline-flex flex-wrap items-center gap-3 rounded-2xl border border-slate-800 bg-slate-900/40 px-4 py-3 text-xs sm:text-sm text-slate-300"
+        variants={titleIn}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <span>¿Tienes otra pregunta específica sobre tu negocio?</span>
+        <ExternalLink
+          href={WHATSAPP_HREF}
+          className="inline-flex items-center gap-2 rounded-xl bg-sky-400 text-slate-950 font-semibold px-3 py-1.5 text-xs sm:text-sm shadow-md hover:bg-sky-300 transition-colors"
+        >
+          💬 Preguntar por WhatsApp
+        </ExternalLink>
+      </motion.div>
     </section>
   );
 }
@@ -73,11 +123,11 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 
   return (
     <details
-      className="group p-4 rounded-2xl border border-slate-800 bg-slate-900/30 transition-colors hover:border-slate-700 hover:bg-slate-900/50"
+      className="group p-4 sm:p-5 rounded-2xl border border-slate-800 bg-slate-900/30 transition-colors hover:border-sky-500/40 hover:bg-slate-900/60"
       open={open}
       onToggle={(e) => setOpen((e.target as HTMLDetailsElement).open)}
     >
-      <summary className="flex cursor-pointer list-none items-center justify-between font-semibold">
+      <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-slate-100">
         <span>{question}</span>
 
         {/* Chevron animado */}
@@ -89,7 +139,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
           aria-hidden="true"
           animate={{ rotate: open ? 180 : 0 }}
           transition={{ duration: 0.25, ease: easeOut }}
-          className="ml-3 opacity-80"
+          className="ml-1 opacity-80 group-hover:opacity-100"
         >
           <path
             d="M5 7l5 5 5-5"
@@ -110,7 +160,9 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
         transition={{ duration: 0.35, ease: easeOut }}
         style={{ overflow: "hidden" }}
       >
-        <p className="mt-2 text-slate-300">{answer}</p>
+        <p className="mt-2 text-slate-300 text-sm sm:text-base leading-relaxed">
+          {answer}
+        </p>
       </motion.div>
     </details>
   );

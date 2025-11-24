@@ -42,20 +42,35 @@ export default function Footer() {
       whileInView="animate"
       viewport={{ once: true, amount: 0.25 }}
     >
-      <div className="flex items-center justify-between border-t border-slate-800 pt-6 gap-4 flex-wrap">
-        {/* Año con ligera entrada */}
-        <motion.span variants={itemIn}>
-          © {new Date().getFullYear()} AgenditApp
-        </motion.span>
+      <div className="border-t border-slate-800 pt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        {/* Año + texto */}
+        <motion.div
+          variants={itemIn}
+          className="flex flex-col gap-1 text-xs sm:text-sm"
+        >
+          <span>
+            © {new Date().getFullYear()} AgenditApp. Todos los derechos
+            reservados.
+          </span>
+          <span className="text-slate-500 text-[11px] sm:text-xs">
+            Hecho con ❤️ para salones, barberías, spas y negocios que viven de
+            las citas.
+          </span>
+        </motion.div>
 
         {/* Nav con stagger y micro-interacciones */}
-        <motion.nav className="flex gap-4" variants={itemIn}>
+        <motion.nav
+          className="flex flex-wrap items-center gap-4 justify-start sm:justify-end"
+          variants={itemIn}
+        >
           <motion.span
             whileHover={{ y: -1, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className={underlineStyle}
           >
-            <ExternalLink href="/terminos">Términos</ExternalLink>
+            <ExternalLink href="/terminos" className="text-xs sm:text-sm">
+              Términos
+            </ExternalLink>
           </motion.span>
 
           <motion.span
@@ -63,10 +78,12 @@ export default function Footer() {
             whileTap={{ scale: 0.98 }}
             className={underlineStyle}
           >
-            <ExternalLink href="/privacidad">Privacidad</ExternalLink>
+            <ExternalLink href="/privacidad" className="text-xs sm:text-sm">
+              Privacidad
+            </ExternalLink>
           </motion.span>
 
-          {/* Pulso infinito sutil en WhatsApp + hover más notorio */}
+          {/* WhatsApp como pill CTA sutil */}
           <motion.span
             animate={{ scale: [1, 1.03, 1] }}
             transition={{
@@ -78,18 +95,25 @@ export default function Footer() {
             whileHover={{
               scale: 1.07,
               y: -1,
-              textShadow: "0 0 14px rgba(56, 189, 248, 0.45)", // brillo suave
             }}
             whileTap={{ scale: 0.97 }}
-            className={underlineStyle}
           >
-            <ExternalLink href={WHATSAPP_HREF}>WhatsApp</ExternalLink>
+            <ExternalLink
+              href={WHATSAPP_HREF}
+              className="inline-flex items-center gap-1.5 rounded-full bg-sky-500/15 border border-sky-400/60 px-3 py-1.5 text-xs sm:text-sm text-sky-300 font-semibold shadow-[0_0_14px_rgba(56,189,248,0.35)] hover:bg-sky-400 hover:text-slate-950 hover:shadow-[0_0_22px_rgba(56,189,248,0.6)] transition-colors"
+            >
+              <span>💬</span>
+              <span>Hablar por WhatsApp</span>
+            </ExternalLink>
           </motion.span>
         </motion.nav>
       </div>
 
       {/* Créditos con entrada sutil */}
-      <motion.p className="mt-4 text-xs text-slate-500" variants={itemIn}>
+      <motion.p
+        className="mt-4 text-xs text-slate-500"
+        variants={itemIn}
+      >
         Software fabricado por{" "}
         <span className="inline-block">
           <ExternalLink
