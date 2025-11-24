@@ -192,9 +192,9 @@ export default function Hero() {
                 variants={fadeInUp}
                 className="mt-6 text-base sm:text-lg text-slate-300/90 max-w-xl text-balance leading-relaxed"
               >
-                Automatiza reservas 24/7 y reduce ausencias con recordatorios
-                inteligentes. Todo lo que necesitas para tu salón en una sola
-                app, sin instalaciones complejas.
+                Automatiza tu negocio con un software de agendamiento completo.
+                Reservas 24/7, recordatorios por WhatsApp y tu propia página
+                personalizada.
               </motion.p>
 
               {/* --- BLOQUE BLACK FRIDAY + BOTONES --- */}
@@ -207,7 +207,9 @@ export default function Hero() {
                   {/* Brillo animado en el fondo con Framer */}
                   <motion.div
                     className="absolute inset-0 bg-[linear-gradient(120deg,rgba(250,204,21,0)_0%,rgba(250,204,21,0.3)_50%,rgba(250,204,21,0)_100%)] bg-[length:200%_100%]"
-                    animate={{ backgroundPosition: ["0% center", "200% center"] }}
+                    animate={{
+                      backgroundPosition: ["0% center", "200% center"],
+                    }}
                     transition={{
                       duration: 3,
                       repeat: Infinity,
