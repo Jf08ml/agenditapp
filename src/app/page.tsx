@@ -13,6 +13,7 @@ import {
   JSONLD_FAQ,
   JSONLD_SERVICES,
 } from "./(landing)/components/constants";
+import DemoLead from "./(landing)/sections/DemoLead";
 
 export const metadata: Metadata = {
   title: "AgenditApp – Reserva en línea con recordatorios por WhatsApp",
@@ -41,6 +42,7 @@ export default function Page() {
       <Servicios />
       <Ubicacion />
       <Precio />
+      <DemoLead />
       <FAQ />
       <Footer />
     </>

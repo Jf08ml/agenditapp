@@ -131,7 +131,7 @@ export default function Hero() {
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-300">
-              {["Reserva", "Servicios", "Ubicación", "Membresía"].map(
+              {["Reserva", "Servicios", "Ubicación", "Membresía", "Demo"].map(
                 (item) => (
                   <ExternalLink
                     key={item}
