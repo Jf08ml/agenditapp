@@ -55,10 +55,21 @@ export default function DemoLead() {
 
       if (!res.ok) throw new Error("Error al enviar el formulario");
 
-      // Opcional: disparar evento de conversión en GA
+      // 👉 Aquí disparamos la conversión de Google Ads
       if (typeof window !== "undefined" && (window as any).gtag) {
-        (window as any).gtag("event", "lead_submit", {
-          event_category: "Lead",
+        (window as any).gtag("event", "conversion", {
+          send_to: "AW-17757114632/jMf9CO65v8YbEIiioJNC",
+          // event_callback es opcional si no quieres redirigir
+          event_callback: () => {
+            console.log("Conversión reportada a Google Ads");
+          },
+        });
+      }
+
+      // (Opcional) Evento GA4 tipo lead
+      if (typeof window !== "undefined" && (window as any).gtag) {
+        (window as any).gtag("event", "lead_demo_submit", {
+          event_category: "lead",
           event_label: "Demo AgenditApp",
         });
       }
