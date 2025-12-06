@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { useState } from "react";
-import ExternalLink from "../components/ui/ExternalLink";
 import Badge from "../components/ui/Badge";
 import { WHATSAPP_HREF } from "../components/constants";
 import { PhoneMockup } from "../components/ui/PhoneMockup";
@@ -131,23 +131,38 @@ export default function Hero() {
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-300">
-              {["Reserva", "Servicios", "Ubicación", "Membresía", "Demo"].map(
-                (item) => (
-                  <ExternalLink
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
-                    className="hover:text-white transition-colors"
-                  >
-                    {item}
-                  </ExternalLink>
-                )
-              )}
-              <ExternalLink
+              <Link
+                href="/sectores"
+                className="hover:text-white transition-colors"
+              >
+                Sectores
+              </Link>
+              <Link
+                href="/funcionalidades"
+                className="hover:text-white transition-colors"
+              >
+                Funcionalidades
+              </Link>
+              <Link
+                href="/precios"
+                className="hover:text-white transition-colors"
+              >
+                Precios
+              </Link>
+              <a
+                href="#demo"
+                className="hover:text-white transition-colors"
+              >
+                Demo
+              </a>
+              <a
                 href={WHATSAPP_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="ml-2 px-5 py-2.5 rounded-xl bg-sky-400 text-slate-950 font-bold hover:bg-sky-300 shadow-[0_0_20px_rgba(56,189,248,0.4)] transition-all transform hover:scale-105"
               >
                 Contactar ventas
-              </ExternalLink>
+              </a>
             </nav>
 
             {/* Mobile CTA (Small) */}

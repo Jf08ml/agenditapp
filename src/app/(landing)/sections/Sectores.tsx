@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion, easeOut, type Variants, type Transition } from "framer-motion";
 
 export default function Sectores() {
@@ -28,14 +29,22 @@ export default function Sectores() {
   };
 
   const sectores = [
-    { icon: "💅", label: "Salones de belleza y uñas" },
-    { icon: "💈", label: "Barberías y barber shops" },
-    { icon: "💆‍♀️", label: "Spas, cabinas y masajes" },
-    { icon: "🧴", label: "Lash & brow studios" },
-    { icon: "🏋️‍♀️", label: "Entrenadores y estudios fitness" },
-    { icon: "🩺", label: "Consultorios y estética médica" },
-    { icon: "📚", label: "Academias y escuelas de formación" },
-    { icon: "🧘‍♀️", label: "Terapeutas y bienestar integral" },
+    { icon: "💅", label: "Salones de belleza y uñas", link: "/sectores/salones-belleza" },
+    { icon: "💈", label: "Barberías y barber shops", link: "/sectores/barberias" },
+    { icon: "💆‍♀️", label: "Spas, cabinas y masajes", link: "/sectores/spas" },
+    { icon: "🩺", label: "Consultorios y clínicas", link: "/sectores/consultorios" },
+    { icon: "🧴", label: "Lash & brow studios", link: "/sectores/lash-brow" },
+    { icon: "🏋️‍♀️", label: "Entrenadores y gimnasios", link: "/sectores/gimnasios" },
+    { icon: "🧘‍♀️", label: "Terapeutas y bienestar", link: "/sectores/psicologia" },
+    { icon: "🦷", label: "Odontólogos y dentistas", link: "/sectores/odontologia" },
+    { icon: "🧠", label: "Psicólogos y terapeutas", link: "/sectores/psicologia" },
+    { icon: "💃", label: "Escuelas de danza y yoga", link: "/sectores/danza-yoga" },
+    { icon: "🎸", label: "Profesores de música", link: "/sectores/musica" },
+    { icon: "📚", label: "Tutores y academias", link: "/sectores/tutorias" },
+    { icon: "🐶", label: "Veterinarias y grooming", link: "/sectores/veterinarias" },
+    { icon: "📸", label: "Fotógrafos y estudios", link: "/sectores/fotografia" },
+    { icon: "⚖️", label: "Abogados y asesorías", link: "/sectores/abogados" },
+    { icon: "🏛️", label: "Nutricionistas y dietistas", link: "/sectores/nutricion" },
   ];
 
   return (
@@ -72,19 +81,39 @@ export default function Sectores() {
         className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"
       >
         {sectores.map((s) => (
-          <motion.div
-            key={s.label}
-            variants={item}
-            className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/40 px-4 py-3 backdrop-blur-sm hover:border-sky-400/50 hover:bg-slate-900/70 transition-colors"
-          >
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-500/10 text-lg">
-              {s.icon}
-            </span>
-            <span className="text-sm md:text-base text-slate-100">
-              {s.label}
-            </span>
-          </motion.div>
+          <Link key={s.label} href={s.link}>
+            <motion.div
+              variants={item}
+              className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/40 px-4 py-3 backdrop-blur-sm hover:border-sky-400/50 hover:bg-slate-900/70 transition-colors cursor-pointer group"
+            >
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-500/10 text-lg group-hover:scale-110 transition-transform">
+                {s.icon}
+              </span>
+              <span className="text-sm md:text-base text-slate-100 group-hover:text-sky-400 transition-colors">
+                {s.label}
+              </span>
+            </motion.div>
+          </Link>
         ))}
+      </motion.div>
+
+      {/* CTA para ver todos los sectores */}
+      <motion.div
+        variants={item}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        className="mt-8 text-center"
+      >
+        <Link
+          href="/sectores"
+          className="inline-flex items-center gap-2 text-sky-400 hover:text-sky-300 font-semibold transition-colors"
+        >
+          Ver todos los sectores
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </Link>
       </motion.div>
     </section>
   );

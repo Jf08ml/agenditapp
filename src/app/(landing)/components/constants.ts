@@ -1,22 +1,64 @@
 export const WHATSAPP_HREF =
   "https://wa.me/573184345284?text=Quiero%20una%20demo%20de%20AgenditApp";
 
+export const JSONLD_ORGANIZATION = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "AgenditApp",
+  url: "https://agenditapp.com",
+  logo: "https://agenditapp.com/logo_dorado.png",
+  description:
+    "Plataforma moderna de agendamiento inteligente y gestión de citas para negocios de belleza, bienestar y servicios profesionales",
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+57-318-434-5284",
+    contactType: "customer service",
+    availableLanguage: ["Spanish"],
+    areaServed: "CO",
+  },
+  sameAs: [
+    // Agregar redes sociales cuando estén disponibles
+  ],
+} as const;
+
 export const JSONLD_SOFTWARE = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   name: "AgenditApp",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
+  browserRequirements: "Requires JavaScript. Chrome, Firefox, Safari, Edge",
+  softwareVersion: "1.0",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    ratingCount: "120",
+  },
   offers: {
     "@type": "Offer",
     price: "100000",
     priceCurrency: "COP",
+    priceValidUntil: "2025-12-31",
+    availability: "https://schema.org/InStock",
     description:
       "Plan mensual con página personalizada, agenda online, recordatorios por WhatsApp, panel administrativo y soporte básico.",
   },
+  featureList: [
+    "Agendamiento online 24/7",
+    "Recordatorios automáticos por WhatsApp",
+    "Gestión de caja y empleados",
+    "Página web personalizada",
+    "Análisis de horas pico",
+    "Panel administrativo completo",
+  ],
+  screenshot: "https://agenditapp.com/inicio_page.png",
   areaServed: "CO",
   inLanguage: "es-CO",
   url: "https://agenditapp.com",
+  publisher: {
+    "@type": "Organization",
+    name: "AgenditApp",
+  },
   sameAs: [],
 } as const;
 

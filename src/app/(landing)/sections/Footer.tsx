@@ -1,5 +1,5 @@
 "use client";
-import ExternalLink from "../components/ui/ExternalLink";
+import Link from "next/link";
 import { WHATSAPP_HREF } from "../components/constants";
 import {
   motion,
@@ -68,9 +68,9 @@ export default function Footer() {
             whileTap={{ scale: 0.98 }}
             className={underlineStyle}
           >
-            <ExternalLink href="/terminos" className="text-xs sm:text-sm">
-              Términos
-            </ExternalLink>
+            <Link href="/sectores" className="text-xs sm:text-sm">
+              Sectores
+            </Link>
           </motion.span>
 
           <motion.span
@@ -78,9 +78,39 @@ export default function Footer() {
             whileTap={{ scale: 0.98 }}
             className={underlineStyle}
           >
-            <ExternalLink href="/privacidad" className="text-xs sm:text-sm">
+            <Link href="/funcionalidades" className="text-xs sm:text-sm">
+              Funcionalidades
+            </Link>
+          </motion.span>
+
+          <motion.span
+            whileHover={{ y: -1, scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className={underlineStyle}
+          >
+            <Link href="/precios" className="text-xs sm:text-sm">
+              Precios
+            </Link>
+          </motion.span>
+
+          <motion.span
+            whileHover={{ y: -1, scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className={underlineStyle}
+          >
+            <Link href="/terminos" className="text-xs sm:text-sm">
+              Términos
+            </Link>
+          </motion.span>
+
+          <motion.span
+            whileHover={{ y: -1, scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className={underlineStyle}
+          >
+            <Link href="/privacidad" className="text-xs sm:text-sm">
               Privacidad
-            </ExternalLink>
+            </Link>
           </motion.span>
 
           {/* WhatsApp como pill CTA sutil */}
@@ -98,13 +128,15 @@ export default function Footer() {
             }}
             whileTap={{ scale: 0.97 }}
           >
-            <ExternalLink
+            <a
               href={WHATSAPP_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 rounded-full bg-sky-500/15 border border-sky-400/60 px-3 py-1.5 text-xs sm:text-sm text-sky-300 font-semibold shadow-[0_0_14px_rgba(56,189,248,0.35)] hover:bg-sky-400 hover:text-slate-950 hover:shadow-[0_0_22px_rgba(56,189,248,0.6)] transition-colors"
             >
               <span>💬</span>
               <span>Hablar por WhatsApp</span>
-            </ExternalLink>
+            </a>
           </motion.span>
         </motion.nav>
       </div>
@@ -116,12 +148,14 @@ export default function Footer() {
       >
         Software fabricado por{" "}
         <span className="inline-block">
-          <ExternalLink
+          <a
             href="https://zybizobazar.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="underline decoration-slate-600 hover:decoration-slate-300"
           >
             zybizobazar.com
-          </ExternalLink>
+          </a>
         </span>
         .
       </motion.p>

@@ -1,5 +1,4 @@
 "use client";
-import ExternalLink from "../components/ui/ExternalLink";
 import { WHATSAPP_HREF } from "../components/constants";
 import {
   motion,
@@ -100,12 +99,14 @@ export default function Precio() {
               $50.000/mes.
             </p>
           </div>
-          <ExternalLink
+          <a
             href={WHATSAPP_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-3 sm:mt-0 inline-flex items-center justify-center rounded-xl bg-yellow-400 text-black text-xs sm:text-sm font-bold px-4 py-2 shadow-[0_0_18px_rgba(250,204,21,0.6)] hover:shadow-[0_0_26px_rgba(250,204,21,0.8)] transition-shadow whitespace-nowrap"
           >
             Quiero el precio de $30.000
-          </ExternalLink>
+          </a>
         </div>
       </motion.div>
 
@@ -188,12 +189,14 @@ export default function Precio() {
           {/* CTA */}
           <div className="mt-6 flex flex-wrap gap-3">
             <motion.span whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-              <ExternalLink
+              <a
                 href={WHATSAPP_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-5 py-3 rounded-xl bg-sky-400 text-black font-bold inline-block shadow-md text-sm"
               >
                 Quiero el plan de $50.000
-              </ExternalLink>
+              </a>
             </motion.span>
           </div>
         </motion.div>
@@ -281,12 +284,14 @@ export default function Precio() {
           {/* CTA */}
           <div className="mt-6 flex flex-wrap gap-3 relative">
             <motion.span whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-              <ExternalLink
+              <a
                 href={WHATSAPP_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-5 py-3 rounded-xl bg-slate-50 text-slate-900 font-bold inline-block shadow-md text-sm"
               >
                 Quiero el plan de $100.000
-              </ExternalLink>
+              </a>
             </motion.span>
           </div>
         </motion.div>
