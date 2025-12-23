@@ -36,7 +36,7 @@ export default function TerminosPage() {
         </p>
         <p>
           <strong>2. Pagos y planes:</strong> Todos los precios están en pesos
-          colombianos (COP). Los pagos son mensuales y no tienen cláusulas de
+          dólares (USD). Los pagos son mensuales y no tienen cláusulas de
           permanencia. Puedes cancelar en cualquier momento.
         </p>
         <p>

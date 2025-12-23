@@ -6,9 +6,9 @@ import PageHeader from "../(landing)/components/ui/PageHeader";
 import PageFooter from "../(landing)/components/ui/PageFooter";
 
 export const metadata: Metadata = {
-  title: "Planes y Precios | Software de Agendamiento desde $100.000 COP",
+  title: "Planes y Precios | Software de Agendamiento desde $10 USD",
   description:
-    "Conoce los planes de AgenditApp. Desde $100.000 COP mensuales sin permanencia. Incluye reservas ilimitadas, recordatorios por WhatsApp, página web personalizada, gestión de empleados y más. Prueba gratis.",
+    "Conoce los planes de AgenditApp. Desde $10 USD mensuales sin permanencia. Incluye reservas ilimitadas, recordatorios por WhatsApp, página web personalizada, gestión de empleados y más. Prueba gratis.",
   keywords: [
     "precios software de reservas",
     "planes agendamiento online",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: "https://agenditapp.com/precios",
   },
   openGraph: {
-    title: "Planes y Precios | AgenditApp desde $100.000 COP",
+    title: "Planes y Precios | AgenditApp desde $10 USD",
     description:
       "Plan mensual sin permanencia con todas las funcionalidades. Reservas ilimitadas, WhatsApp y página web incluida.",
     url: "https://agenditapp.com/precios",
@@ -62,7 +62,7 @@ const OFFER_SCHEMA = {
   offers: {
     "@type": "Offer",
     url: "https://agenditapp.com/precios",
-    priceCurrency: "COP",
+    priceCurrency: "USD",
     price: "100000",
     priceValidUntil: "2025-12-31",
     availability: "https://schema.org/InStock",
@@ -123,9 +123,6 @@ export default function PreciosPage() {
         {/* Hero */}
         <section className="py-16 sm:py-24 px-4 sm:px-6">
           <div className="max-w-5xl mx-auto text-center">
-            <div className="inline-block px-4 py-2 rounded-full bg-yellow-400/10 border border-yellow-400/30 text-yellow-400 text-sm font-bold mb-6">
-              🎉 Black Friday · Si te suscribes ahora: <span className="line-through opacity-60">$50.000</span> → $30.000/mes por 6 meses
-            </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6">
               Membresía simple,{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-500">
@@ -133,7 +130,7 @@ export default function PreciosPage() {
               </span>
             </h1>
             <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-8">
-              Elige si quieres usar AgenditApp con subdominio incluido o con tu propio dominio. En ambos casos tienes acceso a todas las funcionalidades.
+              Elige el plan que mejor se adapte a tu negocio. Desde el plan básico hasta marca propia con dominio personalizado.
             </p>
           </div>
         </section>
@@ -141,20 +138,20 @@ export default function PreciosPage() {
         {/* Planes */}
         <section className="py-16 px-4 sm:px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Plan Esencial - Subdominio */}
-              <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700 rounded-3xl p-8 sm:p-10 hover:border-sky-400/30 transition-all">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Plan Básico - $30.000 */}
+              <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700 rounded-3xl p-8 sm:p-10 hover:border-emerald-400/30 transition-all">
                 <div className="flex items-start justify-between gap-3 mb-6">
                   <div>
                     <h2 className="text-2xl font-bold text-white mb-2">
-                      Plan Esencial (Subdominio)
+                      Plan Básico
                     </h2>
                     <p className="text-slate-400 text-sm">
-                      Ideal si quieres empezar rápido sin pagar dominio aparte.
+                      Para empezar a digitalizar tu negocio.
                     </p>
                   </div>
-                  <span className="inline-flex items-center rounded-full border border-sky-500/40 bg-sky-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-sky-200 whitespace-nowrap">
-                    Más económico
+                  <span className="inline-flex items-center rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-200 whitespace-nowrap">
+                    Inicio
                   </span>
                 </div>
 
@@ -162,12 +159,12 @@ export default function PreciosPage() {
                 <div className="mb-6">
                   <div className="flex items-baseline gap-2 mb-2">
                     <span className="text-5xl font-extrabold text-white">
-                      $50.000
+                      $10 USD
                     </span>
                     <span className="text-xl text-slate-400">/ mes</span>
                   </div>
                   <p className="text-xs text-slate-500">
-                    Sin cláusulas ni permanencias. Precio en COP.
+                    Sin cláusulas ni permanencias.
                   </p>
                 </div>
 
@@ -178,8 +175,87 @@ export default function PreciosPage() {
                     <span className="font-mono text-sky-300">
                       tu-salon.agenditapp.com
                     </span>
-                    . Es una dirección web lista para usar, sin que tengas que
-                    comprar dominio ni hacer configuraciones técnicas.
+                    . Perfecto para comenzar sin complicaciones técnicas.
+                  </p>
+                </div>
+
+                {/* Beneficios */}
+                <div className="border-t border-white/10 pt-6 mb-8">
+                  <h3 className="text-sm font-bold text-white mb-4 uppercase tracking-wide">Incluye:</h3>
+                  <ul className="space-y-3">
+                    {[
+                      "Reservas ilimitadas y panel administrativo",
+                      "Landing de bienvenida + catálogo de servicios",
+                      "Gestión de clientes, agenda y caja",
+                      "Soporte básico por WhatsApp",
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-3">
+                        <div className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-400/20 flex items-center justify-center mt-0.5">
+                          <svg
+                            className="w-3 h-3 text-emerald-400"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={3}
+                              d="M5 13l4 4L19 7"
+                            />
+                          </svg>
+                        </div>
+                        <span className="text-slate-300 text-sm">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <a
+                  href={WHATSAPP_HREF}
+                  className="block w-full text-center px-8 py-4 rounded-xl bg-emerald-500 text-white font-bold hover:bg-emerald-400 shadow-lg transition-colors"
+                >
+                  Quiero el plan de $10 USD
+                </a>
+              </div>
+
+              {/* Plan Esencial - Subdominio */}
+              <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700 rounded-3xl p-8 sm:p-10 hover:border-sky-400/30 transition-all">
+                <div className="flex items-start justify-between gap-3 mb-6">
+                  <div>
+                    <h2 className="text-2xl font-bold text-white mb-2">
+                      Plan Esencial
+                    </h2>
+                    <p className="text-slate-400 text-sm">
+                      Ideal si quieres automatizar y ahorrar tiempo.
+                    </p>
+                  </div>
+                  <span className="inline-flex items-center rounded-full border border-sky-500/40 bg-sky-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-sky-200 whitespace-nowrap">
+                    Popular
+                  </span>
+                </div>
+
+                {/* Precio */}
+                <div className="mb-6">
+                  <div className="flex items-baseline gap-2 mb-2">
+                    <span className="text-5xl font-extrabold text-white">
+                      $15 USD
+                    </span>
+                    <span className="text-xl text-slate-400">/ mes</span>
+                  </div>
+                  <p className="text-xs text-slate-500">
+                    Sin cláusulas ni permanencias.
+                  </p>
+                </div>
+
+                {/* Explicación subdominio */}
+                <div className="mb-6 rounded-xl bg-slate-900/70 border border-slate-700/70 p-4">
+                  <p className="text-sm text-slate-300">
+                    Incluye un <b>subdominio</b>, por ejemplo:{" "}
+                    <span className="font-mono text-sky-300">
+                      tu-salon.agenditapp.com
+                    </span>
+                    , más recordatorios automáticos para reducir ausencias.
                   </p>
                 </div>
 
@@ -191,7 +267,8 @@ export default function PreciosPage() {
                       "Todas las funcionalidades de AgenditApp",
                       "Reservas ilimitadas y panel administrativo",
                       "Landing de bienvenida + catálogo de servicios",
-                      "Recordatorios automáticos por WhatsApp",
+                      "✨ Recordatorios automáticos por WhatsApp",
+                      "✨ Confirmaciones automáticas de reserva",
                       "Gestión de clientes, agenda y caja",
                       "Soporte básico por WhatsApp",
                     ].map((item) => (
@@ -221,7 +298,7 @@ export default function PreciosPage() {
                   href={WHATSAPP_HREF}
                   className="block w-full text-center px-8 py-4 rounded-xl bg-sky-400 text-slate-950 font-bold hover:bg-sky-300 shadow-lg transition-colors"
                 >
-                  Quiero el plan de $50.000
+                  Quiero el plan de $15 USD
                 </a>
               </div>
 
@@ -248,12 +325,12 @@ export default function PreciosPage() {
                 <div className="mb-6 relative">
                   <div className="flex items-baseline gap-2 mb-2">
                     <span className="text-5xl font-extrabold text-white">
-                      $100.000
+                      $30 USD
                     </span>
                     <span className="text-xl text-slate-400">/ mes</span>
                   </div>
                   <p className="text-xs text-slate-500">
-                    Sin cláusulas ni permanencias. Precio en COP.
+                    Sin cláusulas ni permanencias.
                   </p>
                 </div>
 
@@ -280,7 +357,8 @@ export default function PreciosPage() {
                       "Todas las funcionalidades de AgenditApp",
                       "Reservas ilimitadas y panel administrativo",
                       "Landing de bienvenida con tu dominio propio",
-                      "Recordatorios automáticos por WhatsApp",
+                      "✨ Recordatorios automáticos por WhatsApp",
+                      "✨ Confirmaciones automáticas de reserva",
                       "Configuración y soporte para el dominio",
                       "Soporte prioritario por WhatsApp",
                     ].map((item) => (
@@ -310,7 +388,7 @@ export default function PreciosPage() {
                   href={WHATSAPP_HREF}
                   className="block w-full text-center px-8 py-4 rounded-xl bg-slate-50 text-slate-900 font-bold hover:bg-white shadow-lg transition-colors relative"
                 >
-                  Quiero el plan de $100.000
+                  Quiero el plan de $30 USD
                 </a>
               </div>
             </div>

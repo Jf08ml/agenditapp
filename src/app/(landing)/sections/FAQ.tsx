@@ -17,12 +17,8 @@ const FAQS: Faq[] = [
     a: "Sí. La membresía es mes a mes. Si decides cancelar, no hay cláusulas de permanencia ni cobros ocultos: simplemente dejas de renovar el siguiente mes.",
   },
   {
-    q: "¿Cómo funciona la promo de Black Friday?",
-    a: "Si te suscribes al plan de $50.000/mes durante lo que queda de este año, pagas $30.000/mes por los primeros 6 meses. Después de esos 6 meses, el plan vuelve al precio normal de $50.000/mes.",
-  },
-  {
     q: "¿Cuál es la diferencia entre subdominio y dominio propio?",
-    a: "Con subdominio, tu página queda por ejemplo como tu-salon.agenditapp.com (incluido en el plan de $50.000). Con dominio propio, tu página queda como tusalon.com o tusalon.com.co (plan de $100.000), lo que da más posicionamiento de marca y confianza al cliente.",
+    a: "Con subdominio, tu página queda por ejemplo como tu-salon.agenditapp.com (incluido en el plan de $15 USD). Con dominio propio, tu página queda como tusalon.com o tusalon.com.co (plan de $30 USD), lo que da más posicionamiento de marca y confianza al cliente.",
   },
   {
     q: "¿Los recordatorios salen desde mi número?",
@@ -34,7 +30,7 @@ const FAQS: Faq[] = [
   },
   {
     q: "¿Puedo cambiar de plan después (de subdominio a dominio)?",
-    a: "Claro. Si empiezas con el plan de subdominio y luego quieres usar dominio propio, podemos migrarte al plan de $100.000/mes y ayudarte con la configuración técnica.",
+    a: "Claro. Si empiezas con el plan de subdominio y luego quieres usar dominio propio, podemos migrarte al plan de $30 USD/mes y ayudarte con la configuración técnica.",
   },
   {
     q: "¿Incluye soporte y ayuda para configurarlo?",

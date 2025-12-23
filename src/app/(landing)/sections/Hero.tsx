@@ -212,57 +212,30 @@ export default function Hero() {
                 personalizada.
               </motion.p>
 
-              {/* --- BLOQUE BLACK FRIDAY + BOTONES --- */}
+              {/* Botones CTA */}
               <motion.div
                 variants={fadeInUp}
-                className="relative mt-10 flex flex-col items-center lg:items-start gap-6"
+                className="relative mt-10 flex flex-wrap justify-center lg:justify-start gap-4"
               >
-                {/* Banner de oferta Black Friday */}
-                <div className="relative overflow-hidden rounded-2xl border border-yellow-400/50 bg-gradient-to-r from-black via-slate-900 to-black px-6 py-3 shadow-[0_0_35px_rgba(250,204,21,0.35)] max-w-xl">
-                  {/* Brillo animado en el fondo con Framer */}
-                  <motion.div
-                    className="absolute inset-0 bg-[linear-gradient(120deg,rgba(250,204,21,0)_0%,rgba(250,204,21,0.3)_50%,rgba(250,204,21,0)_100%)] bg-[length:200%_100%]"
-                    animate={{
-                      backgroundPosition: ["0% center", "200% center"],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                  />
-                  <div className="relative flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
-                    <span className="text-yellow-400 font-extrabold text-lg sm:text-xl tracking-wide uppercase">
-                      🎉 Descuento imperdible de Black Friday
-                    </span>
-                    <span className="bg-yellow-400 text-black text-sm font-bold px-4 py-1 rounded-full shadow-md animate-pulse">
-                      -50% por tiempo limitado
-                    </span>
-                  </div>
-                </div>
+                <motion.a
+                  href={WHATSAPP_HREF}
+                  target="_blank"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 rounded-2xl bg-sky-400 text-slate-950 text-lg font-bold 
+                    shadow-[0_0_30px_rgba(56,189,248,0.5)] hover:shadow-[0_0_50px_rgba(56,189,248,0.7)] 
+                    transition-all flex items-center gap-2 relative overflow-hidden"
+                >
+                  🚀 Solicitar Demo Gratis
+                </motion.a>
 
-                {/* Botones debajo */}
-                <div className="flex flex-wrap justify-center lg:justify-start gap-4">
-                  <motion.a
-                    href={WHATSAPP_HREF}
-                    target="_blank"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-8 py-4 rounded-2xl bg-sky-400 text-slate-950 text-lg font-bold 
-                      shadow-[0_0_30px_rgba(56,189,248,0.5)] hover:shadow-[0_0_50px_rgba(56,189,248,0.7)] 
-                      transition-all flex items-center gap-2 relative overflow-hidden"
-                  >
-                    🚀 Solicitar Demo Gratis
-                  </motion.a>
-
-                  <a
-                    href="#membresía"
-                    className="px-8 py-4 rounded-2xl border border-white/10 bg-white/5 text-white 
-                      hover:bg-white/10 backdrop-blur-sm font-medium transition-colors"
-                  >
-                    Ver planes
-                  </a>
-                </div>
+                <a
+                  href="#membresía"
+                  className="px-8 py-4 rounded-2xl border border-white/10 bg-white/5 text-white 
+                    hover:bg-white/10 backdrop-blur-sm font-medium transition-colors"
+                >
+                  Ver planes
+                </a>
               </motion.div>
 
               {/* Bullets / Features */}

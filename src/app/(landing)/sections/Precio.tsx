@@ -60,59 +60,14 @@ export default function Precio() {
           Membresía simple, con todo incluido
         </h2>
         <p className="mt-3 text-lg text-slate-300">
-          Elige si quieres usar AgenditApp con{" "}
-          <b>subdominio incluido</b> o con tu <b>propio dominio</b>. En ambos
-          casos tienes acceso a todas las funcionalidades de la plataforma.
+          Elige el plan que mejor se adapte a tu negocio. Desde el plan básico
+          hasta marca propia con dominio personalizado.
         </p>
       </motion.div>
 
-      {/* Banner Black Friday */}
-      <motion.div
-        className="mt-6 relative overflow-hidden rounded-2xl border border-yellow-400/50 bg-gradient-to-r from-black via-slate-900 to-black px-6 py-4 shadow-[0_0_35px_rgba(250,204,21,0.35)]"
-        variants={cardIn}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <motion.div
-          className="absolute inset-0 bg-[linear-gradient(120deg,rgba(250,204,21,0)_0%,rgba(250,204,21,0.3)_50%,rgba(250,204,21,0)_100%)] bg-[length:200%_100%]"
-          animate={{ backgroundPosition: ["0% center", "200% center"] }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-        <div className="relative flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <div className="space-y-1">
-            <p className="text-yellow-300 font-extrabold text-base sm:text-lg uppercase tracking-wide">
-              🎉 Black Friday · Descuento imperdible
-            </p>
-            <p className="text-sm sm:text-base text-slate-100">
-              Si te suscribes al plan de <b>$50.000/mes</b> durante lo que queda
-              de este año, pagas{" "}
-              <b className="text-yellow-300">$30.000/mes</b> por los primeros{" "}
-              <b>6 meses</b>.
-            </p>
-            <p className="text-xs text-slate-400">
-              * Después de los 6 meses, el plan vuelve a su precio normal de
-              $50.000/mes.
-            </p>
-          </div>
-          <a
-            href={WHATSAPP_HREF}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-3 sm:mt-0 inline-flex items-center justify-center rounded-xl bg-yellow-400 text-black text-xs sm:text-sm font-bold px-4 py-2 shadow-[0_0_18px_rgba(250,204,21,0.6)] hover:shadow-[0_0_26px_rgba(250,204,21,0.8)] transition-shadow whitespace-nowrap"
-          >
-            Quiero el precio de $30.000
-          </a>
-        </div>
-      </motion.div>
-
       {/* Grid de planes */}
-      <div className="mt-10 grid gap-6 md:grid-cols-2">
-        {/* Plan 1: Subdominio */}
+      <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {/* Plan 1: Básico $30.000 */}
         <motion.div
           className="p-6 rounded-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-sm"
           variants={cardIn}
@@ -125,26 +80,26 @@ export default function Precio() {
           <div className="flex items-start justify-between gap-3">
             <div>
               <h3 className="text-xl font-bold text-white">
-                Plan Esencial (Subdominio)
+                Plan Básico
               </h3>
               <p className="mt-1 text-sm text-slate-400">
-                Ideal si quieres empezar rápido sin pagar dominio aparte.
+                Para empezar a digitalizar tu negocio.
               </p>
             </div>
-            <span className="inline-flex items-center rounded-full border border-sky-500/40 bg-sky-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-sky-200">
-              Más económico
+            <span className="inline-flex items-center rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-emerald-200">
+              Inicio
             </span>
           </div>
 
           {/* Precio */}
           <div className="mt-4 flex items-baseline gap-1">
             <span className="text-3xl font-extrabold text-white">
-              $50.000
+              $10 USD
             </span>
             <span className="text-slate-400 text-sm">/ mes</span>
           </div>
           <p className="text-xs text-slate-500 mt-1">
-            Precio en pesos colombianos (COP). Sin cláusulas ni permanencias.
+            Sin cláusulas ni permanencias.
           </p>
 
           {/* Explicación subdominio */}
@@ -154,8 +109,93 @@ export default function Precio() {
               <span className="font-mono text-sky-300">
                 tu-salon.agenditapp.com
               </span>
-              . Es una dirección web lista para usar, sin que tengas que
-              comprar dominio ni hacer configuraciones técnicas.
+              . Perfecto para comenzar sin complicaciones técnicas.
+            </p>
+          </div>
+
+          {/* Beneficios */}
+          <motion.ul
+            className="mt-5 grid gap-2 text-sm text-slate-200"
+            variants={listContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            {[
+              "Reservas ilimitadas y panel administrativo.",
+              "Landing de bienvenida + catálogo de servicios.",
+              "Gestión de clientes, agenda y caja.",
+              "Soporte básico por WhatsApp.",
+            ].map((txt) => (
+              <motion.li
+                key={txt}
+                variants={listItem}
+                className="flex items-start gap-2"
+              >
+                <span className="mt-1 inline-block h-2 w-2 rounded-full bg-emerald-400" />
+                <span>{txt}</span>
+              </motion.li>
+            ))}
+          </motion.ul>
+
+          {/* CTA */}
+          <div className="mt-6 flex flex-wrap gap-3">
+            <motion.span whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
+              <a
+                href={WHATSAPP_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-3 rounded-xl bg-emerald-500 text-white font-bold inline-block shadow-md text-sm"
+              >
+                Quiero el plan de $10 USD
+              </a>
+            </motion.span>
+          </div>
+        </motion.div>
+
+        {/* Plan 2: Esencial (Subdominio) $50.000 */}
+        <motion.div
+          className="p-6 rounded-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-sm"
+          variants={cardIn}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.3 }}
+          whileHover={{ y: -3, boxShadow: "0 18px 50px rgba(15,23,42,0.75)" }}
+          transition={tIn}
+        >
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <h3 className="text-xl font-bold text-white">
+                Plan Esencial
+              </h3>
+              <p className="mt-1 text-sm text-slate-400">
+                Ideal si quieres automatizar y ahorrar tiempo.
+              </p>
+            </div>
+            <span className="inline-flex items-center rounded-full border border-sky-500/40 bg-sky-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-sky-200">
+              Popular
+            </span>
+          </div>
+
+          {/* Precio */}
+          <div className="mt-4 flex items-baseline gap-1">
+            <span className="text-3xl font-extrabold text-white">
+              $15 USD
+            </span>
+            <span className="text-slate-400 text-sm">/ mes</span>
+          </div>
+          <p className="text-xs text-slate-500 mt-1">
+            Sin cláusulas ni permanencias.
+          </p>
+
+          {/* Explicación subdominio */}
+          <div className="mt-4 rounded-xl bg-slate-900/70 border border-slate-700/70 px-4 py-3 text-xs sm:text-sm text-slate-300">
+            <p>
+              Incluye un <b>subdominio</b>, por ejemplo:{" "}
+              <span className="font-mono text-sky-300">
+                tu-salon.agenditapp.com
+              </span>
+              , más recordatorios automáticos para reducir ausencias.
             </p>
           </div>
 
@@ -171,7 +211,8 @@ export default function Precio() {
               "Todas las funcionalidades de AgenditApp.",
               "Reservas ilimitadas y panel administrativo.",
               "Landing de bienvenida + catálogo de servicios.",
-              "Recordatorios automáticos por WhatsApp.",
+              "✨ Recordatorios automáticos por WhatsApp.",
+              "✨ Confirmaciones automáticas de reserva.",
               "Gestión de clientes, agenda y caja.",
               "Soporte básico por WhatsApp.",
             ].map((txt) => (
@@ -195,13 +236,13 @@ export default function Precio() {
                 rel="noopener noreferrer"
                 className="px-5 py-3 rounded-xl bg-sky-400 text-black font-bold inline-block shadow-md text-sm"
               >
-                Quiero el plan de $50.000
+                Quiero el plan de $15 USD
               </a>
             </motion.span>
           </div>
         </motion.div>
 
-        {/* Plan 2: Dominio propio */}
+        {/* Plan 3: Dominio propio */}
         <motion.div
           className="p-6 rounded-2xl border border-slate-700 bg-slate-900/60 backdrop-blur-sm relative overflow-hidden"
           variants={cardIn}
@@ -231,12 +272,12 @@ export default function Precio() {
           {/* Precio */}
           <div className="mt-4 flex items-baseline gap-1">
             <span className="text-3xl font-extrabold text-white">
-              $100.000
+              $30 USD
             </span>
             <span className="text-slate-400 text-sm">/ mes</span>
           </div>
           <p className="text-xs text-slate-500 mt-1">
-            Precio en pesos colombianos (COP). Sin cláusulas ni permanencias.
+            Sin cláusulas ni permanencias.
           </p>
 
           {/* Explicación dominio */}
@@ -266,7 +307,8 @@ export default function Precio() {
               "Todas las funcionalidades de AgenditApp.",
               "Reservas ilimitadas y panel administrativo.",
               "Landing de bienvenida con tu dominio propio.",
-              "Recordatorios automáticos por WhatsApp.",
+              "✨ Recordatorios automáticos por WhatsApp.",
+              "✨ Confirmaciones automáticas de reserva.",
               "Configuración y soporte para el dominio.",
               "Soporte prioritario por WhatsApp.",
             ].map((txt) => (
@@ -290,7 +332,7 @@ export default function Precio() {
                 rel="noopener noreferrer"
                 className="px-5 py-3 rounded-xl bg-slate-50 text-slate-900 font-bold inline-block shadow-md text-sm"
               >
-                Quiero el plan de $100.000
+                Quiero el plan de $30 USD
               </a>
             </motion.span>
           </div>
@@ -305,8 +347,8 @@ export default function Precio() {
         whileInView="animate"
         viewport={{ once: true, amount: 0.4 }}
       >
-        Ambos planes incluyen acceso completo a la plataforma. Puedes cambiar de
-        plan más adelante si tu negocio crece o quieres reforzar tu marca.
+        Todos los planes incluyen acceso completo a la plataforma. Puedes cambiar de
+        plan más adelante según las necesidades de tu negocio.
       </motion.p>
     </section>
   );

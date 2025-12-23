@@ -36,8 +36,8 @@ export const JSONLD_SOFTWARE = {
   },
   offers: {
     "@type": "Offer",
-    price: "100000",
-    priceCurrency: "COP",
+    price: "30",
+    priceCurrency: "USD",
     priceValidUntil: "2025-12-31",
     availability: "https://schema.org/InStock",
     description:
@@ -101,20 +101,20 @@ export const JSONLD_SERVICES = {
     {
       "@type": "Offer",
       itemOffered: { "@type": "Service", name: "Corte de cabello" },
-      price: 25000,
-      priceCurrency: "COP",
+      price: 25,
+      priceCurrency: "USD",
     },
     {
       "@type": "Offer",
       itemOffered: { "@type": "Service", name: "Manicure" },
-      price: 30000,
-      priceCurrency: "COP",
+      price: 30,
+      priceCurrency: "USD",
     },
     {
       "@type": "Offer",
       itemOffered: { "@type": "Service", name: "Depilación bozo" },
-      price: 18000,
-      priceCurrency: "COP",
+      price: 18,
+      priceCurrency: "USD",
     },
   ],
 } as const;
