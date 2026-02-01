@@ -6,17 +6,23 @@ import PageHeader from "../(landing)/components/ui/PageHeader";
 import PageFooter from "../(landing)/components/ui/PageFooter";
 
 export const metadata: Metadata = {
-  title: "Funcionalidades | Características del Sistema de Agendamiento AgenditApp",
+  title:
+    "Funcionalidades | Características del Sistema de Agendamiento AgenditApp",
   description:
-    "Descubre todas las funcionalidades de AgenditApp: reservas online 24/7, recordatorios automáticos por WhatsApp, gestión de empleados, control de caja, análisis de horas pico, página web personalizada y más.",
+    "Descubre todas las funcionalidades de AgenditApp: reservas online 24/7, confirmación/cancelación por WhatsApp, recordatorios automáticos, fidelidad, branding personalizado, gestión de empleados, comisiones, analíticas y página web.",
   keywords: [
     "funcionalidades agendamiento",
     "características sistema de reservas",
     "recordatorios WhatsApp automáticos",
+    "confirmar cita WhatsApp",
+    "cancelar cita WhatsApp",
     "gestión de empleados",
+    "comisiones por empleado",
     "control de caja digital",
     "análisis de negocio",
     "página web reservas",
+    "fidelidad clientes",
+    "branding marca blanca",
   ],
   alternates: {
     canonical: "https://agenditapp.com/funcionalidades",
@@ -24,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Funcionalidades | Sistema de Agendamiento AgenditApp",
     description:
-      "Conoce todas las herramientas que ofrece AgenditApp para optimizar tu negocio de servicios.",
+      "Conoce todas las herramientas que ofrece AgenditApp para automatizar reservas, WhatsApp, fidelidad y gestión completa del negocio.",
     url: "https://agenditapp.com/funcionalidades",
     images: ["/inicio_page.png"],
   },
@@ -57,48 +63,68 @@ const funcionalidades = [
       {
         nombre: "Reservas online 24/7",
         descripcion:
-          "Tus clientes agendan desde tu página web en cualquier momento, sin necesidad de llamadas.",
+          "Tus clientes agendan desde tu página web en cualquier momento, sin llamadas ni esperas.",
+      },
+      {
+        nombre: "Citas ilimitadas",
+        descripcion:
+          "Recibe todas las reservas que necesites: sin límites por mes y sin costos por cita.",
       },
       {
         nombre: "Agenda visual simple",
         descripcion:
-          "Vista de calendario intuitiva con código de colores por servicio y empleado.",
+          "Calendario intuitivo con vista por día/semana y organización clara por empleado y servicio.",
       },
       {
-        nombre: "Configuración de servicios",
+        nombre: "Servicios configurables",
         descripcion:
-          "Define duración, precio y disponibilidad de cada servicio que ofreces.",
+          "Define duración, precio y disponibilidad de cada servicio. Ajusta tu catálogo cuando quieras.",
+      },
+      {
+        nombre: "Horarios por empleado y por negocio",
+        descripcion:
+          "Configura horarios y disponibilidad para la reserva online según tu operación real (por empleado y por organización).",
       },
       {
         nombre: "Bloqueo de horarios",
         descripcion:
-          "Marca descansos, reuniones o eventos especiales fácilmente.",
+          "Marca descansos, reuniones o eventos especiales fácilmente para evitar sobrecupo.",
       },
     ],
   },
   {
-    categoria: "Comunicación y Recordatorios",
+    categoria: "Comunicación y WhatsApp",
     icon: "📲",
     features: [
       {
-        nombre: "Recordatorios automáticos por WhatsApp",
+        nombre: "Mensajes por WhatsApp desde tu número",
         descripcion:
-          "Envía mensajes desde tu número oficial 24h antes de cada cita. Reduce ausencias hasta 70%.",
+          "Automatiza mensajes desde tu WhatsApp Business (en planes Esencial y Marca Propia).",
       },
       {
-        nombre: "Confirmación de citas",
+        nombre: "Mensaje automático al agendar",
         descripcion:
-          "Los clientes pueden confirmar, cancelar o reprogramar directamente desde WhatsApp.",
+          "Cada vez que un cliente agenda, recibe un mensaje de confirmación por WhatsApp. El texto es configurable.",
       },
       {
-        nombre: "Mensajes personalizados",
+        nombre: "Recordatorios automáticos",
         descripcion:
-          "Configura el texto de tus recordatorios con tu tono de marca.",
+          "Reduce ausencias con recordatorios antes de cada cita. En Marca Propia puedes usar 2 recordatorios con horas configurables.",
+      },
+      {
+        nombre: "Confirmar asistencia y cancelar desde WhatsApp",
+        descripcion:
+          "Tus clientes pueden confirmar su asistencia o cancelar la cita directamente desde el mensaje, sin llamadas ni chats largos.",
+      },
+      {
+        nombre: "Mensajes editables (tono de tu marca)",
+        descripcion:
+          "Personaliza los textos de WhatsApp (agendamiento y recordatorios) con tu estilo y políticas.",
       },
       {
         nombre: "Notificaciones en tiempo real",
         descripcion:
-          "Recibe alertas instantáneas de nuevas reservas en tu dispositivo.",
+          "Recibe alertas instantáneas cuando llega una nueva reserva o un cambio en la cita.",
       },
     ],
   },
@@ -107,24 +133,45 @@ const funcionalidades = [
     icon: "💼",
     features: [
       {
-        nombre: "Control de empleados",
+        nombre: "Gestión de empleados",
         descripcion:
-          "Gestiona horarios, servicios asignados y agenda individual de cada empleado.",
+          "Crea empleados, asigna servicios y administra su agenda individual con control total.",
+      },
+      {
+        nombre: "Comisiones y nómina por empleado",
+        descripcion:
+          "Calcula comisiones por servicio y lleva control de pagos o nómina de forma organizada.",
+      },
+      {
+        nombre: "Gestión de clientes",
+        descripcion:
+          "Base de datos de clientes con historial de citas, observaciones y mejor seguimiento.",
+      },
+      {
+        nombre: "Analíticas y reportes",
+        descripcion:
+          "Mide horas pico, servicios más vendidos, rendimiento por empleado y evolución del negocio.",
       },
       {
         nombre: "Gestión de caja",
         descripcion:
-          "Registra pagos, abonos, métodos de pago y genera reportes financieros.",
+          "Registra pagos, métodos de pago y genera reportes para tener claridad de ingresos.",
+      },
+    ],
+  },
+  {
+    categoria: "Fidelidad y Retención",
+    icon: "🎁",
+    features: [
+      {
+        nombre: "Sistema de fidelidad",
+        descripcion:
+          "Recompensa clientes frecuentes con beneficios y aumenta la recompra sin esfuerzo.",
       },
       {
-        nombre: "Historial de clientes",
+        nombre: "Mejor experiencia del cliente",
         descripcion:
-          "Consulta el historial completo de citas de cada cliente para mejor atención.",
-      },
-      {
-        nombre: "Reportes y analíticas",
-        descripcion:
-          "Analiza horas pico, servicios más solicitados y rendimiento del negocio.",
+          "Confirmaciones, recordatorios y una reserva fácil hacen que el cliente vuelva más seguido.",
       },
     ],
   },
@@ -133,14 +180,19 @@ const funcionalidades = [
     icon: "🌐",
     features: [
       {
-        nombre: "Página web personalizada",
+        nombre: "Landing de bienvenida",
         descripcion:
-          "Landing de bienvenida con tus colores, logo, servicios y formulario de reserva integrado.",
+          "Página de bienvenida con tus servicios y botón de reserva. En Marca Propia es más profesional para convertir más.",
       },
       {
-        nombre: "Dominio personalizado",
+        nombre: "Subdominio incluido",
         descripcion:
-          "Usa tu propio dominio (ej: tusalon.com) o el que te proporcionamos.",
+          "En planes Básico y Esencial tienes un subdominio como: tu-negocio.agenditapp.com para empezar rápido.",
+      },
+      {
+        nombre: "Dominio propio (Marca Propia)",
+        descripcion:
+          "Usa tu propio dominio (ej: tumarca.com / tumarca.com.co) para presencia digital fuerte y más confianza.",
       },
       {
         nombre: "Diseño responsive",
@@ -155,28 +207,49 @@ const funcionalidades = [
     ],
   },
   {
-    categoria: "Seguridad y Soporte",
-    icon: "🔒",
+    categoria: "Campañas y Crecimiento",
+    icon: "📣",
     features: [
+      {
+        nombre: "Campañas masivas por WhatsApp (Marca Propia)",
+        descripcion:
+          "Envía campañas a tu base de clientes para promociones, reactivación y anuncios importantes.",
+      },
+      {
+        nombre: "Segmentación y control",
+        descripcion:
+          "Organiza tu base de clientes para campañas más efectivas (por ejemplo: frecuentes, nuevos, inactivos).",
+      },
+    ],
+  },
+  {
+    categoria: "Branding, Seguridad y Soporte",
+    icon: "🛡️",
+    features: [
+      {
+        nombre: "Branding personalizado (logo, nombre y colores)",
+        descripcion:
+          "La plataforma se adapta a tu marca: tu logo, nombre del negocio y colores para una experiencia más profesional.",
+      },
       {
         nombre: "Datos seguros en la nube",
         descripcion:
-          "Tu información protegida con encriptación y backups automáticos.",
+          "Tu información está protegida con buenas prácticas de seguridad y respaldos automáticos.",
       },
       {
         nombre: "Acceso desde cualquier dispositivo",
         descripcion:
-          "Gestiona tu negocio desde celular, tablet o computadora, donde estés.",
+          "Administra tu negocio desde celular, tablet o computadora, estés donde estés.",
       },
       {
         nombre: "Soporte técnico incluido",
         descripcion:
-          "Ayuda por WhatsApp y correo para resolver cualquier duda.",
+          "Acompañamiento por WhatsApp y correo para resolver dudas y ayudarte a configurar todo.",
       },
       {
         nombre: "Actualizaciones automáticas",
         descripcion:
-          "Siempre tienes la última versión sin instalar ni pagar extra.",
+          "Siempre tienes mejoras y nuevas funciones sin instalar nada ni pagar extra.",
       },
     ],
   },
@@ -195,13 +268,13 @@ export default function FuncionalidadesPage() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6">
               Todo lo que necesitas en{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-500">
-                Una Sola Plataforma
+                una sola plataforma
               </span>
             </h1>
             <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-8">
-              AgenditApp incluye todas las herramientas que tu negocio de
-              servicios necesita para automatizar reservas, comunicarse con
-              clientes y crecer sin complicaciones.
+              AgenditApp te ayuda a automatizar reservas, WhatsApp, fidelidad y
+              la gestión completa del negocio para que crezcas sin
+              complicaciones.
             </p>
             <a
               href={WHATSAPP_HREF}
@@ -223,6 +296,7 @@ export default function FuncionalidadesPage() {
                     {categoria.categoria}
                   </h2>
                 </div>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {categoria.features.map((feature) => (
                     <div
@@ -238,6 +312,7 @@ export default function FuncionalidadesPage() {
                     </div>
                   ))}
                 </div>
+
                 {idx < funcionalidades.length - 1 && (
                   <div className="mt-12 border-t border-white/10" />
                 )}
@@ -259,8 +334,8 @@ export default function FuncionalidadesPage() {
                   Configuración rápida
                 </h3>
                 <p className="text-slate-300">
-                  Empieza a recibir reservas el mismo día. No requiere
-                  instalaciones complejas.
+                  Empieza a recibir reservas rápido. Te ayudamos con la
+                  configuración inicial.
                 </p>
               </div>
               <div className="text-center">
@@ -279,8 +354,8 @@ export default function FuncionalidadesPage() {
                   Fácil de usar
                 </h3>
                 <p className="text-slate-300">
-                  Interfaz intuitiva que no requiere conocimientos técnicos.
-                  Todos pueden usarla.
+                  Interfaz intuitiva para ti y tu equipo. No necesitas
+                  conocimientos técnicos.
                 </p>
               </div>
             </div>
@@ -314,6 +389,7 @@ export default function FuncionalidadesPage() {
           </div>
         </section>
       </main>
+
       <PageFooter />
     </>
   );

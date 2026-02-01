@@ -55,6 +55,52 @@ const BREADCRUMB_SCHEMA = {
   ],
 };
 
+const SERVICE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Software Médico de Agendamiento para Consultorios",
+  provider: {
+    "@type": "Organization",
+    name: "AgenditApp",
+    url: "https://agenditapp.com",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "Colombia",
+  },
+  audience: {
+    "@type": "MedicalAudience",
+    name: "Médicos, Odontólogos, Psicólogos y Profesionales de la Salud",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Funcionalidades para Consultorios",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Gestión de citas médicas y consultas",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Control de pacientes y tratamientos",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Recordatorios de consultas por WhatsApp",
+        },
+      },
+    ],
+  },
+};
+
 const features = [
   {
     title: "Agenda por profesional",
@@ -97,10 +143,32 @@ const features = [
 export default function ConsultoriosPage() {
   return (
     <>
-      <SchemaOrg data={BREADCRUMB_SCHEMA} />
+      <SchemaOrg data={[BREADCRUMB_SCHEMA, SERVICE_SCHEMA]} />
       <PageHeader />
 
       <main className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 pt-16">
+        {/* Breadcrumbs */}
+        <nav className="px-4 sm:px-6 py-4 max-w-7xl mx-auto">
+          <ol className="flex items-center gap-2 text-sm text-slate-400">
+            <li>
+              <Link href="/" className="hover:text-sky-400 transition-colors">
+                Inicio
+              </Link>
+            </li>
+            <li>/</li>
+            <li>
+              <Link
+                href="/sectores"
+                className="hover:text-sky-400 transition-colors"
+              >
+                Sectores
+              </Link>
+            </li>
+            <li>/</li>
+            <li className="text-white font-medium">Consultorios y Clínicas</li>
+          </ol>
+        </nav>
+
         {/* Hero */}
         <section className="py-16 sm:py-24 px-4 sm:px-6">
           <div className="max-w-5xl mx-auto text-center">
@@ -227,6 +295,65 @@ export default function ConsultoriosPage() {
                 información y la de tus pacientes está segura con encriptación y
                 accesos controlados.
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Sectores Relacionados */}
+        <section className="py-16 px-4 sm:px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-white text-center mb-4">
+              Especialidades que usan AgenditApp
+            </h2>
+            <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
+              Profesionales de la salud de diferentes especialidades confían en
+              nuestra plataforma
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Link
+                href="/sectores/odontologia"
+                className="bg-slate-800/50 border border-white/10 rounded-xl p-6 hover:border-sky-400/50 transition-all group"
+              >
+                <div className="text-3xl mb-3">🦷</div>
+                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-sky-400 transition-colors">
+                  Odontología
+                </h3>
+                <p className="text-slate-400 text-sm">
+                  Sistema de citas para consultorios dentales
+                </p>
+              </Link>
+              <Link
+                href="/sectores/psicologia"
+                className="bg-slate-800/50 border border-white/10 rounded-xl p-6 hover:border-sky-400/50 transition-all group"
+              >
+                <div className="text-3xl mb-3">🧠</div>
+                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-sky-400 transition-colors">
+                  Psicología
+                </h3>
+                <p className="text-slate-400 text-sm">
+                  Agendamiento para psicólogos y terapeutas
+                </p>
+              </Link>
+              <Link
+                href="/sectores/nutricion"
+                className="bg-slate-800/50 border border-white/10 rounded-xl p-6 hover:border-sky-400/50 transition-all group"
+              >
+                <div className="text-3xl mb-3">🥗</div>
+                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-sky-400 transition-colors">
+                  Nutrición
+                </h3>
+                <p className="text-slate-400 text-sm">
+                  Gestión de consultas nutricionales y seguimiento
+                </p>
+              </Link>
+            </div>
+            <div className="text-center mt-8">
+              <Link
+                href="/sectores"
+                className="text-sky-400 hover:text-sky-300 font-medium inline-flex items-center gap-2"
+              >
+                Ver todos los sectores →
+              </Link>
             </div>
           </div>
         </section>

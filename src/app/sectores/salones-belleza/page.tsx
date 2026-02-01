@@ -55,6 +55,52 @@ const BREADCRUMB_SCHEMA = {
   ],
 };
 
+const SERVICE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Software de Agendamiento para Salones de Belleza",
+  provider: {
+    "@type": "Organization",
+    name: "AgenditApp",
+    url: "https://agenditapp.com",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "Colombia",
+  },
+  audience: {
+    "@type": "BusinessAudience",
+    name: "Salones de Belleza, Peluquerías y Estéticas",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Funcionalidades para Salones",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Gestión de citas de manicure y pedicure",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Recordatorios automáticos por WhatsApp",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Control de estilistas y horarios",
+        },
+      },
+    ],
+  },
+};
+
 const features = [
   {
     title: "Agenda personalizada por servicio",
@@ -97,10 +143,32 @@ const features = [
 export default function SalonesBellezaPage() {
   return (
     <>
-      <SchemaOrg data={BREADCRUMB_SCHEMA} />
+      <SchemaOrg data={[BREADCRUMB_SCHEMA, SERVICE_SCHEMA]} />
       <PageHeader />
 
       <main className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 pt-16">
+        {/* Breadcrumbs */}
+        <nav className="px-4 sm:px-6 py-4 max-w-7xl mx-auto">
+          <ol className="flex items-center gap-2 text-sm text-slate-400">
+            <li>
+              <Link href="/" className="hover:text-sky-400 transition-colors">
+                Inicio
+              </Link>
+            </li>
+            <li>/</li>
+            <li>
+              <Link
+                href="/sectores"
+                className="hover:text-sky-400 transition-colors"
+              >
+                Sectores
+              </Link>
+            </li>
+            <li>/</li>
+            <li className="text-white font-medium">Salones de Belleza</li>
+          </ol>
+        </nav>
+
         {/* Hero */}
         <section className="py-16 sm:py-24 px-4 sm:px-6">
           <div className="max-w-5xl mx-auto text-center">
@@ -167,6 +235,65 @@ export default function SalonesBellezaPage() {
             <p className="text-sky-400 font-semibold">
               — Laura M., Salón de Belleza en Bogotá
             </p>
+          </div>
+        </section>
+
+        {/* Sectores Relacionados */}
+        <section className="py-16 px-4 sm:px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-white text-center mb-4">
+              Otros sectores que usan AgenditApp
+            </h2>
+            <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
+              Descubre cómo profesionales de diferentes industrias optimizan su
+              agenda con nuestra plataforma
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Link
+                href="/sectores/barberias"
+                className="bg-slate-800/50 border border-white/10 rounded-xl p-6 hover:border-sky-400/50 transition-all group"
+              >
+                <div className="text-3xl mb-3">💈</div>
+                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-sky-400 transition-colors">
+                  Barberías
+                </h3>
+                <p className="text-slate-400 text-sm">
+                  Sistema de turnos para barberos y servicios express
+                </p>
+              </Link>
+              <Link
+                href="/sectores/spas"
+                className="bg-slate-800/50 border border-white/10 rounded-xl p-6 hover:border-sky-400/50 transition-all group"
+              >
+                <div className="text-3xl mb-3">🧖‍♀️</div>
+                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-sky-400 transition-colors">
+                  Spas y Bienestar
+                </h3>
+                <p className="text-slate-400 text-sm">
+                  Gestión de masajes, faciales y tratamientos
+                </p>
+              </Link>
+              <Link
+                href="/sectores/lash-brow"
+                className="bg-slate-800/50 border border-white/10 rounded-xl p-6 hover:border-sky-400/50 transition-all group"
+              >
+                <div className="text-3xl mb-3">👁️</div>
+                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-sky-400 transition-colors">
+                  Lash & Brow
+                </h3>
+                <p className="text-slate-400 text-sm">
+                  Agenda para extensiones de pestañas y microblading
+                </p>
+              </Link>
+            </div>
+            <div className="text-center mt-8">
+              <Link
+                href="/sectores"
+                className="text-sky-400 hover:text-sky-300 font-medium inline-flex items-center gap-2"
+              >
+                Ver todos los sectores →
+              </Link>
+            </div>
           </div>
         </section>
 

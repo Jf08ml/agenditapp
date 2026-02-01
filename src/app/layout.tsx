@@ -5,6 +5,12 @@ import Script from "next/script";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://agenditapp.com"),
+  title: {
+    default: "AgenditApp | Sistema de Agendamiento Online",
+    template: "%s | AgenditApp",
+  },
+  description:
+    "Plataforma de agendamiento online para negocios de belleza, bienestar y servicios profesionales. Automatiza reservas, envía recordatorios por WhatsApp y gestiona tu agenda 24/7.",
   icons: [{ rel: "icon", url: "/logo.png" }],
   keywords: [
     "agendamiento online",
@@ -39,6 +45,12 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+  verification: {
+    // Agregar códigos de verificación cuando estén disponibles
+    // google: "código-de-verificación",
+    // yandex: "código-de-verificación",
+    // bing: "código-de-verificación",
   },
 };
 

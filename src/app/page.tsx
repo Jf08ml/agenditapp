@@ -13,6 +13,7 @@ import {
   JSONLD_FAQ,
   JSONLD_SERVICES,
   JSONLD_ORGANIZATION,
+  JSONLD_WEBSITE,
 } from "./(landing)/components/constants";
 import DemoLead from "./(landing)/sections/DemoLead";
 
@@ -70,6 +71,7 @@ export default function Page() {
       <SchemaOrg
         data={[
           JSONLD_ORGANIZATION,
+          JSONLD_WEBSITE,
           JSONLD_SOFTWARE,
           JSONLD_FAQ,
           JSONLD_SERVICES,
