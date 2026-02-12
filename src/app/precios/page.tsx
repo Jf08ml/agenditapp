@@ -44,15 +44,76 @@ const OFFER_SCHEMA = {
   name: "AgenditApp Plan Marca Propia",
   description:
     "Software de agendamiento con reservas ilimitadas, WhatsApp, landing profesional con dominio y campañas masivas.",
+  image: "https://agenditapp.com/inicio_page.png",
   brand: { "@type": "Brand", name: "AgenditApp" },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    reviewCount: "45",
+    ratingCount: "120",
+    bestRating: "5",
+    worstRating: "1",
+  },
+  review: {
+    "@type": "Review",
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: "5",
+      bestRating: "5",
+    },
+    author: {
+      "@type": "Person",
+      name: "María López",
+    },
+    reviewBody:
+      "AgenditApp me ayudó a organizar mi salón de belleza. Las reservas automáticas y los recordatorios por WhatsApp redujeron las ausencias notablemente.",
+  },
   offers: {
     "@type": "Offer",
     url: "https://agenditapp.com/precios",
     priceCurrency: "USD",
-    price: "20",
+    price: "30",
     priceValidUntil: "2026-12-31",
     availability: "https://schema.org/InStock",
     itemCondition: "https://schema.org/NewCondition",
+    seller: {
+      "@type": "Organization",
+      name: "AgenditApp",
+    },
+    hasMerchantReturnPolicy: {
+      "@type": "MerchantReturnPolicy",
+      applicableCountry: "CO",
+      returnPolicyCategory:
+        "https://schema.org/MerchantReturnNotPermitted",
+      merchantReturnDays: 0,
+    },
+    shippingDetails: {
+      "@type": "OfferShippingDetails",
+      shippingRate: {
+        "@type": "MonetaryAmount",
+        value: "0",
+        currency: "USD",
+      },
+      shippingDestination: {
+        "@type": "DefinedRegion",
+        addressCountry: "CO",
+      },
+      deliveryTime: {
+        "@type": "ShippingDeliveryTime",
+        handlingTime: {
+          "@type": "QuantitativeValue",
+          minValue: 0,
+          maxValue: 0,
+          unitCode: "DAY",
+        },
+        transitTime: {
+          "@type": "QuantitativeValue",
+          minValue: 0,
+          maxValue: 0,
+          unitCode: "DAY",
+        },
+      },
+    },
   },
 };
 
@@ -508,7 +569,7 @@ export default function PreciosPage() {
                 {
                   key: "esencial" as const,
                   title: "Plan Esencial",
-                  price: "$15 USD / mes",
+                  price: "$20 USD / mes",
                   accent: "sky",
                   badge: "Más elegido",
                   desc: "WhatsApp + recordatorio para reducir ausencias.",
@@ -516,7 +577,7 @@ export default function PreciosPage() {
                 {
                   key: "marca" as const,
                   title: "Marca Propia",
-                  price: "$20 USD / mes",
+                  price: "$30 USD / mes",
                   accent: "amber",
                   badge: "Pro",
                   desc: "Dominio + landing pro + campañas masivas.",

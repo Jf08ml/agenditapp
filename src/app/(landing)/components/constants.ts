@@ -59,7 +59,7 @@ export const JSONLD_SOFTWARE = {
   },
   offers: {
     "@type": "Offer",
-    price: "30",
+    price: "10",
     priceCurrency: "USD",
     priceValidUntil: "2026-12-31",
     availability: "https://schema.org/InStock",
@@ -68,6 +68,40 @@ export const JSONLD_SOFTWARE = {
     seller: {
       "@type": "Organization",
       name: "AgenditApp",
+    },
+    hasMerchantReturnPolicy: {
+      "@type": "MerchantReturnPolicy",
+      applicableCountry: "CO",
+      returnPolicyCategory:
+        "https://schema.org/MerchantReturnNotPermitted",
+      merchantReturnDays: 0,
+    },
+    shippingDetails: {
+      "@type": "OfferShippingDetails",
+      shippingRate: {
+        "@type": "MonetaryAmount",
+        value: "0",
+        currency: "USD",
+      },
+      shippingDestination: {
+        "@type": "DefinedRegion",
+        addressCountry: "CO",
+      },
+      deliveryTime: {
+        "@type": "ShippingDeliveryTime",
+        handlingTime: {
+          "@type": "QuantitativeValue",
+          minValue: 0,
+          maxValue: 0,
+          unitCode: "DAY",
+        },
+        transitTime: {
+          "@type": "QuantitativeValue",
+          minValue: 0,
+          maxValue: 0,
+          unitCode: "DAY",
+        },
+      },
     },
   },
   featureList: [

@@ -18,7 +18,7 @@ const FAQS: Faq[] = [
   },
   {
     q: "¿Cuál es la diferencia entre subdominio y dominio propio?",
-    a: "Con subdominio, tu página queda por ejemplo como tu-salon.agenditapp.com (incluido en el plan de $15 USD). Con dominio propio, tu página queda como tusalon.com o tusalon.com.co (plan de $30 USD), lo que da más posicionamiento de marca y confianza al cliente.",
+    a: "Con subdominio, tu página queda por ejemplo como tu-salon.agenditapp.com (incluido en el plan de $20 USD). Con dominio propio, tu página queda como tusalon.com o tusalon.com.co (plan de $30 USD), lo que da más posicionamiento de marca y confianza al cliente.",
   },
   {
     q: "¿Los recordatorios salen desde mi número?",
