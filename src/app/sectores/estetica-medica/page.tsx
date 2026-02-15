@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import SchemaOrg from "../../(landing)/components/seo/SchemaOrg";
-import { WHATSAPP_HREF } from "../../(landing)/components/constants";
+import { DemoCtaButton } from "../../(landing)/components/ui/DemoCtaModal";
 import PageHeader from "../../(landing)/components/ui/PageHeader";
 import PageFooter from "../../(landing)/components/ui/PageFooter";
 
@@ -116,14 +116,9 @@ export default function EsteticaMedicaPage() {
               profesionales. Organiza tratamientos, procedimientos y consultas
               con una agenda diseñada para el sector.
             </p>
-            <a
-              href={WHATSAPP_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-10 py-5 rounded-2xl bg-purple-500 text-white text-lg font-bold shadow-lg hover:bg-purple-400 transition-colors"
-            >
+            <DemoCtaButton className="inline-block px-10 py-5 rounded-2xl bg-purple-500 text-white text-lg font-bold shadow-lg hover:bg-purple-400 transition-colors cursor-pointer">
               Probar gratis por WhatsApp
-            </a>
+            </DemoCtaButton>
           </div>
         </section>
 
@@ -200,14 +195,9 @@ export default function EsteticaMedicaPage() {
               Únete a centros de estética médica que ya confían en AgenditApp
               para gestionar sus procedimientos.
             </p>
-            <a
-              href={WHATSAPP_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-10 py-5 rounded-2xl bg-purple-500 text-white text-lg font-bold shadow-lg hover:bg-purple-400 transition-colors"
-            >
+            <DemoCtaButton className="inline-block px-10 py-5 rounded-2xl bg-purple-500 text-white text-lg font-bold shadow-lg hover:bg-purple-400 transition-colors cursor-pointer">
               Solicitar demo gratis
-            </a>
+            </DemoCtaButton>
           </div>
         </section>
       </main>

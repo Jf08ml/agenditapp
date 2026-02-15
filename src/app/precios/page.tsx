@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import SchemaOrg from "../(landing)/components/seo/SchemaOrg";
-import { WHATSAPP_HREF } from "../(landing)/components/constants";
+import { DemoCtaButton } from "../(landing)/components/ui/DemoCtaModal";
 import PageHeader from "../(landing)/components/ui/PageHeader";
 import PageFooter from "../(landing)/components/ui/PageFooter";
 
@@ -324,12 +324,11 @@ export default function PreciosPage() {
                   </ul>
                 </div>
 
-                <a
-                  href={WHATSAPP_HREF}
-                  className="block w-full text-center px-8 py-4 rounded-xl bg-emerald-500 text-white font-bold hover:bg-emerald-400 shadow-lg transition-colors"
+                <DemoCtaButton
+                  className="block w-full text-center px-8 py-4 rounded-xl bg-emerald-500 text-white font-bold hover:bg-emerald-400 shadow-lg transition-colors cursor-pointer"
                 >
                   Quiero el plan de $10 USD
-                </a>
+                </DemoCtaButton>
 
                 <p className="text-xs text-slate-500 mt-3 text-center">
                   Ideal para empezar y profesionalizar tu agenda.
@@ -395,12 +394,11 @@ export default function PreciosPage() {
                   </div>
                 </div>
 
-                <a
-                  href={WHATSAPP_HREF}
-                  className="block w-full text-center px-8 py-4 rounded-xl bg-sky-400 text-slate-950 font-bold hover:bg-sky-300 shadow-lg transition-colors"
+                <DemoCtaButton
+                  className="block w-full text-center px-8 py-4 rounded-xl bg-sky-400 text-slate-950 font-bold hover:bg-sky-300 shadow-lg transition-colors cursor-pointer"
                 >
                   Quiero el plan de $20 USD
-                </a>
+                </DemoCtaButton>
 
                 <p className="text-xs text-slate-500 mt-3 text-center">
                   Perfecto si manejas muchas citas al día.
@@ -473,12 +471,11 @@ export default function PreciosPage() {
                   </div>
                 </div>
 
-                <a
-                  href={WHATSAPP_HREF}
-                  className="block w-full text-center px-8 py-4 rounded-xl bg-slate-50 text-slate-900 font-bold hover:bg-white shadow-lg transition-colors relative"
+                <DemoCtaButton
+                  className="block w-full text-center px-8 py-4 rounded-xl bg-slate-50 text-slate-900 font-bold hover:bg-white shadow-lg transition-colors relative cursor-pointer"
                 >
                   Quiero el plan de $30 USD
-                </a>
+                </DemoCtaButton>
 
                 <p className="text-xs text-slate-500 mt-3 text-center">
                   Ideal si quieres marca fuerte y crecimiento constante.
@@ -632,12 +629,11 @@ export default function PreciosPage() {
                         ))}
                       </ul>
 
-                      <a
-                        href={WHATSAPP_HREF}
-                        className="mt-6 block w-full text-center px-8 py-4 rounded-xl bg-slate-50 text-slate-900 font-bold hover:bg-white shadow-lg transition-colors"
+                      <DemoCtaButton
+                        className="mt-6 block w-full text-center px-8 py-4 rounded-xl bg-slate-50 text-slate-900 font-bold hover:bg-white shadow-lg transition-colors cursor-pointer"
                       >
-                        Pedir este plan por WhatsApp
-                      </a>
+                        Pedir este plan
+                      </DemoCtaButton>
 
                       <p className="text-xs text-slate-500 mt-3 text-center">
                         Respuesta rápida · Te ayudamos con la configuración
@@ -686,12 +682,11 @@ export default function PreciosPage() {
             <p className="text-slate-300 mb-8 text-lg">
               Te configuramos todo para que empieces a recibir reservas y controlar tu agenda desde el primer día.
             </p>
-            <a
-              href={WHATSAPP_HREF}
-              className="inline-block px-10 py-5 rounded-2xl bg-sky-400 text-slate-950 text-lg font-bold shadow-lg hover:bg-sky-300 transition-colors"
+            <DemoCtaButton
+              className="inline-block px-10 py-5 rounded-2xl bg-sky-400 text-slate-950 text-lg font-bold shadow-lg hover:bg-sky-300 transition-colors cursor-pointer"
             >
-              Solicitar demo gratis por WhatsApp
-            </a>
+              Solicitar demo gratis
+            </DemoCtaButton>
             <p className="text-slate-400 text-sm mt-4">
               Respuesta en menos de 1 hora · Sin tarjeta de crédito
             </p>

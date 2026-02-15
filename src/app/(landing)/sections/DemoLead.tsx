@@ -2,8 +2,7 @@
 "use client";
 
 import { useState } from "react";
-import { WHATSAPP_HREF } from "../components/constants";
-import ExternalLink from "../components/ui/ExternalLink";
+import { DemoCtaButton } from "../components/ui/DemoCtaModal";
 import { motion, easeOut, type Variants, type Transition } from "framer-motion";
 
 const tIn: Transition = { duration: 0.7, ease: easeOut };
@@ -237,12 +236,11 @@ export default function DemoLead() {
             ayudamos a ver si AgenditApp encaja con tu negocio y te mostramos
             cómo se vería tu agenda.
           </p>
-          <ExternalLink
-            href={WHATSAPP_HREF}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500/15 border border-emerald-400/60 px-4 py-2 text-sm text-emerald-100 font-semibold shadow-[0_0_16px_rgba(16,185,129,0.4)] hover:bg-emerald-400 hover:text-slate-950 hover:shadow-[0_0_24px_rgba(16,185,129,0.6)] transition-colors"
+          <DemoCtaButton
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500/15 border border-emerald-400/60 px-4 py-2 text-sm text-emerald-100 font-semibold shadow-[0_0_16px_rgba(16,185,129,0.4)] hover:bg-emerald-400 hover:text-slate-950 hover:shadow-[0_0_24px_rgba(16,185,129,0.6)] transition-colors cursor-pointer"
           >
             💬 Hablar ahora por WhatsApp
-          </ExternalLink>
+          </DemoCtaButton>
         </div>
       </motion.div>
     </section>

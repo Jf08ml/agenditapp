@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import SchemaOrg from "../../(landing)/components/seo/SchemaOrg";
-import { WHATSAPP_HREF } from "../../(landing)/components/constants";
+import { DemoCtaButton } from "../../(landing)/components/ui/DemoCtaModal";
 import PageHeader from "../../(landing)/components/ui/PageHeader";
 import PageFooter from "../../(landing)/components/ui/PageFooter";
 
@@ -117,14 +117,9 @@ export default function LashBrowPage() {
               servicios de cejas. Recordatorios automáticos, reservas online y
               gestión completa desde tu celular.
             </p>
-            <a
-              href={WHATSAPP_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-10 py-5 rounded-2xl bg-purple-500 text-white text-lg font-bold shadow-lg hover:bg-purple-400 transition-colors"
-            >
+            <DemoCtaButton className="inline-block px-10 py-5 rounded-2xl bg-purple-500 text-white text-lg font-bold shadow-lg hover:bg-purple-400 transition-colors cursor-pointer">
               Probar gratis por WhatsApp
-            </a>
+            </DemoCtaButton>
           </div>
         </section>
 
@@ -180,14 +175,9 @@ export default function LashBrowPage() {
               Únete a cientos de lash artists que ya usan AgenditApp. Sin
               instalaciones complejas, sin permanencia.
             </p>
-            <a
-              href={WHATSAPP_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-10 py-5 rounded-2xl bg-purple-500 text-white text-lg font-bold shadow-lg hover:bg-purple-400 transition-colors"
-            >
+            <DemoCtaButton className="inline-block px-10 py-5 rounded-2xl bg-purple-500 text-white text-lg font-bold shadow-lg hover:bg-purple-400 transition-colors cursor-pointer">
               Solicitar demo gratis
-            </a>
+            </DemoCtaButton>
           </div>
         </section>
       </main>

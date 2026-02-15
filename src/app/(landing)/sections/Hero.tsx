@@ -3,9 +3,9 @@
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import Badge from "../components/ui/Badge";
-import { WHATSAPP_HREF } from "../components/constants";
+import { DemoCtaModal } from "../components/ui/DemoCtaModal";
 import { PhoneMockup } from "../components/ui/PhoneMockup";
 
 // Framer Motion
@@ -27,6 +27,8 @@ export default function Hero() {
   const [open, setOpen] = useState(false);
   const [src, setSrc] = useState<string | null>(null);
   const [alt, setAlt] = useState("");
+  const [demoOpen, setDemoOpen] = useState(false);
+  const closeDemoModal = useCallback(() => setDemoOpen(false), []);
 
   const openLightbox = (s: string, a: string) => {
     setSrc(s);
@@ -155,23 +157,21 @@ export default function Hero() {
               >
                 Demo
               </a>
-              <a
-                href={WHATSAPP_HREF}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ml-2 px-5 py-2.5 rounded-xl bg-sky-400 text-slate-950 font-bold hover:bg-sky-300 shadow-[0_0_20px_rgba(56,189,248,0.4)] transition-all transform hover:scale-105"
+              <button
+                onClick={() => setDemoOpen(true)}
+                className="ml-2 px-5 py-2.5 rounded-xl bg-sky-400 text-slate-950 font-bold hover:bg-sky-300 shadow-[0_0_20px_rgba(56,189,248,0.4)] transition-all transform hover:scale-105 cursor-pointer"
               >
                 Contactar ventas
-              </a>
+              </button>
             </nav>
 
             {/* Mobile CTA (Small) */}
-            <a
-              href={WHATSAPP_HREF}
-              className="lg:hidden px-4 py-2 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-bold uppercase tracking-wide"
+            <button
+              onClick={() => setDemoOpen(true)}
+              className="lg:hidden px-4 py-2 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-bold uppercase tracking-wide cursor-pointer"
             >
-              WhatsApp
-            </a>
+              Demo
+            </button>
           </div>
         </motion.header>
 
@@ -217,17 +217,16 @@ export default function Hero() {
                 variants={fadeInUp}
                 className="relative mt-10 flex flex-wrap justify-center lg:justify-start gap-4"
               >
-                <motion.a
-                  href={WHATSAPP_HREF}
-                  target="_blank"
+                <motion.button
+                  onClick={() => setDemoOpen(true)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-4 rounded-2xl bg-sky-400 text-slate-950 text-lg font-bold 
                     shadow-[0_0_30px_rgba(56,189,248,0.5)] hover:shadow-[0_0_50px_rgba(56,189,248,0.7)] 
-                    transition-all flex items-center gap-2 relative overflow-hidden"
+                    transition-all flex items-center gap-2 relative overflow-hidden cursor-pointer"
                 >
                   🚀 Solicitar Demo Gratis
-                </motion.a>
+                </motion.button>
 
                 <a
                   href="#membresía"
@@ -341,12 +340,12 @@ export default function Hero() {
                   Prueba gratis hoy mismo
                 </span>
               </div>
-              <a
-                href={WHATSAPP_HREF}
-                className="bg-sky-400 text-slate-950 font-bold text-sm px-5 py-3 rounded-xl shadow-lg whitespace-nowrap"
+              <button
+                onClick={() => setDemoOpen(true)}
+                className="bg-sky-400 text-slate-950 font-bold text-sm px-5 py-3 rounded-xl shadow-lg whitespace-nowrap cursor-pointer"
               >
-                Demo en WhatsApp
-              </a>
+                Solicitar Demo
+              </button>
             </div>
           </motion.div>
         </AnimatePresence>
@@ -358,6 +357,9 @@ export default function Hero() {
           open={open}
           onClose={() => setOpen(false)}
         />
+
+        {/* Demo CTA Modal */}
+        <DemoCtaModal isOpen={demoOpen} onClose={closeDemoModal} />
       </motion.section>
     </AnimatePresence>
   );

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import SchemaOrg from "../../(landing)/components/seo/SchemaOrg";
-import { WHATSAPP_HREF } from "../../(landing)/components/constants";
+import { DemoCtaButton } from "../../(landing)/components/ui/DemoCtaModal";
 import PageHeader from "../../(landing)/components/ui/PageHeader";
 import PageFooter from "../../(landing)/components/ui/PageFooter";
 
@@ -117,14 +117,9 @@ export default function GimnasiosPage() {
               tiempo real. Sistema completo para gimnasios, box de crossfit y
               estudios de yoga.
             </p>
-            <a
-              href={WHATSAPP_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-10 py-5 rounded-2xl bg-orange-500 text-white text-lg font-bold shadow-lg hover:bg-orange-400 transition-colors"
-            >
+            <DemoCtaButton className="inline-block px-10 py-5 rounded-2xl bg-orange-500 text-white text-lg font-bold shadow-lg hover:bg-orange-400 transition-colors cursor-pointer">
               Probar gratis por WhatsApp
-            </a>
+            </DemoCtaButton>
           </div>
         </section>
 
@@ -190,14 +185,9 @@ export default function GimnasiosPage() {
               Únete a gimnasios que ya confían en AgenditApp. Sin permanencia,
               sin complicaciones.
             </p>
-            <a
-              href={WHATSAPP_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-10 py-5 rounded-2xl bg-orange-500 text-white text-lg font-bold shadow-lg hover:bg-orange-400 transition-colors"
-            >
+            <DemoCtaButton className="inline-block px-10 py-5 rounded-2xl bg-orange-500 text-white text-lg font-bold shadow-lg hover:bg-orange-400 transition-colors cursor-pointer">
               Solicitar demo gratis
-            </a>
+            </DemoCtaButton>
           </div>
         </section>
       </main>

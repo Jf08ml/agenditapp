@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SchemaOrg from "../(landing)/components/seo/SchemaOrg";
-import { WHATSAPP_HREF } from "../(landing)/components/constants";
+import { DemoCtaButton } from "../(landing)/components/ui/DemoCtaModal";
 import PageHeader from "../(landing)/components/ui/PageHeader";
 import PageFooter from "../(landing)/components/ui/PageFooter";
 
@@ -276,12 +276,11 @@ export default function FuncionalidadesPage() {
               la gestión completa del negocio para que crezcas sin
               complicaciones.
             </p>
-            <a
-              href={WHATSAPP_HREF}
-              className="inline-block px-8 py-4 rounded-2xl bg-sky-400 text-slate-950 text-lg font-bold shadow-lg hover:bg-sky-300 transition-colors"
+            <DemoCtaButton
+              className="inline-block px-8 py-4 rounded-2xl bg-sky-400 text-slate-950 text-lg font-bold shadow-lg hover:bg-sky-300 transition-colors cursor-pointer"
             >
               Solicitar demo
-            </a>
+            </DemoCtaButton>
           </div>
         </section>
 
@@ -373,12 +372,11 @@ export default function FuncionalidadesPage() {
               puede transformar tu día a día.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href={WHATSAPP_HREF}
-                className="inline-block px-8 py-4 rounded-xl bg-sky-400 text-slate-950 font-bold hover:bg-sky-300 transition-colors"
+              <DemoCtaButton
+                className="inline-block px-8 py-4 rounded-xl bg-sky-400 text-slate-950 font-bold hover:bg-sky-300 transition-colors cursor-pointer"
               >
                 Probar gratis ahora
-              </a>
+              </DemoCtaButton>
               <Link
                 href="/precios"
                 className="inline-block px-8 py-4 rounded-xl border border-white/20 bg-white/5 text-white hover:bg-white/10 backdrop-blur-sm font-medium transition-colors"

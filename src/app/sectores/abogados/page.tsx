@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import SchemaOrg from "../../(landing)/components/seo/SchemaOrg";
-import { WHATSAPP_HREF } from "../../(landing)/components/constants";
+import { DemoCtaButton } from "../../(landing)/components/ui/DemoCtaModal";
 import PageHeader from "../../(landing)/components/ui/PageHeader";
 import PageFooter from "../../(landing)/components/ui/PageFooter";
 
@@ -116,14 +116,9 @@ export default function AbogadosPage() {
               reuniones y asesorías con una agenda que transmite confianza y
               confidencialidad.
             </p>
-            <a
-              href={WHATSAPP_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-10 py-5 rounded-2xl bg-gray-600 text-white text-lg font-bold shadow-lg hover:bg-gray-500 transition-colors"
-            >
+            <DemoCtaButton className="inline-block px-10 py-5 rounded-2xl bg-gray-600 text-white text-lg font-bold shadow-lg hover:bg-gray-500 transition-colors cursor-pointer">
               Probar gratis por WhatsApp
-            </a>
+            </DemoCtaButton>
           </div>
         </section>
 
@@ -191,14 +186,9 @@ export default function AbogadosPage() {
               Únete a abogados que ya confían en AgenditApp para gestionar su
               práctica legal.
             </p>
-            <a
-              href={WHATSAPP_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-10 py-5 rounded-2xl bg-gray-600 text-white text-lg font-bold shadow-lg hover:bg-gray-500 transition-colors"
-            >
+            <DemoCtaButton className="inline-block px-10 py-5 rounded-2xl bg-gray-600 text-white text-lg font-bold shadow-lg hover:bg-gray-500 transition-colors cursor-pointer">
               Solicitar demo gratis
-            </a>
+            </DemoCtaButton>
           </div>
         </section>
       </main>

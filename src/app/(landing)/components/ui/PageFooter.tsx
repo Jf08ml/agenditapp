@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { WHATSAPP_HREF } from "../constants";
+import { DemoCtaButton } from "./DemoCtaModal";
 
 export default function PageFooter() {
   return (
@@ -62,9 +62,9 @@ export default function PageFooter() {
                 </Link>
               </li>
               <li>
-                <a href={WHATSAPP_HREF} className="text-slate-400 hover:text-sky-400 transition-colors">
+                <DemoCtaButton className="text-slate-400 hover:text-sky-400 transition-colors cursor-pointer text-sm bg-transparent border-none p-0">
                   Solicitar Demo
-                </a>
+                </DemoCtaButton>
               </li>
             </ul>
           </div>
@@ -93,12 +93,9 @@ export default function PageFooter() {
             © {new Date().getFullYear()} AgenditApp. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-4">
-            <a
-              href={WHATSAPP_HREF}
-              className="text-sm text-slate-400 hover:text-sky-400 transition-colors"
-            >
-              💬 Soporte por WhatsApp
-            </a>
+            <DemoCtaButton className="text-sm text-slate-400 hover:text-sky-400 transition-colors cursor-pointer bg-transparent border-none p-0">
+              💬 Solicitar Demo
+            </DemoCtaButton>
           </div>
         </div>
       </div>

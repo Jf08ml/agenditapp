@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import SchemaOrg from "../../(landing)/components/seo/SchemaOrg";
-import { WHATSAPP_HREF } from "../../(landing)/components/constants";
+import { DemoCtaButton } from "../../(landing)/components/ui/DemoCtaModal";
 import PageHeader from "../../(landing)/components/ui/PageHeader";
 import PageFooter from "../../(landing)/components/ui/PageFooter";
 
@@ -116,14 +116,9 @@ export default function NutricionPage() {
               Controla consultas, seguimiento y evolución de tus pacientes en un
               solo lugar.
             </p>
-            <a
-              href={WHATSAPP_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-10 py-5 rounded-2xl bg-green-500 text-white text-lg font-bold shadow-lg hover:bg-green-400 transition-colors"
-            >
+            <DemoCtaButton className="inline-block px-10 py-5 rounded-2xl bg-green-500 text-white text-lg font-bold shadow-lg hover:bg-green-400 transition-colors cursor-pointer">
               Probar gratis por WhatsApp
-            </a>
+            </DemoCtaButton>
           </div>
         </section>
 
@@ -181,14 +176,9 @@ export default function NutricionPage() {
               Únete a nutricionistas que ya confían en AgenditApp para gestionar
               su práctica profesional.
             </p>
-            <a
-              href={WHATSAPP_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-10 py-5 rounded-2xl bg-green-500 text-white text-lg font-bold shadow-lg hover:bg-green-400 transition-colors"
-            >
+            <DemoCtaButton className="inline-block px-10 py-5 rounded-2xl bg-green-500 text-white text-lg font-bold shadow-lg hover:bg-green-400 transition-colors cursor-pointer">
               Solicitar demo gratis
-            </a>
+            </DemoCtaButton>
           </div>
         </section>
       </main>

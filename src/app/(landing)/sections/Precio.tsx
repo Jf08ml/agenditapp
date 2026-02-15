@@ -1,6 +1,6 @@
 "use client";
 
-import { WHATSAPP_HREF } from "../components/constants";
+import { DemoCtaButton } from "../components/ui/DemoCtaModal";
 import {
   motion,
   easeOut,
@@ -284,14 +284,11 @@ export default function Precio() {
               whileTap={{ scale: 0.97 }}
               className="inline-block"
             >
-              <a
-                href={WHATSAPP_HREF}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full px-5 py-3 rounded-xl bg-emerald-500 text-white font-bold inline-block shadow-md text-sm text-center"
+              <DemoCtaButton
+                className="w-full px-5 py-3 rounded-xl bg-emerald-500 text-white font-bold inline-block shadow-md text-sm text-center cursor-pointer"
               >
                 Quiero el plan de $10 USD
-              </a>
+              </DemoCtaButton>
             </motion.span>
             <p className="text-xs text-slate-500 mt-3">
               Ideal si estás empezando o quieres orden sin complicarte.
@@ -372,14 +369,11 @@ export default function Precio() {
               whileTap={{ scale: 0.97 }}
               className="inline-block"
             >
-              <a
-                href={WHATSAPP_HREF}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full px-5 py-3 rounded-xl bg-sky-400 text-black font-bold inline-block shadow-md text-sm text-center"
+              <DemoCtaButton
+                className="w-full px-5 py-3 rounded-xl bg-sky-400 text-black font-bold inline-block shadow-md text-sm text-center cursor-pointer"
               >
                 Quiero el plan de $20 USD
-              </a>
+              </DemoCtaButton>
             </motion.span>
             <p className="text-xs text-slate-500 mt-3">
               Ideal si manejas muchas citas y quieres ahorrar tiempo.
@@ -468,14 +462,11 @@ export default function Precio() {
               whileTap={{ scale: 0.97 }}
               className="inline-block"
             >
-              <a
-                href={WHATSAPP_HREF}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full px-5 py-3 rounded-xl bg-slate-50 text-slate-900 font-bold inline-block shadow-md text-sm text-center"
+              <DemoCtaButton
+                className="w-full px-5 py-3 rounded-xl bg-slate-50 text-slate-900 font-bold inline-block shadow-md text-sm text-center cursor-pointer"
               >
                 Quiero el plan de $30 USD
-              </a>
+              </DemoCtaButton>
             </motion.span>
             <p className="text-xs text-slate-500 mt-3">
               Ideal si quieres marca propia y crecimiento constante.
@@ -514,14 +505,11 @@ export default function Precio() {
             </p>
           </div>
 
-          <a
-            href={WHATSAPP_HREF}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-sky-500/30 bg-sky-500/10 text-sky-200 font-semibold text-sm hover:bg-sky-500/15 transition-colors"
+          <DemoCtaButton
+            className="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-sky-500/30 bg-sky-500/10 text-sky-200 font-semibold text-sm hover:bg-sky-500/15 transition-colors cursor-pointer"
           >
-            Ayúdame a elegir por WhatsApp
-          </a>
+            Ayúdame a elegir
+          </DemoCtaButton>
         </div>
 
         {/* Desktop: tabla ligera */}
@@ -670,14 +658,11 @@ export default function Precio() {
                   ))}
                 </ul>
 
-                <a
-                  href={WHATSAPP_HREF}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-5 block w-full text-center px-5 py-3 rounded-xl bg-slate-50 text-slate-900 font-bold shadow-md text-sm"
+                <DemoCtaButton
+                  className="mt-5 block w-full text-center px-5 py-3 rounded-xl bg-slate-50 text-slate-900 font-bold shadow-md text-sm cursor-pointer"
                 >
-                  Pedir este plan por WhatsApp
-                </a>
+                  Pedir este plan
+                </DemoCtaButton>
               </div>
             </details>
           ))}

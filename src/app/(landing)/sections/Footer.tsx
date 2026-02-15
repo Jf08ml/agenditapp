@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { WHATSAPP_HREF } from "../components/constants";
+import { DemoCtaButton } from "../components/ui/DemoCtaModal";
 import {
   motion,
   easeOut,
@@ -128,15 +128,12 @@ export default function Footer() {
             }}
             whileTap={{ scale: 0.97 }}
           >
-            <a
-              href={WHATSAPP_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full bg-sky-500/15 border border-sky-400/60 px-3 py-1.5 text-xs sm:text-sm text-sky-300 font-semibold shadow-[0_0_14px_rgba(56,189,248,0.35)] hover:bg-sky-400 hover:text-slate-950 hover:shadow-[0_0_22px_rgba(56,189,248,0.6)] transition-colors"
+            <DemoCtaButton
+              className="inline-flex items-center gap-1.5 rounded-full bg-sky-500/15 border border-sky-400/60 px-3 py-1.5 text-xs sm:text-sm text-sky-300 font-semibold shadow-[0_0_14px_rgba(56,189,248,0.35)] hover:bg-sky-400 hover:text-slate-950 hover:shadow-[0_0_22px_rgba(56,189,248,0.6)] transition-colors cursor-pointer"
             >
               <span>💬</span>
-              <span>Hablar por WhatsApp</span>
-            </a>
+              <span>Solicitar Demo</span>
+            </DemoCtaButton>
           </motion.span>
         </motion.nav>
       </div>

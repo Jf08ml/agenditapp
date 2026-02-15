@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SchemaOrg from "../(landing)/components/seo/SchemaOrg";
-import { WHATSAPP_HREF } from "../(landing)/components/constants";
+import { DemoCtaButton } from "../(landing)/components/ui/DemoCtaModal";
 import PageHeader from "../(landing)/components/ui/PageHeader";
 import PageFooter from "../(landing)/components/ui/PageFooter";
 
@@ -201,12 +201,11 @@ export default function SectoresPage() {
               Automatiza reservas, envía recordatorios y gestiona tu agenda
               desde cualquier dispositivo.
             </p>
-            <a
-              href={WHATSAPP_HREF}
-              className="inline-block px-8 py-4 rounded-2xl bg-sky-400 text-slate-950 text-lg font-bold shadow-lg hover:bg-sky-300 transition-colors"
+            <DemoCtaButton
+              className="inline-block px-8 py-4 rounded-2xl bg-sky-400 text-slate-950 text-lg font-bold shadow-lg hover:bg-sky-300 transition-colors cursor-pointer"
             >
               Consultar por mi sector
-            </a>
+            </DemoCtaButton>
           </div>
         </section>
 
@@ -254,12 +253,11 @@ export default function SectoresPage() {
               AgenditApp es flexible y se adapta a cualquier negocio de servicios.
               Contáctanos y te ayudamos a configurarlo.
             </p>
-            <a
-              href={WHATSAPP_HREF}
-              className="inline-block px-8 py-4 rounded-xl bg-sky-400 text-slate-950 font-bold hover:bg-sky-300 transition-colors"
+            <DemoCtaButton
+              className="inline-block px-8 py-4 rounded-xl bg-sky-400 text-slate-950 font-bold hover:bg-sky-300 transition-colors cursor-pointer"
             >
               Contactar ahora
-            </a>
+            </DemoCtaButton>
           </div>
         </section>
       </main>

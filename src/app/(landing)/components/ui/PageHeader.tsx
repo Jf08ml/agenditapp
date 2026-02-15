@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { WHATSAPP_HREF } from "../constants";
+import { useState, useEffect, useCallback } from "react";
+import { DemoCtaModal } from "./DemoCtaModal";
 
 export default function PageHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [demoOpen, setDemoOpen] = useState(false);
+  const closeDemoModal = useCallback(() => setDemoOpen(false), []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,8 +77,8 @@ export default function PageHeader() {
             >
               Precios
             </Link>
-            <a
-              href={WHATSAPP_HREF}
+            <button
+              onClick={() => setDemoOpen(true)}
               className="
                 px-6 py-2.5 rounded-xl 
                 bg-gradient-to-r from-sky-400 to-blue-500 
@@ -87,20 +89,21 @@ export default function PageHeader() {
                 transition-all duration-300 
                 transform hover:scale-105 hover:-translate-y-0.5
                 active:scale-95
+                cursor-pointer
               "
             >
               🚀 Demo gratis
-            </a>
+            </button>
           </nav>
 
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-3 lg:hidden">
-            <a
-              href={WHATSAPP_HREF}
-              className="px-4 py-2 rounded-xl bg-sky-400 text-slate-950 text-xs font-bold hover:bg-sky-300 transition-colors"
+            <button
+              onClick={() => setDemoOpen(true)}
+              className="px-4 py-2 rounded-xl bg-sky-400 text-slate-950 text-xs font-bold hover:bg-sky-300 transition-colors cursor-pointer"
             >
               Demo
-            </a>
+            </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="text-slate-300 hover:text-white p-2"
@@ -175,6 +178,8 @@ export default function PageHeader() {
           </nav>
         )}
       </div>
+
+      <DemoCtaModal isOpen={demoOpen} onClose={closeDemoModal} />
     </header>
   );
 }

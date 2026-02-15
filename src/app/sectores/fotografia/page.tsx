@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import SchemaOrg from "../../(landing)/components/seo/SchemaOrg";
-import { WHATSAPP_HREF } from "../../(landing)/components/constants";
+import { DemoCtaButton } from "../../(landing)/components/ui/DemoCtaModal";
 import PageHeader from "../../(landing)/components/ui/PageHeader";
 import PageFooter from "../../(landing)/components/ui/PageFooter";
 
@@ -116,14 +116,9 @@ export default function FotografiaPage() {
               sesiones, eventos y alquiler de estudio con una agenda online que
               impresiona a tus clientes.
             </p>
-            <a
-              href={WHATSAPP_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-10 py-5 rounded-2xl bg-slate-600 text-white text-lg font-bold shadow-lg hover:bg-slate-500 transition-colors"
-            >
+            <DemoCtaButton className="inline-block px-10 py-5 rounded-2xl bg-slate-600 text-white text-lg font-bold shadow-lg hover:bg-slate-500 transition-colors cursor-pointer">
               Probar gratis por WhatsApp
-            </a>
+            </DemoCtaButton>
           </div>
         </section>
 
@@ -201,14 +196,9 @@ export default function FotografiaPage() {
               Únete a fotógrafos que ya confían en AgenditApp para gestionar sus
               sesiones.
             </p>
-            <a
-              href={WHATSAPP_HREF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-10 py-5 rounded-2xl bg-slate-600 text-white text-lg font-bold shadow-lg hover:bg-slate-500 transition-colors"
-            >
+            <DemoCtaButton className="inline-block px-10 py-5 rounded-2xl bg-slate-600 text-white text-lg font-bold shadow-lg hover:bg-slate-500 transition-colors cursor-pointer">
               Solicitar demo gratis
-            </a>
+            </DemoCtaButton>
           </div>
         </section>
       </main>

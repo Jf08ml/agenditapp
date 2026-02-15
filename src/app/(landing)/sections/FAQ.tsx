@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
-import ExternalLink from "../components/ui/ExternalLink";
-import { WHATSAPP_HREF } from "../components/constants";
+import { DemoCtaButton } from "../components/ui/DemoCtaModal";
 import {
   motion,
   easeOut,
@@ -103,12 +102,11 @@ export default function FAQ() {
         viewport={{ once: true, amount: 0.3 }}
       >
         <span>¿Tienes otra pregunta específica sobre tu negocio?</span>
-        <ExternalLink
-          href={WHATSAPP_HREF}
-          className="inline-flex items-center gap-2 rounded-xl bg-sky-400 text-slate-950 font-semibold px-3 py-1.5 text-xs sm:text-sm shadow-md hover:bg-sky-300 transition-colors"
+        <DemoCtaButton
+          className="inline-flex items-center gap-2 rounded-xl bg-sky-400 text-slate-950 font-semibold px-3 py-1.5 text-xs sm:text-sm shadow-md hover:bg-sky-300 transition-colors cursor-pointer"
         >
           💬 Preguntar por WhatsApp
-        </ExternalLink>
+        </DemoCtaButton>
       </motion.div>
     </section>
   );
