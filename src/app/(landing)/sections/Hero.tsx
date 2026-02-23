@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import Badge from "../components/ui/Badge";
-import { DemoCtaModal } from "../components/ui/DemoCtaModal";
 import { PhoneMockup } from "../components/ui/PhoneMockup";
+import { WHATSAPP_HREF } from "../components/constants";
 
 // Framer Motion
 import {
@@ -16,19 +17,21 @@ import {
   type Variants,
   type Transition,
   easeInOut,
+  useMotionValue,
+  useSpring,
+  useTransform,
 } from "framer-motion";
 
 const ImageLightbox = dynamic(
   () => import("../components/images/ImageLightbox"),
-  { ssr: false }
+  { ssr: false },
 );
 
 export default function Hero() {
   const [open, setOpen] = useState(false);
   const [src, setSrc] = useState<string | null>(null);
   const [alt, setAlt] = useState("");
-  const [demoOpen, setDemoOpen] = useState(false);
-  const closeDemoModal = useCallback(() => setDemoOpen(false), []);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const openLightbox = (s: string, a: string) => {
     setSrc(s);
@@ -62,6 +65,66 @@ export default function Hero() {
     },
   };
 
+  // ====== Premium Motion: Parallax 3D + Glow + Orbits ======
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+
+  // Suaviza el movimiento para que se sienta "premium"
+  const sx = useSpring(mx, { stiffness: 120, damping: 18, mass: 0.25 });
+  const sy = useSpring(my, { stiffness: 120, damping: 18, mass: 0.25 });
+
+  const rotateX = useTransform(sy, [-160, 160], [8, -8]);
+  const rotateY = useTransform(sx, [-160, 160], [-10, 10]);
+  const glowX = useTransform(sx, [-160, 160], ["30%", "70%"]);
+  const glowY = useTransform(sy, [-160, 160], ["30%", "70%"]);
+
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    // En touch no vale la pena parallax (se siente raro)
+    if (e.pointerType !== "mouse") return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    mx.set(x);
+    my.set(y);
+  };
+
+  const onPointerLeave = () => {
+    mx.set(0);
+    my.set(0);
+  };
+
+  const glowPulse: Variants = {
+    animate: {
+      opacity: [0.35, 0.75, 0.35],
+      scale: [1, 1.06, 1],
+      transition: { duration: 4.2, repeat: Infinity, ease: "easeInOut" },
+    },
+  };
+
+  const orbit: Variants = {
+    animate: {
+      rotate: 360,
+      transition: { duration: 18, repeat: Infinity, ease: "linear" },
+    },
+  };
+
+  const floatA: Variants = {
+    animate: {
+      y: [0, -16, 0],
+      rotate: [-0.5, 0.5, -0.5],
+      transition: { duration: 6.2, repeat: Infinity, ease: "easeInOut" },
+    },
+  };
+
+  const floatB: Variants = {
+    animate: {
+      y: [0, 14, 0],
+      rotate: [0.4, -0.4, 0.4],
+      transition: { duration: 7.1, repeat: Infinity, ease: "easeInOut" },
+    },
+  };
+
+  const premiumReveal: Transition = { duration: 0.9, ease: [0.22, 1, 0.36, 1] };
   return (
     <AnimatePresence mode="wait">
       <motion.section
@@ -107,71 +170,175 @@ export default function Hero() {
           variants={fadeInDown}
           viewport={{ once: true }}
         >
-          <div className="max-w-7xl mx-auto flex items-center justify-between p-3 sm:px-6 sm:py-4 rounded-2xl bg-slate-900/40 border border-white/10 backdrop-blur-xl shadow-2xl">
-            {/* Logo y Tagline */}
-            <div className="flex items-center gap-4">
-              <div className="relative h-8 w-auto sm:h-10">
-                <Image
-                  src="/logo_dorado.png"
-                  alt="AgenditApp Logo"
-                  width={180}
-                  height={60}
-                  priority
-                  className="h-full w-auto object-contain drop-shadow-[0_0_15px_rgba(250,204,21,0.3)]"
-                />
+          <div className="max-w-7xl mx-auto rounded-2xl bg-slate-900/40 border border-white/10 backdrop-blur-xl shadow-2xl overflow-hidden">
+            {/* Barra principal */}
+            <div className="flex items-center justify-between p-3 sm:px-6 sm:py-4">
+              {/* Logo y Tagline */}
+              <div className="flex items-center gap-4">
+                <div className="relative h-8 w-auto sm:h-10">
+                  <Image
+                    src="/logo_dorado.png"
+                    alt="AgenditApp Logo"
+                    width={180}
+                    height={60}
+                    priority
+                    className="h-full w-auto object-contain drop-shadow-[0_0_15px_rgba(250,204,21,0.3)]"
+                  />
+                </div>
+                {/* Oculto en móviles, visible en tablet/desktop */}
+                <div className="hidden md:flex flex-col border-l border-white/10 pl-4">
+                  <span className="text-[10px] uppercase tracking-widest text-sky-400 font-bold">
+                    Software de agendamiento
+                  </span>
+                  <span className="text-xs text-slate-300">
+                    Agenda · Recordatorios · Página propia
+                  </span>
+                </div>
               </div>
-              {/* Oculto en móviles muy pequeños, visible en tablet/desktop */}
-              <div className="hidden md:flex flex-col border-l border-white/10 pl-4">
-                <span className="text-[10px] uppercase tracking-widest text-sky-400 font-bold">
-                  Software de agendamiento
-                </span>
-                <span className="text-xs text-slate-300">
-                  Agenda · Recordatorios · Página propia
-                </span>
+
+              {/* Desktop Nav */}
+              <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-300">
+                <Link
+                  href="/sectores"
+                  className="hover:text-white transition-colors"
+                >
+                  Sectores
+                </Link>
+                <Link
+                  href="/funcionalidades"
+                  className="hover:text-white transition-colors"
+                >
+                  Funcionalidades
+                </Link>
+                <Link
+                  href="/precios"
+                  className="hover:text-white transition-colors"
+                >
+                  Precios
+                </Link>
+                <a href="#demo" className="hover:text-white transition-colors">
+                  Demo
+                </a>
+                {/* Secundario: registro */}
+                <a
+                  href="https://app.agenditapp.com/signup"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-400 hover:text-slate-200 transition-colors"
+                >
+                  Registrarse
+                </a>
+                {/* Primario: WhatsApp */}
+                <a
+                  href={WHATSAPP_HREF}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-2 px-5 py-2.5 rounded-xl bg-sky-400 text-slate-950 font-bold hover:bg-sky-300 shadow-[0_0_20px_rgba(56,189,248,0.4)] transition-all transform hover:scale-105"
+                >
+                  Contactar ventas
+                </a>
+              </nav>
+
+              {/* Mobile: CTA único + Hamburger */}
+              <div className="flex items-center gap-2 lg:hidden">
+                <a
+                  href={WHATSAPP_HREF}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-xl bg-sky-400 text-slate-950 text-xs font-bold hover:bg-sky-300 transition-colors"
+                >
+                  💬 Demo gratis
+                </a>
+                <button
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+                  aria-label="Toggle menu"
+                >
+                  {mobileMenuOpen ? (
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4 6h16M4 12h16M4 18h16"
+                      />
+                    </svg>
+                  )}
+                </button>
               </div>
             </div>
 
-            {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-300">
-              <Link
-                href="/sectores"
-                className="hover:text-white transition-colors"
-              >
-                Sectores
-              </Link>
-              <Link
-                href="/funcionalidades"
-                className="hover:text-white transition-colors"
-              >
-                Funcionalidades
-              </Link>
-              <Link
-                href="/precios"
-                className="hover:text-white transition-colors"
-              >
-                Precios
-              </Link>
-              <a
-                href="#demo"
-                className="hover:text-white transition-colors"
-              >
-                Demo
-              </a>
-              <button
-                onClick={() => setDemoOpen(true)}
-                className="ml-2 px-5 py-2.5 rounded-xl bg-sky-400 text-slate-950 font-bold hover:bg-sky-300 shadow-[0_0_20px_rgba(56,189,248,0.4)] transition-all transform hover:scale-105 cursor-pointer"
-              >
-                Contactar ventas
-              </button>
-            </nav>
-
-            {/* Mobile CTA (Small) */}
-            <button
-              onClick={() => setDemoOpen(true)}
-              className="lg:hidden px-4 py-2 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-bold uppercase tracking-wide cursor-pointer"
-            >
-              Demo
-            </button>
+            {/* Mobile Menu desplegable */}
+            {mobileMenuOpen && (
+              <nav className="lg:hidden border-t border-white/10 px-3 pb-4 pt-2 flex flex-col gap-1">
+                <Link
+                  href="/sectores"
+                  className="flex items-center gap-3 py-2.5 px-3 rounded-xl text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-all"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  💼 <span>Sectores</span>
+                </Link>
+                <Link
+                  href="/funcionalidades"
+                  className="flex items-center gap-3 py-2.5 px-3 rounded-xl text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-all"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  ⚡ <span>Funcionalidades</span>
+                </Link>
+                <Link
+                  href="/precios"
+                  className="flex items-center gap-3 py-2.5 px-3 rounded-xl text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-all"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  💰 <span>Precios</span>
+                </Link>
+                <a
+                  href="#demo"
+                  className="flex items-center gap-3 py-2.5 px-3 rounded-xl text-sm text-slate-300 hover:text-white hover:bg-white/5 transition-all"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  📅 <span>Ver demo</span>
+                </a>
+                <a
+                  href="https://app.agenditapp.com/signup"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 py-2.5 px-3 rounded-xl text-sm text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-all"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  👤 <span>Registrarse</span>
+                </a>
+                {/* CTA prominente al fondo del menú */}
+                <a
+                  href={WHATSAPP_HREF}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-sky-400 text-slate-950 font-bold text-sm shadow-[0_0_20px_rgba(56,189,248,0.4)] hover:bg-sky-300 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  💬 Contactar ventas por WhatsApp
+                </a>
+              </nav>
+            )}
           </div>
         </motion.header>
 
@@ -217,20 +384,22 @@ export default function Hero() {
                 variants={fadeInUp}
                 className="relative mt-10 flex flex-wrap justify-center lg:justify-start gap-4"
               >
-                <motion.button
-                  onClick={() => setDemoOpen(true)}
+                <motion.a
+                  href={WHATSAPP_HREF}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 rounded-2xl bg-sky-400 text-slate-950 text-lg font-bold 
-                    shadow-[0_0_30px_rgba(56,189,248,0.5)] hover:shadow-[0_0_50px_rgba(56,189,248,0.7)] 
-                    transition-all flex items-center gap-2 relative overflow-hidden cursor-pointer"
+                  className="px-8 py-4 rounded-2xl bg-sky-400 text-slate-950 text-lg font-bold
+                    shadow-[0_0_30px_rgba(56,189,248,0.5)] hover:shadow-[0_0_50px_rgba(56,189,248,0.7)]
+                    transition-all flex items-center gap-2 relative overflow-hidden"
                 >
                   🚀 Solicitar Demo Gratis
-                </motion.button>
+                </motion.a>
 
                 <a
                   href="#membresía"
-                  className="px-8 py-4 rounded-2xl border border-white/10 bg-white/5 text-white 
+                  className="px-8 py-4 rounded-2xl border border-white/10 bg-white/5 text-white
                     hover:bg-white/10 backdrop-blur-sm font-medium transition-colors"
                 >
                   Ver planes
@@ -259,65 +428,169 @@ export default function Hero() {
             </motion.div>
 
             {/* COLUMNA DERECHA: Mockups */}
-            <div className="relative flex justify-center lg:justify-end perspective-1000 mt-8 lg:mt-0">
-              {/* Glow detrás de los teléfonos */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-sky-500/20 blur-[100px] rounded-full -z-10" />
-
+            <div
+              className="relative flex justify-center lg:justify-end mt-8 lg:mt-0"
+              style={{ perspective: 1200 }}
+            >
               <motion.div
-                className="relative w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[480px] h-[400px] sm:h-[500px] lg:h-[600px]"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, ease: easeOut }}
+                onPointerMove={onPointerMove}
+                onPointerLeave={onPointerLeave}
+                className="relative w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[520px] h-[440px] sm:h-[540px] lg:h-[640px]"
+                initial={{ opacity: 0, y: 18, scale: 0.98 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={premiumReveal}
                 viewport={{ once: true }}
+                style={{
+                  transformStyle: "preserve-3d",
+                  rotateX,
+                  rotateY,
+                }}
               >
-                {/* Teléfono Principal */}
+                {/* Glow inteligente (se mueve con el mouse) */}
                 <motion.div
-                  className="absolute z-20 left-4 sm:left-10 top-0 w-[65%] sm:w-[60%]"
-                  variants={floatingAnimation}
+                  className="absolute -inset-10 -z-20 rounded-full blur-[120px]"
+                  variants={glowPulse}
                   animate="animate"
+                  style={{
+                    background:
+                      "radial-gradient(circle at var(--gx) var(--gy), rgba(56,189,248,.55), rgba(2,132,199,.18), transparent 60%)",
+                    ["--gx" as any]: glowX,
+                    ["--gy" as any]: glowY,
+                  }}
+                />
+
+                {/* Orbits / Rings (muy sutiles) */}
+                <div className="absolute inset-0 -z-10">
+                  <motion.div
+                    className="absolute left-1/2 top-1/2 h-[88%] w-[88%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-sky-400/10"
+                    variants={orbit}
+                    animate="animate"
+                    style={{ opacity: 0.35 }}
+                  />
+                  <motion.div
+                    className="absolute left-1/2 top-1/2 h-[88%] w-[88%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-sky-400/10"
+                    variants={orbit}
+                    animate="animate"
+                    style={{ opacity: 0.35 }}
+                  />
+                  <div className="absolute left-1/2 top-1/2 h-[50%] w-[50%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/6 opacity-25" />
+                </div>
+
+                {/* Backplate glass */}
+                <div className="absolute inset-0 rounded-[2.8rem] bg-white/[0.03] border border-white/10 backdrop-blur-md shadow-[0_20px_80px_rgba(0,0,0,0.45)]" />
+                <div className="absolute inset-0 rounded-[2.8rem] bg-gradient-to-tr from-sky-500/5 via-transparent to-transparent pointer-events-none" />
+
+                {/* Chips flotantes (proof/benefits) */}
+                <motion.div
+                  variants={floatA}
+                  animate="animate"
+                  className="absolute -left-2 sm:-left-6 top-10 z-30"
+                  style={{ transform: "translateZ(40px)" }}
                 >
-                  <button
-                    onClick={() =>
-                      openLightbox(
-                        "/screenshots/home-mockup.png",
-                        "Vista Cliente"
-                      )
-                    }
-                    className="w-full focus:outline-none hover:cursor-zoom-in transition-transform active:scale-95"
-                  >
-                    <div className="rotate-[-6deg] hover:rotate-0 transition-transform duration-500 drop-shadow-2xl">
-                      <PhoneMockup
-                        src="/screenshots/home-mockup.png"
-                        alt="App Screenshot"
-                      />
-                    </div>
-                  </button>
+                  <div className="flex items-center gap-2 rounded-2xl bg-slate-950/70 border border-white/10 px-3 py-2 shadow-lg">
+                    <span className="text-[11px] text-slate-200 font-semibold">
+                      ✅ Reservas 24/7
+                    </span>
+                  </div>
                 </motion.div>
 
-                {/* Teléfono Secundario */}
                 <motion.div
-                  className="absolute z-10 right-4 sm:right-0 bottom-8 sm:bottom-12 w-[65%] sm:w-[60%]"
-                  variants={floatingAnimation}
+                  variants={floatB}
                   animate="animate"
-                  transition={{ delay: 1 }}
+                  className="absolute -right-2 sm:-right-6 top-28 z-30"
+                  style={{ transform: "translateZ(42px)" }}
                 >
-                  <button
-                    onClick={() =>
-                      openLightbox(
-                        "/screenshots/calendario-mockup.png",
-                        "Vista Calendario"
-                      )
-                    }
-                    className="w-full focus:outline-none hover:cursor-zoom-in transition-transform active:scale-95"
-                  >
-                    <div className="rotate-[6deg] hover:rotate-0 transition-transform duration-500 drop-shadow-2xl opacity-90 hover:opacity-100">
-                      <PhoneMockup
-                        src="/screenshots/calendario-mockup.png"
-                        alt="Calendar Screenshot"
-                      />
-                    </div>
-                  </button>
+                  <div className="flex items-center gap-2 rounded-2xl bg-slate-950/70 border border-white/10 px-3 py-2 shadow-lg">
+                    <span className="text-[11px] text-slate-200 font-semibold">
+                      ⚡ Recordatorios WhatsApp
+                    </span>
+                  </div>
                 </motion.div>
+
+                <motion.div
+                  variants={floatA}
+                  animate="animate"
+                  className="absolute left-6 bottom-14 z-30 hidden sm:block"
+                  style={{ transform: "translateZ(46px)" }}
+                >
+                  <div className="flex items-center gap-2 rounded-2xl bg-slate-950/70 border border-white/10 px-3 py-2 shadow-lg">
+                    <span className="text-[11px] text-slate-200 font-semibold">
+                      📈 Control de horas pico
+                    </span>
+                  </div>
+                </motion.div>
+
+                {/* === Phones stack === */}
+                <div className="absolute inset-0">
+                  {/* Phone 1 (front) */}
+                  <motion.div
+                    className="absolute z-20 left-5 sm:left-12 top-7 w-[68%] sm:w-[62%]"
+                    variants={floatA}
+                    animate="animate"
+                    style={{ transform: "translateZ(70px)" }}
+                  >
+                    <button
+                      onClick={() =>
+                        openLightbox(
+                          "/screenshots/home-mockup-v2.jpeg",
+                          "Vista Cliente",
+                        )
+                      }
+                      className="group w-full focus:outline-none hover:cursor-zoom-in active:scale-95 transition-transform"
+                    >
+                      <div className="relative rotate-[-7deg] group-hover:rotate-[-2deg] transition-transform duration-500 drop-shadow-2xl">
+                        <div className="relative rotate-[-7deg] group-hover:rotate-[-2deg] transition-transform duration-500 drop-shadow-[0_40px_80px_rgba(0,0,0,0.6)]">
+                          <PhoneMockup
+                            src="/screenshots/home-mockup-v2.jpeg"
+                            alt="App Screenshot"
+                          />
+                        </div>
+                      </div>
+                    </button>
+                  </motion.div>
+
+                  {/* Phone 2 (back) */}
+                  <motion.div
+                    className="absolute z-10 right-5 sm:right-1 bottom-10 w-[68%] sm:w-[62%]"
+                    variants={floatB}
+                    animate="animate"
+                    style={{ transform: "translateZ(45px)" }}
+                  >
+                    <button
+                      onClick={() =>
+                        openLightbox(
+                          "/screenshots/calendario-mockup-v2.jpeg",
+                          "Vista Calendario",
+                        )
+                      }
+                      className="group w-full focus:outline-none hover:cursor-zoom-in active:scale-95 transition-transform"
+                    >
+                      <div className="relative rotate-[7deg] group-hover:rotate-[2deg] transition-transform duration-500 drop-shadow-2xl opacity-90 group-hover:opacity-100">
+                        <div className="relative rotate-[-7deg] group-hover:rotate-[-2deg] transition-transform duration-500 drop-shadow-[0_40px_80px_rgba(0,0,0,0.6)]">
+                          <PhoneMockup
+                            src="/screenshots/home-mockup-v2.jpeg"
+                            alt="App Screenshot"
+                          />
+                        </div>
+                      </div>
+                    </button>
+                  </motion.div>
+                </div>
+
+                {/* Tiny caption (premium) */}
+                <div
+                  className="absolute -bottom-2 left-1/2 -translate-x-1/2 z-30"
+                  style={{ transform: "translateZ(35px)" }}
+                >
+                  <div className="rounded-2xl bg-slate-950/70 border border-white/10 px-4 py-2 backdrop-blur-md shadow-lg">
+                    <span className="text-[11px] text-slate-300">
+                      Así se ve tu negocio en{" "}
+                      <span className="text-sky-300 font-semibold">
+                        menos de 10 minutos
+                      </span>
+                    </span>
+                  </div>
+                </div>
               </motion.div>
             </div>
           </div>
@@ -340,12 +613,14 @@ export default function Hero() {
                   Prueba gratis hoy mismo
                 </span>
               </div>
-              <button
-                onClick={() => setDemoOpen(true)}
-                className="bg-sky-400 text-slate-950 font-bold text-sm px-5 py-3 rounded-xl shadow-lg whitespace-nowrap cursor-pointer"
+              <a
+                href={WHATSAPP_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-sky-400 text-slate-950 font-bold text-sm px-5 py-3 rounded-xl shadow-lg whitespace-nowrap"
               >
                 Solicitar Demo
-              </button>
+              </a>
             </div>
           </motion.div>
         </AnimatePresence>
@@ -357,9 +632,6 @@ export default function Hero() {
           open={open}
           onClose={() => setOpen(false)}
         />
-
-        {/* Demo CTA Modal */}
-        <DemoCtaModal isOpen={demoOpen} onClose={closeDemoModal} />
       </motion.section>
     </AnimatePresence>
   );
