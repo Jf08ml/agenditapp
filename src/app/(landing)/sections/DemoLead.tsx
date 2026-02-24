@@ -4,6 +4,8 @@
 import { useState } from "react";
 import { DemoCtaButton } from "../components/ui/DemoCtaModal";
 import { motion, easeOut, type Variants, type Transition } from "framer-motion";
+import { SelectorPais } from "../components/ui/SelectorPais";
+import { PAISES } from "../components/constants/paises";
 
 const tIn: Transition = { duration: 0.7, ease: easeOut };
 
@@ -26,10 +28,13 @@ export default function DemoLead() {
   const [nombre, setNombre] = useState("");
   const [negocio, setNegocio] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
+  const [paisCodigo, setPaisCodigo] = useState("CO");
   const [sector, setSector] = useState("");
   const [citasMes, setCitasMes] = useState("");
   const [loading, setLoading] = useState(false);
   const [ok, setOk] = useState<null | boolean>(null);
+
+  const paisSeleccionado = PAISES.find((p) => p.codigo === paisCodigo) ?? PAISES[0];
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -45,7 +50,8 @@ export default function DemoLead() {
         body: JSON.stringify({
           nombre,
           negocio,
-          whatsapp,
+          whatsapp: `${paisSeleccionado.dial}${whatsapp}`,
+          pais: `${paisSeleccionado.bandera} ${paisSeleccionado.nombre}`,
           sector,
           citasMes,
           origen: "landing-agenditapp-demo",
@@ -77,6 +83,7 @@ export default function DemoLead() {
       setNombre("");
       setNegocio("");
       setWhatsapp("");
+      setPaisCodigo("CO");
       setSector("");
       setCitasMes("");
     } catch (err) {
@@ -151,15 +158,21 @@ export default function DemoLead() {
               <label className="block text-slate-200 mb-1">
                 WhatsApp de contacto
               </label>
-              <input
-                required
-                value={whatsapp}
-                onChange={(e) => setWhatsapp(e.target.value)}
-                className="w-full rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-slate-100 text-sm focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400"
-                placeholder="Ej: 300 123 4567"
-              />
+              <div className="flex gap-2">
+                {/* Selector de país buscable */}
+                <SelectorPais value={paisCodigo} onChange={setPaisCodigo} />
+                {/* Número */}
+                <input
+                  required
+                  type="tel"
+                  value={whatsapp}
+                  onChange={(e) => setWhatsapp(e.target.value)}
+                  className="flex-1 min-w-0 rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-slate-100 text-sm focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400"
+                  placeholder="300 123 4567"
+                />
+              </div>
               <p className="mt-1 text-[11px] text-slate-500">
-                Usaremos este número solo para contactarte sobre la demo.
+                Selecciona tu país y escribe el número. Lo usaremos solo para contactarte sobre la demo.
               </p>
             </div>
 

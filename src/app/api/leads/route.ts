@@ -15,6 +15,7 @@ export async function POST(request: Request) {
       nombre,
       negocio,
       whatsapp,
+      pais,
       sector,
       citasMes,
       origen = "landing-agenditapp-demo",
@@ -31,6 +32,7 @@ export async function POST(request: Request) {
       nombre,
       negocio,
       whatsapp,
+      pais: pais || null,
       sector: sector || null,
       citasMes: citasMes || null,
       origen,
@@ -55,6 +57,7 @@ export async function POST(request: Request) {
             <p><strong>Nombre:</strong> ${nombre}</p>
             <p><strong>Negocio:</strong> ${negocio}</p>
             <p><strong>WhatsApp:</strong> ${whatsapp}</p>
+            <p><strong>País:</strong> ${pais || "-"}</p>
             <p><strong>Sector:</strong> ${sector || "-"}</p>
             <p><strong>Citas/mes:</strong> ${citasMes || "-"}</p>
             <hr />
