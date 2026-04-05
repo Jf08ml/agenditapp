@@ -1,252 +1,215 @@
 "use client";
+
 import dynamic from "next/dynamic";
 import { useState } from "react";
 import { PhoneMockup } from "../components/ui/PhoneMockup";
-import {
-  motion,
-  easeOut,
-  type Variants,
-  type Transition,
-} from "framer-motion";
+import { motion, easeOut, type Variants } from "framer-motion";
 
 const ImageLightbox = dynamic(
   () => import("../components/images/ImageLightbox"),
   { ssr: false }
 );
 
+const features = [
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M3 5h14M3 10h14M3 15h8" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"/>
+      </svg>
+    ),
+    title: "Precio, duración y detalle",
+    desc: "Configura cada servicio con toda la información. Ideal para combos, paquetes y promociones.",
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <rect x="2" y="3" width="16" height="14" rx="2" stroke="currentColor" strokeWidth="1.7"/>
+        <path d="M6 3v14M2 8h4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"/>
+      </svg>
+    ),
+    title: "Organizado por categorías",
+    desc: "Agrupa tus servicios por tipo: uñas, cabello, faciales, masajes… fácil de navegar.",
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <circle cx="10" cy="10" r="7" stroke="currentColor" strokeWidth="1.7"/>
+        <path d="M10 6v4l2.5 2.5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round"/>
+      </svg>
+    ),
+    title: "Actualización en tiempo real",
+    desc: "Cambia precios o tiempos cuando quieras. Se refleja al instante en tu página de reservas.",
+  },
+  {
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M10 2C5.58 2 2 5.58 2 10s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8z" stroke="currentColor" strokeWidth="1.7"/>
+        <path d="M6.5 10.5L9 13l4.5-5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+    title: "Listo para SEO y Google Maps",
+    desc: "Títulos, descripciones y datos estructurados listos para que Google te encuentre.",
+  },
+];
+
+const chips = [
+  { emoji: "📋", label: "Catálogo por categorías" },
+  { emoji: "💰", label: "Precios visibles 24/7" },
+  { emoji: "📱", label: "Vista optimizada mobile" },
+  { emoji: "📍", label: "SEO local incluido" },
+];
+
+const fadeInUp: Variants = {
+  initial: { opacity: 0, y: 30 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.7, ease: easeOut } },
+};
+
+const slideLeft: Variants = {
+  initial: { opacity: 0, x: -36 },
+  animate: { opacity: 1, x: 0, transition: { duration: 0.7, ease: easeOut } },
+};
+
+const stagger: Variants = {
+  initial: {},
+  animate: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
+};
+
+const featureItem: Variants = {
+  initial: { opacity: 0, y: 16 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.5, ease: easeOut } },
+};
+
 export default function Servicios() {
   const [open, setOpen] = useState(false);
   const [src, setSrc] = useState<string | null>(null);
   const [alt, setAlt] = useState("");
 
-  const openLightbox = (s: string, a: string) => {
-    setSrc(s);
-    setAlt(a);
-    setOpen(true);
-  };
-
-  // Transiciones reutilizables
-  const tIn: Transition = { duration: 0.7, ease: easeOut };
-  const tInFast: Transition = { duration: 0.55, ease: easeOut };
-
-  // Variants
-  const fadeInUp: Variants = {
-    initial: { opacity: 0, y: 26 },
-    animate: { opacity: 1, y: 0, transition: tIn },
-  };
-
-  const fadeIn: Variants = {
-    initial: { opacity: 0 },
-    animate: { opacity: 1, transition: tInFast },
-  };
-
-  const leftCol: Variants = {
-    initial: { opacity: 0, x: -40 },
-    animate: {
-      opacity: 1,
-      x: 0,
-      transition: { ...tIn, when: "beforeChildren" },
-    },
-  };
-
-  const rightCol: Variants = {
-    initial: { opacity: 0, x: 40 },
-    animate: {
-      opacity: 1,
-      x: 0,
-      transition: { ...tIn, when: "beforeChildren" },
-    },
-  };
-
-  const listContainer: Variants = {
-    initial: {},
-    animate: {
-      transition: { staggerChildren: 0.1, delayChildren: 0.05 },
-    },
-  };
-
-  const listItem: Variants = {
-    initial: { opacity: 0, y: 12 },
-    animate: { opacity: 1, y: 0, transition: tInFast },
-  };
-
-  const chipsContainer: Variants = {
-    initial: {},
-    animate: {
-      transition: { staggerChildren: 0.08 },
-    },
-  };
-
-  const chipItem: Variants = {
-    initial: { opacity: 0, y: 10, scale: 0.98 },
-    animate: { opacity: 1, y: 0, scale: 1, transition: tInFast },
-  };
-
   return (
-    <section id="servicios" className="px-6 py-16 max-w-6xl mx-auto">
-      {/* Encabezado */}
-      <motion.div
-        variants={fadeInUp}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true, amount: 0.4 }}
-        className="max-w-3xl"
-      >
-        <span className="inline-flex items-center rounded-full border border-sky-500/30 bg-sky-500/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-300 mb-3">
-          Catálogo de servicios
-        </span>
+    <section id="servicios" className="py-20">
+      <div className="max-w-6xl mx-auto px-6">
 
-        <h2 className="text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-          Muestra tus servicios como un{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-blue-400">
-            menú profesional
-          </span>
-        </h2>
-
-        <motion.p
-          className="text-lg text-slate-400 mt-3"
-          variants={fadeIn}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, amount: 0.4 }}
-        >
-          Configura tu catálogo con precios, duración y descripciones claras.
-          Tus clientes ven todo desde tu landing de bienvenida y reservan sin
-          tener que escribirte para preguntar “¿cuánto vale?”.
-        </motion.p>
-      </motion.div>
-
-      {/* Layout: texto + mockup */}
-      <div className="mt-10 grid md:grid-cols-2 gap-10 items-center">
-        {/* Lado izquierdo: bullets/beneficios */}
+        {/* ── Header ── */}
         <motion.div
-          variants={leftCol}
+          variants={fadeInUp}
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true, amount: 0.25 }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-center max-w-2xl mx-auto mb-16"
         >
-          <motion.ul
-            className="space-y-4 text-sm sm:text-base text-slate-300"
-            variants={listContainer}
-          >
-            <motion.li className="flex gap-3" variants={listItem}>
-              <span className="mt-1 h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.9)]" />
-              Publica cada servicio con{" "}
-              <span className="font-semibold text-slate-50">
-                precio, duración y detalle
-              </span>{" "}
-              (ideal para combos, paquetes y promociones).
-            </motion.li>
-            <motion.li className="flex gap-3" variants={listItem}>
-              <span className="mt-1 h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.9)]" />
-              Organiza tu catálogo por{" "}
-              <span className="font-semibold text-slate-50">
-                categorías
-              </span>{" "}
-              (uñas, pestañas, cabello, faciales, masajes…).
-            </motion.li>
-            <motion.li className="flex gap-3" variants={listItem}>
-              <span className="mt-1 h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.9)]" />
-              Compatible con{" "}
-              <span className="font-semibold text-slate-50">SEO local</span>:
-              títulos, descripción y datos listos para que Google te entienda.
-            </motion.li>
-            <motion.li className="flex gap-3" variants={listItem}>
-              <span className="mt-1 h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.9)]" />
-              Vista optimizada para móvil y escritorio: se ve como{" "}
-              <span className="font-semibold text-slate-50">
-                carta digital
-              </span>{" "}
-              en el celular de tu cliente.
-            </motion.li>
-          </motion.ul>
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/8 border border-brand/20 text-brand text-[11px] font-semibold tracking-wider uppercase mb-4">
+            Catálogo de servicios
+          </span>
+          <h2 className="text-3xl md:text-4xl font-semibold text-heading tracking-tight leading-tight">
+            Muestra tus servicios como un{" "}
+            <span className="text-brand">menú profesional</span>
+          </h2>
+          <p className="mt-4 text-base text-body leading-relaxed">
+            Tus clientes ven precios, duración y descripción antes de reservar.
+            Sin mensajes de &ldquo;¿cuánto vale?&rdquo; ni llamadas innecesarias.
+          </p>
+        </motion.div>
 
-          {/* Chips / highlights */}
+        {/* ── Split layout ── */}
+        <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
+
+          {/* Left: mockup */}
           <motion.div
-            className="mt-6 flex flex-wrap gap-3"
-            variants={chipsContainer}
+            className="w-full lg:w-auto flex justify-center lg:justify-start flex-shrink-0"
+            variants={slideLeft}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, amount: 0.25 }}
           >
-            <motion.span
-              className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/5 px-3 py-1.5 text-xs sm:text-sm text-emerald-200"
-              variants={chipItem}
-              whileHover={{ y: -2, scale: 1.02 }}
-            >
-              <span>📋</span>
-              <span>Catálogo dinámico por categorías</span>
-            </motion.span>
-            <motion.span
-              className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/5 px-3 py-1.5 text-xs sm:text-sm text-emerald-200"
-              variants={chipItem}
-              whileHover={{ y: -2, scale: 1.02 }}
-            >
-              <span>💰</span>
-              <span>Precios visibles 24/7</span>
-            </motion.span>
-            <motion.span
-              className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/5 px-3 py-1.5 text-xs sm:text-sm text-emerald-200"
-              variants={chipItem}
-              whileHover={{ y: -2, scale: 1.02 }}
-            >
-              <span>📍</span>
-              <span>Listo para SEO y Google Maps</span>
-            </motion.span>
+            <div className="relative w-[240px] sm:w-[270px]">
+              {/* Glow */}
+              <div
+                className="absolute inset-0 rounded-[40px] blur-3xl opacity-20 -z-10 scale-110"
+                style={{ background: "var(--brand)" }}
+              />
+
+              <motion.button
+                type="button"
+                onClick={() => {
+                  setSrc("/screenshots/servicios-precios-mockup.png");
+                  setAlt("Catálogo de servicios y precios");
+                  setOpen(true);
+                }}
+                className="block focus:outline-none w-full"
+                aria-label="Ampliar imagen: catálogo de servicios y precios"
+                whileHover={{ scale: 1.02, y: -3 }}
+                whileTap={{ scale: 0.985 }}
+                transition={{ type: "spring", stiffness: 280, damping: 20 }}
+              >
+                <PhoneMockup
+                  src="/screenshots/servicios-precios-mockup.png"
+                  alt="Catálogo de servicios y precios"
+                  priority
+                />
+              </motion.button>
+
+              {/* Floating badge */}
+              <div
+                className="absolute -right-4 top-10 rounded-2xl px-3.5 py-2.5 shadow-lg border border-brand/10"
+                style={{ background: "var(--bg-card)", boxShadow: "var(--shadow-card)" }}
+              >
+                <p className="text-[10px] text-muted font-medium uppercase tracking-wide">Precio</p>
+                <p className="text-sm font-bold text-heading mt-0.5">$45.000</p>
+                <p className="text-[10px] text-muted">45 min · Manicure gel</p>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Nota pequeña */}
-          <motion.p
-            variants={fadeIn}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, amount: 0.3 }}
-            className="mt-4 text-xs sm:text-sm text-slate-500"
-          >
-            Puedes actualizar precios, tiempos y descripciones cuando quieras;
-            tus cambios se reflejan de inmediato en tu landing.
-          </motion.p>
-        </motion.div>
+          {/* Right: features */}
+          <div className="flex-1 w-full">
+            <motion.div
+              className="flex flex-col gap-5"
+              variants={stagger}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {features.map((f, i) => (
+                <motion.div
+                  key={i}
+                  className="flex items-start gap-4"
+                  variants={featureItem}
+                >
+                  <div
+                    className="flex-shrink-0 w-10 h-10 rounded-[10px] flex items-center justify-center text-brand"
+                    style={{ background: "color-mix(in srgb, var(--brand) 10%, transparent)" }}
+                  >
+                    {f.icon}
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-heading">{f.title}</p>
+                    <p className="text-sm text-body mt-0.5 leading-relaxed">{f.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
 
-        {/* Lado derecho: PhoneMockup reutilizable */}
-        <motion.div
-          className="relative flex justify-center"
-          variants={rightCol}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, amount: 0.25 }}
-        >
-          {/* Glow detrás del mockup */}
-          <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center">
-            <div className="h-64 w-64 rounded-full bg-sky-500/20 blur-3xl" />
+            {/* Chips */}
+            <motion.div
+              className="mt-8 flex flex-wrap gap-2.5"
+              variants={stagger}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              {chips.map((c, i) => (
+                <motion.span
+                  key={i}
+                  className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand/6 px-3.5 py-1.5 text-xs font-medium text-brand"
+                  variants={featureItem}
+                  whileHover={{ y: -2, scale: 1.02 }}
+                >
+                  <span>{c.emoji}</span>
+                  {c.label}
+                </motion.span>
+              ))}
+            </motion.div>
           </div>
-
-          <motion.button
-            type="button"
-            onClick={() =>
-              openLightbox(
-                "/screenshots/servicios-precios-mockup.png",
-                "Catálogo de servicios y precios"
-              )
-            }
-            className="block focus:outline-none"
-            aria-label="Ampliar imagen: catálogo de servicios y precios"
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.985 }}
-            transition={{ type: "spring", stiffness: 280, damping: 20 }}
-          >
-            <div className="drop-shadow-[0_25px_60px_rgba(15,23,42,0.9)]">
-              <PhoneMockup
-                src="/screenshots/servicios-precios-mockup.png"
-                alt="Catálogo de servicios y precios"
-                priority
-              />
-            </div>
-            <span className="mt-3 block text-center text-xs sm:text-sm text-slate-400">
-              Ver pantalla completa
-            </span>
-          </motion.button>
-        </motion.div>
+        </div>
       </div>
 
       <ImageLightbox

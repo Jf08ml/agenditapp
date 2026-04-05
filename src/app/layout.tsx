@@ -2,6 +2,14 @@ import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-poppins",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://agenditapp.com"),
@@ -11,7 +19,7 @@ export const metadata: Metadata = {
   },
   description:
     "Plataforma de agendamiento online para negocios de belleza, bienestar y servicios profesionales. Automatiza reservas, envía recordatorios por WhatsApp y gestiona tu agenda 24/7.",
-  icons: [{ rel: "icon", url: "/logo.png" }],
+  icons: [{ rel: "icon", url: "/icono-full-blue.png" }],
   keywords: [
     "agendamiento online",
     "sistema de reservas",
@@ -55,7 +63,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0ea5e9",
+  themeColor: "#1D4ED8",
 };
 
 export default function RootLayout({
@@ -64,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es-CO">
+    <html lang="es-CO" className={poppins.variable}>
       <head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="mobile-web-app-capable" content="yes" />
@@ -89,7 +97,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>
+      <body className="font-sans antialiased">
         <Analytics />
         {children}
       </body>

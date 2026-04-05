@@ -3,26 +3,24 @@
 
 import { useState } from "react";
 import { DemoCtaButton } from "../components/ui/DemoCtaModal";
-import { motion, easeOut, type Variants, type Transition } from "framer-motion";
+import { motion, easeOut, type Variants } from "framer-motion";
 import { SelectorPais } from "../components/ui/SelectorPais";
 import { PAISES } from "../components/constants/paises";
 
-const tIn: Transition = { duration: 0.7, ease: easeOut };
-
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 24 },
-  animate: { opacity: 1, y: 0, transition: tIn },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.7, ease: easeOut } },
 };
 
 const cardIn: Variants = {
   initial: { opacity: 0, y: 20, scale: 0.98 },
-  animate: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { ...tIn, when: "beforeChildren" },
-  },
+  animate: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: easeOut } },
 };
+
+const inputClass =
+  "w-full rounded-[10px] bg-bg-main border border-brand/20 px-3.5 py-2.5 text-sm text-heading placeholder:text-muted focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/15 transition-all";
+
+const labelClass = "block text-sm font-medium text-heading mb-1.5";
 
 export default function DemoLead() {
   const [nombre, setNombre] = useState("");
@@ -40,10 +38,7 @@ export default function DemoLead() {
     e.preventDefault();
     setLoading(true);
     setOk(null);
-
     try {
-      // Aquí puedes apuntar a TU backend real
-      // por ejemplo: https://api.agenditapp.com/public/leads
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -57,22 +52,13 @@ export default function DemoLead() {
           origen: "landing-agenditapp-demo",
         }),
       });
-
       if (!res.ok) throw new Error("Error al enviar el formulario");
 
-      // 👉 Aquí disparamos la conversión de Google Ads
       if (typeof window !== "undefined" && (window as any).gtag) {
         (window as any).gtag("event", "conversion", {
           send_to: "AW-17757114632/jMf9CO65v8YbEIiioJNC",
-          // event_callback es opcional si no quieres redirigir
-          event_callback: () => {
-            console.log("Conversión reportada a Google Ads");
-          },
+          event_callback: () => { console.log("Conversión reportada a Google Ads"); },
         });
-      }
-
-      // (Opcional) Evento GA4 tipo lead
-      if (typeof window !== "undefined" && (window as any).gtag) {
         (window as any).gtag("event", "lead_demo_submit", {
           event_category: "lead",
           event_label: "Demo AgenditApp",
@@ -80,12 +66,8 @@ export default function DemoLead() {
       }
 
       setOk(true);
-      setNombre("");
-      setNegocio("");
-      setWhatsapp("");
-      setPaisCodigo("CO");
-      setSector("");
-      setCitasMes("");
+      setNombre(""); setNegocio(""); setWhatsapp("");
+      setPaisCodigo("CO"); setSector(""); setCitasMes("");
     } catch (err) {
       console.error(err);
       setOk(false);
@@ -95,167 +77,199 @@ export default function DemoLead() {
   }
 
   return (
-    <section id="demo" className="px-6 py-16 max-w-6xl mx-auto">
-      {/* Header */}
-      <motion.div
-        variants={fadeInUp}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true, amount: 0.4 }}
-        className="max-w-3xl"
-      >
-        <span className="inline-flex items-center rounded-full border border-sky-500/30 bg-sky-500/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-300 mb-3">
-          Demo personalizada
-        </span>
-        <h2 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
-          Déjanos tus datos y te instalamos la agenda
-        </h2>
-        <p className="mt-3 text-slate-300 text-sm sm:text-base">
-          Cuéntanos un poco sobre tu negocio y te contactamos por WhatsApp para
-          mostrarte AgenditApp, configurar tus servicios y dejarte una agenda
-          lista para usar.
-        </p>
-      </motion.div>
+    <section id="demo" className="py-20">
+      <div className="max-w-6xl mx-auto px-6">
 
-      {/* Card con formulario + alternativa WhatsApp */}
-      <motion.div
-        className="mt-8 grid gap-8 md:grid-cols-[3fr,2fr]"
-        variants={cardIn}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        {/* Formulario */}
-        <div className="p-6 rounded-2xl border border-slate-800 bg-slate-900/50 backdrop-blur-sm">
-          <form onSubmit={handleSubmit} className="space-y-4 text-sm">
-            <div>
-              <label className="block text-slate-200 mb-1">
-                Tu nombre completo
-              </label>
-              <input
-                required
-                value={nombre}
-                onChange={(e) => setNombre(e.target.value)}
-                className="w-full rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-slate-100 text-sm focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400"
-                placeholder="Ej: Ana Pérez"
-              />
-            </div>
+        {/* ── Header ── */}
+        <motion.div
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-center max-w-2xl mx-auto mb-12"
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/8 border border-brand/20 text-brand text-[11px] font-semibold tracking-wider uppercase mb-4">
+            Demo personalizada
+          </span>
+          <h2 className="text-3xl md:text-4xl font-semibold text-heading tracking-tight leading-tight">
+            Déjanos tus datos y te{" "}
+            <span className="text-brand">instalamos la agenda</span>
+          </h2>
+          <p className="mt-4 text-base text-body leading-relaxed">
+            Cuéntanos sobre tu negocio y te contactamos por WhatsApp para
+            mostrarte AgenditApp, configurar tus servicios y dejarte todo listo.
+          </p>
+        </motion.div>
 
-            <div>
-              <label className="block text-slate-200 mb-1">
-                Nombre de tu negocio
-              </label>
-              <input
-                required
-                value={negocio}
-                onChange={(e) => setNegocio(e.target.value)}
-                className="w-full rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-slate-100 text-sm focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400"
-                placeholder="Ej: Glam Nails Studio"
-              />
-            </div>
-
-            <div>
-              <label className="block text-slate-200 mb-1">
-                WhatsApp de contacto
-              </label>
-              <div className="flex gap-2">
-                {/* Selector de país buscable */}
-                <SelectorPais value={paisCodigo} onChange={setPaisCodigo} />
-                {/* Número */}
+        {/* ── Card grid ── */}
+        <motion.div
+          className="grid gap-6 md:grid-cols-[3fr,2fr] items-start"
+          variants={cardIn}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {/* Form */}
+          <div
+            className="rounded-[20px] border border-brand/12 bg-bg-card p-6 sm:p-8"
+            style={{ boxShadow: "var(--shadow-card)" }}
+          >
+            <form onSubmit={handleSubmit} className="space-y-5 text-sm">
+              <div>
+                <label className={labelClass}>Tu nombre completo</label>
                 <input
                   required
-                  type="tel"
-                  value={whatsapp}
-                  onChange={(e) => setWhatsapp(e.target.value)}
-                  className="flex-1 min-w-0 rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-slate-100 text-sm focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400"
-                  placeholder="300 123 4567"
+                  value={nombre}
+                  onChange={(e) => setNombre(e.target.value)}
+                  className={inputClass}
+                  placeholder="Ej: Ana Pérez"
                 />
               </div>
-              <p className="mt-1 text-[11px] text-slate-500">
-                Selecciona tu país y escribe el número. Lo usaremos solo para contactarte sobre la demo.
-              </p>
-            </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
               <div>
-                <label className="block text-slate-200 mb-1">
-                  Tipo de negocio
-                </label>
-                <select
-                  value={sector}
-                  onChange={(e) => setSector(e.target.value)}
-                  className="w-full rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-slate-100 text-sm focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400"
-                >
-                  <option value="">Selecciona una opción</option>
-                  <option>Salón de belleza / uñas</option>
-                  <option>Barbería</option>
-                  <option>Spa / masajes</option>
-                  <option>Lashes / cejas</option>
-                  <option>Entrenador / fitness</option>
-                  <option>Estética médica</option>
-                  <option>Academia / cursos</option>
-                  <option>Otro</option>
-                </select>
+                <label className={labelClass}>Nombre de tu negocio</label>
+                <input
+                  required
+                  value={negocio}
+                  onChange={(e) => setNegocio(e.target.value)}
+                  className={inputClass}
+                  placeholder="Ej: Glam Nails Studio"
+                />
               </div>
 
               <div>
-                <label className="block text-slate-200 mb-1">
-                  Citas al mes (aprox.)
-                </label>
-                <select
-                  value={citasMes}
-                  onChange={(e) => setCitasMes(e.target.value)}
-                  className="w-full rounded-xl bg-slate-900 border border-slate-700 px-3 py-2 text-slate-100 text-sm focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400"
-                >
-                  <option value="">Selecciona un rango</option>
-                  <option>Menos de 50</option>
-                  <option>50 - 150</option>
-                  <option>150 - 300</option>
-                  <option>Más de 300</option>
-                </select>
+                <label className={labelClass}>WhatsApp de contacto</label>
+                <div className="flex gap-2">
+                  <SelectorPais value={paisCodigo} onChange={setPaisCodigo} />
+                  <input
+                    required
+                    type="tel"
+                    value={whatsapp}
+                    onChange={(e) => setWhatsapp(e.target.value)}
+                    className={`${inputClass} flex-1 min-w-0`}
+                    placeholder="300 123 4567"
+                  />
+                </div>
+                <p className="mt-1.5 text-[11px] text-muted">
+                  Selecciona tu país y escribe el número. Solo lo usamos para contactarte sobre la demo.
+                </p>
               </div>
-            </div>
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="mt-2 inline-flex items-center justify-center rounded-xl bg-sky-400 text-slate-950 font-semibold px-5 py-2.5 text-sm shadow-[0_0_20px_rgba(56,189,248,0.45)] hover:bg-sky-300 transition-colors disabled:opacity-60"
-            >
-              {loading ? "Enviando..." : "Quiero mi demo personalizada"}
-            </button>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label className={labelClass}>Tipo de negocio</label>
+                  <select
+                    value={sector}
+                    onChange={(e) => setSector(e.target.value)}
+                    className={inputClass}
+                  >
+                    <option value="">Selecciona una opción</option>
+                    <option>Salón de belleza / uñas</option>
+                    <option>Barbería</option>
+                    <option>Spa / masajes</option>
+                    <option>Lashes / cejas</option>
+                    <option>Entrenador / fitness</option>
+                    <option>Estética médica</option>
+                    <option>Academia / cursos</option>
+                    <option>Otro</option>
+                  </select>
+                </div>
+                <div>
+                  <label className={labelClass}>Citas al mes (aprox.)</label>
+                  <select
+                    value={citasMes}
+                    onChange={(e) => setCitasMes(e.target.value)}
+                    className={inputClass}
+                  >
+                    <option value="">Selecciona un rango</option>
+                    <option>Menos de 50</option>
+                    <option>50 - 150</option>
+                    <option>150 - 300</option>
+                    <option>Más de 300</option>
+                  </select>
+                </div>
+              </div>
 
-            {ok === true && (
-              <p className="text-xs text-emerald-400 mt-2">
-                ✅ ¡Gracias! Hemos recibido tus datos. Te contactaremos por
-                WhatsApp muy pronto.
-              </p>
-            )}
-            {ok === false && (
-              <p className="text-xs text-red-400 mt-2">
-                Ocurrió un error al enviar el formulario. Intenta de nuevo o
-                escríbenos por WhatsApp.
-              </p>
-            )}
-          </form>
-        </div>
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full flex items-center justify-center gap-2 rounded-[12px] bg-brand text-white font-semibold px-5 py-3 text-sm hover:bg-brand-hover transition-colors disabled:opacity-60 shadow-md"
+              >
+                {loading ? (
+                  <>
+                    <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
+                    </svg>
+                    Enviando...
+                  </>
+                ) : "Quiero mi demo personalizada"}
+              </button>
 
-        {/* Lado derecho: refuerzo + alternativa WhatsApp */}
-        <div className="p-6 rounded-2xl border border-slate-800 bg-slate-900/30 text-sm text-slate-300 flex flex-col gap-4">
-          <h3 className="text-lg font-semibold text-white">
-            ¿Prefieres hablar directo por WhatsApp?
-          </h3>
-          <p className="text-slate-400 text-sm">
-            Si no quieres llenar formularios, puedes escribirnos ahora mismo. Te
-            ayudamos a ver si AgenditApp encaja con tu negocio y te mostramos
-            cómo se vería tu agenda.
-          </p>
-          <DemoCtaButton
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500/15 border border-emerald-400/60 px-4 py-2 text-sm text-emerald-100 font-semibold shadow-[0_0_16px_rgba(16,185,129,0.4)] hover:bg-emerald-400 hover:text-slate-950 hover:shadow-[0_0_24px_rgba(16,185,129,0.6)] transition-colors cursor-pointer"
+              {ok === true && (
+                <div className="flex items-start gap-2.5 rounded-[10px] border border-success/30 bg-success/8 px-4 py-3 text-sm text-success">
+                  <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 16 16" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 8l4 4 6-6"/>
+                  </svg>
+                  ¡Gracias! Recibimos tus datos. Te contactaremos por WhatsApp muy pronto.
+                </div>
+              )}
+              {ok === false && (
+                <div className="flex items-start gap-2.5 rounded-[10px] border border-danger/30 bg-danger/8 px-4 py-3 text-sm text-danger">
+                  <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 16 16" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5v4M8 11v1"/>
+                    <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.5"/>
+                  </svg>
+                  Error al enviar. Intenta de nuevo o escríbenos por WhatsApp.
+                </div>
+              )}
+            </form>
+          </div>
+
+          {/* Right: WhatsApp alternative */}
+          <div
+            className="rounded-[20px] border border-brand/12 bg-bg-card p-6 sm:p-8 flex flex-col gap-5"
+            style={{ boxShadow: "var(--shadow-card)" }}
           >
-            💬 Hablar ahora por WhatsApp
-          </DemoCtaButton>
-        </div>
-      </motion.div>
+            <div
+              className="w-12 h-12 rounded-[14px] flex items-center justify-center text-2xl"
+              style={{ background: "color-mix(in srgb, var(--brand) 10%, transparent)" }}
+            >
+              💬
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-heading">¿Prefieres hablar directo?</h3>
+              <p className="text-body text-sm mt-2 leading-relaxed">
+                Si no quieres llenar formularios, escríbenos ahora por WhatsApp.
+                Te ayudamos a ver si AgenditApp encaja con tu negocio y te mostramos
+                cómo se vería tu agenda.
+              </p>
+            </div>
+
+            <ul className="flex flex-col gap-2">
+              {[
+                "Sin formularios ni esperas",
+                "Respuesta en minutos",
+                "Te mostramos una demo en vivo",
+              ].map((t) => (
+                <li key={t} className="flex items-center gap-2 text-sm text-body">
+                  <span className="w-4 h-4 rounded-full flex items-center justify-center text-brand flex-shrink-0"
+                    style={{ background: "color-mix(in srgb, var(--brand) 12%, transparent)" }}>
+                    <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 12 12" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M2 6l3 3 5-5"/>
+                    </svg>
+                  </span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+
+            <DemoCtaButton className="mt-auto inline-flex items-center justify-center gap-2 rounded-[12px] bg-brand text-white font-semibold px-5 py-3 text-sm hover:bg-brand-hover transition-colors cursor-pointer shadow-md">
+              Hablar ahora por WhatsApp
+            </DemoCtaButton>
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }

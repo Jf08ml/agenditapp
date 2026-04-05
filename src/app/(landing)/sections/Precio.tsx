@@ -1,704 +1,560 @@
 "use client";
 
+import { useState } from "react";
 import { DemoCtaButton } from "../components/ui/DemoCtaModal";
-import {
-  motion,
-  easeOut,
-  easeIn,
-  type Variants,
-  type Transition,
-} from "framer-motion";
+import { motion, AnimatePresence, easeOut, type Variants } from "framer-motion";
 
-export default function Precio() {
-  // Transiciones reutilizables
-  const tIn: Transition = { duration: 0.7, ease: easeOut };
-  const tInFast: Transition = { duration: 0.5, ease: easeOut };
-  const tOut: Transition = { duration: 0.35, ease: easeIn };
+// ─── Icons ───────────────────────────────────────────────
+const IconCheck = ({ className = "w-3.5 h-3.5" }: { className?: string }) => (
+  <svg className={className} fill="none" viewBox="0 0 16 16" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 8l4 4 6-6" />
+  </svg>
+);
+const IconMinus = () => (
+  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 16 16" stroke="currentColor">
+    <path strokeLinecap="round" strokeWidth={2} d="M4 8h8" />
+  </svg>
+);
+const IconChevron = ({ open }: { open: boolean }) => (
+  <svg
+    className={`w-4 h-4 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+    fill="none" viewBox="0 0 16 16" stroke="currentColor"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6l4 4 4-4" />
+  </svg>
+);
 
-  // Variants
-  const fadeInUp: Variants = {
-    initial: { opacity: 0, y: 26 },
-    animate: { opacity: 1, y: 0, transition: tIn },
-    exit: { opacity: 0, y: 12, transition: tOut },
-  };
+// ─── Data ─────────────────────────────────────────────────
+type PlanKey = "basico" | "esencial" | "marca";
 
-  const cardIn: Variants = {
-    initial: { opacity: 0, y: 20, scale: 0.98 },
-    animate: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { ...tIn, when: "beforeChildren" },
-    },
-  };
+const PLANS: Array<{
+  key: PlanKey;
+  name: string;
+  price: string;
+  badge: string;
+  badgeStyle: React.CSSProperties;
+  tagline: string;
+  highlights: string[];
+  ctaLabel: string;
+  featured?: boolean;
+}> = [
+  {
+    key: "basico",
+    name: "Básico",
+    price: "$10 USD",
+    badge: "Starter",
+    badgeStyle: { background: "color-mix(in srgb, var(--brand) 10%, transparent)", color: "var(--brand)", border: "1px solid color-mix(in srgb, var(--brand) 25%, transparent)" },
+    tagline: "Para organizar tu agenda y empezar a recibir reservas online.",
+    highlights: [
+      "Reservas y citas ilimitadas 24/7",
+      "Panel administrativo completo",
+      "Gestión de servicios, empleados y clientes",
+      "Subdominio tu-negocio.agenditapp.com",
+    ],
+    ctaLabel: "Empezar con el Básico",
+  },
+  {
+    key: "esencial",
+    name: "Esencial",
+    price: "$20 USD",
+    badge: "Más elegido",
+    badgeStyle: { background: "var(--brand)", color: "#fff", border: "none" },
+    tagline: "Automatiza WhatsApp y reduce ausencias con recordatorios.",
+    highlights: [
+      "Todo lo del plan Básico",
+      "WhatsApp desde tu número Business",
+      "1 recordatorio automático configurable",
+      "Enlace para confirmar o cancelar citas",
+    ],
+    ctaLabel: "Empezar con el Esencial",
+    featured: true,
+  },
+  {
+    key: "marca",
+    name: "Marca Propia",
+    price: "$30 USD",
+    badge: "Pro",
+    badgeStyle: { background: "color-mix(in srgb, #F59E0B 12%, transparent)", color: "#B45309", border: "1px solid color-mix(in srgb, #F59E0B 30%, transparent)" },
+    tagline: "Dominio propio y campañas masivas de WhatsApp para crecer.",
+    highlights: [
+      "Todo lo del plan Esencial",
+      "Dominio propio (tumarca.com)",
+      "2 recordatorios automáticos",
+      "Campañas de WhatsApp (envío masivo)",
+    ],
+    ctaLabel: "Empezar con Marca Propia",
+  },
+];
 
-  const listContainer: Variants = {
-    initial: {},
-    animate: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
-  };
-
-  const listItem: Variants = {
-    initial: { opacity: 0, x: -12 },
-    animate: { opacity: 1, x: 0, transition: tInFast },
-  };
-
-  const rowIn: Variants = {
-    initial: { opacity: 0, y: 14 },
-    animate: { opacity: 1, y: 0, transition: tInFast },
-  };
-
-  const CHECK = (
-    <svg
-      className="w-3.5 h-3.5"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={3}
-        d="M5 13l4 4L19 7"
-      />
-    </svg>
-  );
-
-  const INCLUDED_ALL = [
-    "Reservas y citas ilimitadas (24/7)",
-    "Panel administrativo y agenda visual",
-    "Gestión de servicios, empleados y clientes",
-    "Analíticas + comisiones / nómina por empleado",
-    "Horarios por empleado y por negocio (reserva online)",
+const EXTRA_FEATURES: Record<PlanKey, string[]> = {
+  basico: [
+    "Analíticas de negocio + comisiones / nómina por empleado",
     "Sistema de fidelidad para retener clientes",
-    "Branding en la plataforma (logo, nombre y colores)",
-  ];
+    "Branding personalizado (logo, nombre y colores)",
+    "Horarios por empleado y bloqueo de disponibilidad",
+    "Landing de bienvenida sencilla",
+  ],
+  esencial: [
+    "Analíticas de negocio + comisiones / nómina por empleado",
+    "Sistema de fidelidad para retener clientes",
+    "Branding personalizado (logo, nombre y colores)",
+    "Mensaje de agendamiento configurable",
+    "Mensajes de WhatsApp editables a tu gusto",
+    "Landing de bienvenida sencilla",
+  ],
+  marca: [
+    "Analíticas de negocio + comisiones / nómina por empleado",
+    "Sistema de fidelidad para retener clientes",
+    "Branding personalizado (logo, nombre y colores)",
+    "Mensaje de agendamiento configurable",
+    "Mensajes de WhatsApp editables a tu gusto",
+    "Landing de bienvenida profesional",
+    "Soporte prioritario + acompañamiento para dominio",
+  ],
+};
 
-  type PlanKey = "basico" | "esencial" | "marca";
+type CompRow = { label: string; hint?: string; values: Record<PlanKey, boolean | string> };
 
-  const COMPARISON_ROWS: Array<{
-    label: string;
-    hint?: string;
-    values: Record<PlanKey, boolean | string>;
-  }> = [
-    {
-      label: "Reservas y citas ilimitadas",
-      values: { basico: true, esencial: true, marca: true },
-    },
-    {
-      label: "Panel administrativo",
-      values: { basico: true, esencial: true, marca: true },
-    },
-    {
-      label: "Servicios, empleados y clientes",
-      values: { basico: true, esencial: true, marca: true },
-    },
-    {
-      label: "Analíticas + comisiones / nómina",
-      values: { basico: true, esencial: true, marca: true },
-    },
-    {
-      label: "Horarios por negocio y por empleado",
-      values: { basico: true, esencial: true, marca: true },
-    },
-    {
-      label: "Fidelidad + branding (logo, nombre, colores)",
-      values: { basico: true, esencial: true, marca: true },
-    },
-    {
-      label: "Landing de bienvenida",
-      values: {
-        basico: "Sencilla",
-        esencial: "Sencilla",
-        marca: "Profesional",
-      },
-    },
-    {
-      label: "Subdominio (tu-negocio.agenditapp.com)",
-      values: { basico: true, esencial: true, marca: false },
-    },
-    {
-      label: "Dominio propio (tumarca.com)",
-      values: { basico: false, esencial: false, marca: true },
-    },
-    {
-      label: "WhatsApp desde tu número",
-      hint: "Mensajes automáticos desde tu WhatsApp Business",
-      values: { basico: false, esencial: true, marca: true },
-    },
-    {
-      label: "Mensaje de agendamiento (configurable)",
-      values: { basico: false, esencial: true, marca: true },
-    },
-    {
-      label: "Recordatorios automáticos",
-      values: {
-        basico: false,
-        esencial: "1 recordatorio",
-        marca: "2 recordatorios",
-      },
-    },
-    {
-      label: "Mensajes editables",
-      values: { basico: false, esencial: true, marca: true },
-    },
-    {
-      label: "Enlace para confirmar/cancelar citas",
-      hint: "Tus clientes pueden confirmar o cancelar desde WhatsApp",
-      values: { basico: false, esencial: true, marca: true },
-    },
-    {
-      label: "Campañas de WhatsApp (envío masivo)",
-      values: { basico: false, esencial: false, marca: true },
-    },
-  ];
+const COMPARISON_GROUPS: Array<{ group: string; rows: CompRow[] }> = [
+  {
+    group: "Base — incluido en todos",
+    rows: [
+      { label: "Reservas y citas ilimitadas (24/7)", values: { basico: true, esencial: true, marca: true } },
+      { label: "Panel administrativo y agenda visual", values: { basico: true, esencial: true, marca: true } },
+      { label: "Servicios, empleados y clientes", values: { basico: true, esencial: true, marca: true } },
+      { label: "Analíticas + comisiones / nómina", values: { basico: true, esencial: true, marca: true } },
+      { label: "Fidelidad + branding personalizado", values: { basico: true, esencial: true, marca: true } },
+    ],
+  },
+  {
+    group: "Presencia web",
+    rows: [
+      { label: "Landing de bienvenida", values: { basico: "Sencilla", esencial: "Sencilla", marca: "Profesional" } },
+      { label: "Subdominio (tu-negocio.agenditapp.com)", values: { basico: true, esencial: true, marca: false } },
+      { label: "Dominio propio (tumarca.com)", values: { basico: false, esencial: false, marca: true } },
+    ],
+  },
+  {
+    group: "Automatización WhatsApp",
+    rows: [
+      { label: "WhatsApp desde tu número Business", hint: "Mensajes enviados desde tu propio número", values: { basico: false, esencial: true, marca: true } },
+      { label: "Mensaje de agendamiento configurable", values: { basico: false, esencial: true, marca: true } },
+      { label: "Recordatorios automáticos", values: { basico: false, esencial: "1 recordatorio", marca: "2 recordatorios" } },
+      { label: "Mensajes editables", values: { basico: false, esencial: true, marca: true } },
+      { label: "Enlace para confirmar / cancelar citas", hint: "El cliente confirma o cancela desde WhatsApp", values: { basico: false, esencial: true, marca: true } },
+      { label: "Campañas masivas de WhatsApp", values: { basico: false, esencial: false, marca: true } },
+    ],
+  },
+];
 
-  function ValueCell({ value }: { value: boolean | string }) {
-    if (typeof value === "boolean") {
-      return value ? (
-        <span className="inline-flex items-center gap-2">
-          <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300">
-            {CHECK}
-          </span>
-          <span className="text-sm text-slate-200">Sí</span>
-        </span>
-      ) : (
-        <span className="text-sm text-slate-500">—</span>
-      );
-    }
-    return <span className="text-sm text-slate-200">{value}</span>;
+// ─── Animations ───────────────────────────────────────────
+const fadeInUp: Variants = {
+  initial: { opacity: 0, y: 28 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.7, ease: easeOut } },
+};
+const stagger: Variants = {
+  initial: {},
+  animate: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
+};
+const cardIn: Variants = {
+  initial: { opacity: 0, y: 24, scale: 0.98 },
+  animate: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.55, ease: easeOut } },
+};
+const expandVariants = {
+  collapsed: { height: 0, opacity: 0 },
+  expanded: { height: "auto", opacity: 1, transition: { duration: 0.35, ease: easeOut } },
+};
+
+// ─── Sub-components ───────────────────────────────────────
+function ValueCell({ value }: { value: boolean | string }) {
+  if (typeof value === "boolean") {
+    return value ? (
+      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full text-brand"
+        style={{ background: "color-mix(in srgb, var(--brand) 12%, transparent)" }}>
+        <IconCheck />
+      </span>
+    ) : (
+      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full text-muted"
+        style={{ background: "color-mix(in srgb, var(--text-muted) 8%, transparent)" }}>
+        <IconMinus />
+      </span>
+    );
   }
+  return <span className="text-xs font-medium text-brand whitespace-nowrap">{value}</span>;
+}
+
+function PlanCard({ plan }: { plan: typeof PLANS[number] }) {
+  const [expanded, setExpanded] = useState(false);
+  const extras = EXTRA_FEATURES[plan.key];
 
   return (
-    <section id="membresía" className="px-6 py-16 max-w-6xl mx-auto">
-      {/* Encabezado */}
-      <motion.div
-        variants={fadeInUp}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true, amount: 0.4 }}
-        className="max-w-3xl"
-      >
-        <span className="inline-flex items-center rounded-full border border-sky-500/30 bg-sky-500/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-300 mb-3">
-          Planes y precios
-        </span>
+    <motion.div
+      variants={cardIn}
+      className={`relative flex flex-col rounded-[20px] border bg-bg-card overflow-hidden transition-shadow duration-300 ${
+        plan.featured
+          ? "border-brand shadow-[0_0_0_1px_var(--brand),0_20px_48px_color-mix(in_srgb,var(--brand)_20%,transparent)]"
+          : "border-brand/12 shadow-[var(--shadow-card)]"
+      }`}
+    >
+      {/* Featured ribbon */}
+      {plan.featured && (
+        <div className="absolute top-0 left-0 right-0 h-1 rounded-t-[20px]"
+          style={{ background: "var(--brand)" }} />
+      )}
 
-        <h2 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
-          Membresía simple,{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-500">
-            resultados reales
+      <div className="p-6 flex flex-col flex-1">
+        {/* Header */}
+        <div className="flex items-start justify-between gap-3 mb-4">
+          <h3 className="text-lg font-semibold text-heading">{plan.name}</h3>
+          <span className="flex-shrink-0 px-2.5 py-1 rounded-full text-[11px] font-semibold"
+            style={plan.badgeStyle}>
+            {plan.badge}
           </span>
-        </h2>
+        </div>
 
-        <p className="mt-3 text-lg text-slate-300">
-          Agenda online, automatiza WhatsApp y controla tu negocio sin enredos.
-          Sin permanencia, sin costos ocultos.
-        </p>
+        {/* Price */}
+        <div className="flex items-baseline gap-1.5 mb-1">
+          <span className="text-3xl font-bold text-heading">{plan.price}</span>
+          <span className="text-sm text-muted">/ mes</span>
+        </div>
+        <p className="text-xs text-muted mb-5">Sin permanencia · Cancela cuando quieras</p>
 
-        {/* Mini trust bar */}
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
-          {[
-            { t: "Reservas 24/7", d: "Tus clientes reservan solos" },
-            { t: "Todo centralizado", d: "Agenda, clientes, servicios" },
-            { t: "Menos ausencias", d: "Recordatorios automáticos" },
-          ].map((b) => (
-            <div
-              key={b.t}
-              className="rounded-2xl border border-white/10 bg-slate-900/40 p-4"
-            >
-              <p className="text-white font-semibold">{b.t}</p>
-              <p className="text-slate-400 text-sm">{b.d}</p>
-            </div>
+        {/* Tagline */}
+        <p className="text-sm text-body mb-5 leading-relaxed">{plan.tagline}</p>
+
+        {/* Key highlights */}
+        <ul className="flex flex-col gap-2.5 mb-5">
+          {plan.highlights.map((h) => (
+            <li key={h} className="flex items-start gap-2.5 text-sm text-body">
+              <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center text-brand"
+                style={{ background: "color-mix(in srgb, var(--brand) 12%, transparent)" }}>
+                <IconCheck className="w-2.5 h-2.5" />
+              </span>
+              {h}
+            </li>
           ))}
-        </div>
-      </motion.div>
+        </ul>
 
-      {/* Grid de planes (resumen) */}
-      <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {/* Plan Básico */}
-        <motion.div
-          className="p-6 rounded-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-sm"
-          variants={cardIn}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, amount: 0.3 }}
-          whileHover={{ y: -3, boxShadow: "0 18px 50px rgba(15,23,42,0.75)" }}
-          transition={tIn}
+        {/* Expand toggle */}
+        <button
+          onClick={() => setExpanded((v) => !v)}
+          className="flex items-center gap-1.5 text-xs font-medium text-brand hover:text-brand-hover transition-colors mb-4 w-fit"
         >
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <h3 className="text-xl font-bold text-white">Plan Básico</h3>
-              <p className="mt-1 text-sm text-slate-400">
-                Para ordenar tu agenda y empezar a recibir reservas online.
-              </p>
-            </div>
-            <span className="inline-flex items-center rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-emerald-200">
-              Empezar
-            </span>
-          </div>
+          <IconChevron open={expanded} />
+          {expanded ? "Ocultar características" : "Ver más características"}
+        </button>
 
-          <div className="mt-4 flex items-baseline gap-1">
-            <span className="text-3xl font-extrabold text-white">$10 USD</span>
-            <span className="text-slate-400 text-sm">/ mes</span>
-          </div>
-          <p className="text-xs text-slate-500 mt-1">
-            Mes a mes · Cancela cuando quieras
-          </p>
-
-          <div className="mt-4 rounded-xl bg-slate-900/70 border border-slate-700/70 px-4 py-3 text-xs sm:text-sm text-slate-300">
-            <p>
-              Incluye <b>subdominio</b> + <b>landing sencilla</b>:
-              <br />
-              <span className="font-mono text-sky-300">
-                tu-negocio.agenditapp.com
-              </span>
-            </p>
-          </div>
-
-          <motion.ul
-            className="mt-5 grid gap-2 text-sm text-slate-200"
-            variants={listContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            {[
-              "Reservas ilimitadas + panel administrativo",
-              "Gestión de servicios, empleados y clientes",
-              "Analíticas + comisiones / nómina",
-              "Fidelidad + branding de tu marca",
-            ].map((txt) => (
-              <motion.li
-                key={txt}
-                variants={listItem}
-                className="flex items-start gap-2"
-              >
-                <span className="mt-1 inline-block h-2 w-2 rounded-full bg-emerald-400" />
-                <span>{txt}</span>
-              </motion.li>
-            ))}
-          </motion.ul>
-
-          <div className="mt-6">
-            <motion.span
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-block"
+        {/* Expanded features */}
+        <AnimatePresence initial={false}>
+          {expanded && (
+            <motion.div
+              key="extras"
+              variants={expandVariants}
+              initial="collapsed"
+              animate="expanded"
+              exit="collapsed"
+              className="overflow-hidden"
             >
-              <DemoCtaButton
-                className="w-full px-5 py-3 rounded-xl bg-emerald-500 text-white font-bold inline-block shadow-md text-sm text-center cursor-pointer"
-              >
-                Quiero el plan de $10 USD
-              </DemoCtaButton>
-            </motion.span>
-            <p className="text-xs text-slate-500 mt-3">
-              Ideal si estás empezando o quieres orden sin complicarte.
-            </p>
-          </div>
-        </motion.div>
+              <ul className="flex flex-col gap-2 mb-5 pt-1 border-t border-brand/10">
+                {extras.map((e) => (
+                  <li key={e} className="flex items-start gap-2.5 text-sm text-muted pt-2">
+                    <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center text-brand/60"
+                      style={{ background: "color-mix(in srgb, var(--brand) 7%, transparent)" }}>
+                      <IconCheck className="w-2.5 h-2.5" />
+                    </span>
+                    {e}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-        {/* Plan Esencial */}
-        <motion.div
-          className="p-6 rounded-2xl border border-slate-800 bg-slate-900/40 backdrop-blur-sm"
-          variants={cardIn}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, amount: 0.3 }}
-          whileHover={{ y: -3, boxShadow: "0 18px 50px rgba(15,23,42,0.75)" }}
-          transition={tIn}
+        {/* Spacer to push CTA down */}
+        <div className="flex-1" />
+
+        {/* CTA */}
+        <DemoCtaButton
+          className={`w-full px-5 py-3 rounded-[12px] text-sm font-semibold text-center cursor-pointer transition-all duration-200 ${
+            plan.featured
+              ? "bg-brand text-white hover:bg-brand-hover shadow-md"
+              : "border border-brand/25 text-brand hover:bg-brand/6"
+          }`}
         >
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <h3 className="text-xl font-bold text-white">Plan Esencial</h3>
-              <p className="mt-1 text-sm text-slate-400">
-                Automatiza WhatsApp y reduce ausencias con recordatorio.
-              </p>
-            </div>
-            <span className="inline-flex items-center rounded-full border border-sky-500/40 bg-sky-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-sky-200">
-              Más elegido
-            </span>
-          </div>
-
-          <div className="mt-4 flex items-baseline gap-1">
-            <span className="text-3xl font-extrabold text-white">$20 USD</span>
-            <span className="text-slate-400 text-sm">/ mes</span>
-          </div>
-          <p className="text-xs text-slate-500 mt-1">
-            Mes a mes · Sin permanencia
-          </p>
-
-          <div className="mt-4 rounded-xl bg-slate-900/70 border border-slate-700/70 px-4 py-3 text-xs sm:text-sm text-slate-300">
-            <p>
-              Incluye <b>subdominio</b> + <b>landing sencilla</b> y
-              automatización:
-              <br />
-              <span className="font-mono text-sky-300">
-                tu-negocio.agenditapp.com
-              </span>
-            </p>
-          </div>
-
-          <motion.ul
-            className="mt-5 grid gap-2 text-sm text-slate-200"
-            variants={listContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            {[
-              "Todo lo del Básico",
-              "WhatsApp desde tu número (Business)",
-              "Mensaje de agendamiento configurable",
-              "1 recordatorio automático (horario configurable)",
-              "Enlace para confirmar/cancelar citas",
-              "Mensajes editables a tu gusto",
-            ].map((txt) => (
-              <motion.li
-                key={txt}
-                variants={listItem}
-                className="flex items-start gap-2"
-              >
-                <span className="mt-1 inline-block h-2 w-2 rounded-full bg-sky-300" />
-                <span>{txt}</span>
-              </motion.li>
-            ))}
-          </motion.ul>
-
-          <div className="mt-6">
-            <motion.span
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-block"
-            >
-              <DemoCtaButton
-                className="w-full px-5 py-3 rounded-xl bg-sky-400 text-black font-bold inline-block shadow-md text-sm text-center cursor-pointer"
-              >
-                Quiero el plan de $20 USD
-              </DemoCtaButton>
-            </motion.span>
-            <p className="text-xs text-slate-500 mt-3">
-              Ideal si manejas muchas citas y quieres ahorrar tiempo.
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Plan Marca Propia */}
-        <motion.div
-          className="p-6 rounded-2xl border border-slate-700 bg-slate-900/60 backdrop-blur-sm relative overflow-hidden"
-          variants={cardIn}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, amount: 0.3 }}
-          whileHover={{ y: -3, boxShadow: "0 20px 55px rgba(15,23,42,0.85)" }}
-          transition={tIn}
-        >
-          <div className="pointer-events-none absolute -top-16 -right-16 h-40 w-40 rounded-full bg-sky-500/20 blur-3xl" />
-
-          <div className="flex items-start justify-between gap-3 relative">
-            <div>
-              <h3 className="text-xl font-bold text-white">
-                Marca Propia (Dominio)
-              </h3>
-              <p className="mt-1 text-sm text-slate-400">
-                Presencia digital con tu dominio + campañas masivas por
-                WhatsApp.
-              </p>
-            </div>
-            <span className="inline-flex items-center rounded-full border border-amber-400/60 bg-amber-400/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-amber-200">
-              Pro
-            </span>
-          </div>
-
-          <div className="mt-4 flex items-baseline gap-1">
-            <span className="text-3xl font-extrabold text-white">$30 USD</span>
-            <span className="text-slate-400 text-sm">/ mes</span>
-          </div>
-          <p className="text-xs text-slate-500 mt-1">
-            Más marca, más confianza, más reservas
-          </p>
-
-          <div className="mt-4 rounded-xl bg-slate-900/70 border border-slate-600/80 px-4 py-3 text-xs sm:text-sm text-slate-300">
-            <p>
-              Incluye tu <b>dominio propio</b>:
-              <br />
-              <span className="font-mono text-sky-300">tumarca.com</span> /{" "}
-              <span className="font-mono text-sky-300">tumarca.com.co</span>
-            </p>
-            <ul className="mt-2 space-y-1 text-xs sm:text-sm text-slate-300">
-              <li>• Mayor confianza al reservar</li>
-              <li>• Tu marca se ve más profesional</li>
-              <li>• Mejor presencia para redes y Google</li>
-            </ul>
-          </div>
-
-          <motion.ul
-            className="mt-5 grid gap-2 text-sm text-slate-200"
-            variants={listContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            {[
-              "Todo lo del Esencial",
-              "Landing más profesional",
-              "2 recordatorios automáticos (horas configurables)",
-              "Enlace para confirmar/cancelar citas",
-              "Campañas de WhatsApp (envíos masivos)",
-              "Soporte prioritario + acompañamiento para dominio",
-            ].map((txt) => (
-              <motion.li
-                key={txt}
-                variants={listItem}
-                className="flex items-start gap-2"
-              >
-                <span className="mt-1 inline-block h-2 w-2 rounded-full bg-amber-300" />
-                <span>{txt}</span>
-              </motion.li>
-            ))}
-          </motion.ul>
-
-          <div className="mt-6 relative">
-            <motion.span
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-block"
-            >
-              <DemoCtaButton
-                className="w-full px-5 py-3 rounded-xl bg-slate-50 text-slate-900 font-bold inline-block shadow-md text-sm text-center cursor-pointer"
-              >
-                Quiero el plan de $30 USD
-              </DemoCtaButton>
-            </motion.span>
-            <p className="text-xs text-slate-500 mt-3">
-              Ideal si quieres marca propia y crecimiento constante.
-            </p>
-          </div>
-        </motion.div>
+          {plan.ctaLabel}
+        </DemoCtaButton>
       </div>
+    </motion.div>
+  );
+}
 
-      {/* Nota inferior */}
-      <motion.p
-        className="mt-6 text-sm text-slate-400"
-        variants={fadeInUp}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true, amount: 0.4 }}
-      >
-        Todos los planes incluyen acceso completo a la plataforma. Puedes
-        cambiar de plan cuando quieras.
-      </motion.p>
+// ─── Main component ────────────────────────────────────────
+export default function Precio() {
+  return (
+    <section id="membresia" className="py-20">
+      <div className="max-w-6xl mx-auto px-6">
 
-      {/* Mini comparativa (responsive) */}
-      <motion.div
-        className="mt-12"
-        variants={fadeInUp}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true, amount: 0.25 }}
-      >
-        <div className="flex items-end justify-between gap-4 flex-wrap">
-          <div>
-            <h3 className="text-xl md:text-2xl font-extrabold text-white">
-              Comparar planes
-            </h3>
-            <p className="text-slate-300 mt-2">
-              Diferencias claras: WhatsApp, recordatorios, dominio y campañas.
-            </p>
+        {/* ── Header ── */}
+        <motion.div
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.3 }}
+          className="text-center max-w-2xl mx-auto mb-14"
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/8 border border-brand/20 text-brand text-[11px] font-semibold tracking-wider uppercase mb-4">
+            Planes y precios
+          </span>
+          <h2 className="text-3xl md:text-4xl font-semibold text-heading tracking-tight leading-tight">
+            Planes diseñados para{" "}
+            <span className="text-brand">escalar a tu ritmo</span>
+          </h2>
+          <p className="mt-4 text-base text-body leading-relaxed">
+            Elige la opción que mejor se adapte a la etapa actual de tu operación.
+            Precios transparentes, sin comisiones ocultas por reserva y con la
+            libertad de cambiar de plan a medida que tu negocio y tu equipo sigan creciendo.
+          </p>
+        </motion.div>
+
+        {/* ── Plan cards ── */}
+        <motion.div
+          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+          variants={stagger}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          {PLANS.map((plan) => (
+            <PlanCard key={plan.key} plan={plan} />
+          ))}
+        </motion.div>
+
+        <motion.p
+          className="mt-5 text-center text-sm text-muted"
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.5 }}
+        >
+          Todos los planes incluyen acceso completo a la plataforma desde el primer día.
+        </motion.p>
+
+        {/* ── Comparison table ── */}
+        <motion.div
+          className="mt-16"
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          {/* Table header */}
+          <div className="flex items-end justify-between gap-4 flex-wrap mb-8">
+            <div>
+              <h3 className="text-2xl font-semibold text-heading">Comparar planes</h3>
+              <p className="text-body mt-1 text-sm">Revisa en detalle qué incluye cada plan.</p>
+            </div>
+            <DemoCtaButton className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] border border-brand/25 text-brand text-sm font-medium hover:bg-brand/6 transition-colors cursor-pointer">
+              Ayúdame a elegir
+            </DemoCtaButton>
           </div>
 
-          <DemoCtaButton
-            className="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-sky-500/30 bg-sky-500/10 text-sky-200 font-semibold text-sm hover:bg-sky-500/15 transition-colors cursor-pointer"
-          >
-            Ayúdame a elegir
-          </DemoCtaButton>
-        </div>
+          {/* Desktop table */}
+          <div className="hidden lg:block rounded-[20px] border border-brand/12 overflow-hidden"
+            style={{ boxShadow: "var(--shadow-card)" }}>
 
-        {/* Desktop: tabla ligera */}
-        <div className="hidden lg:block mt-6">
-          <div className="rounded-3xl border border-white/10 bg-slate-900/40 overflow-hidden">
-            <div className="grid grid-cols-12 bg-slate-950/40 border-b border-white/10">
-              <div className="col-span-5 p-5">
-                <p className="text-sm text-slate-400">Funcionalidad</p>
+            {/* Sticky column headers */}
+            <div className="grid grid-cols-[2fr_1fr_1fr_1fr] bg-bg-card border-b border-brand/10">
+              <div className="px-6 py-4">
+                <p className="text-xs font-semibold text-muted uppercase tracking-wider">Funcionalidad</p>
               </div>
-              <div className="col-span-7 grid grid-cols-3">
-                {[
-                  {
-                    name: "Básico",
-                    price: "$10",
-                    pill: "border-emerald-500/40 bg-emerald-500/10 text-emerald-200",
-                  },
-                  {
-                    name: "Esencial",
-                    price: "$20",
-                    pill: "border-sky-500/40 bg-sky-500/10 text-sky-200",
-                  },
-                  {
-                    name: "Marca Propia",
-                    price: "$30",
-                    pill: "border-amber-400/60 bg-amber-400/15 text-amber-200",
-                  },
-                ].map((p) => (
-                  <div key={p.name} className="p-5 border-l border-white/10">
-                    <div className="flex items-center justify-between">
-                      <p className="text-white font-bold">{p.name}</p>
-                      <span
-                        className={`text-[10px] uppercase tracking-wide px-2 py-1 rounded-full border ${p.pill}`}
-                      >
-                        {p.price} USD
-                      </span>
+              {PLANS.map((p) => (
+                <div key={p.key}
+                  className={`px-4 py-4 border-l border-brand/10 ${p.featured ? "bg-brand/4" : ""}`}>
+                  <p className="text-sm font-semibold text-heading">{p.name}</p>
+                  <p className="text-lg font-bold text-brand mt-0.5">{p.price}</p>
+                  <p className="text-[11px] text-muted">/ mes</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Grouped rows */}
+            {COMPARISON_GROUPS.map((group, gi) => (
+              <div key={gi}>
+                {/* Group label */}
+                <div className="grid grid-cols-[2fr_1fr_1fr_1fr]"
+                  style={{ background: "color-mix(in srgb, var(--brand) 4%, var(--bg-main))" }}>
+                  <div className="col-span-4 px-6 py-2.5 border-t border-brand/10">
+                    <p className="text-[11px] font-bold text-brand uppercase tracking-wider">{group.group}</p>
+                  </div>
+                </div>
+
+                {/* Feature rows */}
+                {group.rows.map((row, ri) => (
+                  <div key={ri}
+                    className="grid grid-cols-[2fr_1fr_1fr_1fr] border-t border-brand/8 hover:bg-brand/2 transition-colors">
+                    <div className="px-6 py-3.5">
+                      <p className="text-sm text-heading">{row.label}</p>
+                      {row.hint && <p className="text-xs text-muted mt-0.5">{row.hint}</p>}
                     </div>
-                    <p className="text-slate-400 text-sm mt-1">/ mes</p>
+                    {PLANS.map((p) => (
+                      <div key={p.key}
+                        className={`px-4 py-3.5 border-l border-brand/8 flex items-center ${p.featured ? "bg-brand/3" : ""}`}>
+                        <ValueCell value={row.values[p.key]} />
+                      </div>
+                    ))}
                   </div>
                 ))}
               </div>
-            </div>
+            ))}
 
-            <div className="divide-y divide-white/10">
-              {COMPARISON_ROWS.map((row) => (
-                <motion.div
-                  key={row.label}
-                  variants={rowIn}
-                  initial="initial"
-                  whileInView="animate"
-                  viewport={{ once: true, amount: 0.2 }}
-                  className="grid grid-cols-12"
-                >
-                  <div className="col-span-5 p-5">
-                    <p className="text-white font-medium">{row.label}</p>
-                    {row.hint ? (
-                      <p className="text-slate-400 text-sm mt-1">{row.hint}</p>
-                    ) : null}
-                  </div>
-
-                  <div className="col-span-7 grid grid-cols-3">
-                    <div className="p-5 border-l border-white/10">
-                      <ValueCell value={row.values.basico} />
-                    </div>
-                    <div className="p-5 border-l border-white/10">
-                      <ValueCell value={row.values.esencial} />
-                    </div>
-                    <div className="p-5 border-l border-white/10">
-                      <ValueCell value={row.values.marca} />
-                    </div>
-                  </div>
-                </motion.div>
+            {/* CTA row */}
+            <div className="grid grid-cols-[2fr_1fr_1fr_1fr] border-t border-brand/10 bg-bg-card">
+              <div className="px-6 py-5" />
+              {PLANS.map((p) => (
+                <div key={p.key}
+                  className={`px-4 py-5 border-l border-brand/10 ${p.featured ? "bg-brand/4" : ""}`}>
+                  <DemoCtaButton
+                    className={`w-full px-3 py-2.5 rounded-[10px] text-xs font-semibold text-center cursor-pointer transition-all ${
+                      p.featured
+                        ? "bg-brand text-white hover:bg-brand-hover"
+                        : "border border-brand/25 text-brand hover:bg-brand/6"
+                    }`}
+                  >
+                    {p.price} / mes
+                  </DemoCtaButton>
+                </div>
               ))}
             </div>
           </div>
 
-          <p className="text-sm text-slate-400 mt-4 text-center">
-            Tip: si quieres reducir ausencias → Esencial. Si quieres marca y
-            crecer con campañas → Marca Propia.
-          </p>
-        </div>
-
-        {/* Mobile/Tablet: acordeón simple por plan */}
-        <div className="lg:hidden mt-6 grid gap-4">
-          {[
-            {
-              k: "basico" as const,
-              title: "Básico",
-              price: "$10 USD / mes",
-              border: "border-emerald-500/25",
-              badge: "Empezar",
-              badgeClass:
-                "border-emerald-500/40 bg-emerald-500/10 text-emerald-200",
-            },
-            {
-              k: "esencial" as const,
-              title: "Esencial",
-              price: "$20 USD / mes",
-              border: "border-sky-500/25",
-              badge: "Más elegido",
-              badgeClass: "border-sky-500/40 bg-sky-500/10 text-sky-200",
-            },
-            {
-              k: "marca" as const,
-              title: "Marca Propia",
-              price: "$30 USD / mes",
-              border: "border-amber-400/25",
-              badge: "Pro",
-              badgeClass: "border-amber-400/60 bg-amber-400/15 text-amber-200",
-            },
-          ].map((p) => (
-            <details
-              key={p.title}
-              className={`rounded-2xl border ${p.border} bg-slate-900/40 p-5`}
-            >
-              <summary className="cursor-pointer list-none flex items-center justify-between gap-4">
-                <div>
-                  <p className="text-white font-bold text-lg">{p.title}</p>
-                  <p className="text-slate-400 text-sm">{p.price}</p>
-                </div>
-                <span
-                  className={`text-[10px] uppercase tracking-wide px-2 py-1 rounded-full border ${p.badgeClass}`}
-                >
-                  {p.badge}
-                </span>
-              </summary>
-
-              <div className="mt-4 border-t border-white/10 pt-4">
-                <ul className="space-y-3">
-                  {COMPARISON_ROWS.filter((r) => {
-                    const v = r.values[p.k];
-                    return typeof v === "boolean" ? v : Boolean(v);
-                  }).map((r) => (
-                    <li key={r.label} className="flex items-start gap-3">
-                      <span className="mt-1 inline-flex items-center justify-center w-6 h-6 rounded-full bg-slate-800 border border-white/10 text-sky-200">
-                        {CHECK}
-                      </span>
-                      <div>
-                        <p className="text-slate-200 text-sm">{r.label}</p>
-                        {typeof r.values[p.k] === "string" ? (
-                          <p className="text-slate-400 text-xs mt-0.5">
-                            {r.values[p.k] as string}
-                          </p>
-                        ) : null}
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-
-                <DemoCtaButton
-                  className="mt-5 block w-full text-center px-5 py-3 rounded-xl bg-slate-50 text-slate-900 font-bold shadow-md text-sm cursor-pointer"
-                >
-                  Pedir este plan
-                </DemoCtaButton>
-              </div>
-            </details>
-          ))}
-        </div>
-
-        {/* Incluye en todos (compacto) */}
-        <div className="mt-10 rounded-3xl border border-white/10 bg-slate-900/35 p-6">
-          <p className="text-white font-bold text-lg">
-            Incluido en todos los planes
-          </p>
-          <p className="text-slate-400 text-sm mt-1">
-            Lo esencial para operar y controlar tu negocio, desde el día 1.
-          </p>
-
-          <motion.ul
-            className="mt-5 grid gap-3 sm:grid-cols-2"
-            variants={listContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            {INCLUDED_ALL.map((txt) => (
-              <motion.li
-                key={txt}
-                variants={listItem}
-                className="flex items-start gap-3"
-              >
-                <span className="mt-1 inline-flex items-center justify-center w-6 h-6 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-200">
-                  {CHECK}
-                </span>
-                <span className="text-slate-200 text-sm">{txt}</span>
-              </motion.li>
+          {/* Mobile: accordion per plan */}
+          <div className="lg:hidden flex flex-col gap-4">
+            {PLANS.map((plan) => (
+              <MobileCompare key={plan.key} plan={plan} groups={COMPARISON_GROUPS} />
             ))}
-          </motion.ul>
-        </div>
-      </motion.div>
+          </div>
+
+          {/* Tip */}
+          <p className="mt-6 text-center text-sm text-muted">
+            <span className="font-medium text-body">¿No sabes cuál elegir?</span>{" "}
+            Si quieres reducir ausencias → Esencial. Si quieres crecer con campañas → Marca Propia.
+          </p>
+        </motion.div>
+
+        {/* ── Included in all plans ── */}
+        <motion.div
+          className="mt-12 rounded-[20px] border border-brand/12 bg-bg-card p-6 md:p-8"
+          style={{ boxShadow: "var(--shadow-card)" }}
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <div className="flex items-start gap-3 mb-6">
+            <div className="w-8 h-8 rounded-[8px] flex items-center justify-center text-brand flex-shrink-0"
+              style={{ background: "color-mix(in srgb, var(--brand) 10%, transparent)" }}>
+              <IconCheck className="w-4 h-4" />
+            </div>
+            <div>
+              <p className="font-semibold text-heading">Incluido en todos los planes</p>
+              <p className="text-sm text-muted mt-0.5">Lo esencial para operar y controlar tu negocio desde el día 1.</p>
+            </div>
+          </div>
+          <ul className="grid gap-2.5 sm:grid-cols-2">
+            {[
+              "Reservas y citas ilimitadas (24/7)",
+              "Panel administrativo y agenda visual",
+              "Gestión de servicios, empleados y clientes",
+              "Analíticas + comisiones / nómina por empleado",
+              "Horarios por empleado y por negocio",
+              "Sistema de fidelidad para retener clientes",
+              "Branding (logo, nombre y colores)",
+            ].map((txt) => (
+              <li key={txt} className="flex items-start gap-2.5 text-sm text-body">
+                <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center text-brand"
+                  style={{ background: "color-mix(in srgb, var(--brand) 12%, transparent)" }}>
+                  <IconCheck className="w-2.5 h-2.5" />
+                </span>
+                {txt}
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+      </div>
     </section>
+  );
+}
+
+// ─── Mobile compare accordion ─────────────────────────────
+function MobileCompare({
+  plan,
+  groups,
+}: {
+  plan: typeof PLANS[number];
+  groups: typeof COMPARISON_GROUPS;
+}) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className={`rounded-[16px] border bg-bg-card overflow-hidden ${
+      plan.featured ? "border-brand" : "border-brand/12"
+    }`} style={{ boxShadow: "var(--shadow-card)" }}>
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
+      >
+        <div>
+          <div className="flex items-center gap-2">
+            <p className="font-semibold text-heading">{plan.name}</p>
+            <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold" style={plan.badgeStyle}>
+              {plan.badge}
+            </span>
+          </div>
+          <p className="text-brand font-bold text-lg mt-0.5">{plan.price} <span className="text-muted text-xs font-normal">/ mes</span></p>
+        </div>
+        <span className="text-muted"><IconChevron open={open} /></span>
+      </button>
+
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            variants={expandVariants}
+            initial="collapsed"
+            animate="expanded"
+            exit="collapsed"
+            className="overflow-hidden"
+          >
+            <div className="border-t border-brand/10 px-5 pb-5 pt-4 flex flex-col gap-5">
+              {groups.map((group, gi) => (
+                <div key={gi}>
+                  <p className="text-[10px] font-bold text-brand uppercase tracking-wider mb-2">{group.group}</p>
+                  <ul className="flex flex-col gap-2">
+                    {group.rows.map((row, ri) => {
+                      const val = row.values[plan.key];
+                      return (
+                        <li key={ri} className="flex items-center justify-between gap-3 text-sm">
+                          <span className="text-body">{row.label}</span>
+                          <span className="flex-shrink-0"><ValueCell value={val} /></span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ))}
+
+              <DemoCtaButton
+                className={`w-full px-5 py-3 rounded-[12px] text-sm font-semibold text-center cursor-pointer mt-2 ${
+                  plan.featured
+                    ? "bg-brand text-white hover:bg-brand-hover"
+                    : "border border-brand/25 text-brand hover:bg-brand/6"
+                }`}
+              >
+                {plan.ctaLabel}
+              </DemoCtaButton>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }

@@ -43,13 +43,9 @@ export function SelectorPais({ value, onChange }: SelectorPaisProps) {
     [onChange]
   );
 
-  // Cierra al hacer click fuera
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
-      if (
-        contenedorRef.current &&
-        !contenedorRef.current.contains(e.target as Node)
-      ) {
+      if (contenedorRef.current && !contenedorRef.current.contains(e.target as Node)) {
         setAbierto(false);
         setBusqueda("");
       }
@@ -58,17 +54,13 @@ export function SelectorPais({ value, onChange }: SelectorPaisProps) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Hace scroll al item activo en la lista
   useEffect(() => {
     if (!abierto) return;
     const item = listaRef.current?.children[indiceActivo] as HTMLElement;
     item?.scrollIntoView({ block: "nearest" });
   }, [indiceActivo, abierto]);
 
-  // Resetea el índice activo al filtrar
-  useEffect(() => {
-    setIndiceActivo(0);
-  }, [busqueda]);
+  useEffect(() => { setIndiceActivo(0); }, [busqueda]);
 
   function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
     if (!abierto) {
@@ -97,86 +89,85 @@ export function SelectorPais({ value, onChange }: SelectorPaisProps) {
   }
 
   return (
-    <div ref={contenedorRef} className="relative">
-      {/* Input / trigger */}
-      <div
-        className={`flex items-center gap-2 rounded-xl bg-slate-900 border px-3 py-2 text-sm cursor-text transition-colors ${
-          abierto
-            ? "border-sky-400 ring-1 ring-sky-400"
-            : "border-slate-700 hover:border-slate-500"
-        }`}
+    <div ref={contenedorRef} className="relative flex-shrink-0">
+      {/* Trigger — compacto: bandera + dial code */}
+      <button
+        type="button"
         onClick={() => {
-          setAbierto(true);
-          inputRef.current?.focus();
+          setAbierto((v) => !v);
+          if (!abierto) setTimeout(() => inputRef.current?.focus(), 50);
         }}
+        aria-haspopup="listbox"
+        aria-expanded={abierto}
+        className={`flex items-center gap-1.5 rounded-[10px] border bg-bg-main px-3 py-2.5 text-sm font-medium transition-all whitespace-nowrap ${
+          abierto
+            ? "border-brand ring-2 ring-brand/15 text-heading"
+            : "border-brand/20 hover:border-brand/40 text-heading"
+        }`}
       >
-        {/* Bandera del país seleccionado */}
-        <span className="text-base leading-none select-none">
-          {seleccionado.bandera}
-        </span>
-
-        <input
-          ref={inputRef}
-          type="text"
-          value={busqueda}
-          onChange={(e) => {
-            setBusqueda(e.target.value);
-            setAbierto(true);
-          }}
-          onFocus={() => setAbierto(true)}
-          onKeyDown={handleKeyDown}
-          placeholder={`${seleccionado.nombre} (${seleccionado.dial})`}
-          className="flex-1 min-w-0 bg-transparent text-slate-100 placeholder:text-slate-400 focus:outline-none w-40"
-          autoComplete="off"
-          aria-autocomplete="list"
-          aria-expanded={abierto}
-          aria-haspopup="listbox"
-          role="combobox"
-        />
-
-        {/* Chevron */}
-        <span
-          className={`text-slate-400 text-xs transition-transform duration-150 ${abierto ? "rotate-180" : ""}`}
+        <span className="text-base leading-none select-none">{seleccionado.bandera}</span>
+        <span className="text-sm">{seleccionado.dial}</span>
+        <svg
+          className={`w-3 h-3 text-muted transition-transform duration-150 ${abierto ? "rotate-180" : ""}`}
+          fill="none" viewBox="0 0 12 12" stroke="currentColor"
         >
-          ▾
-        </span>
-      </div>
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2 4l4 4 4-4" />
+        </svg>
+      </button>
 
       {/* Dropdown */}
       {abierto && (
-        <ul
-          ref={listaRef}
-          role="listbox"
-          className="absolute z-50 mt-1 w-full min-w-[16rem] max-h-60 overflow-y-auto rounded-xl border border-slate-700 bg-slate-900 shadow-xl py-1 text-sm"
+        <div
+          className="absolute z-50 mt-1 left-0 w-64 rounded-[12px] border border-brand/15 bg-bg-card shadow-xl overflow-hidden"
+          style={{ boxShadow: "0 12px 40px rgba(0,0,0,0.12)" }}
         >
-          {filtrados.length === 0 ? (
-            <li className="px-3 py-2 text-slate-500 text-xs">
-              Sin resultados para &ldquo;{busqueda}&rdquo;
-            </li>
-          ) : (
-            filtrados.map((p, idx) => (
-              <li
-                key={p.codigo}
-                role="option"
-                aria-selected={p.codigo === value}
-                onMouseDown={(e) => {
-                  e.preventDefault(); // evita que el input pierda foco antes de seleccionar
-                  seleccionar(p);
-                }}
-                onMouseEnter={() => setIndiceActivo(idx)}
-                className={`flex items-center gap-2 px-3 py-2 cursor-pointer select-none transition-colors ${
-                  idx === indiceActivo
-                    ? "bg-sky-500/20 text-sky-300"
-                    : "text-slate-200 hover:bg-slate-800"
-                } ${p.codigo === value ? "font-semibold" : ""}`}
-              >
-                <span className="text-base leading-none">{p.bandera}</span>
-                <span className="flex-1 truncate">{p.nombre}</span>
-                <span className="text-slate-500 text-xs shrink-0">{p.dial}</span>
+          {/* Search input inside dropdown */}
+          <div className="p-2 border-b border-brand/10">
+            <input
+              ref={inputRef}
+              type="text"
+              value={busqueda}
+              onChange={(e) => { setBusqueda(e.target.value); }}
+              onKeyDown={handleKeyDown}
+              placeholder="Buscar país o código..."
+              className="w-full rounded-[8px] bg-bg-main border border-brand/15 px-3 py-2 text-sm text-heading placeholder:text-muted focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/15 transition-all"
+              autoComplete="off"
+              aria-autocomplete="list"
+              role="combobox"
+            />
+          </div>
+
+          <ul
+            ref={listaRef}
+            role="listbox"
+            className="max-h-52 overflow-y-auto py-1 text-sm"
+          >
+            {filtrados.length === 0 ? (
+              <li className="px-3 py-2.5 text-muted text-xs">
+                Sin resultados para &ldquo;{busqueda}&rdquo;
               </li>
-            ))
-          )}
-        </ul>
+            ) : (
+              filtrados.map((p, idx) => (
+                <li
+                  key={p.codigo}
+                  role="option"
+                  aria-selected={p.codigo === value}
+                  onMouseDown={(e) => { e.preventDefault(); seleccionar(p); }}
+                  onMouseEnter={() => setIndiceActivo(idx)}
+                  className={`flex items-center gap-2.5 px-3 py-2 cursor-pointer select-none transition-colors ${
+                    idx === indiceActivo
+                      ? "bg-brand/8 text-brand"
+                      : "text-body hover:bg-brand/5"
+                  } ${p.codigo === value ? "font-semibold" : ""}`}
+                >
+                  <span className="text-base leading-none flex-shrink-0">{p.bandera}</span>
+                  <span className="flex-1 truncate">{p.nombre}</span>
+                  <span className="text-muted text-xs flex-shrink-0">{p.dial}</span>
+                </li>
+              ))
+            )}
+          </ul>
+        </div>
       )}
     </div>
   );

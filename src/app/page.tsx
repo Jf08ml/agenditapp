@@ -16,6 +16,9 @@ import {
   JSONLD_WEBSITE,
 } from "./(landing)/components/constants";
 import DemoLead from "./(landing)/sections/DemoLead";
+import QueObtendras from "./(landing)/sections/QueObtendras";
+import Software from "./(landing)/sections/Software";
+import CasosDeExito from "./(landing)/sections/CasosDeExito";
 
 export const metadata: Metadata = {
   title: "AgenditApp | Sistema de Agendamiento Online y Gestión de Citas Automático",
@@ -78,7 +81,10 @@ export default function Page() {
         ]}
       />
       <Hero />
+      <QueObtendras />
       <Sectores />
+      <Software />
+      <CasosDeExito />
       <Reserva />
       <Servicios />
       <Ubicacion />
