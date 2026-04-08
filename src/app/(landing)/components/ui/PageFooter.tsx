@@ -14,6 +14,7 @@ const NAV_LINKS = [
   { label: "Funcionalidades", href: "/funcionalidades" },
   { label: "Planes y precios", href: "/precios" },
   { label: "Sectores", href: "/sectores" },
+  { label: "Blog", href: "/blog" },
   { label: "Términos", href: "/terminos" },
   { label: "Privacidad", href: "/privacidad" },
 ];

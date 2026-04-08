@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { href: "/funcionalidades", label: "Funciones" },
   { href: "/sectores", label: "Sectores" },
   { href: "/precios", label: "Planes" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export default function Navbar() {

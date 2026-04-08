@@ -1,10 +1,18 @@
 // src/app/sitemap.ts
 import { MetadataRoute } from "next";
+import { getAllPosts } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://agenditapp.com";
   // Fecha estática para que Google no desconfíe de cambios inexistentes
   const lastMod = "2026-02-12";
+
+  const blogPosts = getAllPosts().map((post) => ({
+    url: `${base}/blog/${post.slug}`,
+    lastModified: post.publishedAt,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
   return [
     {
       url: `${base}`,
@@ -138,5 +146,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.3,
     },
+    {
+      url: `${base}/blog`,
+      lastModified: "2026-04-08",
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    ...blogPosts,
   ];
 }
