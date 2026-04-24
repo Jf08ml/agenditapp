@@ -7,6 +7,75 @@ import PageHeader from "@/app/(landing)/components/ui/PageHeader";
 import PageFooter from "@/app/(landing)/components/ui/PageFooter";
 import { DemoCtaButton } from "@/app/(landing)/components/ui/DemoCtaModal";
 
+// --- Internal feature comparison table renderer ---
+type FTCol = { name: string; highlight?: boolean; sub?: string };
+type FTRow = { feature: string; values: string[] };
+
+function FeatureTable({ cols, rows }: { cols: FTCol[]; rows: FTRow[] }) {
+  return (
+    <div className="overflow-x-auto my-8 rounded-[14px] border border-brand/15">
+      <table className="w-full text-sm border-collapse">
+        <thead>
+          <tr>
+            <th
+              className="px-4 py-3 text-left text-xs font-semibold text-heading uppercase tracking-wider"
+              style={{ background: "color-mix(in srgb, var(--brand) 8%, transparent)" }}
+            />
+            {cols.map((col, i) => (
+              <th
+                key={i}
+                className="px-4 py-3 text-center text-xs font-semibold uppercase tracking-wider"
+                style={
+                  col.highlight
+                    ? { background: "var(--brand)", color: "white" }
+                    : { background: "color-mix(in srgb, var(--brand) 8%, transparent)" }
+                }
+              >
+                {col.name}
+                {col.sub && (
+                  <span className="block text-[10px] font-normal mt-0.5 normal-case tracking-normal opacity-75">
+                    {col.sub}
+                  </span>
+                )}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, i) => (
+            <tr key={i} className="hover:bg-brand/3 transition-colors">
+              <td className="px-4 py-3 font-medium text-heading border-t border-brand/8 whitespace-nowrap">
+                {row.feature}
+              </td>
+              {row.values.map((val, j) => {
+                const isHighlight = cols[j]?.highlight;
+                const isCheck = val === "✅";
+                const isCross = val === "❌";
+                return (
+                  <td
+                    key={j}
+                    className={[
+                      "px-4 py-3 text-center border-t border-brand/8",
+                      isCheck || isCross ? "text-xl leading-none" : "text-sm",
+                      isCheck ? (isHighlight ? "text-brand" : "text-green-600") : "",
+                      isCross ? "text-muted/40" : "",
+                      !isCheck && !isCross && isHighlight ? "font-semibold text-brand" : "",
+                      !isCheck && !isCross && !isHighlight ? "text-body" : "",
+                    ].join(" ")}
+                    style={isHighlight ? { background: "color-mix(in srgb, var(--brand) 5%, transparent)" } : {}}
+                  >
+                    {val}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 // --- Custom MDX components matching the design system ---
 const mdxComponents = {
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -104,6 +173,52 @@ const mdxComponents = {
       </svg>
       <span>{children}</span>
     </li>
+  ),
+  // Comparison table: mejores-apps article (7 apps, feature-first, AgenditApp highlighted)
+  CompareApps: () => (
+    <FeatureTable
+      cols={[
+        { name: "AgenditApp", highlight: true, sub: "Recomendado" },
+        { name: "AgendaPro" },
+        { name: "Fresha" },
+        { name: "SimplyBook" },
+        { name: "Vagaro" },
+        { name: "WeiBook" },
+        { name: "Noona" },
+      ]}
+      rows={[
+        { feature: "Precio mensual", values: ["$10–30 USD", "$30–60 USD", "Gratis + comisión", "$9–49 USD", "$30 USD+", "$8–20 USD", "$15–30 EUR"] },
+        { feature: "WhatsApp nativo", values: ["✅", "Parcial", "❌", "❌", "❌", "Limitado", "❌"] },
+        { feature: "Soporte en español", values: ["✅", "✅", "❌", "Básico", "❌", "✅", "❌"] },
+        { feature: "Diseñado para Colombia", values: ["✅", "Parcial", "❌", "❌", "❌", "❌", "❌"] },
+        { feature: "Sin permanencia", values: ["✅", "✅", "✅", "✅", "✅", "✅", "✅"] },
+        { feature: "Fidelización incluida", values: ["✅", "✅", "Parcial", "Add-on", "✅", "❌", "✅"] },
+        { feature: "Integración Google Maps", values: ["✅", "✅", "✅", "✅", "✅", "❌", "Parcial"] },
+      ]}
+    />
+  ),
+  // Comparison table: cuanto-cuesta article (6 tools, feature-first, AgenditApp highlighted)
+  ComparePricing: () => (
+    <FeatureTable
+      cols={[
+        { name: "AgenditApp", highlight: true, sub: "Recomendado" },
+        { name: "Booksy" },
+        { name: "Fresha" },
+        { name: "Square" },
+        { name: "Acuity" },
+        { name: "Calendly" },
+      ]}
+      rows={[
+        { feature: "Precio mensual mínimo", values: ["$10 USD", "$25 USD", "Gratis*", "Gratis*", "$16 USD", "$10 USD"] },
+        { feature: "WhatsApp nativo", values: ["✅", "❌", "❌", "❌", "❌", "❌"] },
+        { feature: "Soporte en español", values: ["✅", "Parcial", "❌", "❌", "❌", "❌"] },
+        { feature: "Comisión por transacción", values: ["❌", "❌", "2,19 %+", "2,5 %+", "❌", "❌"] },
+        { feature: "Fidelización incluida", values: ["✅", "Plan alto", "Parcial", "Plan alto", "❌", "❌"] },
+        { feature: "Integración Google Maps", values: ["✅", "✅", "✅", "✅", "❌", "❌"] },
+        { feature: "Diseñado para Colombia", values: ["✅", "❌", "❌", "❌", "❌", "❌"] },
+        { feature: "Sin permanencia", values: ["✅", "✅", "✅", "✅", "✅", "✅"] },
+      ]}
+    />
   ),
 };
 
