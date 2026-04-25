@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Software para Odontólogos | AgenditApp",
     description: "Moderniza tu consultorio dental con citas online, recordatorios y control de tratamientos.",
     url: "https://agenditapp.com/sectores/odontologia",
-    images: ["/inicio_page.png"],
+    images: [{ url: "/og?title=Odont%C3%B3logos&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Odontólogos — AgenditApp" }],
   },
 };
 

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Software para Lash & Brow Studios | AgenditApp",
     description: "Profesionaliza tu estudio con reservas online, recordatorios automáticos y control de agenda.",
     url: "https://agenditapp.com/sectores/lash-brow",
-    images: ["/inicio_page.png"],
+    images: [{ url: "/og?title=Lash%20%26%20Brow%20Studios&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Lash & Brow Studios — AgenditApp" }],
   },
 };
 

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: "Software para Barberías | AgenditApp",
     description: "Automatiza tu barbería. Reservas online, recordatorios por WhatsApp y gestión de barberos.",
     url: "https://agenditapp.com/sectores/barberias",
-    images: ["/inicio_page.png"],
+    images: [{ url: "/og?title=Barber%C3%ADas&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Barberías — AgenditApp" }],
   },
 };
 

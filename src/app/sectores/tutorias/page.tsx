@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Software para Tutores y Academias | AgenditApp",
     description: "Gestiona tus clases particulares y academia con reservas online y recordatorios automáticos.",
     url: "https://agenditapp.com/sectores/tutorias",
-    images: ["/inicio_page.png"],
+    images: [{ url: "/og?title=Tutores%20y%20Academias&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Tutores y Academias — AgenditApp" }],
   },
 };
 

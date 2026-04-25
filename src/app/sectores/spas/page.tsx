@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Software para Spas y Centros de Bienestar | AgenditApp",
     description: "Digitaliza tu spa con reservas online, gestión de terapeutas y recordatorios por WhatsApp.",
     url: "https://agenditapp.com/sectores/spas",
-    images: ["/inicio_page.png"],
+    images: [{ url: "/og?title=Spas%20y%20Bienestar&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Spas y Centros de Bienestar — AgenditApp" }],
   },
 };
 

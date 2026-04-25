@@ -5,7 +5,7 @@ import { getAllPosts } from "@/lib/blog";
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://agenditapp.com";
   // Fecha estática para que Google no desconfíe de cambios inexistentes
-  const lastMod = "2026-02-12";
+  const lastMod = "2026-04-24";
 
   const blogPosts = getAllPosts().map((post) => ({
     url: `${base}/blog/${post.slug}`,

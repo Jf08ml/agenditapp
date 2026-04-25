@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description:
       "Automatiza tu agenda de belleza. Reservas online, recordatorios por WhatsApp y gestión completa de servicios.",
     url: "https://agenditapp.com/sectores/salones-belleza",
-    images: ["/inicio_page.png"],
+    images: [{ url: "/og?title=Salones%20de%20Belleza&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Salones de Belleza — AgenditApp" }],
   },
 };
 

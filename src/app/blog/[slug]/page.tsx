@@ -242,6 +242,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return {};
+  const ogImage = `/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(post.category)}&tag=Blog`;
   return {
     title: `${post.title} | AgenditApp Blog`,
     description: post.description,
@@ -253,6 +254,13 @@ export async function generateMetadata({
       url: `https://agenditapp.com/blog/${slug}`,
       type: "article",
       publishedTime: post.publishedAt,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [ogImage],
     },
   };
 }
@@ -268,15 +276,24 @@ export default async function BlogPostPage({
 
   const articleSchema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: post.title,
     description: post.description,
+    url: `https://agenditapp.com/blog/${slug}`,
     datePublished: post.publishedAt,
     dateModified: post.publishedAt,
+    inLanguage: "es-CO",
+    image: {
+      "@type": "ImageObject",
+      url: `https://agenditapp.com/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(post.category)}&tag=Blog`,
+      width: 1200,
+      height: 630,
+    },
     author: {
       "@type": "Organization",
       name: "AgenditApp",
       url: "https://agenditapp.com",
+      logo: { "@type": "ImageObject", url: "https://agenditapp.com/logo_dorado.png" },
     },
     publisher: {
       "@type": "Organization",
@@ -286,6 +303,8 @@ export default async function BlogPostPage({
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": `https://agenditapp.com/blog/${slug}` },
     keywords: post.keywords.join(", "),
+    articleSection: post.category,
+    isPartOf: { "@type": "Blog", name: "Blog AgenditApp", url: "https://agenditapp.com/blog" },
   };
 
   const breadcrumbSchema = {

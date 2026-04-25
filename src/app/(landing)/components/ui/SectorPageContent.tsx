@@ -1,6 +1,24 @@
 import Link from "next/link";
 import { DemoCtaButton } from "./DemoCtaModal";
 
+function buildReviewSchema(testimonial: { quote: string; author: string }, sectorName: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    reviewBody: testimonial.quote,
+    author: { "@type": "Person", name: testimonial.author.split("—")[0]?.trim() ?? testimonial.author },
+    itemReviewed: {
+      "@type": "SoftwareApplication",
+      name: "AgenditApp",
+      applicationCategory: "BusinessApplication",
+      url: "https://agenditapp.com",
+      description: `Software de agendamiento online para ${sectorName}`,
+    },
+    reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+    publisher: { "@type": "Organization", name: "AgenditApp", url: "https://agenditapp.com" },
+  };
+}
+
 interface Feature {
   title: string;
   description: string;
@@ -126,6 +144,11 @@ export default function SectorPageContent({
 
       {/* Testimonial */}
       {testimonial && (
+        <>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(buildReviewSchema(testimonial, sectorName)) }}
+          />
         <section className="py-12 px-4 sm:px-6">
           <div
             className="max-w-3xl mx-auto bg-bg-card border border-brand/15 rounded-[20px] p-8 sm:p-10"
@@ -144,6 +167,7 @@ export default function SectorPageContent({
             <p className="text-sm font-semibold text-brand">{testimonial.author}</p>
           </div>
         </section>
+        </>
       )}
 
       {/* Related Sectors */}

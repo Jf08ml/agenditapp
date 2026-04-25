@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Software Médico de Citas | AgenditApp",
     description: "Moderniza tu consultorio con reservas online, control de pacientes y recordatorios por WhatsApp.",
     url: "https://agenditapp.com/sectores/consultorios",
-    images: ["/inicio_page.png"],
+    images: [{ url: "/og?title=Consultorios%20y%20Cl%C3%ADnicas&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Consultorios y Clínicas — AgenditApp" }],
   },
 };
 

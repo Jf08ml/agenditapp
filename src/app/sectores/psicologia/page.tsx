@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Software para Psicólogos | AgenditApp",
     description: "Gestiona tu práctica psicológica con sesiones online, recordatorios y total privacidad.",
     url: "https://agenditapp.com/sectores/psicologia",
-    images: ["/inicio_page.png"],
+    images: [{ url: "/og?title=Psic%C3%B3logos%20y%20Terapeutas&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Psicólogos y Terapeutas — AgenditApp" }],
   },
 };
 

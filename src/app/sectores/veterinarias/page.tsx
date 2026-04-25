@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Software para Veterinarias | AgenditApp",
     description: "Gestiona citas de mascotas, grooming y vacunas con reservas online y recordatorios automáticos.",
     url: "https://agenditapp.com/sectores/veterinarias",
-    images: ["/inicio_page.png"],
+    images: [{ url: "/og?title=Veterinarias&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Veterinarias — AgenditApp" }],
   },
 };
 

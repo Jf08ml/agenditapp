@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Software para Escuelas de Danza y Yoga | AgenditApp",
     description: "Gestiona clases, cupos y horarios de tu escuela de danza o yoga con reservas online.",
     url: "https://agenditapp.com/sectores/danza-yoga",
-    images: ["/inicio_page.png"],
+    images: [{ url: "/og?title=Danza%20y%20Yoga&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Escuelas de Danza y Yoga — AgenditApp" }],
   },
 };
 

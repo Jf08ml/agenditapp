@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Software para Gimnasios y Fitness | AgenditApp",
     description: "Gestiona clases, cupos y entrenadores con reservas online y recordatorios automáticos.",
     url: "https://agenditapp.com/sectores/gimnasios",
-    images: ["/inicio_page.png"],
+    images: [{ url: "/og?title=Gimnasios%20y%20Fitness&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Gimnasios y Fitness — AgenditApp" }],
   },
 };
 

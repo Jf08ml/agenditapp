@@ -14,6 +14,7 @@ import {
   JSONLD_SERVICES,
   JSONLD_ORGANIZATION,
   JSONLD_WEBSITE,
+  JSONLD_TESTIMONIALS,
 } from "./(landing)/components/constants";
 import DemoLead from "./(landing)/sections/DemoLead";
 import QueObtendras from "./(landing)/sections/QueObtendras";
@@ -78,6 +79,7 @@ export default function Page() {
           JSONLD_SOFTWARE,
           JSONLD_FAQ,
           JSONLD_SERVICES,
+          JSONLD_TESTIMONIALS,
         ]}
       />
       <Hero />

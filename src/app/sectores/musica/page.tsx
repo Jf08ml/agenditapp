@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Software para Profesores de Música | AgenditApp",
     description: "Gestiona tus clases de música con reservas online y recordatorios automáticos por WhatsApp.",
     url: "https://agenditapp.com/sectores/musica",
-    images: ["/inicio_page.png"],
+    images: [{ url: "/og?title=Profesores%20de%20M%C3%BAsica&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Profesores de Música — AgenditApp" }],
   },
 };
 

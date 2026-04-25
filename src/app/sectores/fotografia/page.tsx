@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Software para Fotógrafos | AgenditApp",
     description: "Gestiona sesiones, eventos y alquiler de estudio con reservas online y recordatorios automáticos.",
     url: "https://agenditapp.com/sectores/fotografia",
-    images: ["/inicio_page.png"],
+    images: [{ url: "/og?title=Fot%C3%B3grafos%20y%20Estudios&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Fotógrafos y Estudios — AgenditApp" }],
   },
 };
 
