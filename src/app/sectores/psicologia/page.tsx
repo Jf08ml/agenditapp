@@ -37,6 +37,14 @@ const features = [
   { title: "Agenda flexible", description: "Horarios por bloques, cancelaciones con anticipación y reprogramación sencilla.", icon: "📅" },
 ];
 
+const FAQS = [
+  { q: "¿La plataforma garantiza confidencialidad para mis pacientes?", a: "Sí. AgenditApp está diseñado con discreción: los pacientes solo ven su propia agenda, los mensajes de recordatorio son genéricos y no mencionan el tipo de consulta. Tu práctica mantiene la privacidad que el proceso terapéutico requiere." },
+  { q: "¿Puedo gestionar sesiones presenciales y online en el mismo sistema?", a: "Sí. Puedes crear servicios diferenciados (sesión presencial / sesión virtual) con sus respectivos horarios y duración. Cada uno se agenda de forma independiente." },
+  { q: "¿Los pacientes pueden cancelar sin avisarme directamente?", a: "Sí. Desde el recordatorio de WhatsApp, el paciente puede cancelar con anticipación haciendo clic en un enlace. Tú recibes la notificación de inmediato y puedes ofrecer ese espacio a otro paciente." },
+  { q: "¿Se puede configurar el tiempo entre sesiones para descanso o notas clínicas?", a: "Sí. Puedes agregar tiempo de buffer entre citas al configurar cada servicio, dejando 10 o 15 minutos libres entre pacientes para notas o transición." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes inician desde $10 USD al mes, sin permanencia. El plan Esencial ($20 USD) incluye recordatorios automáticos por WhatsApp desde tu número de consultorio." },
+];
+
 export default function PsicologiaPage() {
   return (
     <>
@@ -49,6 +57,7 @@ export default function PsicologiaPage() {
         description="Sistema confidencial diseñado para profesionales de salud mental. Gestiona sesiones, recordatorios y seguimiento de pacientes con total privacidad."
         features={features}
         featuresHeading="Todo para profesionalizar tu práctica"
+        faqs={FAQS}
         relatedSectors={[
           { title: "Consultorios y Clínicas", slug: "consultorios", icon: "🏥", description: "Sistema de citas para profesionales de la salud" },
           { title: "Nutricionistas", slug: "nutricion", icon: "🥗", description: "Consultas nutricionales y seguimiento de pacientes" },

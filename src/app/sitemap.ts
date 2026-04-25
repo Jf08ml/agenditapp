@@ -135,6 +135,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${base}/nosotros`,
+      lastModified: lastMod,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: `${base}/terminos`,
       lastModified: lastMod,
       changeFrequency: "yearly",

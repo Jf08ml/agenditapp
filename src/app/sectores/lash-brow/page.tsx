@@ -37,6 +37,14 @@ const features = [
   { title: "Página web incluida", description: "Landing profesional para mostrar tu portafolio y recibir reservas directas.", icon: "🌐" },
 ];
 
+const FAQS = [
+  { q: "¿Puedo gestionar servicios de larga duración como extensiones completas?", a: "Sí. Puedes configurar servicios de 2 a 3 horas con facilidad. El sistema bloquea ese tiempo en tu agenda automáticamente y no permite reservas que se solapen." },
+  { q: "¿Los recordatorios pueden incluir instrucciones previas al servicio?", a: "Sí. Personalizas el mensaje de WhatsApp con indicaciones específicas: llegar sin maquillaje en los ojos, no usar cremas aceitosas, etc. Se envía automáticamente 24h antes." },
+  { q: "¿Puedo agendar retouches de mantenimiento con intervalo fijo?", a: "Sí. Puedes crear un servicio de 'Retouch' con su propia duración y precio, diferente al servicio inicial. Tus clientas lo reservan directamente desde tu página." },
+  { q: "¿Mis clientas pueden elegir la técnica o estilo que quieren?", a: "Sí. Puedes crear servicios diferenciados por técnica: volumen ruso, híbrido, clásicas, lifting, microblading, diseño de cejas, etc. Cada uno con su duración y precio." },
+  { q: "¿Hay permanencia o contrato mínimo?", a: "No. Es mensual, sin permanencia. Cancelas cuando quieras desde tu panel sin trámites." },
+];
+
 export default function LashBrowPage() {
   return (
     <>
@@ -53,6 +61,7 @@ export default function LashBrowPage() {
           quote: "AgenditApp cambió mi negocio. Antes perdía clientes por desorden en la agenda, ahora todo fluye. Los recordatorios automáticos hicieron que mis ausencias bajaran a casi cero.",
           author: "Laura — Lash Artist",
         }}
+        faqs={FAQS}
         relatedSectors={[
           { title: "Salones de Belleza", slug: "salones-belleza", icon: "💇‍♀️", description: "Sistema completo para manicure, pedicure y tratamientos" },
           { title: "Barberías", slug: "barberias", icon: "💈", description: "Sistema de turnos para barberos y servicios express" },

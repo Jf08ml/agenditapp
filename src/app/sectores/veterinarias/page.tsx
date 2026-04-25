@@ -37,6 +37,14 @@ const features = [
   { title: "Reservas online 24/7", description: "Los dueños agendan desde tu página web en cualquier momento del día.", icon: "🌐" },
 ];
 
+const FAQS = [
+  { q: "¿Puedo diferenciar tipos de atención: consulta, grooming y vacunación?", a: "Sí. Cada tipo de servicio tiene su propia duración, precio y nombre. Puedes tener 'Consulta médica' (30 min), 'Baño y corte' (2h), 'Vacunación' (15 min) todos en la misma plataforma." },
+  { q: "¿Puedo gestionar múltiples veterinarios y el área de grooming al mismo tiempo?", a: "Sí. Crea perfiles separados para cada veterinario y para el servicio de grooming, con sus propias agendas y disponibilidades independientes." },
+  { q: "¿Los dueños de mascotas pueden agendar desde su celular sin llamar?", a: "Exactamente. Los dueños reservan desde tu página web 24/7, eligen el tipo de servicio y el horario disponible, y reciben confirmación instantánea por WhatsApp." },
+  { q: "¿Se guardan los registros de citas anteriores por mascota?", a: "Sí. En el historial del cliente puedes ver todas las citas pasadas, tipos de servicio y fechas de atención. Esto facilita el seguimiento de vacunas y tratamientos periódicos." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes van desde $10 USD al mes, sin permanencia. Cancelas cuando quieras. Incluye reservas ilimitadas y recordatorios por WhatsApp en los planes Esencial y Marca Propia." },
+];
+
 export default function VeterinariasPage() {
   return (
     <>
@@ -49,6 +57,7 @@ export default function VeterinariasPage() {
         description="Gestiona tu veterinaria o centro de grooming de forma profesional. Organiza consultas, baños, vacunas y tratamientos con recordatorios automáticos por WhatsApp."
         features={features}
         featuresHeading="Todo para tu clínica veterinaria"
+        faqs={FAQS}
         relatedSectors={[
           { title: "Consultorios y Clínicas", slug: "consultorios", icon: "🏥", description: "Sistema de citas para profesionales de la salud" },
           { title: "Salones de Belleza", slug: "salones-belleza", icon: "💇‍♀️", description: "Sistema para servicios de estética y cuidado personal" },

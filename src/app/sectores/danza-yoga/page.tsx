@@ -37,6 +37,14 @@ const features = [
   { title: "Página web incluida", description: "Landing con tu horario de clases para que los alumnos reserven directamente.", icon: "🌐" },
 ];
 
+const FAQS = [
+  { q: "¿Puedo gestionar clases grupales con cupos máximos?", a: "Sí. Defines el número máximo de alumnos por clase y el sistema cierra las reservas automáticamente al llenarse, mostrando la disponibilidad en tiempo real a tus alumnos." },
+  { q: "¿Los alumnos pueden ver cuántos cupos quedan antes de reservar?", a: "Exactamente. En tu página web de reservas, cada clase muestra los cupos disponibles en tiempo real, lo que genera urgencia y motiva a reservar con anticipación." },
+  { q: "¿Puedo agendar talleres y eventos especiales además de clases regulares?", a: "Sí. Puedes crear eventos únicos como talleres, workshops o clases especiales con fecha, hora y cupo independiente de tu horario semanal habitual." },
+  { q: "¿Se pueden gestionar múltiples instructores con horarios distintos?", a: "Sí. Cada instructor tiene su propio perfil, horario y clases asignadas. Los alumnos pueden filtrar por instructor al momento de reservar." },
+  { q: "¿Hay permanencia o contrato mínimo?", a: "No. AgenditApp es mes a mes, sin permanencia. Puedes cancelar cuando quieras sin trámites ni penalizaciones." },
+];
+
 export default function DanzaYogaPage() {
   return (
     <>
@@ -53,6 +61,7 @@ export default function DanzaYogaPage() {
           quote: "Ya no tengo sobrecupo en mis clases. Los alumnos reservan online y yo puedo enfocarme en enseñar. Los recordatorios redujeron las ausencias increíblemente.",
           author: "Instructora de Yoga — Colombia",
         }}
+        faqs={FAQS}
         relatedSectors={[
           { title: "Gimnasios y Fitness", slug: "gimnasios", icon: "🏋️‍♀️", description: "Reservas de clases y entrenamiento personal" },
           { title: "Profesores de Música", slug: "musica", icon: "🎸", description: "Agenda de clases particulares y talleres musicales" },

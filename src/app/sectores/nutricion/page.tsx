@@ -37,6 +37,14 @@ const features = [
   { title: "Control de pagos", description: "Registra honorarios por consulta, paquetes de sesiones y abonos de pacientes.", icon: "💰" },
 ];
 
+const FAQS = [
+  { q: "¿Es confidencial la información de mis pacientes nutricionales?", a: "Sí. Cada paciente solo ve su propia agenda y datos. La información es privada y no es visible para otros usuarios de la plataforma." },
+  { q: "¿Puedo diferenciar la consulta inicial de los controles de seguimiento?", a: "Sí. Crea servicios diferenciados: 'Consulta inicial' (60 min), 'Control mensual' (30 min), 'Análisis corporal' (45 min). Cada uno con su precio y duración específica." },
+  { q: "¿Los pacientes pueden reagendar su control de seguimiento solos?", a: "Sí. Desde el recordatorio de WhatsApp, el paciente recibe un enlace para confirmar, cancelar o reprogramar su cita sin necesidad de llamarte." },
+  { q: "¿Los recordatorios ayudan a mejorar la adherencia al tratamiento?", a: "Significativamente. Los negocios que usan recordatorios automáticos de AgenditApp reportan reducciones de entre 50% y 70% en inasistencias, lo que mejora directamente los resultados del tratamiento." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes inician desde $10 USD al mes, sin permanencia ni contrato mínimo. Puedes cancelar cuando quieras." },
+];
+
 export default function NutricionPage() {
   return (
     <>
@@ -53,6 +61,7 @@ export default function NutricionPage() {
           quote: "Mis pacientes ya no pierden controles. Los recordatorios automáticos mejoraron muchísimo la adherencia al tratamiento y la evolución de resultados.",
           author: "Nutricionista — Colombia",
         }}
+        faqs={FAQS}
         relatedSectors={[
           { title: "Consultorios y Clínicas", slug: "consultorios", icon: "🏥", description: "Sistema de citas para profesionales de la salud" },
           { title: "Psicología y Terapia", slug: "psicologia", icon: "🧠", description: "Agenda confidencial para psicólogos y terapeutas" },

@@ -54,6 +54,14 @@ const features = [
   { title: "Página web incluida", description: "Landing personalizada para que tus clientes reserven online las 24 horas.", icon: "🌐" },
 ];
 
+const FAQS = [
+  { q: "¿Puedo gestionar múltiples barberos con horarios independientes?", a: "Sí. Puedes crear un perfil por barbero, asignarle servicios específicos y horarios propios. Los clientes pueden elegir a su barbero favorito al reservar." },
+  { q: "¿Funciona bien para turnos cortos de 20-30 minutos?", a: "Perfectamente. AgenditApp permite configurar servicios con duraciones desde 15 minutos, ideal para cortes express, barba o arreglos rápidos con alto flujo de clientes." },
+  { q: "¿Los clientes pueden reservar desde Instagram o WhatsApp?", a: "Sí. Puedes compartir tu link de reservas en Instagram, WhatsApp y Google. Tus clientes reservan en segundos sin necesidad de llamar ni escribir." },
+  { q: "¿Cuánto cuesta AgenditApp para barberías?", a: "Los planes comienzan desde $10 USD al mes, con reservas ilimitadas y panel administrativo completo. El plan Esencial ($20 USD) incluye recordatorios automáticos por WhatsApp desde tu propio número." },
+  { q: "¿Hay permanencia o contrato mínimo?", a: "No. Es mes a mes, sin permanencia ni cláusulas. Puedes cancelar cuando quieras desde tu panel de administración." },
+];
+
 export default function BarberiasPage() {
   return (
     <>
@@ -66,6 +74,7 @@ export default function BarberiasPage() {
         description="Optimiza tu barbería con reservas online automáticas, control de turnos express y recordatorios por WhatsApp. Aumenta tu facturación sin perder tiempo."
         features={features}
         featuresHeading="Todo lo que necesitas para tu barbería"
+        faqs={FAQS}
         relatedSectors={[
           { title: "Salones de Belleza", slug: "salones-belleza", icon: "💇‍♀️", description: "Sistema completo para manicure, pedicure y tratamientos" },
           { title: "Estética Médica", slug: "estetica-medica", icon: "💉", description: "Agenda para tratamientos faciales y procedimientos" },

@@ -4,6 +4,11 @@ import matter from "gray-matter";
 
 const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
 
+export interface HowToStep {
+  name: string;
+  text: string;
+}
+
 export interface PostMeta {
   slug: string;
   title: string;
@@ -13,6 +18,7 @@ export interface PostMeta {
   readingTime: string;
   category: string;
   excerpt: string;
+  howToSteps?: HowToStep[];
 }
 
 export interface Post extends PostMeta {

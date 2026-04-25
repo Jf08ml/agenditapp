@@ -37,6 +37,14 @@ const features = [
   { title: "Control de pagos", description: "Registra anticipos, saldos y pagos por sesión o paquete fotográfico.", icon: "💰" },
 ];
 
+const FAQS = [
+  { q: "¿Puedo agendar sesiones de duración variable según el tipo?", a: "Sí. Configuras cada tipo de sesión con su duración: retrato individual (1h), sesión familiar (2h), producto (3h), evento full day. Cada uno bloquea el tiempo correcto en tu agenda." },
+  { q: "¿Los clientes pueden pagar un anticipo al reservar para asegurar la fecha?", a: "Puedes indicar en el mensaje de confirmación las condiciones de tu anticipo. El control del pago lo gestionas desde tu panel, y puedes registrar abonos y saldos por sesión." },
+  { q: "¿Los recordatorios pueden incluir instrucciones de vestuario o llegada?", a: "Sí. Personalizas el mensaje de WhatsApp con las indicaciones de tu sesión: qué ropa traer, a qué hora llegar, qué tener listo. Se envía automáticamente antes de la cita." },
+  { q: "¿Puedo gestionar también el alquiler del estudio por horas?", a: "Sí. Crea un servicio de 'Alquiler de estudio' con precio por hora y duración flexible. Modelos, diseñadores y otros fotógrafos pueden reservarlo directamente desde tu web." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes inician desde $10 USD al mes, sin permanencia. Cancelas cuando quieras sin penalizaciones." },
+];
+
 export default function FotografiaPage() {
   return (
     <>
@@ -49,6 +57,7 @@ export default function FotografiaPage() {
         description="Gestiona tu estudio fotográfico de forma profesional. Organiza sesiones, eventos y alquiler de estudio con reservas online y recordatorios automáticos."
         features={features}
         featuresHeading="Todo para gestionar tu estudio fotográfico"
+        faqs={FAQS}
         relatedSectors={[
           { title: "Abogados y Asesorías", slug: "abogados", icon: "⚖️", description: "Agenda de consultas legales y reuniones" },
           { title: "Profesores de Música", slug: "musica", icon: "🎸", description: "Agenda de clases particulares y talleres" },

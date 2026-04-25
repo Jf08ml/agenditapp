@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { DemoCtaButton } from "./DemoCtaModal";
 
@@ -37,6 +40,11 @@ interface Testimonial {
   author: string;
 }
 
+export interface SectorFAQ {
+  q: string;
+  a: string;
+}
+
 interface SectorPageContentProps {
   sectorName: string;
   icon: string;
@@ -45,6 +53,7 @@ interface SectorPageContentProps {
   features: Feature[];
   featuresHeading: string;
   testimonial?: Testimonial;
+  faqs?: SectorFAQ[];
   relatedSectors: RelatedSector[];
   ctaHeading: string;
   ctaBody: string;
@@ -58,10 +67,12 @@ export default function SectorPageContent({
   features,
   featuresHeading,
   testimonial,
+  faqs,
   relatedSectors,
   ctaHeading,
   ctaBody,
 }: SectorPageContentProps) {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
   return (
     <main className="min-h-screen pt-28">
       {/* Breadcrumbs */}
@@ -167,6 +178,60 @@ export default function SectorPageContent({
             <p className="text-sm font-semibold text-brand">{testimonial.author}</p>
           </div>
         </section>
+        </>
+      )}
+
+      {/* FAQs */}
+      {faqs && faqs.length > 0 && (
+        <>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: faqs.map((f) => ({
+                  "@type": "Question",
+                  name: f.q,
+                  acceptedAnswer: { "@type": "Answer", text: f.a },
+                })),
+              }),
+            }}
+          />
+          <section className="py-12 px-4 sm:px-6">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-2xl sm:text-3xl font-semibold text-heading text-center mb-8">
+                Preguntas frecuentes — {sectorName}
+              </h2>
+              <div className="flex flex-col gap-3">
+                {faqs.map((faq, i) => (
+                  <div
+                    key={i}
+                    className="bg-bg-card border border-brand/10 rounded-[14px] overflow-hidden"
+                    style={{ boxShadow: "var(--shadow-card)" }}
+                  >
+                    <button
+                      onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                      className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
+                    >
+                      <span className="text-sm font-semibold text-heading">{faq.q}</span>
+                      <svg
+                        className={`w-4 h-4 flex-shrink-0 text-brand transition-transform duration-200 ${openFaq === i ? "rotate-180" : ""}`}
+                        fill="none" viewBox="0 0 16 16" stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6l4 4 4-4" />
+                      </svg>
+                    </button>
+                    {openFaq === i && (
+                      <div className="px-5 pb-4 text-sm text-body leading-relaxed border-t border-brand/8 pt-3">
+                        {faq.a}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
         </>
       )}
 

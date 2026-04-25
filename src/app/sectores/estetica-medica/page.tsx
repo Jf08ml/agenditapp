@@ -37,6 +37,14 @@ const features = [
   { title: "Control de pagos", description: "Registra pagos por procedimiento, paquetes de sesiones y abonos de pacientes.", icon: "💰" },
 ];
 
+const FAQS = [
+  { q: "¿Es seguro para manejar datos de pacientes de estética médica?", a: "Sí. La información de tus pacientes se maneja de forma segura, sin exposición pública de datos sensibles ni historial de procedimientos visible para otros pacientes." },
+  { q: "¿Puedo incluir instrucciones pre y post procedimiento en los recordatorios?", a: "Sí. Los mensajes de WhatsApp son completamente personalizables. Puedes indicar: 'No uses maquillaje el día del procedimiento' o 'Evita el sol por 48 horas' según el tratamiento." },
+  { q: "¿Funciona para procedimientos de larga duración como aplicaciones de láser?", a: "Perfectamente. Cada servicio tiene su propia duración configurada, desde 15 minutos hasta varias horas. El sistema bloquea el tiempo necesario automáticamente." },
+  { q: "¿Puedo gestionar múltiples médicos o especialistas en el mismo centro?", a: "Sí. Puedes crear un perfil por profesional, asignarles procedimientos específicos y gestionar la disponibilidad de cada uno de forma independiente." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes comienzan desde $10 USD al mes, sin permanencia. El plan Esencial ($20 USD/mes) incluye recordatorios automáticos por WhatsApp desde el número de tu centro." },
+];
+
 export default function EsteticaMedicaPage() {
   return (
     <>
@@ -49,6 +57,7 @@ export default function EsteticaMedicaPage() {
         description="Gestiona tu centro de medicina estética con herramientas profesionales. Organiza tratamientos, procedimientos y seguimiento con reservas online y recordatorios automáticos."
         features={features}
         featuresHeading="Todo para tu centro de estética médica"
+        faqs={FAQS}
         relatedSectors={[
           { title: "Salones de Belleza", slug: "salones-belleza", icon: "💇‍♀️", description: "Sistema completo para manicure, pedicure y tratamientos" },
           { title: "Barberías", slug: "barberias", icon: "💈", description: "Sistema de turnos para barberos y servicios express" },

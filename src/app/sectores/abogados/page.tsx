@@ -37,6 +37,14 @@ const features = [
   { title: "Página web profesional", description: "Landing de tu despacho para que los clientes soliciten consultas online.", icon: "🌐" },
 ];
 
+const FAQS = [
+  { q: "¿Es confidencial la información de mis clientes legales?", a: "Sí. Los datos de tus clientes son privados y seguros. Cada persona solo accede a su propia información de cita. Diseñado para mantener la discreción que exige la relación abogado-cliente." },
+  { q: "¿Puedo gestionar múltiples abogados con especialidades diferentes?", a: "Sí. Cada abogado tiene su perfil, especialidad y agenda independiente. Los clientes pueden ser asignados según el área legal que necesiten: civil, laboral, penal, familiar, etc." },
+  { q: "¿Los recordatorios pueden incluir los documentos que el cliente debe traer?", a: "Sí. Personalizas el mensaje de WhatsApp para incluir: 'Por favor traer: cédula, contrato de arrendamiento y correos de notificación previos'. Se envía automáticamente antes de la cita." },
+  { q: "¿Funciona para reuniones virtuales y presenciales en el mismo despacho?", a: "Sí. Puedes crear servicios diferenciados: 'Consulta presencial' y 'Reunión virtual', cada uno con su duración y precio. Ambos se gestionan desde la misma plataforma." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes inician desde $10 USD al mes, sin permanencia ni contrato mínimo. Puedes cancelar cuando quieras sin trámites." },
+];
+
 export default function AbogadosPage() {
   return (
     <>
@@ -49,6 +57,7 @@ export default function AbogadosPage() {
         description="Gestiona tu despacho legal con profesionalismo. Organiza consultas, reuniones y asesorías con una agenda inteligente y recordatorios automáticos."
         features={features}
         featuresHeading="Todo para gestionar tu despacho legal"
+        faqs={FAQS}
         relatedSectors={[
           { title: "Consultorios y Clínicas", slug: "consultorios", icon: "🏥", description: "Sistema de citas para profesionales de la salud" },
           { title: "Fotógrafos y Estudios", slug: "fotografia", icon: "📸", description: "Reserva de sesiones y gestión de agenda creativa" },

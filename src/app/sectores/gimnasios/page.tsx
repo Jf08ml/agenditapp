@@ -37,6 +37,14 @@ const features = [
   { title: "Página web incluida", description: "Landing con horario de clases para que tus alumnos reserven online 24/7.", icon: "🌐" },
 ];
 
+const FAQS = [
+  { q: "¿Puedo gestionar clases grupales con cupos limitados?", a: "Sí. Puedes definir el número máximo de cupos por clase y el sistema cierra reservas automáticamente cuando se llena. Los alumnos ven en tiempo real cuántos lugares quedan disponibles." },
+  { q: "¿Los alumnos pueden reservar desde el celular sin descargar nada?", a: "Sí. Tus alumnos acceden a tu horario de clases desde el navegador de su celular, eligen la clase y reservan su cupo en menos de un minuto, sin aplicaciones adicionales." },
+  { q: "¿Se pueden gestionar entrenadores personales y clases grupales en el mismo sistema?", a: "Perfectamente. Puedes tener servicios de clase grupal (con cupos) y sesiones individuales con entrenador (sin cupos) en la misma plataforma, con agendas separadas por profesional." },
+  { q: "¿Funciona para diferentes modalidades como yoga, crossfit y spinning?", a: "Sí. Puedes crear tantos tipos de clase como quieras, cada uno con su duración, cupos, instructor asignado y precio. Todo en una sola plataforma." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes comienzan desde $10 USD al mes, sin permanencia. Cancelas cuando quieras. El plan Esencial incluye recordatorios automáticos por WhatsApp para confirmar asistencia." },
+];
+
 export default function GimnasiosPage() {
   return (
     <>
@@ -49,6 +57,7 @@ export default function GimnasiosPage() {
         description="Gestiona clases grupales, entrenamientos personales y cupos en tiempo real. Sistema completo para gimnasios, boxes de crossfit y estudios de yoga."
         features={features}
         featuresHeading="Todo para optimizar tu gimnasio"
+        faqs={FAQS}
         relatedSectors={[
           { title: "Escuelas de Danza y Yoga", slug: "danza-yoga", icon: "💃", description: "Reserva de clases, talleres y gestión de instructores" },
           { title: "Nutricionistas", slug: "nutricion", icon: "🥗", description: "Consultas nutricionales y seguimiento de pacientes" },

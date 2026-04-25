@@ -37,6 +37,14 @@ const features = [
   { title: "Página web incluida", description: "Landing de tu academia para que padres y alumnos reserven clases online.", icon: "🌐" },
 ];
 
+const FAQS = [
+  { q: "¿Puedo gestionar múltiples tutores o profesores en una sola plataforma?", a: "Sí. Cada tutor tiene su propio perfil, materias asignadas y horario. Desde el panel central puedes ver y gestionar la agenda de todo tu equipo docente." },
+  { q: "¿Se pueden agendar clases recurrentes semanales sin reagendar cada vez?", a: "Sí. Configuras clases con horario fijo para cada alumno (por ejemplo, martes y jueves a las 4pm) y el sistema las gestiona automáticamente semana a semana." },
+  { q: "¿Los padres y alumnos reciben recordatorios automáticos antes de cada clase?", a: "Sí. El recordatorio llega por WhatsApp al número que registran al reservar. Puedes configurarlo para que llegue 24h antes o en el horario que prefieras." },
+  { q: "¿Funciona para clases presenciales y virtuales al mismo tiempo?", a: "Perfectamente. Puedes crear servicios diferenciados: 'Clase presencial' y 'Clase online', cada uno con su propio precio y duración." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes comienzan desde $10 USD al mes, sin permanencia. Puedes cancelar cuando quieras. Incluye reservas ilimitadas y panel administrativo completo." },
+];
+
 export default function TutoriasPage() {
   return (
     <>
@@ -53,6 +61,7 @@ export default function TutoriasPage() {
           quote: "Los padres aprecian recibir recordatorios automáticos. Ya no tengo que estar llamando para confirmar las clases, y los alumnos llegan más puntuales.",
           author: "Tutor particular — Colombia",
         }}
+        faqs={FAQS}
         relatedSectors={[
           { title: "Profesores de Música", slug: "musica", icon: "🎸", description: "Agenda de clases particulares y talleres musicales" },
           { title: "Escuelas de Danza y Yoga", slug: "danza-yoga", icon: "💃", description: "Gestión de clases grupales y talleres" },

@@ -37,6 +37,14 @@ const features = [
   { title: "Reportes financieros", description: "Controla ingresos, pagos y abonos por tratamiento. Reportes automáticos.", icon: "💰" },
 ];
 
+const FAQS = [
+  { q: "¿Puedo gestionar tratamientos que requieren múltiples citas?", a: "Sí. Cada cita queda registrada en el historial del paciente. Puedes ver su plan de tratamiento completo, hacer seguimiento de pagos por abono y agendar las citas de continuación." },
+  { q: "¿Los recordatorios pueden incluir indicaciones previas a la cita dental?", a: "Sí. Personalizas el mensaje de recordatorio: 'Recuerda no consumir alimentos 2 horas antes', 'Trae tu radiografía', etc. Se envía automáticamente desde el número de tu consultorio." },
+  { q: "¿Puedo gestionar múltiples odontólogos con especialidades distintas?", a: "Sí. Cada odontólogo tiene su perfil, agenda y servicios asignados. Puedes tener general, ortodoncista, endodoncista, etc., todos gestionados desde el mismo panel." },
+  { q: "¿Los pacientes pueden agendar sin llamar al consultorio?", a: "Exactamente. Tus pacientes reservan desde tu página web 24/7, eligen el tipo de servicio, el profesional y el horario disponible, sin necesidad de llamar o esperar en lista." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes comienzan desde $10 USD al mes. Sin permanencia, sin contrato — cancelas cuando quieras. Reservas ilimitadas incluidas en todos los planes." },
+];
+
 export default function OdontologiaPage() {
   return (
     <>
@@ -49,6 +57,7 @@ export default function OdontologiaPage() {
         description="Optimiza la gestión de tu consultorio dental. Sistema completo para citas, tratamientos, recordatorios automáticos y control de pacientes. Sin permanencia."
         features={features}
         featuresHeading="Todo para gestionar tu consultorio dental"
+        faqs={FAQS}
         relatedSectors={[
           { title: "Consultorios y Clínicas", slug: "consultorios", icon: "🏥", description: "Sistema de citas para profesionales de la salud" },
           { title: "Psicología y Terapia", slug: "psicologia", icon: "🧠", description: "Agenda confidencial para psicólogos y terapeutas" },

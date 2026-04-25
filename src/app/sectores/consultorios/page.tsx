@@ -37,6 +37,14 @@ const features = [
   { title: "Reportes de ocupación", description: "Conoce tus horas más demandadas y optimiza la disponibilidad de tu equipo.", icon: "📊" },
 ];
 
+const FAQS = [
+  { q: "¿Es seguro para manejar datos de pacientes?", a: "Sí. AgenditApp maneja la información de tus pacientes de forma segura. Los datos de contacto y citas se almacenan en infraestructura segura y no son compartidos con terceros." },
+  { q: "¿Puedo gestionar múltiples profesionales con especialidades distintas?", a: "Absolutamente. Puedes crear perfiles para cada médico, terapeuta o especialista, con sus propios horarios, duraciones de consulta y servicios asignados." },
+  { q: "¿Los pacientes pueden reagendar o cancelar sin llamar al consultorio?", a: "Sí. Desde la confirmación de cita, el paciente recibe un enlace para confirmar, cancelar o reprogramar su cita directamente, sin necesidad de llamar." },
+  { q: "¿Funciona para diferentes especialidades médicas?", a: "Sí. Puedes configurar duraciones distintas por especialidad: una consulta general de 20 min, una terapia de 60 min, una evaluación inicial de 45 min, etc. Cada servicio tiene su propio tiempo." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes comienzan desde $10 USD al mes, sin permanencia. Puedes cancelar en cualquier momento. El plan Esencial ($20 USD) incluye recordatorios automáticos por WhatsApp." },
+];
+
 export default function ConsultoriosPage() {
   return (
     <>
@@ -49,6 +57,7 @@ export default function ConsultoriosPage() {
         description="Moderniza tu consultorio con reservas online automáticas, control de pacientes, recordatorios por WhatsApp y agenda por profesional. Sin permanencia."
         features={features}
         featuresHeading="Todo lo que necesitas para tu consultorio"
+        faqs={FAQS}
         relatedSectors={[
           { title: "Odontología", slug: "odontologia", icon: "🦷", description: "Sistema de citas para dentistas y tratamientos" },
           { title: "Psicología y Terapia", slug: "psicologia", icon: "🧠", description: "Agenda confidencial para psicólogos y terapeutas" },

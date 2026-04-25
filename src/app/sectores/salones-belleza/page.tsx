@@ -55,6 +55,14 @@ const features = [
   { title: "Página web incluida", description: "Landing personalizada para que tus clientes reserven online 24/7.", icon: "🌐" },
 ];
 
+const FAQS = [
+  { q: "¿Puedo gestionar múltiples estilistas con horarios distintos?", a: "Sí. AgenditApp permite crear perfiles por estilista, asignar servicios específicos a cada uno y gestionar su disponibilidad de forma independiente. Los clientes pueden elegir con quién quieren ser atendidos al reservar." },
+  { q: "¿Los recordatorios de WhatsApp salen desde mi número del salón?", a: "Exactamente. A diferencia de otras plataformas que envían desde números genéricos, AgenditApp configura los recordatorios para que salgan desde el número de WhatsApp de tu negocio, lo que aumenta la tasa de apertura y respuesta." },
+  { q: "¿Puedo mostrar mis servicios con precios y duración?", a: "Sí. Puedes crear un catálogo completo de servicios con nombre, descripción, duración y precio. Tus clientes ven exactamente qué van a recibir y por cuánto tiempo al momento de reservar." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes comienzan desde $10 USD al mes. No hay permanencias ni cláusulas de fidelidad — pagas mes a mes y puedes cancelar cuando quieras." },
+  { q: "¿Mis clientes necesitan descargar alguna aplicación?", a: "No. Tus clientes reservan directamente desde tu página web personalizada usando el navegador de su celular, sin necesidad de descargar nada." },
+];
+
 export default function SalonesBellezaPage() {
   return (
     <>
@@ -71,6 +79,7 @@ export default function SalonesBellezaPage() {
           quote: "Desde que uso AgenditApp, mis clientas reservan solas y las ausencias bajaron un montón. ¡Lo recomiendo!",
           author: "Laura M. — Salón de Belleza en Bogotá",
         }}
+        faqs={FAQS}
         relatedSectors={[
           { title: "Barberías", slug: "barberias", icon: "💈", description: "Sistema de turnos para barberos y servicios express" },
           { title: "Spas y Bienestar", slug: "spas", icon: "🧖‍♀️", description: "Gestión de masajes, faciales y tratamientos" },

@@ -307,6 +307,28 @@ export default async function BlogPostPage({
     isPartOf: { "@type": "Blog", name: "Blog AgenditApp", url: "https://agenditapp.com/blog" },
   };
 
+  const howToSchema = post.howToSteps?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        name: post.title,
+        description: post.description,
+        inLanguage: "es-CO",
+        image: {
+          "@type": "ImageObject",
+          url: `https://agenditapp.com/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(post.category)}&tag=Blog`,
+          width: 1200,
+          height: 630,
+        },
+        step: post.howToSteps.map((s, i) => ({
+          "@type": "HowToStep",
+          position: i + 1,
+          name: s.name,
+          text: s.text,
+        })),
+      }
+    : null;
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -321,7 +343,7 @@ export default async function BlogPostPage({
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([articleSchema, breadcrumbSchema]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([articleSchema, breadcrumbSchema, ...(howToSchema ? [howToSchema] : [])]) }}
       />
       <PageHeader />
       <main className="min-h-screen pt-28">

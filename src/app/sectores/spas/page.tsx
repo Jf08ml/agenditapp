@@ -37,6 +37,14 @@ const features = [
   { title: "Paquetes y promociones", description: "Crea combos de servicios, membresías y planes especiales para fidelizar clientes.", icon: "🎁" },
 ];
 
+const FAQS = [
+  { q: "¿Puedo gestionar múltiples terapeutas y salas al mismo tiempo?", a: "Sí. AgenditApp permite asignar reservas por terapeuta y por sala de forma independiente, evitando cruces de horario y maximizando la ocupación de tu spa." },
+  { q: "¿Puedo configurar paquetes de servicios o combos?", a: "Sí. Puedes crear servicios combinados (por ejemplo, masaje + facial) con una duración y precio únicos, y tus clientes los reservan como un solo paquete." },
+  { q: "¿Los recordatorios de WhatsApp pueden incluir instrucciones previas al tratamiento?", a: "Sí. Puedes personalizar el mensaje de recordatorio para incluir indicaciones específicas: llegar sin maquillaje, venir con ropa cómoda, hidratarse antes, etc." },
+  { q: "¿Cuánto cuesta AgenditApp para spas?", a: "Los planes van desde $10 USD/mes (básico) hasta $30 USD/mes (Marca Propia con dominio personalizado). Todos incluyen reservas ilimitadas y sin comisiones por transacción." },
+  { q: "¿Hay permanencia o contrato mínimo?", a: "No. Es suscripción mensual, sin permanencia. Cancelas cuando quieras, sin penalizaciones ni trámites complicados." },
+];
+
 export default function SpasPage() {
   return (
     <>
@@ -49,6 +57,7 @@ export default function SpasPage() {
         description="Digitaliza tu spa con reservas online automáticas, gestión de terapeutas y salas, recordatorios por WhatsApp y control total de servicios wellness."
         features={features}
         featuresHeading="Todo para gestionar tu spa profesionalmente"
+        faqs={FAQS}
         relatedSectors={[
           { title: "Salones de Belleza", slug: "salones-belleza", icon: "💇‍♀️", description: "Sistema completo para manicure, pedicure y tratamientos" },
           { title: "Lash & Brow Studios", slug: "lash-brow", icon: "👁️", description: "Agenda para extensiones de pestañas y microblading" },
