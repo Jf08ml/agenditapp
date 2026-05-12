@@ -29,7 +29,7 @@ export function MobileArrow() {
 
         {/* Estela */}
         <path
-          d="M -10 500 C -80 200, -70 80, 0 120"
+          d="M -20 450 C -110 -20, -60 20, 0 60"
           stroke="#1D4ED8"
           strokeWidth="10"
           strokeLinecap="round"
@@ -53,7 +53,7 @@ export function MobileArrow() {
         {/* Línea principal */}
         <path
           id="arrowPathMainMobile"
-          d="M -10 500 C -80 200, -70 80, 0 120"
+          d="M -20 450 C -110 -20, -60 20, 0 60"
           stroke="#1D4ED8"
           strokeWidth="6"
           strokeLinecap="round"

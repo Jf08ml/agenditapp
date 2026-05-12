@@ -9,18 +9,19 @@ import { PAISES } from "../components/constants/paises";
 
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 24 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.7, ease: easeOut } },
-};
-
-const cardIn: Variants = {
-  initial: { opacity: 0, y: 20, scale: 0.98 },
-  animate: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: easeOut } },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } },
 };
 
 const inputClass =
   "w-full rounded-[10px] bg-bg-main border border-brand/20 px-3.5 py-2.5 text-sm text-heading placeholder:text-muted focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/15 transition-all";
 
 const labelClass = "block text-sm font-medium text-heading mb-1.5";
+
+const PROMISES = [
+  "Respuesta en menos de 1 hora",
+  "Configuración gratis incluida",
+  "Sin compromiso de compra",
+];
 
 export default function DemoLead() {
   const [nombre, setNombre] = useState("");
@@ -77,44 +78,103 @@ export default function DemoLead() {
   }
 
   return (
-    <section id="demo" className="py-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="demo" className="py-24 sm:py-28">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-        {/* ── Header ── */}
-        <motion.div
-          variants={fadeInUp}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-center max-w-2xl mx-auto mb-12"
-        >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/8 border border-brand/20 text-brand text-[11px] font-semibold tracking-wider uppercase mb-4">
-            Demo personalizada
-          </span>
-          <h2 className="text-3xl md:text-4xl font-semibold text-heading tracking-tight leading-tight">
-            Déjanos tus datos y te{" "}
-            <span className="text-brand">instalamos la agenda</span>
-          </h2>
-          <p className="mt-4 text-base text-body leading-relaxed">
-            Cuéntanos sobre tu negocio y te contactamos por WhatsApp para
-            mostrarte AgenditApp, configurar tus servicios y dejarte todo listo.
-          </p>
-        </motion.div>
-
-        {/* ── Card grid ── */}
-        <motion.div
-          className="grid gap-6 md:grid-cols-[3fr,2fr] items-start"
-          variants={cardIn}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {/* Form */}
-          <div
-            className="rounded-[20px] border border-brand/12 bg-bg-card p-6 sm:p-8"
-            style={{ boxShadow: "var(--shadow-card)" }}
+          {/* ── Left: text + promises + WA alt ── */}
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={{ animate: { transition: { staggerChildren: 0.08 } } }}
           >
-            <form onSubmit={handleSubmit} className="space-y-5 text-sm">
+            <motion.span
+              variants={fadeInUp}
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-widest uppercase mb-5"
+              style={{ background: "var(--warm-soft)", color: "var(--warm-deep)" }}
+            >
+              Demo personalizada
+            </motion.span>
+
+            <motion.h2
+              variants={fadeInUp}
+              className="text-[clamp(28px,4vw,44px)] font-bold leading-[1.1] tracking-tight text-[#0F172A] text-balance m-0"
+            >
+              Te dejamos la agenda lista{" "}
+              <span
+                style={{
+                  fontFamily: "var(--font-instrument-serif), Georgia, serif",
+                  fontStyle: "italic",
+                  fontWeight: 400,
+                }}
+              >
+                en 30 minutos.
+              </span>
+            </motion.h2>
+
+            <motion.p
+              variants={fadeInUp}
+              className="mt-4 text-[17px] text-[#64748B] leading-relaxed"
+            >
+              Cuéntanos sobre tu negocio y te contactamos por WhatsApp para
+              configurar tus servicios y mostrarte el panel completo.
+            </motion.p>
+
+            <motion.ul variants={fadeInUp} className="mt-7 flex flex-col gap-3">
+              {PROMISES.map((p) => (
+                <li key={p} className="flex items-center gap-3 text-[14px] font-medium text-[#0F172A]">
+                  <span
+                    className="w-[22px] h-[22px] rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{ background: "rgba(37,211,102,0.15)" }}
+                  >
+                    <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+                      <path d="M2 6l3 3 5-6" stroke="var(--wa-deep)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                  {p}
+                </li>
+              ))}
+            </motion.ul>
+
+            {/* WhatsApp alt card */}
+            <motion.div
+              variants={fadeInUp}
+              className="mt-8 rounded-[14px] p-5 flex flex-col sm:flex-row sm:items-center gap-3"
+              style={{ background: "#F1F3F8" }}
+            >
+              <div className="flex items-center gap-3 flex-1 min-w-0">
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-xl text-white flex-shrink-0"
+                  style={{ background: "var(--wa)" }}
+                >
+                  💬
+                </div>
+                <div className="min-w-0">
+                  <p className="text-[14px] font-bold text-[#0F172A]">¿Prefieres hablar directo?</p>
+                  <p className="text-[12px] text-[#64748B] mt-0.5 leading-snug">
+                    Un asesor te muestra una demo en vivo en menos de 5 minutos.
+                  </p>
+                </div>
+              </div>
+              <DemoCtaButton className="inline-flex items-center justify-center rounded-[10px] px-4 py-2.5 text-[12px] font-semibold text-white cursor-pointer whitespace-nowrap bg-[#25D366] hover:bg-[#22c35e] transition-colors flex-shrink-0">
+                Hablar por WhatsApp
+              </DemoCtaButton>
+            </motion.div>
+          </motion.div>
+
+          {/* ── Right: form card ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.98 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: easeOut }}
+          >
+            <div
+              className="rounded-[20px] border border-brand/12 bg-bg-card p-6 sm:p-8"
+              style={{ boxShadow: "var(--shadow-card)" }}
+            >
+              <form onSubmit={handleSubmit} className="space-y-5 text-sm">
               <div>
                 <label className={labelClass}>Tu nombre completo</label>
                 <input
@@ -224,51 +284,10 @@ export default function DemoLead() {
                 </div>
               )}
             </form>
-          </div>
-
-          {/* Right: WhatsApp alternative */}
-          <div
-            className="rounded-[20px] border border-brand/12 bg-bg-card p-6 sm:p-8 flex flex-col gap-5"
-            style={{ boxShadow: "var(--shadow-card)" }}
-          >
-            <div
-              className="w-12 h-12 rounded-[14px] flex items-center justify-center text-2xl"
-              style={{ background: "color-mix(in srgb, var(--brand) 10%, transparent)" }}
-            >
-              💬
             </div>
-            <div>
-              <h3 className="text-lg font-semibold text-heading">¿Prefieres hablar directo?</h3>
-              <p className="text-body text-sm mt-2 leading-relaxed">
-                Si no quieres llenar formularios, escríbenos ahora por WhatsApp.
-                Te ayudamos a ver si AgenditApp encaja con tu negocio y te mostramos
-                cómo se vería tu agenda.
-              </p>
-            </div>
+          </motion.div>
 
-            <ul className="flex flex-col gap-2">
-              {[
-                "Sin formularios ni esperas",
-                "Respuesta en minutos",
-                "Te mostramos una demo en vivo",
-              ].map((t) => (
-                <li key={t} className="flex items-center gap-2 text-sm text-body">
-                  <span className="w-4 h-4 rounded-full flex items-center justify-center text-brand flex-shrink-0"
-                    style={{ background: "color-mix(in srgb, var(--brand) 12%, transparent)" }}>
-                    <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 12 12" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M2 6l3 3 5-5"/>
-                    </svg>
-                  </span>
-                  {t}
-                </li>
-              ))}
-            </ul>
-
-            <DemoCtaButton className="mt-auto inline-flex items-center justify-center gap-2 rounded-[12px] bg-brand text-white font-semibold px-5 py-3 text-sm hover:bg-brand-hover transition-colors cursor-pointer shadow-md">
-              Hablar ahora por WhatsApp
-            </DemoCtaButton>
-          </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

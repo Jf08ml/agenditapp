@@ -38,45 +38,91 @@ const SECTOR_LINKS = [
 export default function Footer() {
   return (
     <motion.footer
-      className="border-t border-brand/10 mt-8"
+      className="rounded-t-[28px] overflow-hidden mt-8"
+      style={{ boxShadow: "0 -4px 32px rgba(15,23,42,0.06)" }}
       variants={stagger}
       initial="initial"
       whileInView="animate"
       viewport={{ once: true, amount: 0.15 }}
     >
       {/* ── CTA band ── */}
-      <motion.div
-        variants={fadeInUp}
-        className="py-14 px-6"
-        style={{
-          background:
-            "linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%)",
-        }}
-      >
-        <div className="max-w-4xl mx-auto text-center flex flex-col items-center gap-6">
-          <h2
-            className="text-2xl md:text-3xl font-semibold text-white leading-tight"
-            style={{ color: "white" }}
-          >
-            ¿Listo para automatizar tu agenda?
-          </h2>
-          <p className="text-white/75 text-base max-w-xl leading-relaxed">
-            Únete a cientos de negocios en Latinoamérica que ya reciben reservas
-            24/7 sin depender de WhatsApp manual.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center gap-3">
-            <DemoCtaButton className="inline-flex items-center gap-2 rounded-[12px] bg-white text-brand font-semibold px-6 py-3 text-sm hover:bg-white/90 transition-colors cursor-pointer shadow-lg">
-              Solicitar demo gratis
-            </DemoCtaButton>
-            <Link
-              href="/precios"
-              className="inline-flex items-center gap-2 rounded-[12px] border border-white/30 text-white font-medium px-6 py-3 text-sm hover:bg-white/10 transition-colors"
+      <div className="py-20 px-6 sm:px-8">
+        <motion.div
+          variants={fadeInUp}
+          className="max-w-6xl mx-auto relative rounded-[28px] px-6 py-12 sm:px-16 sm:py-16 text-center overflow-hidden"
+          style={{
+            background:
+              "linear-gradient(135deg, #1D4ED8 0%, oklch(0.45 0.18 280) 100%)",
+            color: "white",
+          }}
+        >
+          {/* Radial overlays */}
+          <div
+            aria-hidden
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.12), transparent 40%), radial-gradient(circle at 80% 70%, rgba(37,211,102,0.18), transparent 50%)",
+              opacity: 0.5,
+            }}
+          />
+
+          <div className="relative">
+            <span
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-widest uppercase mb-5"
+              style={{ background: "rgba(37,211,102,0.2)", color: "#86efac" }}
             >
-              Ver planes y precios
-            </Link>
+              ¿Listo?
+            </span>
+
+            <h2
+              className="text-[clamp(26px,4vw,44px)] font-bold leading-[1.1] tracking-tight text-balance m-0 mx-auto"
+              style={{ maxWidth: 680, color: "white" }}
+            >
+              Tu próxima cita podría reservarse{" "}
+              <span
+                style={{
+                  fontFamily:
+                    "var(--font-instrument-serif), Georgia, serif",
+                  fontStyle: "italic",
+                  fontWeight: 400,
+                }}
+              >
+                mientras lees esto.
+              </span>
+            </h2>
+
+            <p
+              className="mt-4 text-[16px] leading-relaxed mx-auto"
+              style={{ color: "rgba(255,255,255,0.8)", maxWidth: 520 }}
+            >
+              Únete a más de 200 negocios en Latinoamérica que ya reciben
+              reservas 24/7.
+            </p>
+
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <DemoCtaButton
+                className="inline-flex items-center justify-center rounded-[12px] px-6 py-3.5 text-[15px] font-semibold cursor-pointer transition-colors"
+                style={{ background: "var(--warm)", color: "white" }}
+              >
+                Crear mi demo gratis
+              </DemoCtaButton>
+              <Link
+                href="/precios"
+                className="inline-flex items-center justify-center rounded-[12px] px-6 py-3.5 text-[15px] font-semibold transition-colors hover:bg-white/15"
+                style={{
+                  border: "1.5px solid rgba(255,255,255,0.3)",
+                  background: "rgba(255,255,255,0.08)",
+                  color: "white",
+                  backdropFilter: "blur(8px)",
+                }}
+              >
+                Ver planes y precios
+              </Link>
+            </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
 
       {/* ── Main footer ── */}
       <div className="max-w-6xl mx-auto px-6 py-12">

@@ -127,8 +127,8 @@ export default function CasosDeExito() {
   const caso = casos[active];
 
   return (
-    <section id="casos-de-exito" className="py-20 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="casos-de-exito" className="py-24 sm:py-28 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8">
         {/* Header */}
         <motion.div
           variants={fadeInUp}
@@ -137,14 +137,22 @@ export default function CasosDeExito() {
           viewport={{ once: true, amount: 0.3 }}
           className="text-center max-w-2xl mx-auto mb-14"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/8 border border-brand/20 text-brand text-[11px] font-semibold tracking-wider uppercase mb-4">
-            Casos de éxito
+          <span
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full
+              text-[11px] font-semibold tracking-widest uppercase mb-5"
+            style={{ background: "var(--warm-soft)", color: "var(--warm-deep)" }}
+          >
+            Casos reales
           </span>
-          <h2 className="text-3xl md:text-4xl font-semibold text-heading tracking-tight leading-tight">
-            Negocios que ya crecen con AgenditApp
+          <h2 className="text-[clamp(28px,4vw,44px)] font-bold leading-[1.1] tracking-tight text-[#0F172A] text-balance m-0">
+            No nos creas a nosotros.{" "}
+            <span style={{ fontFamily: "var(--font-instrument-serif), Georgia, serif", fontStyle: "italic", fontWeight: 400 }}>
+              Escúchalos a ellas.
+            </span>
           </h2>
-          <p className="mt-4 text-base text-body leading-relaxed">
-            Desde Colombia hasta Chile y Costa Rica, cientos de negocios confían en nuestra plataforma para gestionar su agenda y crecer sin límites.
+          <p className="mt-4 text-[17px] text-[#64748B] leading-relaxed">
+            Desde Colombia hasta Chile y Costa Rica, más de 200 negocios confían
+            en AgenditApp para gestionar su agenda y crecer sin límites.
           </p>
         </motion.div>
       </div>

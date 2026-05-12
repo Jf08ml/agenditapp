@@ -1,6 +1,8 @@
 export const WHATSAPP_HREF =
   "https://wa.me/573184345284?text=Hola%20%F0%9F%91%8B%20quiero%20mi%20demo%20de%20AgenditApp%20para%20mi%20negocio";
 
+export const SIGNUP_HREF = "https://app.agenditapp.com/signup";
+
 export const JSONLD_ORGANIZATION = {
   "@context": "https://schema.org",
   "@type": "Organization",

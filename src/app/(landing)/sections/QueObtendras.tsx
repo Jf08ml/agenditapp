@@ -885,29 +885,28 @@ function ArrowFromBottom() {
 /* ── Componente Principal ── */
 export default function QueObtendras() {
   return (
-    <section className="relative px-6 py-20 max-w-6xl mx-auto">
+    <section className="relative px-6 sm:px-8 py-24 sm:py-28 max-w-6xl mx-auto">
       {/* ── Título ── */}
       <motion.div
         variants={fadeInUp}
         initial="initial"
         whileInView="animate"
         viewport={{ once: true, amount: 0.3 }}
-        className="text-center mb-16"
+        className="text-center max-w-2xl mx-auto mb-16"
       >
-        <div className="relative inline-block leading-[1.05]">
-          <p className="text-4xl sm:text-5xl font-semibold text-brand opacity-10 select-none">
-            ¿Qué obtendrás?
-          </p>
-          <p className="text-4xl sm:text-5xl font-semibold text-brand opacity-[0.22] select-none -mt-1">
-            ¿Qué obtendrás?
-          </p>
-          <h2 className="text-4xl sm:text-5xl font-semibold text-heading -mt-1">
-            ¿Qué obtendrás?
-          </h2>
-        </div>
-        <p className="mt-6 text-body text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-          Conoce las herramientas de agendamiento y gestión más valoradas por
-          nuestros usuarios para automatizar su día a día y escalar sus ventas.
+        <span
+          className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full
+            text-[11px] font-semibold tracking-widest uppercase mb-5"
+          style={{ background: "var(--warm-soft)", color: "var(--warm-deep)" }}
+        >
+          Tus 3 grandes ganancias
+        </span>
+        <h2 className="text-[clamp(28px,4vw,44px)] font-bold leading-[1.1] tracking-tight text-[#0F172A] text-balance m-0">
+          ¿Qué obtendrás?
+        </h2>
+        <p className="mt-4 text-[17px] text-[#64748B] leading-relaxed">
+          Las herramientas más valoradas por nuestros usuarios para automatizar
+          su día a día y escalar sus ventas.
         </p>
       </motion.div>
 

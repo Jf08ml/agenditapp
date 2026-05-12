@@ -6,28 +6,36 @@ import { motion, AnimatePresence, easeOut, type Variants } from "framer-motion";
 
 const FAQS = [
   {
-    q: "¿Puedo cancelar cuando quiera?",
-    a: "Sí. La membresía es mes a mes. Si decides cancelar, no hay cláusulas de permanencia ni cobros ocultos: simplemente dejas de renovar el siguiente mes.",
+    q: "¿Realmente no tiene permanencia?",
+    a: "Correcto. El pago es mes a mes y puedes cancelar cuando quieras sin penalizaciones ni cláusulas. Si te vas, te ayudamos a exportar tus clientes y agenda.",
   },
   {
-    q: "¿Cuál es la diferencia entre subdominio y dominio propio?",
-    a: "Con subdominio, tu página queda como tu-salon.agenditapp.com (incluido en los planes Básico y Esencial). Con dominio propio, queda como tusalon.com o tusalon.com.co (plan Marca Propia), lo que da más posicionamiento de marca y confianza al cliente.",
-  },
-  {
-    q: "¿Los recordatorios salen desde mi número?",
-    a: "Sí. Configuramos los recordatorios para que salgan desde tu línea de WhatsApp Business, de manera que tus clientes reconozcan tu negocio y puedan responderte directamente.",
+    q: "¿Los recordatorios salen desde mi número de WhatsApp?",
+    a: "Sí. En los planes Esencial y Marca Propia, los mensajes se envían desde tu número oficial de WhatsApp Business. Tu cliente ve tu marca, no la nuestra.",
   },
   {
     q: "¿Necesito instalar algo o comprar equipos?",
-    a: "No. AgenditApp funciona 100% en la web. Puedes usarlo desde tu celular, tablet o computador con conexión a internet, sin instalaciones ni equipos adicionales.",
+    a: "No. AgenditApp funciona 100% en la nube. Lo abres desde tu celular, tablet o computadora. Configuramos todo contigo en una llamada de 30 minutos.",
+  },
+  {
+    q: "¿En cuánto tiempo lo tengo funcionando?",
+    a: "En el mismo día. Te ayudamos a cargar servicios, horarios y empleados, y dejamos tu enlace de reservas listo para compartir.",
+  },
+  {
+    q: "¿Y si soy malo con la tecnología?",
+    a: "AgenditApp se diseñó para personas no técnicas. Y nuestro equipo te configura todo gratis al inicio. Si tu mamá puede usar WhatsApp, puede usar AgenditApp.",
   },
   {
     q: "¿Puedo cambiar de plan después?",
-    a: "Claro. Si empiezas con el plan Básico o Esencial y luego quieres dominio propio, te migramos al plan Marca Propia y te acompañamos con la configuración técnica.",
+    a: "Sí, hacia arriba o hacia abajo, cuando quieras. Solo pagas la diferencia prorrateada del mes en curso.",
   },
   {
-    q: "¿Incluye soporte para configurarlo?",
-    a: "Sí. Te acompañamos en la configuración inicial de tu landing, servicios y agenda, y tienes soporte por WhatsApp para dudas del día a día.",
+    q: "¿Qué pasa con mis datos y los de mis clientes?",
+    a: "Tu información está cifrada y respaldada en la nube. Solo tú accedes con tu cuenta. Cumplimos con normativas de protección de datos en LatAm.",
+  },
+  {
+    q: "¿Aceptan transferencias o Nequi/Daviplata?",
+    a: "Sí. Aceptamos transferencia bancaria, Nequi, Daviplata y tarjetas internacionales.",
   },
 ];
 
@@ -46,8 +54,8 @@ const itemIn: Variants = {
 
 export default function FAQ() {
   return (
-    <section id="faq" className="py-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="faq" className="py-24 sm:py-28 bg-white border-t border-b border-[#0F172A]/6">
+      <div className="max-w-3xl mx-auto px-6 sm:px-8">
 
         {/* ── Header ── */}
         <motion.div
@@ -55,24 +63,31 @@ export default function FAQ() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 0.3 }}
-          className="text-center max-w-2xl mx-auto mb-12"
+          className="text-center mb-12"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/8 border border-brand/20 text-brand text-[11px] font-semibold tracking-wider uppercase mb-4">
+          <span
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-widest uppercase mb-5"
+            style={{ background: "var(--warm-soft)", color: "var(--warm-deep)" }}
+          >
             Preguntas frecuentes
           </span>
-          <h2 className="text-3xl md:text-4xl font-semibold text-heading tracking-tight leading-tight">
-            Resolvemos tus dudas{" "}
-            <span className="text-brand">antes de empezar</span>
+          <h2 className="text-[clamp(28px,4vw,44px)] font-bold leading-[1.1] tracking-tight text-[#0F172A] text-balance m-0">
+            Antes de empezar,{" "}
+            <span
+              style={{
+                fontFamily: "var(--font-instrument-serif), Georgia, serif",
+                fontStyle: "italic",
+                fontWeight: 400,
+              }}
+            >
+              resolvamos tus dudas.
+            </span>
           </h2>
-          <p className="mt-4 text-base text-body leading-relaxed">
-            Respuestas rápidas sobre la membresía, los planes y cómo funciona
-            AgenditApp en el día a día de tu negocio.
-          </p>
         </motion.div>
 
-        {/* ── FAQ grid ── */}
+        {/* ── FAQ list ── */}
         <motion.div
-          className="grid gap-3 md:grid-cols-2"
+          className="flex flex-col gap-3"
           variants={stagger}
           initial="initial"
           whileInView="animate"
@@ -103,6 +118,7 @@ export default function FAQ() {
         </motion.div>
       </div>
     </section>
+
   );
 }
 

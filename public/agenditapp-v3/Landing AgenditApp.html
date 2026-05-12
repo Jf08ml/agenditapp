@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AgenditApp — Landing rediseñada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --blue: #1E6BFF;
+    --blue-deep: #0A2A6B;
+    --blue-soft: #E8F0FF;
+    --ink: #0B1220;
+    --ink-2: #2A3344;
+    --muted: #5C6779;
+    --line: #E6E9F0;
+    --bg: #FBFCFE;
+    --card: #FFFFFF;
+    --wa: #25D366;
+    --wa-deep: #128C7E;
+    --warm: oklch(0.74 0.16 50);
+    --warm-deep: oklch(0.58 0.18 45);
+    --shadow-sm: 0 1px 2px rgba(11,18,32,0.04), 0 1px 3px rgba(11,18,32,0.06);
+    --shadow-md: 0 4px 12px rgba(11,18,32,0.06), 0 12px 40px rgba(11,18,32,0.08);
+    --shadow-lg: 0 30px 80px -20px rgba(30,107,255,0.25), 0 12px 40px rgba(11,18,32,0.10);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    line-height: 1.5;
+  }
+  img { max-width: 100%; display: block; }
+  button { font-family: inherit; cursor: pointer; }
+  a { color: inherit; text-decoration: none; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @keyframes blink { 0%, 60% { opacity: 1; } 61%, 100% { opacity: 0.2; } }
+  @keyframes pulse-dot { 0%, 100% { transform: scale(1); opacity: 1;} 50% { transform: scale(1.4); opacity: 0.5; }}
+  @keyframes float-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; }}
+  @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  ::selection { background: var(--blue); color: white; }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="copy.jsx"></script>
+<script type="text/babel" src="parts/_ui.jsx"></script>
+<script type="text/babel" src="parts/nav.jsx"></script>
+<script type="text/babel" src="parts/hero.jsx"></script>
+<script type="text/babel" src="parts/proof-bar.jsx"></script>
+<script type="text/babel" src="parts/pillars.jsx"></script>
+<script type="text/babel" src="parts/problem.jsx"></script>
+<script type="text/babel" src="parts/how.jsx"></script>
+<script type="text/babel" src="parts/catalog.jsx"></script>
+<script type="text/babel" src="parts/features.jsx"></script>
+<script type="text/babel" src="parts/whatsapp.jsx"></script>
+<script type="text/babel" src="parts/sectors.jsx"></script>
+<script type="text/babel" src="parts/location.jsx"></script>
+<script type="text/babel" src="parts/testimonials.jsx"></script>
+<script type="text/babel" src="parts/roi.jsx"></script>
+<script type="text/babel" src="parts/pricing.jsx"></script>
+<script type="text/babel" src="parts/compare.jsx"></script>
+<script type="text/babel" src="parts/faq.jsx"></script>
+<script type="text/babel" src="parts/demo-form.jsx"></script>
+<script type="text/babel" src="parts/footer-cta.jsx"></script>
+<script type="text/babel" src="app.jsx"></script>
+</body>
+</html>

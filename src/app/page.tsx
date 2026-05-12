@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
 import Hero from "./(landing)/sections/Hero";
+import ProofBar from "./(landing)/sections/ProofBar";
+import Problem from "./(landing)/sections/Problem";
+import QueObtendras from "./(landing)/sections/QueObtendras";
 import Sectores from "./(landing)/sections/Sectores";
 import Reserva from "./(landing)/sections/Reserva";
 import Servicios from "./(landing)/sections/Servicios";
+import WhatsAppShowcase from "./(landing)/sections/WhatsAppShowcase";
+import Software from "./(landing)/sections/Software";
+import CasosDeExito from "./(landing)/sections/CasosDeExito";
 import Ubicacion from "./(landing)/sections/Ubicacion";
+import ROICalculator from "./(landing)/sections/ROICalculator";
 import Precio from "./(landing)/sections/Precio";
 import FAQ from "./(landing)/sections/FAQ";
+import DemoLead from "./(landing)/sections/DemoLead";
 import Footer from "./(landing)/sections/Footer";
 import SchemaOrg from "./(landing)/components/seo/SchemaOrg";
 import {
@@ -16,10 +24,6 @@ import {
   JSONLD_WEBSITE,
   JSONLD_TESTIMONIALS,
 } from "./(landing)/components/constants";
-import DemoLead from "./(landing)/sections/DemoLead";
-import QueObtendras from "./(landing)/sections/QueObtendras";
-import Software from "./(landing)/sections/Software";
-import CasosDeExito from "./(landing)/sections/CasosDeExito";
 
 export const metadata: Metadata = {
   title: "AgenditApp | Sistema de Agendamiento Online y Gestión de Citas Automático",
@@ -83,16 +87,20 @@ export default function Page() {
         ]}
       />
       <Hero />
+      <ProofBar />
       <QueObtendras />
-      <Sectores />
-      <Software />
-      <CasosDeExito />
+      <Problem />
       <Reserva />
       <Servicios />
+      <WhatsAppShowcase />
+      <Software />
+      <Sectores />
+      <CasosDeExito />
       <Ubicacion />
+      <ROICalculator />
       <Precio />
-      <DemoLead />
       <FAQ />
+      <DemoLead />
       <Footer />
     </>
   );

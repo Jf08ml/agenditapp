@@ -117,7 +117,7 @@ export default function Reserva() {
   };
 
   return (
-    <section id="reserva" className="py-20">
+    <section id="reserva" className="py-24 sm:py-28 border-t border-b border-[#0F172A]/6 bg-white">
       <div className="max-w-6xl mx-auto px-6">
 
         {/* ── Header ── */}
@@ -128,16 +128,20 @@ export default function Reserva() {
           viewport={{ once: true, amount: 0.3 }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/8 border border-brand/20 text-brand text-[11px] font-semibold tracking-wider uppercase mb-4">
-            Reserva en línea
+          <span
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full
+              text-[11px] font-semibold tracking-widest uppercase mb-5"
+            style={{ background: "var(--warm-soft)", color: "var(--warm-deep)" }}
+          >
+            Así de simple
           </span>
-          <h2 className="text-3xl md:text-4xl font-semibold text-heading tracking-tight leading-tight">
+          <h2 className="text-[clamp(28px,4vw,44px)] font-bold leading-[1.1] tracking-tight text-[#0F172A] text-balance m-0">
             Tus clientes reservan en{" "}
-            <span className="text-brand">4 pasos simples</span>
+            <span style={{ color: "#1D4ED8" }}>4 pasos.</span>
           </h2>
-          <p className="mt-4 text-base text-body leading-relaxed">
-            Comparte tu enlace de reserva por WhatsApp, Instagram o tu página web.
-            El proceso es tan simple que ningún cliente se perderá.
+          <p className="mt-4 text-[17px] text-[#64748B] leading-relaxed">
+            Sin descargar apps. Sin formularios largos. Solo un enlace que compartes
+            por WhatsApp, Instagram o Google.
           </p>
         </motion.div>
 

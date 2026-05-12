@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(node -e ':*)"
+      "Bash(node -e ':*)",
+      "Bash(find /mnt/d/proyectos-personales/agenditapp -maxdepth 3 -not -path \"*/node_modules/*\" -not -path \"*/.next/*\" -not -path \"*/.git/*\" | sort)",
+      "Read(//mnt/d/proyectos-personales/**)",
+      "PowerShell(Start-Process \"d:\\\\proyectos-personales\\\\agenditapp\\\\public\\\\agenditapp-v3\\\\Landing AgenditApp.html\")",
+      "PowerShell(Start-Process powershell -ArgumentList \"-NoExit\", \"-Command\", \"cd 'd:\\\\proyectos-personales\\\\agenditapp'; npm run dev\")"
     ]
   }
 }
