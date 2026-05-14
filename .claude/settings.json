@@ -5,7 +5,10 @@
       "Bash(find /mnt/d/proyectos-personales/agenditapp -maxdepth 3 -not -path \"*/node_modules/*\" -not -path \"*/.next/*\" -not -path \"*/.git/*\" | sort)",
       "Read(//mnt/d/proyectos-personales/**)",
       "PowerShell(Start-Process \"d:\\\\proyectos-personales\\\\agenditapp\\\\public\\\\agenditapp-v3\\\\Landing AgenditApp.html\")",
-      "PowerShell(Start-Process powershell -ArgumentList \"-NoExit\", \"-Command\", \"cd 'd:\\\\proyectos-personales\\\\agenditapp'; npm run dev\")"
+      "PowerShell(Start-Process powershell -ArgumentList \"-NoExit\", \"-Command\", \"cd 'd:\\\\proyectos-personales\\\\agenditapp'; npm run dev\")",
+      "Bash(node -e \"const p = require\\('./package.json'\\); console.log\\(JSON.stringify\\({...p.dependencies, ...p.devDependencies}, null, 2\\)\\)\")",
+      "Bash(node -e \"const p = require\\('./package.json'\\); console.log\\(p.dependencies['remark-gfm']\\)\")",
+      "Bash(Get-ChildItem -Path \"d:\\\\proyectos-personales\\\\agenditapp\\\\src\\\\content\\\\blog\\\\\" -Filter \"*.mdx\" | Select-Object -ExpandProperty FullName)"
     ]
   }
 }

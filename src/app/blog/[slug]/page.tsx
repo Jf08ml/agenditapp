@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import { getAllSlugs, getPost } from "@/lib/blog";
 import PageHeader from "@/app/(landing)/components/ui/PageHeader";
 import PageFooter from "@/app/(landing)/components/ui/PageFooter";
@@ -194,6 +195,47 @@ const mdxComponents = {
         { feature: "Sin permanencia", values: ["✅", "✅", "✅", "✅", "✅", "✅", "✅"] },
         { feature: "Fidelización incluida", values: ["✅", "✅", "Parcial", "Add-on", "✅", "❌", "✅"] },
         { feature: "Integración Google Maps", values: ["✅", "✅", "✅", "✅", "✅", "❌", "Parcial"] },
+      ]}
+    />
+  ),
+  // Comparison table: software-agendamiento-consultorios article (4 tools, feature-first, AgenditApp highlighted)
+  CompareConsultorios: () => (
+    <FeatureTable
+      cols={[
+        { name: "AgenditApp", highlight: true, sub: "Recomendado" },
+        { name: "AgendaPro" },
+        { name: "Doctoralia" },
+        { name: "Calendly" },
+      ]}
+      rows={[
+        { feature: "Precio mensual", values: ["$10–30 USD", "$30–60 USD", "Gratis + planes", "$10–20 USD"] },
+        { feature: "WhatsApp nativo", values: ["✅", "Parcial", "❌", "❌"] },
+        { feature: "Recordatorios automáticos", values: ["✅", "✅", "✅", "✅"] },
+        { feature: "Citas recurrentes", values: ["✅", "✅", "❌", "✅"] },
+        { feature: "Múltiples profesionales", values: ["✅", "✅", "✅", "Add-on"] },
+        { feature: "Soporte en español", values: ["✅", "✅", "✅", "Parcial"] },
+        { feature: "Adaptado a Colombia", values: ["✅", "Parcial", "Médicos solo", "❌"] },
+        { feature: "Comisiones / nómina", values: ["✅", "✅", "❌", "❌"] },
+        { feature: "Sin permanencia", values: ["✅", "✅", "✅", "✅"] },
+      ]}
+    />
+  ),
+  // Comparison table: whatsapp-business article (Personal vs Business, Business highlighted)
+  CompareWhatsApp: () => (
+    <FeatureTable
+      cols={[
+        { name: "WhatsApp Personal" },
+        { name: "WhatsApp Business", highlight: true, sub: "Recomendado" },
+      ]}
+      rows={[
+        { feature: "Perfil de empresa con horarios", values: ["❌", "✅"] },
+        { feature: "Catálogo de servicios", values: ["❌", "✅"] },
+        { feature: "Respuestas rápidas (atajos)", values: ["❌", "✅"] },
+        { feature: "Mensaje de bienvenida automático", values: ["❌", "✅"] },
+        { feature: "Mensaje de ausencia automático", values: ["❌", "✅"] },
+        { feature: "Etiquetas para organizar chats", values: ["❌", "✅"] },
+        { feature: "Estadísticas de mensajes", values: ["❌", "✅"] },
+        { feature: "Costo", values: ["Gratis", "Gratis"] },
       ]}
     />
   ),
@@ -394,7 +436,11 @@ export default async function BlogPostPage({
         {/* Article body */}
         <article className="px-4 sm:px-6 pb-16">
           <div className="max-w-3xl mx-auto">
-            <MDXRemote source={post.content} components={mdxComponents} />
+            <MDXRemote
+              source={post.content}
+              components={mdxComponents}
+              options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+            />
           </div>
         </article>
 
