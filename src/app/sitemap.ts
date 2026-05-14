@@ -4,8 +4,8 @@ import { getAllPosts } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://agenditapp.com";
-  // Fecha estática para que Google no desconfíe de cambios inexistentes
-  const lastMod = "2026-04-24";
+  // Fecha de último rediseño significativo
+  const lastMod = "2026-05-13";
 
   const blogPosts = getAllPosts().map((post) => ({
     url: `${base}/blog/${post.slug}`,
@@ -154,7 +154,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${base}/blog`,
-      lastModified: "2026-04-08",
+      lastModified: "2026-05-12",
       changeFrequency: "weekly",
       priority: 0.8,
     },

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import SchemaOrg from "../(landing)/components/seo/SchemaOrg";
-import { DemoCtaButton } from "../(landing)/components/ui/DemoCtaModal";
 import PageHeader from "../(landing)/components/ui/PageHeader";
 import PageFooter from "../(landing)/components/ui/PageFooter";
 import Precio from "../(landing)/sections/Precio";

@@ -134,10 +134,13 @@ export function SelectorPais({ value, onChange }: SelectorPaisProps) {
               autoComplete="off"
               aria-autocomplete="list"
               role="combobox"
+              aria-expanded={true}
+              aria-controls="pais-listbox"
             />
           </div>
 
           <ul
+            id="pais-listbox"
             ref={listaRef}
             role="listbox"
             className="max-h-52 overflow-y-auto py-1 text-sm"

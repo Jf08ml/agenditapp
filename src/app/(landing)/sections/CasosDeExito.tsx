@@ -96,7 +96,7 @@ function TestimonialCard({ caso }: { caso: (typeof casos)[number] }) {
           lineHeight: 1,
         }}
       >
-        "
+        &ldquo;
       </span>
 
       {/* Stat */}
@@ -196,7 +196,6 @@ export default function CasosDeExito() {
   useEffect(() => {
     resetTimer();
     return () => { if (timer.current) clearTimeout(timer.current); };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
 
   return (
