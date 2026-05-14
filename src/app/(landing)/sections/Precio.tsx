@@ -4,17 +4,13 @@ import { useState } from "react";
 import { DemoCtaButton } from "../components/ui/DemoCtaModal";
 import { motion, AnimatePresence, easeOut, type Variants } from "framer-motion";
 
-// ─── Icons ───────────────────────────────────────────────
+// ─── Icons ───────────────────────────────────────────────────────────────────
 const IconCheck = ({ className = "w-3.5 h-3.5" }: { className?: string }) => (
   <svg className={className} fill="none" viewBox="0 0 16 16" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 8l4 4 6-6" />
   </svg>
 );
-const IconMinus = () => (
-  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 16 16" stroke="currentColor">
-    <path strokeLinecap="round" strokeWidth={2} d="M4 8h8" />
-  </svg>
-);
+
 const IconChevron = ({ open }: { open: boolean }) => (
   <svg
     className={`w-4 h-4 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
@@ -24,13 +20,13 @@ const IconChevron = ({ open }: { open: boolean }) => (
   </svg>
 );
 
-// ─── Data ─────────────────────────────────────────────────
+// ─── Data ────────────────────────────────────────────────────────────────────
 type PlanKey = "basico" | "esencial" | "marca";
 
 const PLANS: Array<{
   key: PlanKey;
   name: string;
-  price: string;
+  monthlyPrice: number;
   badge: string;
   badgeStyle: React.CSSProperties;
   tagline: string;
@@ -41,9 +37,13 @@ const PLANS: Array<{
   {
     key: "basico",
     name: "Básico",
-    price: "$10 USD",
+    monthlyPrice: 10,
     badge: "Starter",
-    badgeStyle: { background: "color-mix(in srgb, var(--brand) 10%, transparent)", color: "var(--brand)", border: "1px solid color-mix(in srgb, var(--brand) 25%, transparent)" },
+    badgeStyle: {
+      background: "color-mix(in srgb, var(--brand) 10%, transparent)",
+      color: "var(--brand)",
+      border: "1px solid color-mix(in srgb, var(--brand) 25%, transparent)",
+    },
     tagline: "Para organizar tu agenda y empezar a recibir reservas online.",
     highlights: [
       "Reservas y citas ilimitadas 24/7",
@@ -56,9 +56,9 @@ const PLANS: Array<{
   {
     key: "esencial",
     name: "Esencial",
-    price: "$20 USD",
+    monthlyPrice: 20,
     badge: "Más elegido",
-    badgeStyle: { background: "var(--brand)", color: "#fff", border: "none" },
+    badgeStyle: { background: "var(--warm-deep)", color: "#fff", border: "none" },
     tagline: "Automatiza WhatsApp y reduce ausencias con recordatorios.",
     highlights: [
       "Todo lo del plan Básico",
@@ -72,9 +72,13 @@ const PLANS: Array<{
   {
     key: "marca",
     name: "Marca Propia",
-    price: "$30 USD",
+    monthlyPrice: 30,
     badge: "Pro",
-    badgeStyle: { background: "color-mix(in srgb, #F59E0B 12%, transparent)", color: "#B45309", border: "1px solid color-mix(in srgb, #F59E0B 30%, transparent)" },
+    badgeStyle: {
+      background: "color-mix(in srgb, #F59E0B 12%, transparent)",
+      color: "#B45309",
+      border: "1px solid color-mix(in srgb, #F59E0B 30%, transparent)",
+    },
     tagline: "Dominio propio y campañas masivas de WhatsApp para crecer.",
     highlights: [
       "Todo lo del plan Esencial",
@@ -147,7 +151,7 @@ const COMPARISON_GROUPS: Array<{ group: string; rows: CompRow[] }> = [
   },
 ];
 
-// ─── Animations ───────────────────────────────────────────
+// ─── Animations ──────────────────────────────────────────────────────────────
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 28 },
   animate: { opacity: 1, y: 0, transition: { duration: 0.7, ease: easeOut } },
@@ -165,43 +169,141 @@ const expandVariants = {
   expanded: { height: "auto", opacity: 1, transition: { duration: 0.35, ease: easeOut } },
 };
 
-// ─── Sub-components ───────────────────────────────────────
+// ─── Sub-components ───────────────────────────────────────────────────────────
 function ValueCell({ value }: { value: boolean | string }) {
   if (typeof value === "boolean") {
     return value ? (
-      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full text-brand"
-        style={{ background: "color-mix(in srgb, var(--brand) 12%, transparent)" }}>
+      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full"
+        style={{ background: "rgba(37,211,102,0.15)", color: "#128C7E" }}>
         <IconCheck />
       </span>
     ) : (
-      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full text-muted"
-        style={{ background: "color-mix(in srgb, var(--text-muted) 8%, transparent)" }}>
-        <IconMinus />
-      </span>
+      <span className="text-xl font-light select-none" style={{ color: "#C7CCD6" }}>—</span>
     );
   }
-  return <span className="text-xs font-medium text-brand whitespace-nowrap">{value}</span>;
+  return (
+    <span className="text-xs font-semibold whitespace-nowrap text-brand">
+      {value}
+    </span>
+  );
 }
 
-function PlanCard({ plan }: { plan: typeof PLANS[number] }) {
+function PlanCard({ plan, yearly }: { plan: typeof PLANS[number]; yearly: boolean }) {
   const [expanded, setExpanded] = useState(false);
   const extras = EXTRA_FEATURES[plan.key];
+  const price = yearly ? plan.monthlyPrice * 10 : plan.monthlyPrice;
+  const priceUnit = yearly ? "/ año" : "/ mes";
+  const priceNote = yearly
+    ? "2 meses gratis · facturación anual"
+    : "Sin permanencia · Cancela cuando quieras";
+
+  if (plan.featured) {
+    return (
+      <motion.div variants={cardIn} className="relative flex flex-col" style={{ zIndex: 1 }}>
+        {/* Floating badge */}
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10 whitespace-nowrap">
+          <span
+            className="inline-block px-4 py-1.5 rounded-full text-[11px] font-bold tracking-wide uppercase text-white shadow-md"
+            style={{ background: "var(--warm-deep)" }}
+          >
+            {plan.badge}
+          </span>
+        </div>
+
+        <div
+          className="flex flex-col rounded-[20px] overflow-hidden flex-1"
+          style={{
+            background: "linear-gradient(180deg, #1a3a8f 0%, #0A2A6B 100%)",
+            boxShadow: "0 24px 64px rgba(29,78,216,0.35), 0 4px 16px rgba(10,42,107,0.25)",
+            transform: "scale(1.02)",
+          }}
+        >
+          <div className="p-6 flex flex-col flex-1">
+            {/* Header */}
+            <div className="mb-4 pt-2">
+              <h3 className="text-lg font-semibold text-white">{plan.name}</h3>
+            </div>
+
+            {/* Price */}
+            <div className="flex items-baseline gap-1.5 mb-1">
+              <span className="font-extrabold text-white leading-none" style={{ fontSize: "clamp(36px,5vw,52px)", letterSpacing: "-0.03em" }}>
+                ${price}
+              </span>
+              <span className="text-sm text-white/60">USD {priceUnit}</span>
+            </div>
+            <p className="text-xs text-white/50 mb-5">{priceNote}</p>
+
+            {/* Tagline */}
+            <p className="text-sm text-white/75 mb-5 leading-relaxed">{plan.tagline}</p>
+
+            {/* Key highlights */}
+            <ul className="flex flex-col gap-2.5 mb-5">
+              {plan.highlights.map((h) => (
+                <li key={h} className="flex items-start gap-2.5 text-sm text-white/90">
+                  <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center"
+                    style={{ background: "rgba(37,211,102,0.25)", color: "#25D366" }}>
+                    <IconCheck className="w-2.5 h-2.5" />
+                  </span>
+                  {h}
+                </li>
+              ))}
+            </ul>
+
+            {/* Expand toggle */}
+            <button
+              onClick={() => setExpanded((v) => !v)}
+              className="flex items-center gap-1.5 text-xs font-medium text-white/60 hover:text-white/90 transition-colors mb-4 w-fit"
+            >
+              <IconChevron open={expanded} />
+              {expanded ? "Ocultar características" : "Ver más características"}
+            </button>
+
+            <AnimatePresence initial={false}>
+              {expanded && (
+                <motion.div
+                  key="extras"
+                  variants={expandVariants}
+                  initial="collapsed"
+                  animate="expanded"
+                  exit="collapsed"
+                  className="overflow-hidden"
+                >
+                  <ul className="flex flex-col gap-2 mb-5 pt-1 border-t border-white/10">
+                    {extras.map((e) => (
+                      <li key={e} className="flex items-start gap-2.5 text-sm text-white/60 pt-2">
+                        <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center"
+                          style={{ background: "rgba(37,211,102,0.15)", color: "#25D366" }}>
+                          <IconCheck className="w-2.5 h-2.5" />
+                        </span>
+                        {e}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <div className="flex-1" />
+
+            {/* CTA — white on featured */}
+            <DemoCtaButton
+              className="w-full px-5 py-3 rounded-[12px] text-sm font-bold text-center cursor-pointer
+                bg-white text-[#0A2A6B] hover:bg-white/90 transition-all duration-200 shadow-md"
+            >
+              {plan.ctaLabel}
+            </DemoCtaButton>
+          </div>
+        </div>
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div
       variants={cardIn}
-      className={`relative flex flex-col rounded-[20px] border bg-bg-card overflow-hidden transition-shadow duration-300 ${
-        plan.featured
-          ? "border-brand shadow-[0_0_0_1px_var(--brand),0_20px_48px_color-mix(in_srgb,var(--brand)_20%,transparent)]"
-          : "border-brand/12 shadow-[var(--shadow-card)]"
-      }`}
+      className="relative flex flex-col rounded-[20px] border bg-bg-card overflow-hidden h-full
+        transition-shadow duration-300 border-brand/12 shadow-[var(--shadow-card)]"
     >
-      {/* Featured ribbon */}
-      {plan.featured && (
-        <div className="absolute top-0 left-0 right-0 h-1 rounded-t-[20px]"
-          style={{ background: "var(--brand)" }} />
-      )}
-
       <div className="p-6 flex flex-col flex-1">
         {/* Header */}
         <div className="flex items-start justify-between gap-3 mb-4">
@@ -214,10 +316,12 @@ function PlanCard({ plan }: { plan: typeof PLANS[number] }) {
 
         {/* Price */}
         <div className="flex items-baseline gap-1.5 mb-1">
-          <span className="text-3xl font-bold text-heading">{plan.price}</span>
-          <span className="text-sm text-muted">/ mes</span>
+          <span className="font-extrabold text-heading leading-none" style={{ fontSize: "clamp(36px,5vw,52px)", letterSpacing: "-0.03em" }}>
+            ${price}
+          </span>
+          <span className="text-sm text-muted">USD {priceUnit}</span>
         </div>
-        <p className="text-xs text-muted mb-5">Sin permanencia · Cancela cuando quieras</p>
+        <p className="text-xs text-muted mb-5">{priceNote}</p>
 
         {/* Tagline */}
         <p className="text-sm text-body mb-5 leading-relaxed">{plan.tagline}</p>
@@ -244,7 +348,6 @@ function PlanCard({ plan }: { plan: typeof PLANS[number] }) {
           {expanded ? "Ocultar características" : "Ver más características"}
         </button>
 
-        {/* Expanded features */}
         <AnimatePresence initial={false}>
           {expanded && (
             <motion.div
@@ -270,16 +373,11 @@ function PlanCard({ plan }: { plan: typeof PLANS[number] }) {
           )}
         </AnimatePresence>
 
-        {/* Spacer to push CTA down */}
         <div className="flex-1" />
 
-        {/* CTA */}
         <DemoCtaButton
-          className={`w-full px-5 py-3 rounded-[12px] text-sm font-semibold text-center cursor-pointer transition-all duration-200 ${
-            plan.featured
-              ? "bg-brand text-white hover:bg-brand-hover shadow-md"
-              : "border border-brand/25 text-brand hover:bg-brand/6"
-          }`}
+          className="w-full px-5 py-3 rounded-[12px] text-sm font-semibold text-center cursor-pointer
+            transition-all duration-200 border border-brand/25 text-brand hover:bg-brand/6"
         >
           {plan.ctaLabel}
         </DemoCtaButton>
@@ -288,8 +386,10 @@ function PlanCard({ plan }: { plan: typeof PLANS[number] }) {
   );
 }
 
-// ─── Main component ────────────────────────────────────────
+// ─── Main component ───────────────────────────────────────────────────────────
 export default function Precio() {
+  const [yearly, setYearly] = useState(false);
+
   return (
     <section id="membresia" className="py-20">
       <div className="max-w-6xl mx-auto px-6">
@@ -300,37 +400,70 @@ export default function Precio() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 0.3 }}
-          className="text-center max-w-2xl mx-auto mb-14"
+          className="text-center max-w-2xl mx-auto mb-10"
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/8 border border-brand/20 text-brand text-[11px] font-semibold tracking-wider uppercase mb-4">
             Planes y precios
           </span>
           <h2 className="text-3xl md:text-4xl font-semibold text-heading tracking-tight leading-tight">
-            Planes diseñados para{" "}
-            <span className="text-brand">escalar a tu ritmo</span>
+            Planes simples. Sin permanencia.{" "}
+            <span className="text-brand">Sin sorpresas.</span>
           </h2>
           <p className="mt-4 text-base text-body leading-relaxed">
-            Elige la opción que mejor se adapte a la etapa actual de tu operación.
-            Precios transparentes, sin comisiones ocultas por reserva y con la
-            libertad de cambiar de plan a medida que tu negocio y tu equipo sigan creciendo.
+            Empieza por $10 USD/mes. Cambia de plan cuando quieras. Cancela cuando quieras.
           </p>
+        </motion.div>
+
+        {/* ── Toggle mensual / anual ── */}
+        <motion.div
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.5 }}
+          className="flex justify-center mb-12"
+        >
+          <div className="inline-flex items-center bg-white border border-[#0F172A]/10 rounded-full p-1 shadow-sm">
+            <button
+              onClick={() => setYearly(false)}
+              className={`px-5 py-2 rounded-full text-[13px] font-semibold transition-all duration-200 ${
+                !yearly
+                  ? "bg-heading text-white shadow-sm"
+                  : "text-muted hover:text-body"
+              }`}
+            >
+              Mensual
+            </button>
+            <button
+              onClick={() => setYearly(true)}
+              className={`px-5 py-2 rounded-full text-[13px] font-semibold transition-all duration-200 flex items-center gap-2 ${
+                yearly
+                  ? "bg-heading text-white shadow-sm"
+                  : "text-muted hover:text-body"
+              }`}
+            >
+              Anual
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#25D366] text-white leading-none">
+                −17%
+              </span>
+            </button>
+          </div>
         </motion.div>
 
         {/* ── Plan cards ── */}
         <motion.div
-          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-stretch pt-4"
           variants={stagger}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 0.15 }}
         >
           {PLANS.map((plan) => (
-            <PlanCard key={plan.key} plan={plan} />
+            <PlanCard key={plan.key} plan={plan} yearly={yearly} />
           ))}
         </motion.div>
 
         <motion.p
-          className="mt-5 text-center text-sm text-muted"
+          className="mt-6 text-center text-sm text-muted"
           variants={fadeInUp}
           initial="initial"
           whileInView="animate"
@@ -347,7 +480,6 @@ export default function Precio() {
           whileInView="animate"
           viewport={{ once: true, amount: 0.15 }}
         >
-          {/* Table header */}
           <div className="flex items-end justify-between gap-4 flex-wrap mb-8">
             <div>
               <h3 className="text-2xl font-semibold text-heading">Comparar planes</h3>
@@ -362,33 +494,46 @@ export default function Precio() {
           <div className="hidden lg:block rounded-[20px] border border-brand/12 overflow-hidden"
             style={{ boxShadow: "var(--shadow-card)" }}>
 
-            {/* Sticky column headers */}
-            <div className="grid grid-cols-[2fr_1fr_1fr_1fr] bg-bg-card border-b border-brand/10">
-              <div className="px-6 py-4">
+            {/* Header row */}
+            <div className="grid grid-cols-[2fr_1fr_1fr_1fr] bg-bg-card">
+              <div className="px-6 py-5 border-b border-brand/10">
                 <p className="text-xs font-semibold text-muted uppercase tracking-wider">Funcionalidad</p>
               </div>
               {PLANS.map((p) => (
-                <div key={p.key}
-                  className={`px-4 py-4 border-l border-brand/10 ${p.featured ? "bg-brand/4" : ""}`}>
-                  <p className="text-sm font-semibold text-heading">{p.name}</p>
-                  <p className="text-lg font-bold text-brand mt-0.5">{p.price}</p>
-                  <p className="text-[11px] text-muted">/ mes</p>
-                </div>
+                p.featured ? (
+                  <div key={p.key}
+                    className="px-4 pt-5 pb-6 border-l border-transparent"
+                    style={{ background: "linear-gradient(180deg, #1a3a8f 0%, #0A2A6B 100%)" }}
+                  >
+                    <p className="text-[10px] font-bold text-white/55 uppercase tracking-widest mb-1.5">{p.badge}</p>
+                    <p className="text-sm font-semibold text-white">{p.name}</p>
+                    <p className="text-lg font-bold text-white mt-0.5">
+                      ${yearly ? p.monthlyPrice * 10 : p.monthlyPrice} USD
+                    </p>
+                    <p className="text-[11px] text-white/50">{yearly ? "/ año" : "/ mes"}</p>
+                  </div>
+                ) : (
+                  <div key={p.key} className="px-4 py-5 border-l border-brand/10 border-b border-brand/10">
+                    <p className="text-[10px] font-bold text-muted/60 uppercase tracking-widest mb-1.5">{p.badge}</p>
+                    <p className="text-sm font-semibold text-heading">{p.name}</p>
+                    <p className="text-lg font-bold text-brand mt-0.5">
+                      ${yearly ? p.monthlyPrice * 10 : p.monthlyPrice} USD
+                    </p>
+                    <p className="text-[11px] text-muted">{yearly ? "/ año" : "/ mes"}</p>
+                  </div>
+                )
               ))}
             </div>
 
-            {/* Grouped rows */}
+            {/* Groups */}
             {COMPARISON_GROUPS.map((group, gi) => (
               <div key={gi}>
-                {/* Group label */}
                 <div className="grid grid-cols-[2fr_1fr_1fr_1fr]"
                   style={{ background: "color-mix(in srgb, var(--brand) 4%, var(--bg-main))" }}>
                   <div className="col-span-4 px-6 py-2.5 border-t border-brand/10">
-                    <p className="text-[11px] font-bold text-brand uppercase tracking-wider">{group.group}</p>
+                    <p className="text-[11px] font-bold text-body/70 uppercase tracking-[0.08em]">{group.group}</p>
                   </div>
                 </div>
-
-                {/* Feature rows */}
                 {group.rows.map((row, ri) => (
                   <div key={ri}
                     className="grid grid-cols-[2fr_1fr_1fr_1fr] border-t border-brand/8 hover:bg-brand/2 transition-colors">
@@ -398,7 +543,9 @@ export default function Precio() {
                     </div>
                     {PLANS.map((p) => (
                       <div key={p.key}
-                        className={`px-4 py-3.5 border-l border-brand/8 flex items-center ${p.featured ? "bg-brand/3" : ""}`}>
+                        className={`px-4 py-3.5 border-l border-brand/8 flex items-center justify-center ${
+                          p.featured ? "bg-[rgba(232,240,255,0.4)]" : ""
+                        }`}>
                         <ValueCell value={row.values[p.key]} />
                       </div>
                     ))}
@@ -412,7 +559,7 @@ export default function Precio() {
               <div className="px-6 py-5" />
               {PLANS.map((p) => (
                 <div key={p.key}
-                  className={`px-4 py-5 border-l border-brand/10 ${p.featured ? "bg-brand/4" : ""}`}>
+                  className={`px-4 py-5 border-l border-brand/10 ${p.featured ? "bg-[rgba(232,240,255,0.4)]" : ""}`}>
                   <DemoCtaButton
                     className={`w-full px-3 py-2.5 rounded-[10px] text-xs font-semibold text-center cursor-pointer transition-all ${
                       p.featured
@@ -420,7 +567,7 @@ export default function Precio() {
                         : "border border-brand/25 text-brand hover:bg-brand/6"
                     }`}
                   >
-                    {p.price} / mes
+                    ${yearly ? p.monthlyPrice * 10 : p.monthlyPrice} USD {yearly ? "/ año" : "/ mes"}
                   </DemoCtaButton>
                 </div>
               ))}
@@ -430,70 +577,41 @@ export default function Precio() {
           {/* Mobile: accordion per plan */}
           <div className="lg:hidden flex flex-col gap-4">
             {PLANS.map((plan) => (
-              <MobileCompare key={plan.key} plan={plan} groups={COMPARISON_GROUPS} />
+              <MobileCompare key={plan.key} plan={plan} groups={COMPARISON_GROUPS} yearly={yearly} />
             ))}
           </div>
 
-          {/* Tip */}
-          <p className="mt-6 text-center text-sm text-muted">
-            <span className="font-medium text-body">¿No sabes cuál elegir?</span>{" "}
-            Si quieres reducir ausencias → Esencial. Si quieres crecer con campañas → Marca Propia.
+          <p
+            className="mt-6 text-center text-sm mx-auto max-w-2xl rounded-[12px] px-5 py-3.5"
+            style={{
+              background: "oklch(0.96 0.04 60)",
+              border: "1px solid oklch(0.88 0.06 60)",
+              color: "var(--ink-2, #334155)",
+            }}
+          >
+            💡{" "}
+            <span className="font-semibold">¿No sabes cuál elegir?</span>{" "}
+            Si quieres reducir ausencias → <span className="font-medium">Esencial</span>. Si quieres crecer con campañas → <span className="font-medium">Marca Propia</span>.
           </p>
-        </motion.div>
-
-        {/* ── Included in all plans ── */}
-        <motion.div
-          className="mt-12 rounded-[20px] border border-brand/12 bg-bg-card p-6 md:p-8"
-          style={{ boxShadow: "var(--shadow-card)" }}
-          variants={fadeInUp}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <div className="flex items-start gap-3 mb-6">
-            <div className="w-8 h-8 rounded-[8px] flex items-center justify-center text-brand flex-shrink-0"
-              style={{ background: "color-mix(in srgb, var(--brand) 10%, transparent)" }}>
-              <IconCheck className="w-4 h-4" />
-            </div>
-            <div>
-              <p className="font-semibold text-heading">Incluido en todos los planes</p>
-              <p className="text-sm text-muted mt-0.5">Lo esencial para operar y controlar tu negocio desde el día 1.</p>
-            </div>
-          </div>
-          <ul className="grid gap-2.5 sm:grid-cols-2">
-            {[
-              "Reservas y citas ilimitadas (24/7)",
-              "Panel administrativo y agenda visual",
-              "Gestión de servicios, empleados y clientes",
-              "Analíticas + comisiones / nómina por empleado",
-              "Horarios por empleado y por negocio",
-              "Sistema de fidelidad para retener clientes",
-              "Branding (logo, nombre y colores)",
-            ].map((txt) => (
-              <li key={txt} className="flex items-start gap-2.5 text-sm text-body">
-                <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center text-brand"
-                  style={{ background: "color-mix(in srgb, var(--brand) 12%, transparent)" }}>
-                  <IconCheck className="w-2.5 h-2.5" />
-                </span>
-                {txt}
-              </li>
-            ))}
-          </ul>
         </motion.div>
       </div>
     </section>
   );
 }
 
-// ─── Mobile compare accordion ─────────────────────────────
+// ─── Mobile compare accordion ─────────────────────────────────────────────────
 function MobileCompare({
   plan,
   groups,
+  yearly,
 }: {
   plan: typeof PLANS[number];
   groups: typeof COMPARISON_GROUPS;
+  yearly: boolean;
 }) {
   const [open, setOpen] = useState(false);
+  const price = yearly ? plan.monthlyPrice * 10 : plan.monthlyPrice;
+  const priceUnit = yearly ? "/ año" : "/ mes";
 
   return (
     <div className={`rounded-[16px] border bg-bg-card overflow-hidden ${
@@ -510,7 +628,10 @@ function MobileCompare({
               {plan.badge}
             </span>
           </div>
-          <p className="text-brand font-bold text-lg mt-0.5">{plan.price} <span className="text-muted text-xs font-normal">/ mes</span></p>
+          <p className="text-brand font-bold text-lg mt-0.5">
+            ${price} USD{" "}
+            <span className="text-muted text-xs font-normal">{priceUnit}</span>
+          </p>
         </div>
         <span className="text-muted"><IconChevron open={open} /></span>
       </button>
@@ -529,15 +650,12 @@ function MobileCompare({
                 <div key={gi}>
                   <p className="text-[10px] font-bold text-brand uppercase tracking-wider mb-2">{group.group}</p>
                   <ul className="flex flex-col gap-2">
-                    {group.rows.map((row, ri) => {
-                      const val = row.values[plan.key];
-                      return (
-                        <li key={ri} className="flex items-center justify-between gap-3 text-sm">
-                          <span className="text-body">{row.label}</span>
-                          <span className="flex-shrink-0"><ValueCell value={val} /></span>
-                        </li>
-                      );
-                    })}
+                    {group.rows.map((row, ri) => (
+                      <li key={ri} className="flex items-center justify-between gap-3 text-sm">
+                        <span className="text-body">{row.label}</span>
+                        <span className="flex-shrink-0"><ValueCell value={row.values[plan.key]} /></span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               ))}
