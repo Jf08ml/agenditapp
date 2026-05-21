@@ -5,9 +5,9 @@ import PageFooter from "../../(landing)/components/ui/PageFooter";
 import SectorPageContent from "../../(landing)/components/ui/SectorPageContent";
 
 export const metadata: Metadata = {
-  title: "Software para Barberías | Sistema de Agendamiento Online",
+  title: "Software para Barberías | Reservas Online + WhatsApp 24/7",
   description:
-    "Sistema de reservas online para barberías. Gestiona citas de cortes, barba, afeitado y servicios express. Recordatorios automáticos por WhatsApp. Control de barberos y turnos en tiempo real. Prueba gratis.",
+    "Sistema de agendamiento para barberías: turnos express, gestión de barberos, recordatorios WhatsApp desde tu número propio. Reservas 24/7. Desde $10/mes.",
   keywords: [
     "software para barberías",
     "agenda para barbería",
@@ -19,8 +19,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://agenditapp.com/sectores/barberias" },
   openGraph: {
-    title: "Software para Barberías | AgenditApp",
-    description: "Automatiza tu barbería. Reservas online, recordatorios por WhatsApp y gestión de barberos.",
+    title: "Software para Barberías | Reservas Online + WhatsApp 24/7",
+    description:
+      "Sistema de agendamiento para barberías: turnos express, gestión de barberos, recordatorios WhatsApp desde tu número propio. Reservas 24/7. Desde $10/mes.",
     url: "https://agenditapp.com/sectores/barberias",
     images: [{ url: "/og?title=Barber%C3%ADas&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Barberías — AgenditApp" }],
   },

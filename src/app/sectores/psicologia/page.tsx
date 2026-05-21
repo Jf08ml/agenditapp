@@ -5,14 +5,15 @@ import PageFooter from "../../(landing)/components/ui/PageFooter";
 import SectorPageContent from "../../(landing)/components/ui/SectorPageContent";
 
 export const metadata: Metadata = {
-  title: "Software para Psicólogos | Sistema de Citas Terapéuticas",
+  title: "Agenda Online para Psicólogos | Sesiones + Privacidad Total",
   description:
-    "Sistema de agendamiento confidencial para psicólogos y terapeutas. Gestiona sesiones, recordatorios automáticos y seguimiento de pacientes con total privacidad.",
+    "Agenda online para psicólogos: sesiones presenciales/online, recordatorios WhatsApp discretos, control de pagos. Total privacidad. Desde $10/mes.",
   keywords: ["software psicólogos", "agenda terapia", "sistema de citas psicología", "agendamiento salud mental", "gestión sesiones terapia"],
   alternates: { canonical: "https://agenditapp.com/sectores/psicologia" },
   openGraph: {
-    title: "Software para Psicólogos | AgenditApp",
-    description: "Gestiona tu práctica psicológica con sesiones online, recordatorios y total privacidad.",
+    title: "Agenda Online para Psicólogos | Sesiones + Privacidad Total",
+    description:
+      "Agenda online para psicólogos: sesiones presenciales/online, recordatorios WhatsApp discretos, control de pagos. Total privacidad. Desde $10/mes.",
     url: "https://agenditapp.com/sectores/psicologia",
     images: [{ url: "/og?title=Psic%C3%B3logos%20y%20Terapeutas&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Psicólogos y Terapeutas — AgenditApp" }],
   },

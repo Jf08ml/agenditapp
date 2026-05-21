@@ -5,14 +5,15 @@ import PageFooter from "../../(landing)/components/ui/PageFooter";
 import SectorPageContent from "../../(landing)/components/ui/SectorPageContent";
 
 export const metadata: Metadata = {
-  title: "Software para Odontólogos | Sistema de Citas Dentales",
+  title: "Software para Odontólogos | Citas Online + WhatsApp 24/7",
   description:
-    "Sistema de agendamiento para consultorios dentales. Gestiona citas de ortodoncia, limpieza, cirugías y tratamientos. Recordatorios automáticos y seguimiento de pacientes.",
+    "Sistema de citas para odontólogos: agenda por tipo de tratamiento, recordatorios WhatsApp con instrucciones previas y control de pacientes. Desde $10/mes.",
   keywords: ["software odontología", "agenda dental", "sistema de citas dentales", "agendamiento odontólogo", "control pacientes dentales"],
   alternates: { canonical: "https://agenditapp.com/sectores/odontologia" },
   openGraph: {
-    title: "Software para Odontólogos | AgenditApp",
-    description: "Moderniza tu consultorio dental con citas online, recordatorios y control de tratamientos.",
+    title: "Software para Odontólogos | Citas Online + WhatsApp 24/7",
+    description:
+      "Sistema de citas para odontólogos: agenda por tipo de tratamiento, recordatorios WhatsApp con instrucciones previas y control de pacientes. Desde $10/mes.",
     url: "https://agenditapp.com/sectores/odontologia",
     images: [{ url: "/og?title=Odont%C3%B3logos&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Odontólogos — AgenditApp" }],
   },

@@ -5,14 +5,15 @@ import PageFooter from "../(landing)/components/ui/PageFooter";
 import Precio from "../(landing)/sections/Precio";
 
 export const metadata: Metadata = {
-  title: "Planes y Precios | Software de Agendamiento desde $10 USD",
+  title: "Planes AgenditApp | Desde $10 USD/mes · Sin Permanencia",
   description:
-    "Conoce los planes de AgenditApp. Desde $10 USD mensuales sin permanencia. Reservas ilimitadas, WhatsApp, landing/dominio, comisiones por empleado, fidelidad y más.",
+    "Software de agendamiento online desde $10 USD/mes sin permanencia. Reservas ilimitadas + WhatsApp desde tu número + página web incluida. Prueba gratis hoy.",
   keywords: ["precios software de reservas", "planes agendamiento online", "costo sistema de citas", "precio agenda digital", "software sin permanencia", "precios AgenditApp"],
   alternates: { canonical: "https://agenditapp.com/precios" },
   openGraph: {
-    title: "Planes y Precios | AgenditApp desde $10 USD",
-    description: "Planes sin permanencia. Reservas ilimitadas, WhatsApp, landing/dominio y gestión completa del negocio.",
+    title: "Planes AgenditApp | Desde $10 USD/mes · Sin Permanencia",
+    description:
+      "Software de agendamiento online desde $10 USD/mes sin permanencia. Reservas ilimitadas + WhatsApp desde tu número + página web incluida. Prueba gratis hoy.",
     url: "https://agenditapp.com/precios",
     images: ["/inicio_page.png"],
   },

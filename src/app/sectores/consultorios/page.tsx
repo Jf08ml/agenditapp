@@ -5,14 +5,15 @@ import PageFooter from "../../(landing)/components/ui/PageFooter";
 import SectorPageContent from "../../(landing)/components/ui/SectorPageContent";
 
 export const metadata: Metadata = {
-  title: "Software Médico de Citas | Sistema para Consultorios y Clínicas",
+  title: "Software para Consultorios y Clínicas | Citas Online 24/7",
   description:
-    "Sistema de agendamiento online para consultorios médicos, clínicas y profesionales de la salud. Gestiona consultas, terapias, odontología y más. Recordatorios automáticos y control de pacientes. Prueba gratis.",
+    "Agendamiento online para consultorios y clínicas. Gestión por profesional, recordatorios WhatsApp y reservas 24/7. Sin permanencia. Desde $10/mes.",
   keywords: ["software para consultorios", "agenda médica", "sistema de citas médicas", "agendamiento clínica", "gestión de pacientes"],
   alternates: { canonical: "https://agenditapp.com/sectores/consultorios" },
   openGraph: {
-    title: "Software Médico de Citas | AgenditApp",
-    description: "Moderniza tu consultorio con reservas online, control de pacientes y recordatorios por WhatsApp.",
+    title: "Software para Consultorios y Clínicas | Citas Online 24/7",
+    description:
+      "Agendamiento online para consultorios y clínicas. Gestión por profesional, recordatorios WhatsApp y reservas 24/7. Sin permanencia. Desde $10/mes.",
     url: "https://agenditapp.com/sectores/consultorios",
     images: [{ url: "/og?title=Consultorios%20y%20Cl%C3%ADnicas&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Consultorios y Clínicas — AgenditApp" }],
   },

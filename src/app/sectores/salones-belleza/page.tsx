@@ -5,9 +5,9 @@ import PageFooter from "../../(landing)/components/ui/PageFooter";
 import SectorPageContent from "../../(landing)/components/ui/SectorPageContent";
 
 export const metadata: Metadata = {
-  title: "Software para Salones de Belleza | Sistema de Reservas Online",
+  title: "Software para Salones de Belleza | Reservas + WhatsApp 24/7",
   description:
-    "Sistema de agendamiento online para salones de belleza. Gestiona citas de manicure, pedicure, tintes, cortes y tratamientos. Recordatorios automáticos por WhatsApp para reducir ausencias. Prueba gratis.",
+    "Sistema de agendamiento para tu salón de belleza. Reservas 24/7 + WhatsApp desde tu número. Reduce ausencias un 70%. Sin permanencia. Desde $10/mes.",
   keywords: [
     "software para salones de belleza",
     "agenda para salones",
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://agenditapp.com/sectores/salones-belleza" },
   openGraph: {
-    title: "Software para Salones de Belleza | AgenditApp",
+    title: "Software para Salones de Belleza | Reservas 24/7 + WhatsApp",
     description:
-      "Automatiza tu agenda de belleza. Reservas online, recordatorios por WhatsApp y gestión completa de servicios.",
+      "Sistema de agendamiento para tu salón de belleza. Reservas 24/7 + WhatsApp desde tu número. Reduce ausencias un 70%. Sin permanencia. Desde $10/mes.",
     url: "https://agenditapp.com/sectores/salones-belleza",
     images: [{ url: "/og?title=Salones%20de%20Belleza&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Salones de Belleza — AgenditApp" }],
   },
