@@ -5,14 +5,15 @@ import PageFooter from "../../(landing)/components/ui/PageFooter";
 import SectorPageContent from "../../(landing)/components/ui/SectorPageContent";
 
 export const metadata: Metadata = {
-  title: "Software para Escuelas de Danza y Yoga | Sistema de Reservas",
+  title: "Software para Escuelas de Danza y Yoga | Clases + WhatsApp",
   description:
-    "Sistema de agendamiento para escuelas de danza, yoga y pilates. Gestiona clases grupales, talleres, cupos y reservas online.",
+    "Agendamiento para escuelas de danza, yoga y pilates: clases con cupos, gestión de instructores, recordatorios WhatsApp. Reservas 24/7. Desde $10/mes.",
   keywords: ["software danza", "agenda yoga", "sistema de reservas clases danza", "agendamiento pilates", "control cupos clases"],
   alternates: { canonical: "https://agenditapp.com/sectores/danza-yoga" },
   openGraph: {
-    title: "Software para Escuelas de Danza y Yoga | AgenditApp",
-    description: "Gestiona clases, cupos y horarios de tu escuela de danza o yoga con reservas online.",
+    title: "Software para Escuelas de Danza y Yoga | Clases + WhatsApp",
+    description:
+      "Agendamiento para escuelas de danza, yoga y pilates: clases con cupos, gestión de instructores, recordatorios WhatsApp. Reservas 24/7. Desde $10/mes.",
     url: "https://agenditapp.com/sectores/danza-yoga",
     images: [{ url: "/og?title=Danza%20y%20Yoga&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Escuelas de Danza y Yoga — AgenditApp" }],
   },

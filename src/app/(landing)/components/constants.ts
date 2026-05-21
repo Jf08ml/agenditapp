@@ -10,26 +10,26 @@ export const JSONLD_ORGANIZATION = {
   url: "https://agenditapp.com",
   logo: "https://agenditapp.com/logo_dorado.png",
   description:
-    "Plataforma moderna de agendamiento inteligente y gestión de citas para negocios de belleza, bienestar y servicios profesionales",
+    "Software de agendamiento online y gestión de negocios para salones de belleza, barberías, spas y consultorios en Latinoamérica.",
   foundingDate: "2024",
-  foundingLocation: {
-    "@type": "Place",
-    address: {
-      "@type": "PostalAddress",
-      addressCountry: "CO",
-    },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Neiva",
+    addressRegion: "Huila",
+    addressCountry: "CO",
   },
   contactPoint: {
     "@type": "ContactPoint",
     telephone: "+57-318-434-5284",
     contactType: "customer service",
     availableLanguage: ["Spanish"],
-    areaServed: "CO",
-    contactOption: "TollFree",
+    areaServed: ["CO", "MX", "CR", "CL"],
   },
   sameAs: [
     "https://www.facebook.com/profile.php?id=61587186579271",
     "https://www.instagram.com/agenditapp/",
+    "https://www.linkedin.com/company/agenditapp",
+    "https://www.g2.com/products/agenditapp",
   ],
   knowsAbout: [
     "Software de agendamiento",
@@ -43,14 +43,35 @@ export const JSONLD_SOFTWARE = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   name: "AgenditApp",
+  url: "https://agenditapp.com",
   applicationCategory: "BusinessApplication",
+  applicationSubCategory: "Appointment Scheduling Software",
   operatingSystem: "Web",
-  browserRequirements: "Requires JavaScript. Chrome, Firefox, Safari, Edge",
   softwareVersion: "1.0",
   datePublished: "2024-01-01",
-  author: {
-    "@type": "Organization",
-    name: "AgenditApp",
+  inLanguage: "es-CO",
+  description:
+    "Software de agendamiento online y gestión de negocios para salones de belleza, barberías, spas y consultorios en Latinoamérica. Reservas 24/7, recordatorios automáticos por WhatsApp y gestión completa del negocio.",
+  featureList: [
+    "Reservas online 24/7",
+    "Recordatorios automáticos por WhatsApp",
+    "Calendario visual de citas",
+    "Gestión de servicios y empleados",
+    "Base de datos de clientes",
+    "Comisiones y nómina",
+    "Programa de fidelización",
+    "Campañas masivas por WhatsApp",
+    "Dominio personalizado",
+    "Página de reservas con marca propia",
+    "Análisis de horas pico",
+    "Panel administrativo completo",
+  ],
+  offers: {
+    "@type": "AggregateOffer",
+    lowPrice: "10",
+    highPrice: "30",
+    priceCurrency: "USD",
+    offerCount: "3",
   },
   aggregateRating: {
     "@type": "AggregateRating",
@@ -59,73 +80,26 @@ export const JSONLD_SOFTWARE = {
     bestRating: "5",
     worstRating: "1",
   },
-  offers: {
-    "@type": "Offer",
-    price: "10",
-    priceCurrency: "USD",
-    priceValidUntil: "2026-12-31",
-    availability: "https://schema.org/InStock",
-    description:
-      "Plan mensual con página personalizada, agenda online, recordatorios por WhatsApp, panel administrativo y soporte básico.",
-    seller: {
-      "@type": "Organization",
-      name: "AgenditApp",
-    },
-    hasMerchantReturnPolicy: {
-      "@type": "MerchantReturnPolicy",
-      applicableCountry: "CO",
-      returnPolicyCategory:
-        "https://schema.org/MerchantReturnNotPermitted",
-      merchantReturnDays: 0,
-    },
-    shippingDetails: {
-      "@type": "OfferShippingDetails",
-      shippingRate: {
-        "@type": "MonetaryAmount",
-        value: "0",
-        currency: "USD",
-      },
-      shippingDestination: {
-        "@type": "DefinedRegion",
-        addressCountry: "CO",
-      },
-      deliveryTime: {
-        "@type": "ShippingDeliveryTime",
-        handlingTime: {
-          "@type": "QuantitativeValue",
-          minValue: 0,
-          maxValue: 0,
-          unitCode: "DAY",
-        },
-        transitTime: {
-          "@type": "QuantitativeValue",
-          minValue: 0,
-          maxValue: 0,
-          unitCode: "DAY",
-        },
-      },
-    },
+  softwareHelp: {
+    "@type": "WebPage",
+    url: "https://agenditapp.com/blog",
   },
-  featureList: [
-    "Agendamiento online 24/7",
-    "Recordatorios automáticos por WhatsApp",
-    "Gestión de caja y empleados",
-    "Página web personalizada",
-    "Análisis de horas pico",
-    "Panel administrativo completo",
-  ],
   screenshot: "https://agenditapp.com/inicio_page.png",
-  areaServed: "CO",
-  inLanguage: "es-CO",
-  url: "https://agenditapp.com",
+  author: {
+    "@type": "Organization",
+    name: "AgenditApp",
+    url: "https://agenditapp.com",
+  },
   publisher: {
     "@type": "Organization",
     name: "AgenditApp",
+    url: "https://agenditapp.com",
   },
-  applicationSubCategory: "Appointment Scheduling Software",
   sameAs: [
     "https://www.facebook.com/profile.php?id=61587186579271",
     "https://www.instagram.com/agenditapp/",
+    "https://www.linkedin.com/company/agenditapp",
+    "https://www.g2.com/products/agenditapp",
   ],
 } as const;
 
@@ -135,10 +109,18 @@ export const JSONLD_FAQ = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "¿Tiene permanencias o cláusulas?",
+      name: "¿Cuánto cuesta AgenditApp?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. Es mes a mes y puedes cancelar cuando quieras.",
+        text: "Los planes van desde $10 USD/mes (Básico) hasta $30 USD/mes (Marca Propia). Todos son mes a mes, sin contratos ni permanencia. Incluyen reservas ilimitadas y soporte por WhatsApp.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Tiene permanencia o cláusulas?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "No. Todos los planes son mes a mes y puedes cancelar cuando quieras sin penalizaciones ni trámites.",
       },
     },
     {
@@ -146,15 +128,23 @@ export const JSONLD_FAQ = {
       name: "¿Los recordatorios salen desde mi número de WhatsApp?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Sí, configuramos el envío para operar con tu número.",
+        text: "Sí. En los planes que incluyen WhatsApp, los mensajes se envían desde tu número oficial de WhatsApp Business, no desde un número desconocido.",
       },
     },
     {
       "@type": "Question",
-      name: "¿Hay límite de reservas?",
+      name: "¿Cuántas citas puedo recibir con AgenditApp?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. El plan incluye reservas ilimitadas.",
+        text: "Ilimitadas en todos los planes. No hay cobro extra por cantidad de reservas ni por número de clientes.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "¿Mis clientes necesitan descargar una app para reservar?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "No. Tus clientes reservan desde un enlace web que puedes compartir por WhatsApp, Instagram o redes sociales. No necesitan instalar nada.",
       },
     },
     {
@@ -162,7 +152,7 @@ export const JSONLD_FAQ = {
       name: "¿Qué tipo de negocios pueden usar AgenditApp?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "AgenditApp es ideal para salones de belleza, barberías, spas, consultorios médicos, psicólogos, nutricionistas, veterinarias, gimnasios, estudios de fotografía, profesores de música, yoga, danza, tutorías y cualquier negocio que trabaje con citas programadas.",
+        text: "Si trabajas con citas o turnos, AgenditApp es para ti. Se usa en salones de belleza, barberías, spas, consultorios médicos, psicólogos, odontólogos, nutricionistas, veterinarias, gimnasios, estudios de fotografía, profesores de música, yoga, danza, tutorías y más.",
       },
     },
     {
@@ -170,15 +160,15 @@ export const JSONLD_FAQ = {
       name: "¿Necesito conocimientos técnicos para usar la plataforma?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. AgenditApp es muy intuitivo y fácil de usar. Además, ofrecemos capacitación inicial y soporte técnico para que puedas aprovechar todas las funcionalidades desde el primer día.",
+        text: "No. AgenditApp es muy intuitivo y fácil de usar. Ofrecemos capacitación inicial y soporte técnico para que empieces desde el primer día.",
       },
     },
     {
       "@type": "Question",
-      name: "¿Mis clientes necesitan descargar una app?",
+      name: "¿Puedo gestionar varios empleados?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. Tus clientes pueden agendar directamente desde tu página web personalizada que incluye AgenditApp, sin necesidad de descargar ninguna aplicación.",
+        text: "Sí. Cada empleado tiene su propio horario, servicios y agenda. Puedes ver todo desde un solo panel y gestionar comisiones automáticamente.",
       },
     },
   ],

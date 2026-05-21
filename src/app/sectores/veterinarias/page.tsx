@@ -5,14 +5,15 @@ import PageFooter from "../../(landing)/components/ui/PageFooter";
 import SectorPageContent from "../../(landing)/components/ui/SectorPageContent";
 
 export const metadata: Metadata = {
-  title: "Software para Veterinarias | Sistema de Citas Mascotas",
+  title: "Software para Veterinarias | Citas Online + WhatsApp 24/7",
   description:
-    "Sistema de agendamiento para veterinarias y clínicas de mascotas. Gestiona consultas, grooming, vacunas y tratamientos con recordatorios automáticos.",
+    "Agendamiento online para veterinarias: consultas, grooming y vacunas. WhatsApp desde tu número con recordatorios para dueños de mascotas. Desde $10/mes.",
   keywords: ["software veterinaria", "agenda veterinaria", "sistema de citas mascotas", "agendamiento grooming", "control citas veterinario"],
   alternates: { canonical: "https://agenditapp.com/sectores/veterinarias" },
   openGraph: {
-    title: "Software para Veterinarias | AgenditApp",
-    description: "Gestiona citas de mascotas, grooming y vacunas con reservas online y recordatorios automáticos.",
+    title: "Software para Veterinarias | Citas Online + WhatsApp 24/7",
+    description:
+      "Agendamiento online para veterinarias: consultas, grooming y vacunas. WhatsApp desde tu número con recordatorios para dueños de mascotas. Desde $10/mes.",
     url: "https://agenditapp.com/sectores/veterinarias",
     images: [{ url: "/og?title=Veterinarias&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Veterinarias — AgenditApp" }],
   },

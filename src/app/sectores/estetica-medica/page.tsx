@@ -5,14 +5,15 @@ import PageFooter from "../../(landing)/components/ui/PageFooter";
 import SectorPageContent from "../../(landing)/components/ui/SectorPageContent";
 
 export const metadata: Metadata = {
-  title: "Software para Estética Médica | Sistema de Citas Tratamientos",
+  title: "Software para Estética Médica | Citas Online + WhatsApp",
   description:
-    "Sistema de agendamiento para centros de estética médica. Gestiona botox, láser, tratamientos faciales y corporales con agenda profesional.",
+    "Agenda online para centros de estética médica: botox, láser, rellenos. Recordatorios WhatsApp con instrucciones previas. Sin permanencia. Desde $10/mes.",
   keywords: ["software estética médica", "agenda botox", "sistema de citas medicina estética", "agendamiento láser", "gestión tratamientos estéticos"],
   alternates: { canonical: "https://agenditapp.com/sectores/estetica-medica" },
   openGraph: {
-    title: "Software para Estética Médica | AgenditApp",
-    description: "Gestiona tratamientos estéticos, botox, láser y procedimientos con reservas online profesionales.",
+    title: "Software para Estética Médica | Citas Online + WhatsApp",
+    description:
+      "Agenda online para centros de estética médica: botox, láser, rellenos. Recordatorios WhatsApp con instrucciones previas. Sin permanencia. Desde $10/mes.",
     url: "https://agenditapp.com/sectores/estetica-medica",
     images: [{ url: "/og?title=Est%C3%A9tica%20M%C3%A9dica&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Estética Médica — AgenditApp" }],
   },

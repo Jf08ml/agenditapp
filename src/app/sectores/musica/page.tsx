@@ -5,14 +5,15 @@ import PageFooter from "../../(landing)/components/ui/PageFooter";
 import SectorPageContent from "../../(landing)/components/ui/SectorPageContent";
 
 export const metadata: Metadata = {
-  title: "Software para Profesores de Música | Sistema de Clases Particulares",
+  title: "Software para Profesores de Música | Clases + WhatsApp 24/7",
   description:
-    "Sistema de agendamiento para profesores de música. Gestiona clases de guitarra, piano, canto y más con recordatorios automáticos.",
+    "Agenda para profesores de música: clases de guitarra, piano, canto y más. WhatsApp automático para alumnos. Sin permanencia. Desde $10/mes.",
   keywords: ["software profesores música", "agenda clases música", "sistema de reservas clases guitarra", "agendamiento clases piano"],
   alternates: { canonical: "https://agenditapp.com/sectores/musica" },
   openGraph: {
-    title: "Software para Profesores de Música | AgenditApp",
-    description: "Gestiona tus clases de música con reservas online y recordatorios automáticos por WhatsApp.",
+    title: "Software para Profesores de Música | Clases + WhatsApp 24/7",
+    description:
+      "Agenda para profesores de música: clases de guitarra, piano, canto y más. WhatsApp automático para alumnos. Sin permanencia. Desde $10/mes.",
     url: "https://agenditapp.com/sectores/musica",
     images: [{ url: "/og?title=Profesores%20de%20M%C3%BAsica&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Profesores de Música — AgenditApp" }],
   },

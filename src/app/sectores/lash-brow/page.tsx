@@ -5,14 +5,15 @@ import PageFooter from "../../(landing)/components/ui/PageFooter";
 import SectorPageContent from "../../(landing)/components/ui/SectorPageContent";
 
 export const metadata: Metadata = {
-  title: "Software para Lash & Brow Studios | Sistema de Reservas Online",
+  title: "Software para Lash & Brow Studios | Citas + WhatsApp",
   description:
-    "Sistema de agendamiento online para estudios de pestañas y cejas. Gestiona extensiones de pestañas, microblading, lash lift y servicios especializados. Recordatorios automáticos por WhatsApp.",
+    "Sistema de reservas para lash & brow studios: extensiones, microblading, lash lift. WhatsApp desde tu número, ausencias -70%. Desde $10/mes.",
   keywords: ["software para lash studios", "agenda para extensiones pestañas", "sistema de citas microblading", "agendamiento lash brow"],
   alternates: { canonical: "https://agenditapp.com/sectores/lash-brow" },
   openGraph: {
-    title: "Software para Lash & Brow Studios | AgenditApp",
-    description: "Profesionaliza tu estudio con reservas online, recordatorios automáticos y control de agenda.",
+    title: "Software para Lash & Brow Studios | Citas + WhatsApp",
+    description:
+      "Sistema de reservas para lash & brow studios: extensiones, microblading, lash lift. WhatsApp desde tu número, ausencias -70%. Desde $10/mes.",
     url: "https://agenditapp.com/sectores/lash-brow",
     images: [{ url: "/og?title=Lash%20%26%20Brow%20Studios&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Lash & Brow Studios — AgenditApp" }],
   },

@@ -5,14 +5,15 @@ import PageFooter from "../../(landing)/components/ui/PageFooter";
 import SectorPageContent from "../../(landing)/components/ui/SectorPageContent";
 
 export const metadata: Metadata = {
-  title: "Software para Nutricionistas | Sistema de Consultas Nutricionales",
+  title: "Software para Nutricionistas | Citas Online + WhatsApp",
   description:
-    "Sistema de agendamiento para nutricionistas. Gestiona consultas, planes alimenticios, seguimiento de pacientes y citas de control.",
+    "Agenda para nutricionistas: consultas, controles y seguimiento. WhatsApp desde tu número, pacientes más adherentes. Sin permanencia. Desde $10/mes.",
   keywords: ["software nutricionistas", "agenda nutrición", "sistema de citas nutricional", "agendamiento dietista", "control pacientes nutrición"],
   alternates: { canonical: "https://agenditapp.com/sectores/nutricion" },
   openGraph: {
-    title: "Software para Nutricionistas | AgenditApp",
-    description: "Gestiona consultas nutricionales, seguimiento de pacientes y recordatorios automáticos.",
+    title: "Software para Nutricionistas | Citas Online + WhatsApp",
+    description:
+      "Agenda para nutricionistas: consultas, controles y seguimiento. WhatsApp desde tu número, pacientes más adherentes. Sin permanencia. Desde $10/mes.",
     url: "https://agenditapp.com/sectores/nutricion",
     images: [{ url: "/og?title=Nutricionistas&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Nutricionistas — AgenditApp" }],
   },

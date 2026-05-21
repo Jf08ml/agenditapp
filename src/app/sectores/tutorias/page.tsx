@@ -5,14 +5,15 @@ import PageFooter from "../../(landing)/components/ui/PageFooter";
 import SectorPageContent from "../../(landing)/components/ui/SectorPageContent";
 
 export const metadata: Metadata = {
-  title: "Software para Tutores y Academias | Sistema de Clases Particulares",
+  title: "Software para Tutores y Academias | Clases + WhatsApp 24/7",
   description:
-    "Sistema de agendamiento para tutores y academias. Gestiona clases de matemáticas, idiomas, refuerzo escolar y más con recordatorios automáticos.",
+    "Agendamiento para tutores y academias: presencial y virtual, recordatorios WhatsApp para padres y alumnos. Sin permanencia. Desde $10/mes.",
   keywords: ["software tutores", "agenda academias", "sistema de reservas clases particulares", "agendamiento tutorias", "software refuerzo escolar"],
   alternates: { canonical: "https://agenditapp.com/sectores/tutorias" },
   openGraph: {
-    title: "Software para Tutores y Academias | AgenditApp",
-    description: "Gestiona tus clases particulares y academia con reservas online y recordatorios automáticos.",
+    title: "Software para Tutores y Academias | Clases + WhatsApp 24/7",
+    description:
+      "Agendamiento para tutores y academias: presencial y virtual, recordatorios WhatsApp para padres y alumnos. Sin permanencia. Desde $10/mes.",
     url: "https://agenditapp.com/sectores/tutorias",
     images: [{ url: "/og?title=Tutores%20y%20Academias&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Tutores y Academias — AgenditApp" }],
   },

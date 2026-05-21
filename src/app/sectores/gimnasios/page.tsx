@@ -5,14 +5,15 @@ import PageFooter from "../../(landing)/components/ui/PageFooter";
 import SectorPageContent from "../../(landing)/components/ui/SectorPageContent";
 
 export const metadata: Metadata = {
-  title: "Software para Gimnasios y Fitness | Sistema de Reservas de Clases",
+  title: "Software para Gimnasios y Fitness | Reservas + WhatsApp",
   description:
-    "Sistema de agendamiento para gimnasios, box de crossfit, estudios de yoga y entrenadores personales. Gestiona clases grupales, reservas de cupos y horarios de entrenamiento.",
+    "Agendamiento online para gimnasios: clases grupales con control de cupos, gestión de entrenadores, recordatorios WhatsApp. Reservas 24/7. Desde $10/mes.",
   keywords: ["software para gimnasios", "agenda fitness", "sistema de reservas clases", "agendamiento gym", "control de cupos"],
   alternates: { canonical: "https://agenditapp.com/sectores/gimnasios" },
   openGraph: {
-    title: "Software para Gimnasios y Fitness | AgenditApp",
-    description: "Gestiona clases, cupos y entrenadores con reservas online y recordatorios automáticos.",
+    title: "Software para Gimnasios y Fitness | Reservas + WhatsApp",
+    description:
+      "Agendamiento online para gimnasios: clases grupales con control de cupos, gestión de entrenadores, recordatorios WhatsApp. Reservas 24/7. Desde $10/mes.",
     url: "https://agenditapp.com/sectores/gimnasios",
     images: [{ url: "/og?title=Gimnasios%20y%20Fitness&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Gimnasios y Fitness — AgenditApp" }],
   },

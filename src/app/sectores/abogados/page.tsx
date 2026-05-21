@@ -5,14 +5,15 @@ import PageFooter from "../../(landing)/components/ui/PageFooter";
 import SectorPageContent from "../../(landing)/components/ui/SectorPageContent";
 
 export const metadata: Metadata = {
-  title: "Software para Abogados | Sistema de Citas Legales y Asesorías",
+  title: "Software para Abogados | Citas Online + WhatsApp 24/7",
   description:
-    "Sistema de agendamiento para abogados y bufetes. Gestiona consultas legales, asesorías y reuniones con clientes de forma profesional.",
+    "Agenda para abogados y bufetes: consultas legales, reuniones presenciales y virtuales, recordatorios WhatsApp. Sin permanencia. Desde $10/mes.",
   keywords: ["software abogados", "agenda legal", "sistema de citas jurídicas", "agendamiento bufete", "gestión consultas legales"],
   alternates: { canonical: "https://agenditapp.com/sectores/abogados" },
   openGraph: {
-    title: "Software para Abogados | AgenditApp",
-    description: "Gestiona consultas legales, asesorías y reuniones con reservas online y recordatorios profesionales.",
+    title: "Software para Abogados | Citas Online + WhatsApp 24/7",
+    description:
+      "Agenda para abogados y bufetes: consultas legales, reuniones presenciales y virtuales, recordatorios WhatsApp. Sin permanencia. Desde $10/mes.",
     url: "https://agenditapp.com/sectores/abogados",
     images: [{ url: "/og?title=Abogados%20y%20Asesor%C3%ADas&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Abogados y Asesorías — AgenditApp" }],
   },

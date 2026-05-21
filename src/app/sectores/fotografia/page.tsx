@@ -5,14 +5,15 @@ import PageFooter from "../../(landing)/components/ui/PageFooter";
 import SectorPageContent from "../../(landing)/components/ui/SectorPageContent";
 
 export const metadata: Metadata = {
-  title: "Software para Fotógrafos | Sistema de Reserva de Sesiones",
+  title: "Software para Fotógrafos | Reservas de Sesiones + WhatsApp",
   description:
-    "Sistema de agendamiento para fotógrafos y estudios. Gestiona sesiones fotográficas, eventos, alquiler de estudio con calendario online.",
+    "Agenda online para fotógrafos y estudios: sesiones, eventos y alquiler de estudio. Recordatorios WhatsApp con instrucciones de vestuario. Desde $10/mes.",
   keywords: ["software fotógrafos", "agenda estudio fotográfico", "sistema de reservas sesiones", "agendamiento fotografía", "control agenda fotógrafo"],
   alternates: { canonical: "https://agenditapp.com/sectores/fotografia" },
   openGraph: {
-    title: "Software para Fotógrafos | AgenditApp",
-    description: "Gestiona sesiones, eventos y alquiler de estudio con reservas online y recordatorios automáticos.",
+    title: "Software para Fotógrafos | Reservas de Sesiones + WhatsApp",
+    description:
+      "Agenda online para fotógrafos y estudios: sesiones, eventos y alquiler de estudio. Recordatorios WhatsApp con instrucciones de vestuario. Desde $10/mes.",
     url: "https://agenditapp.com/sectores/fotografia",
     images: [{ url: "/og?title=Fot%C3%B3grafos%20y%20Estudios&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Fotógrafos y Estudios — AgenditApp" }],
   },
