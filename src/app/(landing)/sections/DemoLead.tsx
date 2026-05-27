@@ -6,6 +6,7 @@ import { DemoCtaButton } from "../components/ui/DemoCtaModal";
 import { motion, easeOut, type Variants } from "framer-motion";
 import { SelectorPais } from "../components/ui/SelectorPais";
 import { PAISES } from "../components/constants/paises";
+import { SIGNUP_HREF } from "../components/constants";
 
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 24 },
@@ -161,6 +162,25 @@ export default function DemoLead() {
                 Hablar por WhatsApp
               </DemoCtaButton>
             </motion.div>
+
+            {/* Self-signup CTA */}
+            <motion.div variants={fadeInUp} className="mt-4 flex items-center gap-3">
+              <div className="h-px flex-1 bg-[#0F172A]/8" />
+              <span className="text-[12px] text-[#64748B] whitespace-nowrap">o si prefieres explorar solo</span>
+              <div className="h-px flex-1 bg-[#0F172A]/8" />
+            </motion.div>
+            <motion.a
+              variants={fadeInUp}
+              href={SIGNUP_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 flex items-center justify-center gap-2 rounded-[12px] border border-[#0F172A]/12 px-5 py-3 text-[13px] font-semibold text-[#0F172A] hover:bg-[#F8FAFC] transition-colors"
+            >
+              Crear cuenta gratis — 7 días con todo incluido
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden>
+                <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </motion.a>
           </motion.div>
 
           {/* ── Right: form card ── */}

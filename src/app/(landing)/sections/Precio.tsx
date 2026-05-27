@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { DemoCtaButton } from "../components/ui/DemoCtaModal";
 import { motion, AnimatePresence, easeOut, type Variants } from "framer-motion";
+import { SIGNUP_HREF } from "../components/constants";
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
 const IconCheck = ({ className = "w-3.5 h-3.5" }: { className?: string }) => (
@@ -21,7 +22,7 @@ const IconChevron = ({ open }: { open: boolean }) => (
 );
 
 // ─── Data ────────────────────────────────────────────────────────────────────
-type PlanKey = "basico" | "esencial" | "marca";
+type PlanKey = "gratuito" | "basico" | "esencial" | "marca";
 
 const PLANS: Array<{
   key: PlanKey;
@@ -33,7 +34,30 @@ const PLANS: Array<{
   highlights: string[];
   ctaLabel: string;
   featured?: boolean;
+  free?: boolean;
 }> = [
+  {
+    key: "gratuito",
+    name: "Gratuito",
+    monthlyPrice: 0,
+    badge: "Siempre gratis",
+    badgeStyle: {
+      background: "rgba(37,211,102,0.12)",
+      color: "#128C7E",
+      border: "1px solid rgba(37,211,102,0.3)",
+    },
+    tagline: "Empieza sin costo. Los primeros 7 días con acceso completo a todo.",
+    highlights: [
+      "1 profesional incluido",
+      "Hasta 5 servicios",
+      "Clientes ilimitados",
+      "Reservas online 24/7",
+      "Agenda virtual semanal y mensual",
+      "Subdominio tunegocio.agenditapp.com",
+    ],
+    ctaLabel: "Crear cuenta gratis",
+    free: true,
+  },
   {
     key: "basico",
     name: "Básico",
@@ -91,6 +115,11 @@ const PLANS: Array<{
 ];
 
 const EXTRA_FEATURES: Record<PlanKey, string[]> = {
+  gratuito: [
+    "Analíticas básicas del negocio",
+    "Gestión básica de ingresos",
+    "Branding AgenditApp visible",
+  ],
   basico: [
     "Analíticas de negocio + comisiones / nómina por empleado",
     "Sistema de fidelidad para retener clientes",
@@ -121,32 +150,32 @@ type CompRow = { label: string; hint?: string; values: Record<PlanKey, boolean |
 
 const COMPARISON_GROUPS: Array<{ group: string; rows: CompRow[] }> = [
   {
-    group: "Base — incluido en todos",
+    group: "Base",
     rows: [
-      { label: "Reservas y citas ilimitadas (24/7)", values: { basico: true, esencial: true, marca: true } },
-      { label: "Panel administrativo y agenda visual", values: { basico: true, esencial: true, marca: true } },
-      { label: "Servicios, empleados y clientes", values: { basico: true, esencial: true, marca: true } },
-      { label: "Analíticas + comisiones / nómina", values: { basico: true, esencial: true, marca: true } },
-      { label: "Fidelidad + branding personalizado", values: { basico: true, esencial: true, marca: true } },
+      { label: "Reservas y citas (24/7)", values: { gratuito: true, basico: true, esencial: true, marca: true } },
+      { label: "Panel administrativo y agenda visual", values: { gratuito: true, basico: true, esencial: true, marca: true } },
+      { label: "Servicios y empleados", values: { gratuito: "1 emp · 5 serv", basico: true, esencial: true, marca: true } },
+      { label: "Analíticas del negocio", values: { gratuito: "Básicas", basico: true, esencial: true, marca: true } },
+      { label: "Fidelidad + branding personalizado", values: { gratuito: false, basico: true, esencial: true, marca: true } },
     ],
   },
   {
     group: "Presencia web",
     rows: [
-      { label: "Landing de bienvenida", values: { basico: "Sencilla", esencial: "Sencilla", marca: "Profesional" } },
-      { label: "Subdominio (tu-negocio.agenditapp.com)", values: { basico: true, esencial: true, marca: false } },
-      { label: "Dominio propio (tumarca.com)", values: { basico: false, esencial: false, marca: true } },
+      { label: "Landing de bienvenida", values: { gratuito: false, basico: "Sencilla", esencial: "Sencilla", marca: "Profesional" } },
+      { label: "Subdominio (tu-negocio.agenditapp.com)", values: { gratuito: true, basico: true, esencial: true, marca: false } },
+      { label: "Dominio propio (tumarca.com)", values: { gratuito: false, basico: false, esencial: false, marca: true } },
     ],
   },
   {
     group: "Automatización WhatsApp",
     rows: [
-      { label: "WhatsApp desde tu número Business", hint: "Mensajes enviados desde tu propio número", values: { basico: false, esencial: true, marca: true } },
-      { label: "Mensaje de agendamiento configurable", values: { basico: false, esencial: true, marca: true } },
-      { label: "Recordatorios automáticos", values: { basico: false, esencial: "1 recordatorio", marca: "2 recordatorios" } },
-      { label: "Mensajes editables", values: { basico: false, esencial: true, marca: true } },
-      { label: "Enlace para confirmar / cancelar citas", hint: "El cliente confirma o cancela desde WhatsApp", values: { basico: false, esencial: true, marca: true } },
-      { label: "Campañas masivas de WhatsApp", values: { basico: false, esencial: false, marca: true } },
+      { label: "WhatsApp desde tu número Business", hint: "Mensajes enviados desde tu propio número", values: { gratuito: false, basico: false, esencial: true, marca: true } },
+      { label: "Mensaje de agendamiento configurable", values: { gratuito: false, basico: false, esencial: true, marca: true } },
+      { label: "Recordatorios automáticos", values: { gratuito: false, basico: false, esencial: "1 recordatorio", marca: "2 recordatorios" } },
+      { label: "Mensajes editables", values: { gratuito: false, basico: false, esencial: true, marca: true } },
+      { label: "Enlace para confirmar / cancelar citas", hint: "El cliente confirma o cancela desde WhatsApp", values: { gratuito: false, basico: false, esencial: true, marca: true } },
+      { label: "Campañas masivas de WhatsApp", values: { gratuito: false, basico: false, esencial: false, marca: true } },
     ],
   },
 ];
@@ -192,10 +221,119 @@ function PlanCard({ plan, yearly }: { plan: typeof PLANS[number]; yearly: boolea
   const [expanded, setExpanded] = useState(false);
   const extras = EXTRA_FEATURES[plan.key];
   const price = yearly ? plan.monthlyPrice * 10 : plan.monthlyPrice;
-  const priceUnit = yearly ? "/ año" : "/ mes";
-  const priceNote = yearly
+  const priceUnit = plan.free ? "/ siempre gratis" : yearly ? "/ año" : "/ mes";
+  const priceNote = plan.free
+    ? "Sin tarjeta · Sin permanencia"
+    : yearly
     ? "2 meses gratis · facturación anual"
     : "Sin permanencia · Cancela cuando quieras";
+
+  if (plan.free) {
+    return (
+      <motion.div
+        variants={cardIn}
+        className="relative flex flex-col rounded-[20px] overflow-hidden h-full"
+        style={{
+          background: "linear-gradient(160deg, rgba(37,211,102,0.06) 0%, rgba(255,255,255,1) 55%)",
+          border: "1.5px solid rgba(37,211,102,0.35)",
+          boxShadow: "0 4px 24px rgba(37,211,102,0.10), var(--shadow-card)",
+        }}
+      >
+        {/* Trial ribbon */}
+        <div
+          className="flex items-center justify-center gap-2 px-4 py-2 text-[11px] font-bold tracking-wide"
+          style={{ background: "rgba(37,211,102,0.12)", color: "#128C7E" }}
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-[#25D366] animate-pulse flex-shrink-0" />
+          7 días con acceso COMPLETO al registrarte — luego gratis para siempre
+        </div>
+
+        <div className="p-6 flex flex-col flex-1">
+          {/* Header */}
+          <div className="flex items-start justify-between gap-3 mb-4">
+            <h3 className="text-lg font-semibold text-heading">{plan.name}</h3>
+            <span className="flex-shrink-0 px-2.5 py-1 rounded-full text-[11px] font-semibold" style={plan.badgeStyle}>
+              {plan.badge}
+            </span>
+          </div>
+
+          {/* Price */}
+          <div className="flex items-baseline gap-1.5 mb-1">
+            <span className="font-extrabold text-heading leading-none" style={{ fontSize: "clamp(36px,5vw,52px)", letterSpacing: "-0.03em" }}>
+              $0
+            </span>
+            <span className="text-sm text-muted">USD {priceUnit}</span>
+          </div>
+          <p className="text-xs text-muted mb-5">{priceNote}</p>
+
+          {/* Tagline */}
+          <p className="text-sm text-body mb-5 leading-relaxed">{plan.tagline}</p>
+
+          {/* Key highlights */}
+          <ul className="flex flex-col gap-2.5 mb-5">
+            {plan.highlights.map((h) => (
+              <li key={h} className="flex items-start gap-2.5 text-sm text-body">
+                <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center"
+                  style={{ background: "rgba(37,211,102,0.15)", color: "#128C7E" }}>
+                  <IconCheck className="w-2.5 h-2.5" />
+                </span>
+                {h}
+              </li>
+            ))}
+          </ul>
+
+          {/* Expand toggle */}
+          <button
+            onClick={() => setExpanded((v) => !v)}
+            className="flex items-center gap-1.5 text-xs font-medium text-muted hover:text-body transition-colors mb-4 w-fit"
+          >
+            <IconChevron open={expanded} />
+            {expanded ? "Ocultar características" : "Ver más características"}
+          </button>
+
+          <AnimatePresence initial={false}>
+            {expanded && (
+              <motion.div
+                key="extras"
+                variants={expandVariants}
+                initial="collapsed"
+                animate="expanded"
+                exit="collapsed"
+                className="overflow-hidden"
+              >
+                <ul className="flex flex-col gap-2 mb-5 pt-1 border-t border-black/8">
+                  {extras.map((e) => (
+                    <li key={e} className="flex items-start gap-2.5 text-sm text-muted pt-2">
+                      <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center"
+                        style={{ background: "rgba(37,211,102,0.10)", color: "#128C7E" }}>
+                        <IconCheck className="w-2.5 h-2.5" />
+                      </span>
+                      {e}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <div className="flex-1" />
+
+          <a
+            href={SIGNUP_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full px-5 py-3 rounded-[12px] text-sm font-bold text-center transition-all duration-200 shadow-sm flex items-center justify-center gap-2"
+            style={{ background: "#25D366", color: "#fff" }}
+          >
+            {plan.ctaLabel}
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+              <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </motion.div>
+    );
+  }
 
   if (plan.featured) {
     return (
@@ -406,11 +544,11 @@ export default function Precio() {
             Planes y precios
           </span>
           <h2 className="text-3xl md:text-4xl font-semibold text-heading tracking-tight leading-tight">
-            Planes simples. Sin permanencia.{" "}
-            <span className="text-brand">Sin sorpresas.</span>
+            Empieza gratis.{" "}
+            <span className="text-brand">Sin tarjeta.</span>
           </h2>
           <p className="mt-4 text-base text-body leading-relaxed">
-            Empieza por $10 USD/mes. Cambia de plan cuando quieras. Cancela cuando quieras.
+            Regístrate y obtén 7 días con todo incluido. Después, el plan gratuito para siempre — o elige un plan de pago cuando quieras.
           </p>
         </motion.div>
 
@@ -451,7 +589,7 @@ export default function Precio() {
 
         {/* ── Plan cards ── */}
         <motion.div
-          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-stretch pt-4"
+          className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4 items-stretch pt-4"
           variants={stagger}
           initial="initial"
           whileInView="animate"
@@ -469,7 +607,7 @@ export default function Precio() {
           whileInView="animate"
           viewport={{ once: true, amount: 0.5 }}
         >
-          Todos los planes incluyen acceso completo a la plataforma desde el primer día.
+          Los primeros 7 días con acceso completo al activar tu cuenta. Sin tarjeta de crédito.
         </motion.p>
 
         {/* ── Comparison table ── */}
@@ -495,7 +633,7 @@ export default function Precio() {
             style={{ boxShadow: "var(--shadow-card)" }}>
 
             {/* Header row */}
-            <div className="grid grid-cols-[2fr_1fr_1fr_1fr] bg-bg-card">
+            <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr] bg-bg-card">
               <div className="px-6 py-5 border-b border-brand/10">
                 <p className="text-xs font-semibold text-muted uppercase tracking-wider">Funcionalidad</p>
               </div>
@@ -511,6 +649,14 @@ export default function Precio() {
                       ${yearly ? p.monthlyPrice * 10 : p.monthlyPrice} USD
                     </p>
                     <p className="text-[11px] text-white/50">{yearly ? "/ año" : "/ mes"}</p>
+                  </div>
+                ) : p.free ? (
+                  <div key={p.key} className="px-4 py-5 border-l border-brand/10 border-b border-brand/10"
+                    style={{ background: "rgba(37,211,102,0.04)" }}>
+                    <p className="text-[10px] font-bold uppercase tracking-widest mb-1.5" style={{ color: "#128C7E" }}>{p.badge}</p>
+                    <p className="text-sm font-semibold text-heading">{p.name}</p>
+                    <p className="text-lg font-bold mt-0.5" style={{ color: "#128C7E" }}>$0 USD</p>
+                    <p className="text-[11px] text-muted">/ siempre gratis</p>
                   </div>
                 ) : (
                   <div key={p.key} className="px-4 py-5 border-l border-brand/10 border-b border-brand/10">
@@ -528,15 +674,15 @@ export default function Precio() {
             {/* Groups */}
             {COMPARISON_GROUPS.map((group, gi) => (
               <div key={gi}>
-                <div className="grid grid-cols-[2fr_1fr_1fr_1fr]"
+                <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr]"
                   style={{ background: "color-mix(in srgb, var(--brand) 4%, var(--bg-main))" }}>
-                  <div className="col-span-4 px-6 py-2.5 border-t border-brand/10">
+                  <div className="col-span-5 px-6 py-2.5 border-t border-brand/10">
                     <p className="text-[11px] font-bold text-body/70 uppercase tracking-[0.08em]">{group.group}</p>
                   </div>
                 </div>
                 {group.rows.map((row, ri) => (
                   <div key={ri}
-                    className="grid grid-cols-[2fr_1fr_1fr_1fr] border-t border-brand/8 hover:bg-brand/2 transition-colors">
+                    className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr] border-t border-brand/8 hover:bg-brand/2 transition-colors">
                     <div className="px-6 py-3.5">
                       <p className="text-sm text-heading">{row.label}</p>
                       {row.hint && <p className="text-xs text-muted mt-0.5">{row.hint}</p>}
@@ -555,20 +701,32 @@ export default function Precio() {
             ))}
 
             {/* CTA row */}
-            <div className="grid grid-cols-[2fr_1fr_1fr_1fr] border-t border-brand/10 bg-bg-card">
+            <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr] border-t border-brand/10 bg-bg-card">
               <div className="px-6 py-5" />
               {PLANS.map((p) => (
                 <div key={p.key}
                   className={`px-4 py-5 border-l border-brand/10 ${p.featured ? "bg-[rgba(232,240,255,0.4)]" : ""}`}>
-                  <DemoCtaButton
-                    className={`w-full px-3 py-2.5 rounded-[10px] text-xs font-semibold text-center cursor-pointer transition-all ${
-                      p.featured
-                        ? "bg-brand text-white hover:bg-brand-hover"
-                        : "border border-brand/25 text-brand hover:bg-brand/6"
-                    }`}
-                  >
-                    ${yearly ? p.monthlyPrice * 10 : p.monthlyPrice} USD {yearly ? "/ año" : "/ mes"}
-                  </DemoCtaButton>
+                  {p.free ? (
+                    <a
+                      href={SIGNUP_HREF}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full px-3 py-2.5 rounded-[10px] text-xs font-bold text-center transition-all flex items-center justify-center"
+                      style={{ background: "#25D366", color: "#fff" }}
+                    >
+                      Gratis
+                    </a>
+                  ) : (
+                    <DemoCtaButton
+                      className={`w-full px-3 py-2.5 rounded-[10px] text-xs font-semibold text-center cursor-pointer transition-all ${
+                        p.featured
+                          ? "bg-brand text-white hover:bg-brand-hover"
+                          : "border border-brand/25 text-brand hover:bg-brand/6"
+                      }`}
+                    >
+                      ${yearly ? p.monthlyPrice * 10 : p.monthlyPrice} USD {yearly ? "/ año" : "/ mes"}
+                    </DemoCtaButton>
+                  )}
                 </div>
               ))}
             </div>
@@ -610,13 +768,20 @@ function MobileCompare({
   yearly: boolean;
 }) {
   const [open, setOpen] = useState(false);
-  const price = yearly ? plan.monthlyPrice * 10 : plan.monthlyPrice;
-  const priceUnit = yearly ? "/ año" : "/ mes";
+  const price = plan.free ? 0 : yearly ? plan.monthlyPrice * 10 : plan.monthlyPrice;
+  const priceUnit = plan.free ? "/ siempre gratis" : yearly ? "/ año" : "/ mes";
+  const priceColor = plan.free ? "#128C7E" : "var(--brand)";
 
   return (
-    <div className={`rounded-[16px] border bg-bg-card overflow-hidden ${
-      plan.featured ? "border-brand" : "border-brand/12"
-    }`} style={{ boxShadow: "var(--shadow-card)" }}>
+    <div
+      className={`rounded-[16px] border bg-bg-card overflow-hidden ${
+        plan.featured ? "border-brand" : plan.free ? "" : "border-brand/12"
+      }`}
+      style={{
+        boxShadow: "var(--shadow-card)",
+        ...(plan.free ? { borderColor: "rgba(37,211,102,0.35)", borderWidth: "1.5px" } : {}),
+      }}
+    >
       <button
         onClick={() => setOpen((v) => !v)}
         className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
@@ -628,7 +793,7 @@ function MobileCompare({
               {plan.badge}
             </span>
           </div>
-          <p className="text-brand font-bold text-lg mt-0.5">
+          <p className="font-bold text-lg mt-0.5" style={{ color: priceColor }}>
             ${price} USD{" "}
             <span className="text-muted text-xs font-normal">{priceUnit}</span>
           </p>
@@ -660,15 +825,27 @@ function MobileCompare({
                 </div>
               ))}
 
-              <DemoCtaButton
-                className={`w-full px-5 py-3 rounded-[12px] text-sm font-semibold text-center cursor-pointer mt-2 ${
-                  plan.featured
-                    ? "bg-brand text-white hover:bg-brand-hover"
-                    : "border border-brand/25 text-brand hover:bg-brand/6"
-                }`}
-              >
-                {plan.ctaLabel}
-              </DemoCtaButton>
+              {plan.free ? (
+                <a
+                  href={SIGNUP_HREF}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full px-5 py-3 rounded-[12px] text-sm font-bold text-center mt-2 flex items-center justify-center gap-2"
+                  style={{ background: "#25D366", color: "#fff" }}
+                >
+                  {plan.ctaLabel}
+                </a>
+              ) : (
+                <DemoCtaButton
+                  className={`w-full px-5 py-3 rounded-[12px] text-sm font-semibold text-center cursor-pointer mt-2 ${
+                    plan.featured
+                      ? "bg-brand text-white hover:bg-brand-hover"
+                      : "border border-brand/25 text-brand hover:bg-brand/6"
+                  }`}
+                >
+                  {plan.ctaLabel}
+                </DemoCtaButton>
+              )}
             </div>
           </motion.div>
         )}

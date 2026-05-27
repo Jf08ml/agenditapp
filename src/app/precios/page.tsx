@@ -5,15 +5,15 @@ import PageFooter from "../(landing)/components/ui/PageFooter";
 import Precio from "../(landing)/sections/Precio";
 
 export const metadata: Metadata = {
-  title: "Planes AgenditApp | Desde $10 USD/mes · Sin Permanencia",
+  title: "Planes AgenditApp | Empieza Gratis · Sin Tarjeta · Sin Permanencia",
   description:
-    "Software de agendamiento online desde $10 USD/mes sin permanencia. Reservas ilimitadas + WhatsApp desde tu número + página web incluida. Prueba gratis hoy.",
-  keywords: ["precios software de reservas", "planes agendamiento online", "costo sistema de citas", "precio agenda digital", "software sin permanencia", "precios AgenditApp"],
+    "Empieza gratis hoy con 7 días de acceso completo. Planes de pago desde $10 USD/mes sin permanencia. Reservas ilimitadas + WhatsApp + página web incluida.",
+  keywords: ["plan gratuito agendamiento", "precios software de reservas", "planes agendamiento online", "costo sistema de citas", "precio agenda digital", "software sin permanencia", "precios AgenditApp"],
   alternates: { canonical: "https://agenditapp.com/precios" },
   openGraph: {
-    title: "Planes AgenditApp | Desde $10 USD/mes · Sin Permanencia",
+    title: "Planes AgenditApp | Empieza Gratis · Sin Tarjeta · Sin Permanencia",
     description:
-      "Software de agendamiento online desde $10 USD/mes sin permanencia. Reservas ilimitadas + WhatsApp desde tu número + página web incluida. Prueba gratis hoy.",
+      "Empieza gratis hoy con 7 días de acceso completo. Planes de pago desde $10 USD/mes sin permanencia. Reservas ilimitadas + WhatsApp + página web incluida.",
     url: "https://agenditapp.com/precios",
     images: ["/inicio_page.png"],
   },
@@ -84,12 +84,11 @@ export default function PreciosPage() {
               Planes y precios
             </span>
             <h1 className="text-4xl sm:text-5xl font-semibold text-heading tracking-tight leading-tight mb-5">
-              Planes diseñados para{" "}
-              <span className="text-brand">escalar a tu ritmo</span>
+              Empieza gratis.{" "}
+              <span className="text-brand">Escala a tu ritmo.</span>
             </h1>
             <p className="text-lg text-body max-w-2xl mx-auto leading-relaxed">
-              Sin permanencia, sin costos ocultos. Elige el plan que se adapta
-              a la etapa actual de tu operación y cambia cuando quieras.
+              Regístrate hoy sin tarjeta y obtén 7 días con acceso completo a todo. Después, el plan gratuito para siempre — o elige un plan de pago cuando quieras.
             </p>
           </div>
         </section>

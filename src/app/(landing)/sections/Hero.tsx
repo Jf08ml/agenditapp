@@ -131,7 +131,7 @@ export default function Hero() {
                     className="w-1.5 h-1.5 rounded-full animate-pulse"
                     style={{ background: "var(--warm)" }}
                   />
-                  Nuevo · Plan desde $10 USD/mes
+                  Nuevo · Empieza gratis — sin tarjeta
                 </span>
               </motion.div>
 
@@ -204,7 +204,7 @@ export default function Hero() {
                     shadow-[0_6px_22px_rgba(29,78,216,0.35)] transition-colors
                     hover:bg-[#2563EB]"
                 >
-                  Crear mi demo gratis
+                  Crear cuenta gratis
                   <svg
                     width="16"
                     height="16"
