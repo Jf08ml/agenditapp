@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import type { IconWeight } from "@phosphor-icons/react";
+import { Crosshair, Cpu, GlobeSimple, HandHeart } from "@phosphor-icons/react/dist/ssr";
+
+type ValorIcon = React.ComponentType<{ size?: number; weight?: IconWeight; color?: string }>;
 import PageHeader from "@/app/(landing)/components/ui/PageHeader";
 import PageFooter from "@/app/(landing)/components/ui/PageFooter";
 import { DemoCtaButton } from "@/app/(landing)/components/ui/DemoCtaModal";
@@ -65,6 +70,31 @@ const BREADCRUMB_SCHEMA = {
   ],
 };
 
+const EQUIPO = [
+  {
+    nombre: "Juan Mosquera",
+    cargo: "Fundador & CEO",
+    bio: "Creó AgenditApp, validó el producto con los primeros clientes y lidera el desarrollo técnico, soporte y mejora continua de la plataforma.",
+    foto: "/equipo/juan.png",
+    redes: {
+      linkedin: "https://www.linkedin.com/in/juanfemosquera/",   // reemplaza con tu URL de LinkedIn
+      instagram: "#",  // reemplaza con tu URL de Instagram
+      portfolio: "https://juanfe.dev",   // URL de portafolio si tienes (deja vacío para ocultar)
+    },
+  },
+  {
+    nombre: "Brayan Mayorga",
+    cargo: "Marketing & Ventas",
+    bio: "Responsable del crecimiento de marca, redes sociales, diseño visual y estrategia comercial de AgenditApp en Latinoamérica.",
+    foto: "/equipo/brayan.jpg",
+    redes: {
+      linkedin: "#",   // reemplaza con URL de LinkedIn
+      instagram: "#",  // reemplaza con URL de Instagram
+      portfolio: "",   // URL de portafolio si tienes (deja vacío para ocultar)
+    },
+  },
+];
+
 const stats = [
   { valor: "2024", label: "Año de fundación" },
   { valor: "200+", label: "Negocios activos" },
@@ -72,27 +102,27 @@ const stats = [
   { valor: "16+", label: "Sectores atendidos" },
 ];
 
-const valores = [
+const valores: { Icon: ValorIcon; color: string; titulo: string; descripcion: string }[] = [
   {
-    icon: "🎯",
+    Icon: Crosshair, color: "#EA580C",
     titulo: "Simplicidad ante todo",
     descripcion:
       "Un dueño de salón no debería necesitar un manual para digitalizar su negocio. Cada función de AgenditApp está diseñada para ser usada desde el primer día, sin capacitación técnica.",
   },
   {
-    icon: "🇨🇴",
+    Icon: GlobeSimple, color: "#059669",
     titulo: "Construido para Latinoamérica",
     descripcion:
       "No somos una adaptación de software extranjero. AgenditApp nació en Colombia pensando en WhatsApp como canal principal, en pesos y dólares, con soporte en español real.",
   },
   {
-    icon: "⚡",
+    Icon: Cpu, color: "#D97706",
     titulo: "Automatización que libera tiempo",
     descripcion:
       "Cada minuto que un dueño de negocio pasa gestionando citas manualmente es un minuto que no pasa atendiendo clientes o descansando. Automatizamos lo repetitivo para que ellos hagan lo que importa.",
   },
   {
-    icon: "🤝",
+    Icon: HandHeart, color: "#0D9488",
     titulo: "Éxito compartido",
     descripcion:
       "Cobramos mensualmente solo si nuestros clientes siguen usándonos. Sin permanencias ni cláusulas. Si AgenditApp no entrega valor, el cliente se va — y eso nos obliga a mejorar constantemente.",
@@ -220,13 +250,111 @@ export default function NosotrosPage() {
                   style={{ boxShadow: "var(--shadow-card)" }}
                 >
                   <div
-                    className="w-11 h-11 rounded-[10px] flex items-center justify-center text-xl mb-4"
-                    style={{ background: "color-mix(in srgb, var(--brand) 10%, transparent)" }}
+                    className="w-11 h-11 rounded-[10px] flex items-center justify-center mb-4"
+                    style={{ background: `${v.color}18` }}
                   >
-                    {v.icon}
+                    <v.Icon size={22} weight="duotone" color={v.color} />
                   </div>
                   <h3 className="text-base font-semibold text-heading mb-2">{v.titulo}</h3>
                   <p className="text-sm text-body leading-relaxed">{v.descripcion}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Equipo */}
+        <section className="py-16 px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-semibold text-heading text-center mb-3">
+              El equipo detrás de AgenditApp
+            </h2>
+            <p className="text-body text-center mb-10 max-w-xl mx-auto">
+              Dos personas construyendo el software que hubieran querido tener
+              cuando gestionaban su propio negocio.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {EQUIPO.map((persona) => (
+                <div
+                  key={persona.nombre}
+                  className="bg-bg-card border border-brand/10 rounded-[20px] p-7 flex flex-col items-center text-center gap-4"
+                  style={{ boxShadow: "var(--shadow-card)" }}
+                >
+                  {/* Foto */}
+                  <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-brand/20 shrink-0">
+                    <Image
+                      src={persona.foto}
+                      alt={persona.nombre}
+                      fill
+                      className="object-cover"
+                      sizes="96px"
+                    />
+                  </div>
+
+                  {/* Info */}
+                  <div>
+                    <p className="text-lg font-semibold text-heading leading-tight">
+                      {persona.nombre}
+                    </p>
+                    <p
+                      className="text-xs font-semibold uppercase tracking-wider mt-1 mb-3"
+                      style={{ color: "var(--brand)" }}
+                    >
+                      {persona.cargo}
+                    </p>
+                    <p className="text-sm text-body leading-relaxed">
+                      {persona.bio}
+                    </p>
+                  </div>
+
+                  {/* Redes */}
+                  <div className="flex items-center gap-2 mt-auto pt-2">
+                    {persona.redes.linkedin && persona.redes.linkedin !== "#" && (
+                      <a
+                        href={persona.redes.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn"
+                        className="flex items-center justify-center w-8 h-8 rounded-[8px] border border-brand/15 text-muted hover:text-brand hover:border-brand/40 hover:bg-brand/5 transition-colors"
+                      >
+                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" aria-hidden>
+                          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                          <rect x="2" y="9" width="4" height="12" />
+                          <circle cx="4" cy="4" r="2" />
+                        </svg>
+                      </a>
+                    )}
+                    {persona.redes.instagram && persona.redes.instagram !== "#" && (
+                      <a
+                        href={persona.redes.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram"
+                        className="flex items-center justify-center w-8 h-8 rounded-[8px] border border-brand/15 text-muted hover:text-brand hover:border-brand/40 hover:bg-brand/5 transition-colors"
+                      >
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden>
+                          <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                          <circle cx="12" cy="12" r="4" />
+                          <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
+                        </svg>
+                      </a>
+                    )}
+                    {persona.redes.portfolio && (
+                      <a
+                        href={persona.redes.portfolio}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Portafolio"
+                        className="flex items-center justify-center w-8 h-8 rounded-[8px] border border-brand/15 text-muted hover:text-brand hover:border-brand/40 hover:bg-brand/5 transition-colors"
+                      >
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4" aria-hidden>
+                          <circle cx="12" cy="12" r="10" />
+                          <line x1="2" y1="12" x2="22" y2="12" />
+                          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                        </svg>
+                      </a>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>

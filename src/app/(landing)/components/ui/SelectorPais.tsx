@@ -8,6 +8,7 @@ import {
   type KeyboardEvent,
 } from "react";
 import { PAISES, type Pais } from "../constants/paises";
+import { Globe } from "@phosphor-icons/react";
 
 interface SelectorPaisProps {
   value: string; // ISO code, e.g. "CO"
@@ -111,7 +112,10 @@ export function SelectorPais({ value, onChange }: SelectorPaisProps) {
             <span className="text-sm">{seleccionado.dial}</span>
           </>
         ) : (
-          <span className="text-sm text-muted">🌍 País</span>
+          <span className="inline-flex items-center gap-1.5 text-sm text-muted">
+            <Globe size={16} weight="duotone" color="#64748B" />
+            País
+          </span>
         )}
         <svg
           className={`w-3 h-3 text-muted transition-transform duration-150 ${abierto ? "rotate-180" : ""}`}

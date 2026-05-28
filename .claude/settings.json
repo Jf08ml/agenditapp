@@ -11,7 +11,9 @@
       "Bash(Get-ChildItem -Path \"d:\\\\proyectos-personales\\\\agenditapp\\\\src\\\\content\\\\blog\\\\\" -Filter \"*.mdx\" | Select-Object -ExpandProperty FullName)",
       "Bash(mkdir -p \"d:\\\\proyectos-personales\\\\agenditapp\\\\src\\\\app\\\\vs\\\\[competitor]\")",
       "Bash(Remove-Item -Recurse -Force \"d:\\\\proyectos-personales\\\\agenditapp\\\\.next\" -ErrorAction SilentlyContinue)",
-      "Bash(Write-Host \"Cache cleared\")"
+      "Bash(Write-Host \"Cache cleared\")",
+      "Bash(npm list *)",
+      "Bash(python -c ' *)"
     ],
     "additionalDirectories": [
       "d:\\proyectos-personales\\agenditapp\\src\\app\\vs"

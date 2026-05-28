@@ -5,6 +5,8 @@ import Image from "next/image";
 import { DemoCtaButton } from "../components/ui/DemoCtaModal";
 import { motion, easeOut, type Variants } from "framer-motion";
 import { WHATSAPP_HREF } from "../components/constants";
+import { CO, MX, CL, AR, ES, CR, EC } from "country-flag-icons/react/3x2";
+import { Clock, Lock, ChatCircle, type IconWeight } from "@phosphor-icons/react";
 
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 20 },
@@ -45,16 +47,23 @@ const SECTOR_LINKS = [
   { label: "Odontólogos", href: "/sectores/odontologia" },
 ];
 
-const COUNTRY_LINKS = [
-  { flag: "🇨🇴", label: "Colombia", href: "/" },
-  { flag: "🇲🇽", label: "México", href: "/mx" },
-  { flag: "🇨🇱", label: "Chile", href: "/cl" },
-  { flag: "🇦🇷", label: "Argentina", href: "/ar" },
+type FlagComponent = React.ComponentType<{ className?: string; title?: string }>;
+
+const COUNTRY_LINKS: { Flag: FlagComponent; label: string; href: string }[] = [
+  { Flag: CO, label: "Colombia",   href: "/" },
+  { Flag: MX, label: "México",     href: "/mx" },
+  { Flag: CL, label: "Chile",      href: "/cl" },
+  { Flag: AR, label: "Argentina",  href: "/ar" },
+  { Flag: ES, label: "España",     href: "/es" },
+  { Flag: CR, label: "Costa Rica", href: "/cr" },
+  { Flag: EC, label: "Ecuador",    href: "/ec" },
 ];
 
-const TRUST_ITEMS = [
-  { icon: "⏰", text: "Soporte por WhatsApp · Lun–Sáb" },
-  { icon: "🔒", text: "Sin permanencia. Cancela cuando quieras." },
+type TrustIcon = React.ComponentType<{ size?: number; weight?: IconWeight; color?: string }>;
+
+const TRUST_ITEMS: { Icon: TrustIcon; color: string; text: string }[] = [
+  { Icon: Clock, color: "#1D4ED8", text: "Soporte por WhatsApp · Lun–Sáb" },
+  { Icon: Lock,  color: "#059669", text: "Sin permanencia. Cancela cuando quieras." },
 ];
 
 function IconInstagram() {
@@ -225,7 +234,8 @@ export default function Footer() {
             </div>
 
             <DemoCtaButton className="inline-flex items-center gap-2 rounded-[10px] border border-brand/25 text-brand text-sm font-medium px-4 py-2 hover:bg-brand/6 transition-colors cursor-pointer w-fit">
-              💬 Solicitar demo
+              <ChatCircle size={16} weight="duotone" />
+              Solicitar demo
             </DemoCtaButton>
           </motion.div>
 
@@ -276,7 +286,7 @@ export default function Footer() {
                     href={c.href}
                     className="inline-flex items-center gap-2 text-sm text-muted hover:text-brand transition-colors"
                   >
-                    <span className="text-base leading-none">{c.flag}</span>
+                    <c.Flag className="w-5 rounded-[2px] shadow-sm shrink-0" title={c.label} />
                     {c.label}
                   </Link>
                 </li>
@@ -307,8 +317,10 @@ export default function Footer() {
             </p>
             <ul className="flex flex-col gap-2.5">
               {TRUST_ITEMS.map((item) => (
-                <li key={item.icon} className="flex items-start gap-2 text-sm text-muted">
-                  <span className="text-base leading-none mt-0.5 shrink-0">{item.icon}</span>
+                <li key={item.text} className="flex items-start gap-2 text-sm text-muted">
+                  <span className="shrink-0 mt-0.5">
+                    <item.Icon size={16} weight="duotone" color={item.color} />
+                  </span>
                   <span>{item.text}</span>
                 </li>
               ))}

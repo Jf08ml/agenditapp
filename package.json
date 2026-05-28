@@ -9,7 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
     "@vercel/analytics": "^1.5.0",
+    "country-flag-icons": "^1.6.17",
     "firebase-admin": "^13.6.0",
     "framer-motion": "^12.23.22",
     "gray-matter": "^4.0.3",

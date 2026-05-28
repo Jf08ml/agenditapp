@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import type { IconWeight } from "@phosphor-icons/react";
+import {
+  CalendarBlank, ChatsCircle, Briefcase, Gift, Globe,
+  Megaphone, ShieldCheck, Rocket, Lightbulb, GraduationCap,
+} from "@phosphor-icons/react/dist/ssr";
 import SchemaOrg from "../(landing)/components/seo/SchemaOrg";
 import { DemoCtaButton } from "../(landing)/components/ui/DemoCtaModal";
 import PageHeader from "../(landing)/components/ui/PageHeader";
 import PageFooter from "../(landing)/components/ui/PageFooter";
+
+type PhosphorIcon = React.ComponentType<{ size?: number; weight?: IconWeight; color?: string }>;
 
 export const metadata: Metadata = {
   title: "Funcionalidades | Características del Sistema de Agendamiento AgenditApp",
@@ -41,10 +48,10 @@ const BREADCRUMB_SCHEMA = {
   ],
 };
 
-const funcionalidades = [
+const funcionalidades: { categoria: string; Icon: PhosphorIcon; color: string; features: { nombre: string; descripcion: string }[] }[] = [
   {
     categoria: "Agendamiento y Reservas",
-    icon: "📅",
+    Icon: CalendarBlank, color: "#1D4ED8",
     features: [
       { nombre: "Reservas online 24/7", descripcion: "Tus clientes agendan desde tu página web en cualquier momento, sin llamadas ni esperas." },
       { nombre: "Citas ilimitadas", descripcion: "Recibe todas las reservas que necesites: sin límites por mes y sin costos por cita." },
@@ -56,7 +63,7 @@ const funcionalidades = [
   },
   {
     categoria: "Comunicación y WhatsApp",
-    icon: "📲",
+    Icon: ChatsCircle, color: "#25D366",
     features: [
       { nombre: "Mensajes por WhatsApp desde tu número", descripcion: "Automatiza mensajes desde tu WhatsApp Business (en planes Esencial y Marca Propia)." },
       { nombre: "Mensaje automático al agendar", descripcion: "Cada vez que un cliente agenda, recibe un mensaje de confirmación por WhatsApp. El texto es configurable." },
@@ -68,7 +75,7 @@ const funcionalidades = [
   },
   {
     categoria: "Gestión de Negocio",
-    icon: "💼",
+    Icon: Briefcase, color: "#0D9488",
     features: [
       { nombre: "Gestión de empleados", descripcion: "Crea empleados, asigna servicios y administra su agenda individual con control total." },
       { nombre: "Comisiones y nómina por empleado", descripcion: "Calcula comisiones por servicio y lleva control de pagos o nómina de forma organizada." },
@@ -79,7 +86,7 @@ const funcionalidades = [
   },
   {
     categoria: "Fidelidad y Retención",
-    icon: "🎁",
+    Icon: Gift, color: "#DB2777",
     features: [
       { nombre: "Sistema de fidelidad", descripcion: "Recompensa clientes frecuentes con beneficios y aumenta la recompra sin esfuerzo." },
       { nombre: "Mejor experiencia del cliente", descripcion: "Confirmaciones, recordatorios y una reserva fácil hacen que el cliente vuelva más seguido." },
@@ -87,7 +94,7 @@ const funcionalidades = [
   },
   {
     categoria: "Presencia Digital",
-    icon: "🌐",
+    Icon: Globe, color: "#7C3AED",
     features: [
       { nombre: "Landing de bienvenida", descripcion: "Página de bienvenida con tus servicios y botón de reserva. En Marca Propia es más profesional." },
       { nombre: "Subdominio incluido", descripcion: "En planes Básico y Esencial tienes un subdominio como: tu-negocio.agenditapp.com." },
@@ -98,7 +105,7 @@ const funcionalidades = [
   },
   {
     categoria: "Campañas y Crecimiento",
-    icon: "📣",
+    Icon: Megaphone, color: "#EA580C",
     features: [
       { nombre: "Campañas masivas por WhatsApp (Marca Propia)", descripcion: "Envía campañas a tu base de clientes para promociones, reactivación y anuncios importantes." },
       { nombre: "Segmentación y control", descripcion: "Organiza tu base de clientes para campañas más efectivas." },
@@ -106,7 +113,7 @@ const funcionalidades = [
   },
   {
     categoria: "Branding, Seguridad y Soporte",
-    icon: "🛡️",
+    Icon: ShieldCheck, color: "#475569",
     features: [
       { nombre: "Branding personalizado (logo, nombre y colores)", descripcion: "La plataforma se adapta a tu marca para una experiencia más profesional." },
       { nombre: "Datos seguros en la nube", descripcion: "Tu información está protegida con buenas prácticas de seguridad y respaldos automáticos." },
@@ -117,10 +124,10 @@ const funcionalidades = [
   },
 ];
 
-const highlights = [
-  { emoji: "🚀", title: "Configuración rápida", desc: "Empieza a recibir reservas rápido. Te ayudamos con la configuración inicial." },
-  { emoji: "💡", title: "Sin permanencia", desc: "Pago mes a mes. Cancela cuando quieras sin cláusulas ni penalizaciones." },
-  { emoji: "🎓", title: "Fácil de usar", desc: "Interfaz intuitiva para ti y tu equipo. No necesitas conocimientos técnicos." },
+const highlights: { Icon: PhosphorIcon; color: string; title: string; desc: string }[] = [
+  { Icon: Rocket,         color: "#1D4ED8", title: "Configuración rápida", desc: "Empieza a recibir reservas rápido. Te ayudamos con la configuración inicial." },
+  { Icon: Lightbulb,      color: "#D97706", title: "Sin permanencia",      desc: "Pago mes a mes. Cancela cuando quieras sin cláusulas ni penalizaciones." },
+  { Icon: GraduationCap,  color: "#4338CA", title: "Fácil de usar",        desc: "Interfaz intuitiva para ti y tu equipo. No necesitas conocimientos técnicos." },
 ];
 
 export default function FuncionalidadesPage() {
@@ -157,10 +164,10 @@ export default function FuncionalidadesPage() {
               <div key={cat.categoria}>
                 <div className="flex items-center gap-3 mb-7">
                   <div
-                    className="w-12 h-12 rounded-[12px] flex items-center justify-center text-2xl flex-shrink-0"
-                    style={{ background: "color-mix(in srgb, var(--brand) 10%, transparent)" }}
+                    className="w-12 h-12 rounded-[12px] flex items-center justify-center flex-shrink-0"
+                    style={{ background: `${cat.color}18` }}
                   >
-                    {cat.icon}
+                    <cat.Icon size={26} weight="duotone" color={cat.color} />
                   </div>
                   <h2 className="text-2xl font-semibold text-heading">{cat.categoria}</h2>
                 </div>
@@ -199,7 +206,11 @@ export default function FuncionalidadesPage() {
                   className="text-center bg-bg-card border border-brand/10 rounded-[16px] p-6"
                   style={{ boxShadow: "var(--shadow-card)" }}
                 >
-                  <div className="text-3xl mb-3">{h.emoji}</div>
+                  <div className="flex justify-center mb-3">
+                    <span className="flex items-center justify-center w-12 h-12 rounded-[12px]" style={{ background: `${h.color}18` }}>
+                      <h.Icon size={26} weight="duotone" color={h.color} />
+                    </span>
+                  </div>
                   <h3 className="text-sm font-semibold text-heading mb-2">{h.title}</h3>
                   <p className="text-sm text-body leading-relaxed">{h.desc}</p>
                 </div>

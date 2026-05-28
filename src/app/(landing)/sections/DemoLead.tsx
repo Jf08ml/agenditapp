@@ -4,6 +4,7 @@
 import { useState } from "react";
 import { DemoCtaButton } from "../components/ui/DemoCtaModal";
 import { motion, easeOut, type Variants } from "framer-motion";
+import { ChatCircle } from "@phosphor-icons/react";
 import { SelectorPais } from "../components/ui/SelectorPais";
 import { PAISES } from "../components/constants/paises";
 import { SIGNUP_HREF } from "../components/constants";
@@ -146,10 +147,10 @@ export default function DemoLead() {
             >
               <div className="flex items-center gap-3 flex-1 min-w-0">
                 <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center text-xl text-white flex-shrink-0"
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-white flex-shrink-0"
                   style={{ background: "var(--wa)" }}
                 >
-                  💬
+                  <ChatCircle size={20} weight="duotone" />
                 </div>
                 <div className="min-w-0">
                   <p className="text-[14px] font-bold text-[#0F172A]">¿Prefieres hablar directo?</p>

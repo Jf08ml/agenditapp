@@ -3,6 +3,82 @@
 import { useState } from "react";
 import Link from "next/link";
 import { DemoCtaButton } from "./DemoCtaModal";
+import {
+  Sparkle, Scissors, Flower, Eye, Stethoscope, Tooth, Brain, Barbell,
+  Leaf, PawPrint, Syringe, Camera, MusicNotes, MusicNote, Books, Scales, YinYang,
+  CalendarBlank, DeviceMobileCamera, User, Star, Money, Globe, Bed, Moon,
+  Gift, ClipboardText, Lock, ChartBar, NotePencil, Bell, Monitor, Users,
+  Target, CalendarCheck, Buildings, Palette, GraduationCap, Folder, Timer, Cloud,
+  type IconWeight,
+} from "@phosphor-icons/react";
+
+type PIEntry = { Icon: React.ComponentType<{ size?: number; weight?: IconWeight; color?: string }>; color: string };
+
+const ICON_MAP: Record<string, PIEntry> = {
+  // Sector page icons
+  "💇‍♀️": { Icon: Sparkle,            color: "#DB2777" },
+  "💈":   { Icon: Scissors,           color: "#1D4ED8" },
+  "🧖‍♀️": { Icon: Flower,             color: "#059669" },
+  "👁️":  { Icon: Eye,                color: "#7C3AED" },
+  "🏥":   { Icon: Stethoscope,        color: "#0D9488" },
+  "🦷":   { Icon: Tooth,              color: "#0EA5E9" },
+  "🧠":   { Icon: Brain,              color: "#4338CA" },
+  "🏋️‍♀️": { Icon: Barbell,           color: "#EA580C" },
+  "🥗":   { Icon: Leaf,               color: "#059669" },
+  "🐶":   { Icon: PawPrint,            color: "#D97706" },
+  "💉":   { Icon: Syringe,            color: "#E11D48" },
+  "📸":   { Icon: Camera,             color: "#475569" },
+  "🎸":   { Icon: MusicNotes,         color: "#7C3AED" },
+  "📚":   { Icon: Books,              color: "#D97706" },
+  "⚖️":  { Icon: Scales,             color: "#1D4ED8" },
+  "💃":   { Icon: YinYang,            color: "#4338CA" },
+  // Feature icons
+  "📅":   { Icon: CalendarBlank,      color: "#1D4ED8" },
+  "📲":   { Icon: DeviceMobileCamera, color: "#1D4ED8" },
+  "👩‍🦰": { Icon: User,              color: "#DB2777" },
+  "💅":   { Icon: Star,               color: "#DB2777" },
+  "💰":   { Icon: Money,              color: "#059669" },
+  "🌐":   { Icon: Globe,              color: "#7C3AED" },
+  "🧘‍♀️": { Icon: YinYang,           color: "#059669" },
+  "🛏️":  { Icon: Bed,                color: "#7C3AED" },
+  "💆‍♀️": { Icon: Flower,            color: "#059669" },
+  "🌙":   { Icon: Moon,               color: "#4338CA" },
+  "🎁":   { Icon: Gift,               color: "#DB2777" },
+  "👨‍⚕️": { Icon: Stethoscope,       color: "#0D9488" },
+  "📋":   { Icon: ClipboardText,      color: "#1D4ED8" },
+  "🔒":   { Icon: Lock,               color: "#059669" },
+  "📊":   { Icon: ChartBar,           color: "#1D4ED8" },
+  "✨":   { Icon: Sparkle,            color: "#DB2777" },
+  "📝":   { Icon: NotePencil,         color: "#1D4ED8" },
+  "🔔":   { Icon: Bell,               color: "#D97706" },
+  "💻":   { Icon: Monitor,            color: "#475569" },
+  "👨‍🏫": { Icon: Users,             color: "#1D4ED8" },
+  "🎯":   { Icon: Target,             color: "#EA580C" },
+  "🗓️":  { Icon: CalendarCheck,      color: "#1D4ED8" },
+  "✂️":  { Icon: Scissors,           color: "#1D4ED8" },
+  "⏱️":  { Icon: Timer,              color: "#1D4ED8" },
+  "☁️":  { Icon: Cloud,              color: "#475569" },
+  "🎉":   { Icon: Star,               color: "#D97706" },
+  "🏢":   { Icon: Buildings,          color: "#475569" },
+  "🎨":   { Icon: Palette,            color: "#DB2777" },
+  "🎵":   { Icon: MusicNote,          color: "#7C3AED" },
+  "👨‍🎓": { Icon: GraduationCap,     color: "#D97706" },
+  "👩‍🏫": { Icon: Users,             color: "#1D4ED8" },
+  "👥":   { Icon: Users,             color: "#1D4ED8" },
+  "📁":   { Icon: Folder,             color: "#D97706" },
+  "🎪":   { Icon: Star,               color: "#D97706" },
+};
+
+function iconBg(emoji: string): string {
+  const e = ICON_MAP[emoji];
+  return e ? `${e.color}18` : "color-mix(in srgb, var(--brand) 10%, transparent)";
+}
+
+function SectorIcon({ emoji, size }: { emoji: string; size: number }) {
+  const e = ICON_MAP[emoji];
+  if (!e) return <span className="text-xl">{emoji}</span>;
+  return <e.Icon size={size} weight="duotone" color={e.color} />;
+}
 
 function buildReviewSchema(testimonial: { quote: string; author: string }, sectorName: string) {
   return {
@@ -105,10 +181,10 @@ export default function SectorPageContent({
       <section className="py-14 sm:py-20 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto text-center">
           <div
-            className="inline-flex items-center justify-center w-16 h-16 rounded-[18px] text-3xl mb-6"
-            style={{ background: "color-mix(in srgb, var(--brand) 10%, transparent)" }}
+            className="inline-flex items-center justify-center w-16 h-16 rounded-[18px] mb-6"
+            style={{ background: iconBg(icon) }}
           >
-            {icon}
+            <SectorIcon emoji={icon} size={28} />
           </div>
           <h1 className="text-4xl sm:text-5xl font-semibold text-heading tracking-tight leading-tight mb-5">
             Software de Agendamiento para{" "}
@@ -145,10 +221,10 @@ export default function SectorPageContent({
                 style={{ boxShadow: "var(--shadow-card)" }}
               >
                 <div
-                  className="w-11 h-11 rounded-[10px] flex items-center justify-center text-xl mb-4"
-                  style={{ background: "color-mix(in srgb, var(--brand) 10%, transparent)" }}
+                  className="w-11 h-11 rounded-[10px] flex items-center justify-center mb-4"
+                  style={{ background: iconBg(feature.icon) }}
                 >
-                  {feature.icon}
+                  <SectorIcon emoji={feature.icon} size={22} />
                 </div>
                 <h3 className="text-base font-semibold text-heading mb-2">
                   {feature.title}
@@ -279,10 +355,10 @@ export default function SectorPageContent({
                 style={{ boxShadow: "var(--shadow-card)" }}
               >
                 <div
-                  className="w-10 h-10 rounded-[10px] flex items-center justify-center text-lg mb-3"
-                  style={{ background: "color-mix(in srgb, var(--brand) 10%, transparent)" }}
+                  className="w-10 h-10 rounded-[10px] flex items-center justify-center mb-3"
+                  style={{ background: iconBg(sector.icon) }}
                 >
-                  {sector.icon}
+                  <SectorIcon emoji={sector.icon} size={20} />
                 </div>
                 <h3 className="text-sm font-semibold text-heading mb-1 group-hover:text-brand transition-colors">
                   {sector.title}

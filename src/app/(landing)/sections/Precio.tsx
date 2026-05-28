@@ -5,6 +5,8 @@ import { DemoCtaButton } from "../components/ui/DemoCtaModal";
 import { motion, AnimatePresence, easeOut, type Variants } from "framer-motion";
 import { SIGNUP_HREF } from "../components/constants";
 
+import { Lightbulb } from "@phosphor-icons/react";
+
 // ─── Icons ───────────────────────────────────────────────────────────────────
 const IconCheck = ({ className = "w-3.5 h-3.5" }: { className?: string }) => (
   <svg className={className} fill="none" viewBox="0 0 16 16" stroke="currentColor">
@@ -757,7 +759,7 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
               color: "var(--ink-2, #334155)",
             }}
           >
-            💡{" "}
+            <Lightbulb size={16} weight="duotone" color="#D97706" className="inline mr-1 align-text-bottom" />
             <span className="font-semibold">¿No sabes cuál elegir?</span>{" "}
             Si quieres reducir ausencias → <span className="font-medium">Esencial</span>. Si quieres crecer con campañas → <span className="font-medium">Marca Propia</span>.
           </p>

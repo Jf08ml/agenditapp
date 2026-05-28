@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, type Variants, easeOut } from "framer-motion";
+import { MapPin } from "@phosphor-icons/react";
 
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 30 },
@@ -129,7 +130,10 @@ function TestimonialCard({ caso }: { caso: (typeof casos)[number] }) {
         <div>
           <p className="text-[14px] font-semibold text-heading leading-none mb-0.5">{caso.ceo}</p>
           <p className="text-[12px] text-muted leading-tight">{caso.nombre}</p>
-          <p className="text-[11px] text-muted/70 mt-0.5">📍 {caso.rol}</p>
+          <p className="text-[11px] text-muted/70 mt-0.5 inline-flex items-center gap-1">
+            <MapPin size={11} weight="duotone" color="#94A3B8" />
+            {caso.rol}
+          </p>
         </div>
       </div>
 

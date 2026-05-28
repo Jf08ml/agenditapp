@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import { PhoneMockup } from "../components/ui/PhoneMockup";
 import { motion, easeOut, type Variants } from "framer-motion";
+import { MapPin } from "@phosphor-icons/react";
 
 const ImageLightbox = dynamic(
   () => import("../components/images/ImageLightbox"),
@@ -70,7 +71,7 @@ export default function Ubicacion() {
                 style={{ background: "white", boxShadow: "0 8px 24px rgba(15,23,42,0.10)" }}
               >
                 <div className="flex items-center gap-2">
-                  <span className="text-base">📍</span>
+                  <MapPin size={16} weight="duotone" color="#1D4ED8" />
                   <div>
                     <p className="text-[10px] text-[#94A3B8] font-medium">Dirección</p>
                     <p className="text-xs font-semibold text-[#0F172A]">Abierto en Maps</p>

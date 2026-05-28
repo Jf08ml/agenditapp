@@ -1,9 +1,34 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import type { IconWeight } from "@phosphor-icons/react";
+import {
+  Sparkle, Scissors, Flower, Eye, Stethoscope, Tooth, Brain, Barbell,
+  Leaf, PawPrint, Syringe, Camera, MusicNotes, Books, Scales, YinYang,
+} from "@phosphor-icons/react/dist/ssr";
 import SchemaOrg from "../(landing)/components/seo/SchemaOrg";
 import { DemoCtaButton } from "../(landing)/components/ui/DemoCtaModal";
 import PageHeader from "../(landing)/components/ui/PageHeader";
 import PageFooter from "../(landing)/components/ui/PageFooter";
+
+type PIEntry = { Icon: React.ComponentType<{ size?: number; weight?: IconWeight; color?: string }>; color: string };
+const SECTOR_ICON_MAP: Record<string, PIEntry> = {
+  "💇‍♀️": { Icon: Sparkle,    color: "#DB2777" },
+  "💈":   { Icon: Scissors,   color: "#1D4ED8" },
+  "🧖‍♀️": { Icon: Flower,     color: "#059669" },
+  "🏥":   { Icon: Stethoscope,color: "#0D9488" },
+  "👁️":  { Icon: Eye,        color: "#7C3AED" },
+  "🏋️‍♀️": { Icon: Barbell,   color: "#EA580C" },
+  "🦷":   { Icon: Tooth,      color: "#0EA5E9" },
+  "🧠":   { Icon: Brain,      color: "#4338CA" },
+  "🥗":   { Icon: Leaf,       color: "#059669" },
+  "🐶":   { Icon: PawPrint,    color: "#D97706" },
+  "💃":   { Icon: YinYang,    color: "#4338CA" },
+  "🎸":   { Icon: MusicNotes, color: "#7C3AED" },
+  "📚":   { Icon: Books,      color: "#D97706" },
+  "📸":   { Icon: Camera,     color: "#475569" },
+  "⚖️":  { Icon: Scales,     color: "#1D4ED8" },
+  "💉":   { Icon: Syringe,    color: "#E11D48" },
+};
 
 export const metadata: Metadata = {
   title: "Sectores | Software de Agendamiento para Belleza, Bienestar y Salud",
@@ -86,12 +111,17 @@ export default function SectoresPage() {
                   className="group bg-bg-card border border-brand/10 rounded-[20px] p-6 hover:border-brand/30 transition-all duration-200 flex flex-col"
                   style={{ boxShadow: "var(--shadow-card)" }}
                 >
-                  <div
-                    className="w-12 h-12 rounded-[12px] flex items-center justify-center text-2xl mb-4 flex-shrink-0"
-                    style={{ background: "color-mix(in srgb, var(--brand) 10%, transparent)" }}
-                  >
-                    {sector.icon}
-                  </div>
+                  {(() => {
+                    const e = SECTOR_ICON_MAP[sector.icon];
+                    return (
+                      <div
+                        className="w-12 h-12 rounded-[12px] flex items-center justify-center mb-4 flex-shrink-0"
+                        style={{ background: e ? `${e.color}18` : "color-mix(in srgb, var(--brand) 10%, transparent)" }}
+                      >
+                        {e ? <e.Icon size={26} weight="duotone" color={e.color} /> : <span className="text-2xl">{sector.icon}</span>}
+                      </div>
+                    );
+                  })()}
                   <h2 className="text-base font-semibold text-heading mb-2 group-hover:text-brand transition-colors">
                     {sector.title}
                   </h2>

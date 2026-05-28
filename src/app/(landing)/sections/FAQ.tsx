@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { DemoCtaButton } from "../components/ui/DemoCtaModal";
 import { motion, AnimatePresence, easeOut, type Variants } from "framer-motion";
+import { ChatCircle } from "@phosphor-icons/react";
 
 const FAQS = [
   {
@@ -113,7 +114,8 @@ export default function FAQ() {
             ¿Tienes alguna pregunta específica sobre tu negocio?
           </p>
           <DemoCtaButton className="flex-shrink-0 inline-flex items-center gap-2 rounded-[10px] bg-brand text-white font-semibold px-4 py-2.5 text-sm hover:bg-brand-hover transition-colors cursor-pointer shadow-sm">
-            💬 Preguntar por WhatsApp
+            <ChatCircle size={16} weight="duotone" />
+            Preguntar por WhatsApp
           </DemoCtaButton>
         </motion.div>
       </div>
