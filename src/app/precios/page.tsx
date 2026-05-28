@@ -29,6 +29,23 @@ const BREADCRUMB_SCHEMA = {
   ],
 };
 
+const DIGITAL_SHIPPING = {
+  "@type": "OfferShippingDetails",
+  shippingRate: { "@type": "MonetaryAmount", value: "0", currency: "USD" },
+  shippingDestination: { "@type": "DefinedRegion", addressCountry: "CO" },
+  deliveryTime: {
+    "@type": "ShippingDeliveryTime",
+    handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 0, unitCode: "HUR" },
+    transitTime:  { "@type": "QuantitativeValue", minValue: 0, maxValue: 0, unitCode: "HUR" },
+  },
+};
+
+const RETURN_POLICY = {
+  "@type": "MerchantReturnPolicy",
+  applicableCountry: "CO",
+  returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+};
+
 const OFFER_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "Product",
@@ -47,6 +64,8 @@ const OFFER_SCHEMA = {
       availability: "https://schema.org/InStock",
       description: "Reservas online 24/7, calendario visual, gestión de servicios y empleados, base de datos de clientes, comisiones, programa de fidelización, subdominio personalizado.",
       url: "https://agenditapp.com/precios",
+      shippingDetails: DIGITAL_SHIPPING,
+      hasMerchantReturnPolicy: RETURN_POLICY,
     },
     {
       "@type": "Offer",
@@ -57,6 +76,8 @@ const OFFER_SCHEMA = {
       availability: "https://schema.org/InStock",
       description: "Todo lo del plan Básico más integración WhatsApp desde tu número, recordatorios automáticos y enlace de confirmación/cancelación para clientes.",
       url: "https://agenditapp.com/precios",
+      shippingDetails: DIGITAL_SHIPPING,
+      hasMerchantReturnPolicy: RETURN_POLICY,
     },
     {
       "@type": "Offer",
@@ -67,6 +88,8 @@ const OFFER_SCHEMA = {
       availability: "https://schema.org/InStock",
       description: "Todo lo del plan Esencial más dominio personalizado, 2 recordatorios automáticos y campañas masivas por WhatsApp.",
       url: "https://agenditapp.com/precios",
+      shippingDetails: DIGITAL_SHIPPING,
+      hasMerchantReturnPolicy: RETURN_POLICY,
     },
   ],
 };
