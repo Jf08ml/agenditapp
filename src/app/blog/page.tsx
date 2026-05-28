@@ -5,7 +5,7 @@ import PageHeader from "@/app/(landing)/components/ui/PageHeader";
 import PageFooter from "@/app/(landing)/components/ui/PageFooter";
 
 export const metadata: Metadata = {
-  title: "Blog | Recursos para negocios de citas y agendamiento | AgenditApp",
+  title: "Blog | Recursos para negocios de citas y agendamiento",
   description:
     "Guías, comparativas y consejos para dueños de salones de belleza, barberías y negocios de servicios. Aprende a digitalizar tu agenda, reducir ausencias y hacer crecer tu negocio.",
   keywords: [
@@ -118,7 +118,15 @@ export default function BlogPage() {
                         </p>
                       </div>
                       <div className="mt-auto flex items-center justify-between">
-                        <span className="text-xs text-muted">{formatDate(post.publishedAt)}</span>
+                        <div className="flex items-center gap-2 text-xs text-muted">
+                          <span>{formatDate(post.publishedAt)}</span>
+                          {post.author && (
+                            <>
+                              <span aria-hidden="true">·</span>
+                              <span>{post.author}</span>
+                            </>
+                          )}
+                        </div>
                         <span className="text-sm font-medium text-brand group-hover:gap-2 inline-flex items-center gap-1.5 transition-all">
                           Leer artículo
                           <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 16 16" stroke="currentColor">

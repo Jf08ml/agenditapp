@@ -82,6 +82,10 @@ export default function BarberiasPage() {
           { title: "Gimnasios y Fitness", slug: "gimnasios", icon: "🏋️‍♀️", description: "Reservas de clases y entrenamiento personal" },
         ]}
         ctaHeading="Lleva tu barbería al siguiente nivel"
+        comparativas={[
+          { label: "vs Fresha", href: "/vs/fresha" },
+          { label: "vs Booksy", href: "/vs/booksy" },
+        ]}
         ctaBody="Únete a cientos de barberías que ya optimizaron su agenda. Sin permanencia."
       />
       <PageFooter />

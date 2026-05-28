@@ -158,6 +158,50 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    // Comparativas vs competidores — alta prioridad, páginas transaccionales de fondo de embudo
+    {
+      url: `${base}/vs/fresha`,
+      lastModified: lastMod,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${base}/vs/agendapro`,
+      lastModified: lastMod,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${base}/vs/booksy`,
+      lastModified: lastMod,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${base}/vs/weibook`,
+      lastModified: lastMod,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    // Landings por país
+    {
+      url: `${base}/mx`,
+      lastModified: lastMod,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${base}/cl`,
+      lastModified: lastMod,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${base}/ar`,
+      lastModified: lastMod,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
     ...blogPosts,
   ];
 }

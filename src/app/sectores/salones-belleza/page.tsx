@@ -86,6 +86,10 @@ export default function SalonesBellezaPage() {
           { title: "Lash & Brow Studios", slug: "lash-brow", icon: "👁️", description: "Agenda para extensiones de pestañas y microblading" },
         ]}
         ctaHeading="¿Lista para digitalizar tu salón?"
+        comparativas={[
+          { label: "vs Fresha", href: "/vs/fresha" },
+          { label: "vs Weibook", href: "/vs/weibook" },
+        ]}
         ctaBody="Únete a cientos de salones que ya usan AgenditApp. Sin instalaciones complejas, sin permanencia."
       />
       <PageFooter />

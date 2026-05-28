@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { DemoCtaButton } from "../components/ui/DemoCtaModal";
 import { motion, easeOut, type Variants } from "framer-motion";
+import { WHATSAPP_HREF } from "../components/constants";
 
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 20 },
@@ -19,11 +20,20 @@ const itemIn: Variants = {
 };
 
 const NAV_LINKS = [
-  { label: "Sectores", href: "/sectores" },
   { label: "Funcionalidades", href: "/funcionalidades" },
-  { label: "Precios", href: "/precios" },
+  { label: "Planes y precios", href: "/precios" },
+  { label: "Sectores", href: "/sectores" },
+  { label: "Blog", href: "/blog" },
+  { label: "Nosotros", href: "/nosotros" },
   { label: "Términos", href: "/terminos" },
   { label: "Privacidad", href: "/privacidad" },
+];
+
+const COMPARATIVAS_LINKS = [
+  { label: "vs Fresha", href: "/vs/fresha" },
+  { label: "vs AgendaPro", href: "/vs/agendapro" },
+  { label: "vs Booksy", href: "/vs/booksy" },
+  { label: "vs Weibook", href: "/vs/weibook" },
 ];
 
 const SECTOR_LINKS = [
@@ -34,6 +44,45 @@ const SECTOR_LINKS = [
   { label: "Psicólogos", href: "/sectores/psicologia" },
   { label: "Odontólogos", href: "/sectores/odontologia" },
 ];
+
+const COUNTRY_LINKS = [
+  { flag: "🇨🇴", label: "Colombia", href: "/" },
+  { flag: "🇲🇽", label: "México", href: "/mx" },
+  { flag: "🇨🇱", label: "Chile", href: "/cl" },
+  { flag: "🇦🇷", label: "Argentina", href: "/ar" },
+];
+
+const TRUST_ITEMS = [
+  { icon: "⏰", text: "Soporte por WhatsApp · Lun–Sáb" },
+  { icon: "🔒", text: "Sin permanencia. Cancela cuando quieras." },
+];
+
+function IconInstagram() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" className="w-4.5 h-4.5" aria-hidden>
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function IconFacebook() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="w-4.5 h-4.5" aria-hidden>
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+    </svg>
+  );
+}
+
+function IconWhatsApp() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="w-4.5 h-4.5" aria-hidden>
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.524 5.854L0 24l6.336-1.494A11.96 11.96 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.643-.493-5.17-1.357l-.37-.218-3.762.887.928-3.67-.24-.38A9.97 9.97 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+    </svg>
+  );
+}
 
 export default function Footer() {
   return (
@@ -51,8 +100,7 @@ export default function Footer() {
           variants={fadeInUp}
           className="max-w-6xl mx-auto relative rounded-[28px] px-6 py-12 sm:px-16 sm:py-16 text-center overflow-hidden"
           style={{
-            background:
-              "linear-gradient(135deg, #1D4ED8 0%, oklch(0.45 0.18 280) 100%)",
+            background: "linear-gradient(135deg, #1D4ED8 0%, oklch(0.45 0.18 280) 100%)",
             color: "white",
           }}
         >
@@ -82,8 +130,7 @@ export default function Footer() {
               Tu próxima cita podría reservarse{" "}
               <span
                 style={{
-                  fontFamily:
-                    "var(--font-instrument-serif), Georgia, serif",
+                  fontFamily: "var(--font-instrument-serif), Georgia, serif",
                   fontStyle: "italic",
                   fontWeight: 400,
                 }}
@@ -127,27 +174,62 @@ export default function Footer() {
       {/* ── Main footer ── */}
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Brand column */}
-          <motion.div variants={itemIn} className="lg:col-span-1">
-            <Link href="/" className="inline-block mb-4">
-              <Image
-                src="/logo-text.png"
-                alt="AgenditApp"
-                width={140}
-                height={36}
-                className="h-8 w-auto"
-              />
-            </Link>
-            <p className="text-sm text-muted leading-relaxed mb-5">
-              Sistema de agendamiento online para negocios de belleza, bienestar
-              y servicios profesionales en Latinoamérica.
-            </p>
-            <DemoCtaButton className="inline-flex items-center gap-2 rounded-[10px] border border-brand/25 text-brand text-sm font-medium px-4 py-2 hover:bg-brand/6 transition-colors cursor-pointer">
+
+          {/* ── Col 1: Brand ── */}
+          <motion.div variants={itemIn} className="lg:col-span-1 flex flex-col gap-5">
+            <div>
+              <Link href="/" className="inline-block mb-3">
+                <Image
+                  src="/logo-text.png"
+                  alt="AgenditApp"
+                  width={140}
+                  height={36}
+                  className="h-8 w-auto"
+                />
+              </Link>
+              <p className="text-sm text-muted leading-relaxed">
+                Sistema de agendamiento online para negocios de belleza, bienestar
+                y servicios profesionales en Latinoamérica.
+              </p>
+            </div>
+
+            {/* Social icons */}
+            <div className="flex items-center gap-2">
+              <a
+                href="https://instagram.com/agenditapp"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="flex items-center justify-center w-8 h-8 rounded-[8px] border border-brand/15 text-muted hover:text-brand hover:border-brand/40 hover:bg-brand/5 transition-colors"
+              >
+                <IconInstagram />
+              </a>
+              <a
+                href="https://facebook.com/agenditapp"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="flex items-center justify-center w-8 h-8 rounded-[8px] border border-brand/15 text-muted hover:text-brand hover:border-brand/40 hover:bg-brand/5 transition-colors"
+              >
+                <IconFacebook />
+              </a>
+              <a
+                href={WHATSAPP_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="flex items-center justify-center w-8 h-8 rounded-[8px] border border-brand/15 text-muted hover:text-brand hover:border-brand/40 hover:bg-brand/5 transition-colors"
+              >
+                <IconWhatsApp />
+              </a>
+            </div>
+
+            <DemoCtaButton className="inline-flex items-center gap-2 rounded-[10px] border border-brand/25 text-brand text-sm font-medium px-4 py-2 hover:bg-brand/6 transition-colors cursor-pointer w-fit">
               💬 Solicitar demo
             </DemoCtaButton>
           </motion.div>
 
-          {/* Product links */}
+          {/* ── Col 2: Producto ── */}
           <motion.div variants={itemIn}>
             <p className="text-xs font-bold text-heading uppercase tracking-wider mb-4">
               Producto
@@ -166,12 +248,12 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          {/* Sectors */}
+          {/* ── Col 3: Sectores + Países ── */}
           <motion.div variants={itemIn}>
             <p className="text-xs font-bold text-heading uppercase tracking-wider mb-4">
               Sectores
             </p>
-            <ul className="flex flex-col gap-2.5">
+            <ul className="flex flex-col gap-2.5 mb-7">
               {SECTOR_LINKS.map((l) => (
                 <li key={l.href}>
                   <Link
@@ -183,26 +265,53 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+
+            <p className="text-xs font-bold text-heading uppercase tracking-wider mb-3">
+              Disponible en
+            </p>
+            <ul className="flex flex-col gap-2">
+              {COUNTRY_LINKS.map((c) => (
+                <li key={c.href}>
+                  <Link
+                    href={c.href}
+                    className="inline-flex items-center gap-2 text-sm text-muted hover:text-brand transition-colors"
+                  >
+                    <span className="text-base leading-none">{c.flag}</span>
+                    {c.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </motion.div>
 
-          {/* Contact / trust */}
+          {/* ── Col 4: Comparativas + Contacto ── */}
           <motion.div variants={itemIn}>
             <p className="text-xs font-bold text-heading uppercase tracking-wider mb-4">
-              Contacto
+              Comparativas
             </p>
-            <ul className="flex flex-col gap-3">
-              <li className="flex items-start gap-2.5 text-sm text-muted">
-                <span className="mt-0.5 text-base">🌎</span>
-                <span>Colombia, México, Costa Rica, Chile y más</span>
-              </li>
-              <li className="flex items-start gap-2.5 text-sm text-muted">
-                <span className="mt-0.5 text-base">⏰</span>
-                <span>Soporte por WhatsApp · Lun–Sáb</span>
-              </li>
-              <li className="flex items-start gap-2.5 text-sm text-muted">
-                <span className="mt-0.5 text-base">🔒</span>
-                <span>Sin permanencia. Cancela cuando quieras.</span>
-              </li>
+            <ul className="flex flex-col gap-2.5 mb-7">
+              {COMPARATIVAS_LINKS.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className="text-sm text-muted hover:text-brand transition-colors"
+                  >
+                    AgenditApp {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <p className="text-xs font-bold text-heading uppercase tracking-wider mb-3">
+              Soporte
+            </p>
+            <ul className="flex flex-col gap-2.5">
+              {TRUST_ITEMS.map((item) => (
+                <li key={item.icon} className="flex items-start gap-2 text-sm text-muted">
+                  <span className="text-base leading-none mt-0.5 shrink-0">{item.icon}</span>
+                  <span>{item.text}</span>
+                </li>
+              ))}
             </ul>
           </motion.div>
         </div>
@@ -213,22 +322,11 @@ export default function Footer() {
           className="mt-10 pt-6 border-t border-brand/10 flex flex-col sm:flex-row items-center justify-between gap-3"
         >
           <p className="text-xs text-muted text-center sm:text-left">
-            © {new Date().getFullYear()} AgenditApp. Todos los derechos
-            reservados.{" "}
-            <span className="text-muted/60">
-              Hecho con ❤️ para negocios que viven de las citas.
-            </span>
+            © {new Date().getFullYear()} AgenditApp. Todos los derechos reservados.{" "}
+            <span className="text-muted/60">Hecho con ❤️ para negocios que viven de las citas.</span>
           </p>
-          <p className="text-xs text-muted/60">
-            Software por{" "}
-            <a
-              href="https://zybizobazar.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline decoration-muted/30 hover:text-muted hover:decoration-muted transition-colors"
-            >
-              zybizobazar.com
-            </a>
+          <p className="text-xs text-muted/50 text-center sm:text-right">
+            Colombia · México · Chile · Argentina · Costa Rica y más
           </p>
         </motion.div>
       </div>

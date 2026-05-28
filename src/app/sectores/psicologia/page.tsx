@@ -65,6 +65,10 @@ export default function PsicologiaPage() {
           { title: "Tutores y Academias", slug: "tutorias", icon: "📚", description: "Sistema de reservas para clases particulares" },
         ]}
         ctaHeading="¿Listo para profesionalizar tu práctica?"
+        comparativas={[
+          { label: "vs AgendaPro", href: "/vs/agendapro" },
+          { label: "vs Weibook", href: "/vs/weibook" },
+        ]}
         ctaBody="Únete a psicólogos que ya confían en AgenditApp para gestionar su consultorio."
       />
       <PageFooter />

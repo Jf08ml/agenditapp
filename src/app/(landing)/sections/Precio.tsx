@@ -424,12 +424,15 @@ function PlanCard({ plan, yearly }: { plan: typeof PLANS[number]; yearly: boolea
             <div className="flex-1" />
 
             {/* CTA — white on featured */}
-            <DemoCtaButton
-              className="w-full px-5 py-3 rounded-[12px] text-sm font-bold text-center cursor-pointer
-                bg-white text-[#0A2A6B] hover:bg-white/90 transition-all duration-200 shadow-md"
+            <a
+              href={`${SIGNUP_HREF}?plan=${plan.key}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full px-5 py-3 rounded-[12px] text-sm font-bold text-center
+                bg-white text-[#0A2A6B] hover:bg-white/90 transition-all duration-200 shadow-md flex items-center justify-center"
             >
               {plan.ctaLabel}
-            </DemoCtaButton>
+            </a>
           </div>
         </div>
       </motion.div>
@@ -513,20 +516,24 @@ function PlanCard({ plan, yearly }: { plan: typeof PLANS[number]; yearly: boolea
 
         <div className="flex-1" />
 
-        <DemoCtaButton
-          className="w-full px-5 py-3 rounded-[12px] text-sm font-semibold text-center cursor-pointer
-            transition-all duration-200 border border-brand/25 text-brand hover:bg-brand/6"
+        <a
+          href={`${SIGNUP_HREF}?plan=${plan.key}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full px-5 py-3 rounded-[12px] text-sm font-semibold text-center
+            transition-all duration-200 border border-brand/25 text-brand hover:bg-brand/6 flex items-center justify-center"
         >
           {plan.ctaLabel}
-        </DemoCtaButton>
+        </a>
       </div>
     </motion.div>
   );
 }
 
 // ─── Main component ───────────────────────────────────────────────────────────
-export default function Precio() {
+export default function Precio({ asH1 = false }: { asH1?: boolean }) {
   const [yearly, setYearly] = useState(false);
+  const Heading = asH1 ? "h1" : "h2";
 
   return (
     <section id="membresia" className="py-20">
@@ -543,10 +550,10 @@ export default function Precio() {
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/8 border border-brand/20 text-brand text-[11px] font-semibold tracking-wider uppercase mb-4">
             Planes y precios
           </span>
-          <h2 className="text-3xl md:text-4xl font-semibold text-heading tracking-tight leading-tight">
+          <Heading className="text-3xl md:text-4xl font-semibold text-heading tracking-tight leading-tight">
             Empieza gratis.{" "}
             <span className="text-brand">Sin tarjeta.</span>
-          </h2>
+          </Heading>
           <p className="mt-4 text-base text-body leading-relaxed">
             Regístrate y obtén 7 días con todo incluido. Después, el plan gratuito para siempre — o elige un plan de pago cuando quieras.
           </p>
@@ -717,15 +724,18 @@ export default function Precio() {
                       Gratis
                     </a>
                   ) : (
-                    <DemoCtaButton
-                      className={`w-full px-3 py-2.5 rounded-[10px] text-xs font-semibold text-center cursor-pointer transition-all ${
+                    <a
+                      href={`${SIGNUP_HREF}?plan=${p.key}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`w-full px-3 py-2.5 rounded-[10px] text-xs font-semibold text-center transition-all flex items-center justify-center ${
                         p.featured
                           ? "bg-brand text-white hover:bg-brand-hover"
                           : "border border-brand/25 text-brand hover:bg-brand/6"
                       }`}
                     >
                       ${yearly ? p.monthlyPrice * 10 : p.monthlyPrice} USD {yearly ? "/ año" : "/ mes"}
-                    </DemoCtaButton>
+                    </a>
                   )}
                 </div>
               ))}
@@ -836,15 +846,18 @@ function MobileCompare({
                   {plan.ctaLabel}
                 </a>
               ) : (
-                <DemoCtaButton
-                  className={`w-full px-5 py-3 rounded-[12px] text-sm font-semibold text-center cursor-pointer mt-2 ${
+                <a
+                  href={`${SIGNUP_HREF}?plan=${plan.key}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-full px-5 py-3 rounded-[12px] text-sm font-semibold text-center mt-2 flex items-center justify-center ${
                     plan.featured
                       ? "bg-brand text-white hover:bg-brand-hover"
                       : "border border-brand/25 text-brand hover:bg-brand/6"
                   }`}
                 >
                   {plan.ctaLabel}
-                </DemoCtaButton>
+                </a>
               )}
             </div>
           </motion.div>

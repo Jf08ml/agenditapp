@@ -4,7 +4,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
-import { WHATSAPP_HREF, SIGNUP_HREF } from "../components/constants";
+import { SIGNUP_HREF } from "../components/constants";
 import { HeroSideArrow } from "../components/ui/HeroSideArrow";
 import { MobileArrow } from "../components/ui/MobileArrow";
 import Navbar from "../components/ui/Navbar";
@@ -223,7 +223,7 @@ export default function Hero() {
                 </motion.a>
 
                 <motion.a
-                  href={WHATSAPP_HREF}
+                  href={SIGNUP_HREF}
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.02, y: -1 }}
@@ -239,9 +239,9 @@ export default function Hero() {
                     fill="none"
                     aria-hidden
                   >
-                    <path d="M5 3v10l8-5-8-5z" fill="currentColor" />
+                    <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
-                  Ver cómo funciona
+                  Empezar gratis
                 </motion.a>
               </motion.div>
 

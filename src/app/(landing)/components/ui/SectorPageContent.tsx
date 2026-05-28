@@ -45,6 +45,11 @@ export interface SectorFAQ {
   a: string;
 }
 
+interface ComparativaLink {
+  label: string;
+  href: string;
+}
+
 interface SectorPageContentProps {
   sectorName: string;
   icon: string;
@@ -54,6 +59,7 @@ interface SectorPageContentProps {
   featuresHeading: string;
   testimonial?: Testimonial;
   faqs?: SectorFAQ[];
+  comparativas?: ComparativaLink[];
   relatedSectors: RelatedSector[];
   ctaHeading: string;
   ctaBody: string;
@@ -68,6 +74,7 @@ export default function SectorPageContent({
   featuresHeading,
   testimonial,
   faqs,
+  comparativas,
   relatedSectors,
   ctaHeading,
   ctaBody,
@@ -233,6 +240,25 @@ export default function SectorPageContent({
             </div>
           </section>
         </>
+      )}
+
+      {/* Comparativas contextuales */}
+      {comparativas && comparativas.length > 0 && (
+        <section className="pb-6 px-4 sm:px-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-sm text-muted">
+              ¿Comparando opciones para tu {sectorName.toLowerCase()}?{" "}
+              {comparativas.map((link, i) => (
+                <span key={link.href}>
+                  {i > 0 && " · "}
+                  <Link href={link.href} className="text-brand hover:underline transition-colors">
+                    AgenditApp {link.label}
+                  </Link>
+                </span>
+              ))}
+            </p>
+          </div>
+        </section>
       )}
 
       {/* Related Sectors */}

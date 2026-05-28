@@ -19,6 +19,8 @@ export interface PostMeta {
   category: string;
   excerpt: string;
   howToSteps?: HowToStep[];
+  author?: string;
+  authorTitle?: string;
 }
 
 export interface Post extends PostMeta {

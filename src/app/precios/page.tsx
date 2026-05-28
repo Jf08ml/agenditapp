@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import SchemaOrg from "../(landing)/components/seo/SchemaOrg";
 import PageHeader from "../(landing)/components/ui/PageHeader";
 import PageFooter from "../(landing)/components/ui/PageFooter";
@@ -77,24 +78,23 @@ export default function PreciosPage() {
       <PageHeader />
 
       <main className="min-h-screen pt-28">
-        {/* Hero */}
-        <section className="py-16 sm:py-20 px-4 sm:px-6">
+        <Precio asH1 />
+
+        {/* Comparativas — enlace contextual fondo de embudo */}
+        <section className="pb-4 px-4 sm:px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/8 border border-brand/20 text-brand text-[11px] font-semibold tracking-wider uppercase mb-5">
-              Planes y precios
-            </span>
-            <h1 className="text-4xl sm:text-5xl font-semibold text-heading tracking-tight leading-tight mb-5">
-              Empieza gratis.{" "}
-              <span className="text-brand">Escala a tu ritmo.</span>
-            </h1>
-            <p className="text-lg text-body max-w-2xl mx-auto leading-relaxed">
-              Regístrate hoy sin tarjeta y obtén 7 días con acceso completo a todo. Después, el plan gratuito para siempre — o elige un plan de pago cuando quieras.
+            <p className="text-sm text-muted">
+              ¿Vienes de otra plataforma?{" "}
+              <Link href="/vs/fresha" className="text-brand hover:underline transition-colors">Fresha</Link>
+              {" · "}
+              <Link href="/vs/agendapro" className="text-brand hover:underline transition-colors">AgendaPro</Link>
+              {" · "}
+              <Link href="/vs/booksy" className="text-brand hover:underline transition-colors">Booksy</Link>
+              {" · "}
+              <Link href="/vs/weibook" className="text-brand hover:underline transition-colors">Weibook</Link>
             </p>
           </div>
         </section>
-
-        {/* Reuse Precio section (removes duplicate logic) */}
-        <Precio />
 
         {/* FAQ */}
         <section className="py-14 px-4 sm:px-6">

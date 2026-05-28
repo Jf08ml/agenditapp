@@ -15,7 +15,7 @@ interface SelectorPaisProps {
 }
 
 export function SelectorPais({ value, onChange }: SelectorPaisProps) {
-  const seleccionado = PAISES.find((p) => p.codigo === value) ?? PAISES[0];
+  const seleccionado = value ? (PAISES.find((p) => p.codigo === value) ?? null) : null;
 
   const [busqueda, setBusqueda] = useState("");
   const [abierto, setAbierto] = useState(false);
@@ -105,8 +105,14 @@ export function SelectorPais({ value, onChange }: SelectorPaisProps) {
             : "border-brand/20 hover:border-brand/40 text-heading"
         }`}
       >
-        <span className="text-base leading-none select-none">{seleccionado.bandera}</span>
-        <span className="text-sm">{seleccionado.dial}</span>
+        {seleccionado ? (
+          <>
+            <span className="text-base leading-none select-none">{seleccionado.bandera}</span>
+            <span className="text-sm">{seleccionado.dial}</span>
+          </>
+        ) : (
+          <span className="text-sm text-muted">🌍 País</span>
+        )}
         <svg
           className={`w-3 h-3 text-muted transition-transform duration-150 ${abierto ? "rotate-180" : ""}`}
           fill="none" viewBox="0 0 12 12" stroke="currentColor"

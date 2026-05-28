@@ -97,6 +97,26 @@ export default function Sectores() {
             </svg>
           </Link>
         </div>
+
+        {/* Disponible en */}
+        <div className="mt-8 pt-8 border-t border-[#0F172A]/6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+          <span className="text-xs text-muted font-medium uppercase tracking-wider">Disponible en</span>
+          {[
+            { flag: "🇨🇴", label: "Colombia", href: "/" },
+            { flag: "🇲🇽", label: "México", href: "/mx" },
+            { flag: "🇨🇱", label: "Chile", href: "/cl" },
+            { flag: "🇦🇷", label: "Argentina", href: "/ar" },
+          ].map(({ flag, label, href }) => (
+            <Link
+              key={href}
+              href={href}
+              className="inline-flex items-center gap-1.5 text-sm text-body hover:text-brand transition-colors"
+            >
+              <span className="text-base">{flag}</span>
+              {label}
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );

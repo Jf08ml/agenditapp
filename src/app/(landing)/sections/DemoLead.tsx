@@ -28,7 +28,7 @@ export default function DemoLead() {
   const [nombre, setNombre] = useState("");
   const [negocio, setNegocio] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
-  const [paisCodigo, setPaisCodigo] = useState("CO");
+  const [paisCodigo, setPaisCodigo] = useState("");
   const [sector, setSector] = useState("");
   const [citasMes, setCitasMes] = useState("");
   const [loading, setLoading] = useState(false);

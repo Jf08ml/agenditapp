@@ -5,7 +5,7 @@ import PageFooter from "@/app/(landing)/components/ui/PageFooter";
 import { DemoCtaButton } from "@/app/(landing)/components/ui/DemoCtaModal";
 
 export const metadata: Metadata = {
-  title: "Nosotros | AgenditApp — Quiénes Somos",
+  title: "Nosotros — Quiénes Somos",
   description:
     "Conoce a AgenditApp: la plataforma de agendamiento online creada en Colombia para negocios de belleza, bienestar y servicios profesionales en Latinoamérica. Nuestra misión, historia y equipo.",
   keywords: [
@@ -174,6 +174,22 @@ export default function NosotrosPage() {
                 Hoy, más de 200 negocios en Colombia, México, Costa Rica y Chile confían en AgenditApp para gestionar su agenda, reducir ausencias y crecer.
               </p>
             </div>
+          </div>
+        </section>
+
+        {/* Comparativas */}
+        <section className="pb-4 px-4 sm:px-6">
+          <div className="max-w-3xl mx-auto">
+            <p className="text-sm text-muted">
+              ¿Comparando opciones?{" "}
+              <Link href="/vs/fresha" className="text-brand hover:underline transition-colors">AgenditApp vs Fresha</Link>
+              {" · "}
+              <Link href="/vs/agendapro" className="text-brand hover:underline transition-colors">AgenditApp vs AgendaPro</Link>
+              {" · "}
+              <Link href="/vs/booksy" className="text-brand hover:underline transition-colors">AgenditApp vs Booksy</Link>
+              {" · "}
+              <Link href="/vs/weibook" className="text-brand hover:underline transition-colors">AgenditApp vs Weibook</Link>
+            </p>
           </div>
         </section>
 

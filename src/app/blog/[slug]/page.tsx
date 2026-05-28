@@ -286,7 +286,7 @@ export async function generateMetadata({
   if (!post) return {};
   const ogImage = `/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(post.category)}&tag=Blog`;
   return {
-    title: `${post.title} | AgenditApp Blog`,
+    title: post.title,
     description: post.description,
     keywords: post.keywords,
     alternates: { canonical: `https://agenditapp.com/blog/${slug}` },
@@ -332,10 +332,10 @@ export default async function BlogPostPage({
       height: 630,
     },
     author: {
-      "@type": "Organization",
-      name: "AgenditApp",
-      url: "https://agenditapp.com",
-      logo: { "@type": "ImageObject", url: "https://agenditapp.com/logo_dorado.png" },
+      "@type": "Person",
+      name: post.author ?? "Equipo AgenditApp",
+      jobTitle: post.authorTitle ?? "Especialistas en gestión de negocios de citas",
+      url: "https://agenditapp.com/nosotros",
     },
     publisher: {
       "@type": "Organization",
@@ -427,9 +427,31 @@ export default async function BlogPostPage({
             <h1 className="text-3xl sm:text-4xl font-semibold text-heading tracking-tight leading-tight mb-5">
               {post.title}
             </h1>
-            <p className="text-lg text-body leading-relaxed border-b border-brand/10 pb-8">
+            <p className="text-lg text-body leading-relaxed mb-6">
               {post.description}
             </p>
+            {/* Author block */}
+            <div className="flex items-center gap-3 py-4 border-t border-b border-brand/10">
+              <div
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-brand text-xs font-bold select-none"
+                style={{ background: "color-mix(in srgb, var(--brand) 12%, transparent)" }}
+              >
+                {(post.author ?? "EA")
+                  .split(" ")
+                  .slice(0, 2)
+                  .map((n: string) => n[0])
+                  .join("")
+                  .toUpperCase()}
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-heading leading-none">
+                  {post.author ?? "Equipo AgenditApp"}
+                </p>
+                {post.authorTitle && (
+                  <p className="text-xs text-muted mt-1">{post.authorTitle}</p>
+                )}
+              </div>
+            </div>
           </div>
         </header>
 
