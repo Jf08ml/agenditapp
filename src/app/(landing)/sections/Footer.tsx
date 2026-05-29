@@ -152,8 +152,8 @@ export default function Footer() {
               className="mt-4 text-[16px] leading-relaxed mx-auto"
               style={{ color: "rgba(255,255,255,0.8)", maxWidth: 520 }}
             >
-              Únete a más de 200 negocios en Latinoamérica que ya reciben
-              reservas 24/7.
+              Únete a los negocios en Latinoamérica que ya gestionan
+              más de 27.000 citas con AgenditApp.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">

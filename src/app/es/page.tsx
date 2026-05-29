@@ -58,7 +58,7 @@ const SECTORS = [
 ];
 
 const METRICS = [
-  { value: "200+", label: "negocios activos en LATAM" },
+  { value: "+27K", label: "citas gestionadas" },
   { value: "70%", label: "menos inasistencias" },
   { value: "24/7", label: "reservas automáticas" },
   { value: "$0", label: "comisiones por cita" },
@@ -281,8 +281,8 @@ export default function EspanaPage() {
               Tu próxima cita podría reservarse mientras lees esto
             </h2>
             <p className="text-body mb-8">
-              Únete a más de 200 negocios en Latinoamérica y España que ya reciben
-              reservas 24/7 sin depender de WhatsApp manual.
+              Únete a los negocios que ya gestionan más de 27.000 citas con AgenditApp,
+              sin depender de WhatsApp manual.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a

@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import CO from "country-flag-icons/react/3x2/CO";
+import MX from "country-flag-icons/react/3x2/MX";
+import CR from "country-flag-icons/react/3x2/CR";
+import CL from "country-flag-icons/react/3x2/CL";
 import type { IconWeight } from "@phosphor-icons/react";
 import { Crosshair, Cpu, GlobeSimple, HandHeart } from "@phosphor-icons/react/dist/ssr";
 
@@ -74,8 +78,9 @@ const EQUIPO = [
   {
     nombre: "Juan Mosquera",
     cargo: "Fundador & CEO",
-    bio: "Creó AgenditApp, validó el producto con los primeros clientes y lidera el desarrollo técnico, soporte y mejora continua de la plataforma.",
+    bio: "Ingeniero de software nacido y formado en Neiva, Huila. Fundó AgenditApp en 2024 tras ver el problema de primera mano en un negocio cercano. Lidera el desarrollo técnico, el producto y la visión de la plataforma.",
     foto: "/equipo/juan.png",
+    origen: "Neiva, Huila 🏔️",
     redes: {
       linkedin: "https://www.linkedin.com/in/juanfemosquera/",   // reemplaza con tu URL de LinkedIn
       instagram: "#",  // reemplaza con tu URL de Instagram
@@ -87,6 +92,7 @@ const EQUIPO = [
     cargo: "Marketing & Ventas",
     bio: "Responsable del crecimiento de marca, redes sociales, diseño visual y estrategia comercial de AgenditApp en Latinoamérica.",
     foto: "/equipo/brayan.jpg",
+    origen: "",
     redes: {
       linkedin: "#",   // reemplaza con URL de LinkedIn
       instagram: "#",  // reemplaza con URL de Instagram
@@ -97,7 +103,7 @@ const EQUIPO = [
 
 const stats = [
   { valor: "2024", label: "Año de fundación" },
-  { valor: "200+", label: "Negocios activos" },
+  { valor: "+27K", label: "Citas gestionadas" },
   { valor: "4", label: "Países en Latinoamérica" },
   { valor: "16+", label: "Sectores atendidos" },
 ];
@@ -192,16 +198,19 @@ export default function NosotrosPage() {
                 AgenditApp nació en Colombia en 2024 a partir de una observación simple: los negocios de servicios — salones de belleza, barberías, consultorios, spas — son el motor económico de miles de comunidades en Latinoamérica, pero operan con herramientas de hace 20 años.
               </p>
               <p>
+                Esa observación no vino de un estudio de mercado. Juan Mosquera, fundador de AgenditApp, la vivió de primera mano en Neiva, capital del Huila, donde nació, creció y estudió ingeniería de software. Viendo cómo un negocio cercano gestionaba su agenda en papel y por WhatsApp —perdiendo citas, olvidando confirmaciones, desorganizando su semana— entendió que el problema no era de actitud sino de herramientas. Decidió construir la que hubiera querido que tuvieran.
+              </p>
+              <p>
                 Una libreta, un grupo de WhatsApp y la memoria del dueño no escalan. Cada ausencia de cliente, cada cita mal coordinada, cada hora perdida en recordatorios manuales es dinero que se va y tiempo que no vuelve.
               </p>
               <p>
-                El mercado de software de agendamiento estaba dominado por herramientas diseñadas para Estados Unidos o Europa: precios en dólares altos, sin soporte en español real, y sin WhatsApp como canal central. En Colombia y el resto de Latinoamérica, WhatsApp no es opcional — es el canal donde viven los clientes.
+                Antes de escribir la primera línea de código, Juan evaluó lo que existía: Fresha, Booksy, AgendaPro, Square — las plataformas líderes del mercado. El diagnóstico fue claro. Ninguna tenía WhatsApp integrado de verdad, el canal donde los colombianos coordinan todo. Las que se acercaban costaban entre $30 y $60 USD al mes, inaccesibles para la mayoría de negocios pequeños. Y las que eran más baratas eran tan complejas que requerían configuración técnica que el dueño de una barbería no tiene tiempo ni interés de hacer. El mercado tenía software. No tenía el software correcto.
               </p>
               <p>
-                Construimos AgenditApp desde cero para este contexto: recordatorios que salen del número del propio negocio, planes accesibles para pequeñas empresas, y una plataforma que cualquier dueño de salón puede usar desde el primer día sin necesitar un técnico.
+                Construimos AgenditApp desde cero para este contexto: recordatorios que salen del número del propio negocio, planes desde $10 USD al mes, y una plataforma que cualquier dueño de salón puede usar desde el primer día sin necesitar un técnico.
               </p>
               <p>
-                Hoy, más de 200 negocios en Colombia, México, Costa Rica y Chile confían en AgenditApp para gestionar su agenda, reducir ausencias y crecer.
+                Hoy, más de 27.000 citas han sido gestionadas a través de AgenditApp en Colombia, México, Costa Rica y Chile — cada una es un cliente que llegó a tiempo, una ausencia que no ocurrió, un negocio que ganó.
               </p>
             </div>
           </div>
@@ -302,6 +311,9 @@ export default function NosotrosPage() {
                     >
                       {persona.cargo}
                     </p>
+                    {persona.origen && (
+                      <p className="text-xs text-muted mb-3">{persona.origen}</p>
+                    )}
                     <p className="text-sm text-body leading-relaxed">
                       {persona.bio}
                     </p>
@@ -367,19 +379,21 @@ export default function NosotrosPage() {
             <h2 className="text-2xl font-semibold text-heading text-center mb-8">Presente en Latinoamérica</h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {[
-                { pais: "Colombia", bandera: "🇨🇴", desc: "País de origen y principal mercado" },
-                { pais: "México", bandera: "🇲🇽", desc: "Expansión activa desde 2025" },
-                { pais: "Costa Rica", bandera: "🇨🇷", desc: "Negocios activos en la región" },
-                { pais: "Chile", bandera: "🇨🇱", desc: "Presencia y crecimiento constante" },
-              ].map((p) => (
+                { pais: "Colombia",   Flag: CO, desc: "País de origen y principal mercado" },
+                { pais: "México",     Flag: MX, desc: "Expansión activa desde 2025" },
+                { pais: "Costa Rica", Flag: CR, desc: "Negocios activos en la región" },
+                { pais: "Chile",      Flag: CL, desc: "Presencia y crecimiento constante" },
+              ].map(({ pais, Flag, desc }) => (
                 <div
-                  key={p.pais}
+                  key={pais}
                   className="bg-bg-card border border-brand/10 rounded-[16px] p-5 text-center"
                   style={{ boxShadow: "var(--shadow-card)" }}
                 >
-                  <div className="text-3xl mb-2">{p.bandera}</div>
-                  <p className="text-sm font-semibold text-heading">{p.pais}</p>
-                  <p className="text-xs text-muted mt-1 leading-tight">{p.desc}</p>
+                  <div className="flex justify-center mb-3">
+                    <Flag className="w-10 rounded-sm shadow-sm" />
+                  </div>
+                  <p className="text-sm font-semibold text-heading">{pais}</p>
+                  <p className="text-xs text-muted mt-1 leading-tight">{desc}</p>
                 </div>
               ))}
             </div>

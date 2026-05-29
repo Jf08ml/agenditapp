@@ -233,8 +233,8 @@ export default function CasosDeExito() {
             </span>
           </h2>
           <p className="mt-4 text-[17px] text-muted leading-relaxed">
-            Desde Colombia hasta Chile y Costa Rica, más de 200 negocios confían en
-            AgenditApp para gestionar su agenda y crecer sin límites.
+            Desde Colombia hasta Chile y Costa Rica, más de 27.000 citas han sido gestionadas
+            con AgenditApp. Negocios reales, resultados reales.
           </p>
         </motion.div>
 
@@ -315,8 +315,8 @@ export default function CasosDeExito() {
         <div className="mt-10 text-center">
           <p className="text-muted text-sm">
             Más de{" "}
-            <span className="text-brand font-semibold">200 negocios</span>{" "}
-            en Latinoamérica ya usan AgenditApp
+            <span className="text-brand font-semibold">27.000 citas gestionadas</span>{" "}
+            en Latinoamérica con AgenditApp
           </p>
         </div>
       </div>

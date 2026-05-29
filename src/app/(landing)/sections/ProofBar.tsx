@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 const STATS = [
-  { n: "200+", l: "negocios activos" },
+  { n: "+27K", l: "citas gestionadas" },
   { n: "60%",  l: "menos inasistencias" },
   { n: "24/7", l: "reservas online" },
   { n: "4.9★", l: "satisfacción" },
