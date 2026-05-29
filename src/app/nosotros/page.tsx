@@ -91,7 +91,7 @@ const EQUIPO = [
     nombre: "Brayan Mayorga",
     cargo: "Marketing & Ventas",
     bio: "Responsable del crecimiento de marca, redes sociales, diseño visual y estrategia comercial de AgenditApp en Latinoamérica.",
-    foto: "/equipo/brayan.jpg",
+    foto: "/equipo/brayan.jpeg",
     origen: "",
     redes: {
       linkedin: "#",   // reemplaza con URL de LinkedIn
