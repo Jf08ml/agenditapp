@@ -3,9 +3,8 @@ import PageHeader from "../(landing)/components/ui/PageHeader";
 import PageFooter from "../(landing)/components/ui/PageFooter";
 
 export const metadata: Metadata = {
-  title: "Política de Privacidad | AgenditApp - Sistema de Agendamiento Online",
+  title: "Política de Privacidad - Sistema de Agendamiento Online",
   description: "Política de privacidad y tratamiento de datos personales de AgenditApp. Conoce cómo protegemos tu información en nuestra plataforma de agendamiento y gestión de citas.",
-  keywords: ["política de privacidad", "protección de datos", "AgenditApp privacidad", "tratamiento de datos personales"],
   alternates: { canonical: "https://agenditapp.com/privacidad" },
   robots: { index: true, follow: true },
 };

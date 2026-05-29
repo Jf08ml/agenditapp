@@ -6,8 +6,15 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
-        disallow: ["/api/", "/og"],
+        allow: ["/", "/_next/static/"],
+        disallow: [
+          "/api/",
+          "/og",
+          "/_next/data/",
+          "/*_buildManifest.js$",
+          "/*_middlewareManifest.js$",
+          "/*_ssgManifest.js$",
+        ],
       },
       // AI crawlers — permitidos explícitamente para indexación GEO
       { userAgent: "GPTBot", allow: "/" },

@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   title: "Software para Tutores y Academias | Clases + WhatsApp 24/7",
   description:
     "Agendamiento para tutores y academias: presencial y virtual, recordatorios WhatsApp para padres y alumnos. Sin permanencia. Desde $10/mes.",
-  keywords: ["software tutores", "agenda academias", "sistema de reservas clases particulares", "agendamiento tutorias", "software refuerzo escolar"],
   alternates: { canonical: "https://agenditapp.com/sectores/tutorias" },
   openGraph: {
     title: "Software para Tutores y Academias | Clases + WhatsApp 24/7",

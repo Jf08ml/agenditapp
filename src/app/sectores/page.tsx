@@ -34,7 +34,6 @@ export const metadata: Metadata = {
   title: "Sectores | Software de Agendamiento para Belleza, Bienestar y Salud",
   description:
     "Descubre cómo AgenditApp optimiza la gestión de citas para salones de belleza, barberías, spas, consultorios médicos, gimnasios y centros de bienestar.",
-  keywords: ["software para salones de belleza", "agenda para barberías", "sistema de citas para spas", "software médico de citas", "agendamiento para gimnasios"],
   alternates: { canonical: "https://agenditapp.com/sectores" },
   openGraph: {
     title: "Sectores | Software de Agendamiento Profesional",

@@ -16,20 +16,6 @@ export const metadata: Metadata = {
   title: "Funcionalidades | Características del Sistema de Agendamiento AgenditApp",
   description:
     "Descubre todas las funcionalidades de AgenditApp: reservas online 24/7, confirmación/cancelación por WhatsApp, recordatorios automáticos, fidelidad, branding personalizado, gestión de empleados, comisiones, analíticas y página web.",
-  keywords: [
-    "funcionalidades agendamiento",
-    "características sistema de reservas",
-    "recordatorios WhatsApp automáticos",
-    "confirmar cita WhatsApp",
-    "cancelar cita WhatsApp",
-    "gestión de empleados",
-    "comisiones por empleado",
-    "control de caja digital",
-    "análisis de negocio",
-    "página web reservas",
-    "fidelidad clientes",
-    "branding marca blanca",
-  ],
   alternates: { canonical: "https://agenditapp.com/funcionalidades" },
   openGraph: {
     title: "Funcionalidades | Sistema de Agendamiento AgenditApp",

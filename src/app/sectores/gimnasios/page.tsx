@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   title: "Software para Gimnasios y Fitness | Reservas + WhatsApp",
   description:
     "Agendamiento online para gimnasios: clases grupales con control de cupos, gestión de entrenadores, recordatorios WhatsApp. Reservas 24/7. Desde $10/mes.",
-  keywords: ["software para gimnasios", "agenda fitness", "sistema de reservas clases", "agendamiento gym", "control de cupos"],
   alternates: { canonical: "https://agenditapp.com/sectores/gimnasios" },
   openGraph: {
     title: "Software para Gimnasios y Fitness | Reservas + WhatsApp",

@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   title: "Software para Escuelas de Danza y Yoga | Clases + WhatsApp",
   description:
     "Agendamiento para escuelas de danza, yoga y pilates: clases con cupos, gestión de instructores, recordatorios WhatsApp. Reservas 24/7. Desde $10/mes.",
-  keywords: ["software danza", "agenda yoga", "sistema de reservas clases danza", "agendamiento pilates", "control cupos clases"],
   alternates: { canonical: "https://agenditapp.com/sectores/danza-yoga" },
   openGraph: {
     title: "Software para Escuelas de Danza y Yoga | Clases + WhatsApp",

@@ -193,7 +193,7 @@ export async function generateMetadata({
   if (!data) return {};
 
   return {
-    title: data.metaTitle,
+    title: { absolute: data.metaTitle },
     description: data.metaDescription,
     alternates: { canonical: data.canonical },
     openGraph: {

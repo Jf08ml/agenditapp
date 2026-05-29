@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   title: "Software para Nutricionistas | Citas Online + WhatsApp",
   description:
     "Agenda para nutricionistas: consultas, controles y seguimiento. WhatsApp desde tu número, pacientes más adherentes. Sin permanencia. Desde $10/mes.",
-  keywords: ["software nutricionistas", "agenda nutrición", "sistema de citas nutricional", "agendamiento dietista", "control pacientes nutrición"],
   alternates: { canonical: "https://agenditapp.com/sectores/nutricion" },
   openGraph: {
     title: "Software para Nutricionistas | Citas Online + WhatsApp",

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { HREFLANG_ALTERNATES } from "@/lib/hreflang";
 import PageHeader from "@/app/(landing)/components/ui/PageHeader";
 import PageFooter from "@/app/(landing)/components/ui/PageFooter";
 import { DemoCtaButton } from "@/app/(landing)/components/ui/DemoCtaModal";
@@ -12,10 +13,7 @@ export const metadata: Metadata = {
     "Sistema de reservas online con WhatsApp automático para barberías, salones de belleza, spas y consultorios en España. Reservas 24/7. Prueba gratis sin tarjeta.",
   alternates: {
     canonical: "https://agenditapp.com/es",
-    languages: {
-      "es-CO": "https://agenditapp.com",
-      "es-ES": "https://agenditapp.com/es",
-    },
+    languages: HREFLANG_ALTERNATES,
   },
   openGraph: {
     title: "Software de Agendamiento para Negocios en España | AgenditApp",

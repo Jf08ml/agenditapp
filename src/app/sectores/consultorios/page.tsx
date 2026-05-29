@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   title: "Software para Consultorios y Clínicas | Citas Online 24/7",
   description:
     "Agendamiento online para consultorios y clínicas. Gestión por profesional, recordatorios WhatsApp y reservas 24/7. Sin permanencia. Desde $10/mes.",
-  keywords: ["software para consultorios", "agenda médica", "sistema de citas médicas", "agendamiento clínica", "gestión de pacientes"],
   alternates: { canonical: "https://agenditapp.com/sectores/consultorios" },
   openGraph: {
     title: "Software para Consultorios y Clínicas | Citas Online 24/7",

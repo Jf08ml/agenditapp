@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   title: "Software para Odontólogos | Citas Online + WhatsApp 24/7",
   description:
     "Sistema de citas para odontólogos: agenda por tipo de tratamiento, recordatorios WhatsApp con instrucciones previas y control de pacientes. Desde $10/mes.",
-  keywords: ["software odontología", "agenda dental", "sistema de citas dentales", "agendamiento odontólogo", "control pacientes dentales"],
   alternates: { canonical: "https://agenditapp.com/sectores/odontologia" },
   openGraph: {
     title: "Software para Odontólogos | Citas Online + WhatsApp 24/7",

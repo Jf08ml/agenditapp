@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { HREFLANG_ALTERNATES } from "@/lib/hreflang";
 import Hero from "./(landing)/sections/Hero";
 import ProofBar from "./(landing)/sections/ProofBar";
 import Problem from "./(landing)/sections/Problem";
@@ -29,20 +30,6 @@ export const metadata: Metadata = {
   title: "AgenditApp | Sistema de Agendamiento Online y Gestión de Citas Automático",
   description:
     "Plataforma moderna de agendamiento inteligente para negocios de belleza, bienestar y servicios profesionales. Recibe citas online, envía recordatorios automáticos por WhatsApp y gestiona tu agenda desde cualquier dispositivo. Ideal para salones, barberías, spas, consultorios y más.",
-  keywords: [
-    "agendamiento online",
-    "sistema de reservas",
-    "agenda digital",
-    "software de citas",
-    "gestión de turnos",
-    "agenda para salones de belleza",
-    "reservas automáticas",
-    "recordatorios por WhatsApp",
-    "app para agendar citas Colombia",
-    "software para barberías",
-    "agenda para spa",
-    "sistema de citas profesional",
-  ],
   openGraph: {
     title: "AgenditApp | Sistema de Agendamiento Online y Gestión de Citas",
     description:
@@ -70,6 +57,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://agenditapp.com",
+    languages: HREFLANG_ALTERNATES,
   },
 };
 

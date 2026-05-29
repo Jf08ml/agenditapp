@@ -8,13 +8,6 @@ export const metadata: Metadata = {
   title: "Blog | Recursos para negocios de citas y agendamiento",
   description:
     "Guías, comparativas y consejos para dueños de salones de belleza, barberías y negocios de servicios. Aprende a digitalizar tu agenda, reducir ausencias y hacer crecer tu negocio.",
-  keywords: [
-    "blog agendamiento citas",
-    "recursos salón de belleza",
-    "guías barberías Colombia",
-    "software reservas online",
-    "gestión negocios belleza",
-  ],
   alternates: { canonical: "https://agenditapp.com/blog" },
   openGraph: {
     title: "Blog AgenditApp — Recursos para negocios de citas",

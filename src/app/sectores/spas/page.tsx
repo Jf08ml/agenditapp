@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   title: "Software para Spas y Bienestar | Reservas + WhatsApp 24/7",
   description:
     "Software para spas y centros de bienestar: reservas online, gestión de terapeutas y salas, WhatsApp desde tu número. Reduce ausencias 70%. Desde $10/mes.",
-  keywords: ["software para spas", "agenda para spa", "sistema de citas bienestar", "agendamiento spa", "software masajes"],
   alternates: { canonical: "https://agenditapp.com/sectores/spas" },
   openGraph: {
     title: "Software para Spas y Bienestar | Reservas + WhatsApp — AgenditApp",

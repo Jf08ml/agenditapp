@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   title: "Software para Fotógrafos | Reservas de Sesiones + WhatsApp",
   description:
     "Agenda online para fotógrafos y estudios: sesiones, eventos y alquiler de estudio. Recordatorios WhatsApp con instrucciones de vestuario. Desde $10/mes.",
-  keywords: ["software fotógrafos", "agenda estudio fotográfico", "sistema de reservas sesiones", "agendamiento fotografía", "control agenda fotógrafo"],
   alternates: { canonical: "https://agenditapp.com/sectores/fotografia" },
   openGraph: {
     title: "Software para Fotógrafos | Reservas de Sesiones + WhatsApp",

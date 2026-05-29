@@ -288,7 +288,6 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.description,
-    keywords: post.keywords,
     alternates: { canonical: `https://agenditapp.com/blog/${slug}` },
     openGraph: {
       title: post.title,

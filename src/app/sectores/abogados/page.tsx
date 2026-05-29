@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   title: "Software para Abogados | Citas Online + WhatsApp 24/7",
   description:
     "Agenda para abogados y bufetes: consultas legales, reuniones presenciales y virtuales, recordatorios WhatsApp. Sin permanencia. Desde $10/mes.",
-  keywords: ["software abogados", "agenda legal", "sistema de citas jurídicas", "agendamiento bufete", "gestión consultas legales"],
   alternates: { canonical: "https://agenditapp.com/sectores/abogados" },
   openGraph: {
     title: "Software para Abogados | Citas Online + WhatsApp 24/7",

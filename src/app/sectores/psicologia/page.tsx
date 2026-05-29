@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   title: "Agenda Online para Psicólogos | Sesiones + Privacidad Total",
   description:
     "Agenda online para psicólogos: sesiones presenciales/online, recordatorios WhatsApp discretos, control de pagos. Total privacidad. Desde $10/mes.",
-  keywords: ["software psicólogos", "agenda terapia", "sistema de citas psicología", "agendamiento salud mental", "gestión sesiones terapia"],
   alternates: { canonical: "https://agenditapp.com/sectores/psicologia" },
   openGraph: {
     title: "Agenda Online para Psicólogos | Sesiones + Privacidad Total",

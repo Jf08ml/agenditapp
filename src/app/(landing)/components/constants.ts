@@ -73,13 +73,6 @@ export const JSONLD_SOFTWARE = {
     priceCurrency: "USD",
     offerCount: "3",
   },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    ratingCount: "120",
-    bestRating: "5",
-    worstRating: "1",
-  },
   softwareHelp: {
     "@type": "WebPage",
     url: "https://agenditapp.com/blog",

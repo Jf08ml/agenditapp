@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { HREFLANG_ALTERNATES } from "@/lib/hreflang";
 import PageHeader from "@/app/(landing)/components/ui/PageHeader";
 import PageFooter from "@/app/(landing)/components/ui/PageFooter";
 import { DemoCtaButton } from "@/app/(landing)/components/ui/DemoCtaModal";
@@ -12,10 +13,7 @@ export const metadata: Metadata = {
     "Sistema de reservas online con WhatsApp automático para barberías, salones de belleza, spas y consultorios en México. Reservas 24/7. Prueba gratis sin tarjeta.",
   alternates: {
     canonical: "https://agenditapp.com/mx",
-    languages: {
-      "es-CO": "https://agenditapp.com",
-      "es-MX": "https://agenditapp.com/mx",
-    },
+    languages: HREFLANG_ALTERNATES,
   },
   openGraph: {
     title: "Software de Agendamiento para Negocios en México | AgenditApp",
@@ -125,7 +123,7 @@ export default function MexicoPage() {
               Sistema de agendamiento online para negocios en México
             </h1>
             <p className="text-lg text-body leading-relaxed max-w-2xl mx-auto mb-8">
-              Más de 120,000 barberías, salones de belleza y spas en México manejan sus citas
+              Miles de barberías, salones de belleza y spas en México manejan sus citas
               por WhatsApp manual. AgenditApp automatiza ese proceso: tus clientes reservan
               solos 24/7 y reciben confirmación y recordatorio desde tu número de WhatsApp Business.
             </p>

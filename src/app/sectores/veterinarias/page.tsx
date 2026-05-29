@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   title: "Software para Veterinarias | Citas Online + WhatsApp 24/7",
   description:
     "Agendamiento online para veterinarias: consultas, grooming y vacunas. WhatsApp desde tu número con recordatorios para dueños de mascotas. Desde $10/mes.",
-  keywords: ["software veterinaria", "agenda veterinaria", "sistema de citas mascotas", "agendamiento grooming", "control citas veterinario"],
   alternates: { canonical: "https://agenditapp.com/sectores/veterinarias" },
   openGraph: {
     title: "Software para Veterinarias | Citas Online + WhatsApp 24/7",

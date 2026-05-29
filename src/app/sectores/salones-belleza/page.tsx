@@ -8,15 +8,6 @@ export const metadata: Metadata = {
   title: "Software para Salones de Belleza | Reservas + WhatsApp 24/7",
   description:
     "Sistema de agendamiento para tu salón de belleza. Reservas 24/7 + WhatsApp desde tu número. Reduce ausencias un 70%. Sin permanencia. Desde $10/mes.",
-  keywords: [
-    "software para salones de belleza",
-    "agenda para salones",
-    "sistema de reservas belleza",
-    "agendamiento salón de belleza",
-    "software manicure pedicure",
-    "gestión de citas belleza",
-    "recordatorios WhatsApp salón",
-  ],
   alternates: { canonical: "https://agenditapp.com/sectores/salones-belleza" },
   openGraph: {
     title: "Software para Salones de Belleza | Reservas 24/7 + WhatsApp",

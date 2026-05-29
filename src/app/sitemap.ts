@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: `${base}`,
-      lastModified: "2026-05-28",
+      lastModified: "2026-05-29",
       changeFrequency: "weekly",
       priority: 1.0,
     },
@@ -26,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${base}/precios`,
-      lastModified: "2026-05-28",
+      lastModified: "2026-05-29",
       changeFrequency: "monthly",
       priority: 0.9,
     },
@@ -134,19 +134,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${base}/nosotros`,
-      lastModified: "2026-05-01",
+      lastModified: "2026-05-29",
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${base}/terminos`,
-      lastModified: "2026-01-01",
+      lastModified: "2026-05-29",
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${base}/privacidad`,
-      lastModified: "2026-01-01",
+      lastModified: "2026-05-29",
       changeFrequency: "yearly",
       priority: 0.3,
     },
@@ -159,62 +159,62 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Comparativas vs competidores — alta prioridad, páginas transaccionales de fondo de embudo
     {
       url: `${base}/vs/fresha`,
-      lastModified: "2026-05-01",
+      lastModified: "2026-05-29",
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${base}/vs/agendapro`,
-      lastModified: "2026-05-01",
+      lastModified: "2026-05-29",
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${base}/vs/booksy`,
-      lastModified: "2026-05-01",
+      lastModified: "2026-05-29",
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${base}/vs/weibook`,
-      lastModified: "2026-05-01",
+      lastModified: "2026-05-29",
       changeFrequency: "monthly",
       priority: 0.9,
     },
     // Landings por país
     {
       url: `${base}/mx`,
-      lastModified: "2026-05-01",
+      lastModified: "2026-05-29",
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${base}/cl`,
-      lastModified: "2026-05-01",
+      lastModified: "2026-05-29",
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${base}/ar`,
-      lastModified: "2026-05-01",
+      lastModified: "2026-05-29",
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${base}/es`,
-      lastModified: "2026-05-01",
+      lastModified: "2026-05-29",
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${base}/cr`,
-      lastModified: "2026-05-01",
+      lastModified: "2026-05-29",
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${base}/ec`,
-      lastModified: "2026-05-01",
+      lastModified: "2026-05-29",
       changeFrequency: "monthly",
       priority: 0.8,
     },

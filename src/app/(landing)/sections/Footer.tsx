@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { DemoCtaButton } from "../components/ui/DemoCtaModal";
 import { motion, easeOut, type Variants } from "framer-motion";
-import { WHATSAPP_HREF } from "../components/constants";
+import { WHATSAPP_HREF, SIGNUP_HREF } from "../components/constants";
 import { CO, MX, CL, AR, ES, CR, EC } from "country-flag-icons/react/3x2";
 import { Clock, Lock, ChatCircle, type IconWeight } from "@phosphor-icons/react";
 
@@ -157,12 +157,15 @@ export default function Footer() {
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <DemoCtaButton
-                className="inline-flex items-center justify-center rounded-[12px] px-6 py-3.5 text-[15px] font-semibold cursor-pointer transition-colors"
+              <Link
+                href={SIGNUP_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-[12px] px-6 py-3.5 text-[15px] font-semibold transition-colors"
                 style={{ background: "var(--warm)", color: "white" }}
               >
-                Crear mi demo gratis
-              </DemoCtaButton>
+                Crear cuenta gratis
+              </Link>
               <Link
                 href="/precios"
                 className="inline-flex items-center justify-center rounded-[12px] px-6 py-3.5 text-[15px] font-semibold transition-colors hover:bg-white/15"
@@ -274,6 +277,11 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link href="/sectores" className="text-sm hover:text-foreground transition-colors font-medium text-brand/80">
+                  Ver todos los sectores →
+                </Link>
+              </li>
             </ul>
 
             <p className="text-xs font-bold text-heading uppercase tracking-wider mb-3">

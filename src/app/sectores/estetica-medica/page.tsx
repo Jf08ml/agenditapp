@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   title: "Software para Estética Médica | Citas Online + WhatsApp",
   description:
     "Agenda online para centros de estética médica: botox, láser, rellenos. Recordatorios WhatsApp con instrucciones previas. Sin permanencia. Desde $10/mes.",
-  keywords: ["software estética médica", "agenda botox", "sistema de citas medicina estética", "agendamiento láser", "gestión tratamientos estéticos"],
   alternates: { canonical: "https://agenditapp.com/sectores/estetica-medica" },
   openGraph: {
     title: "Software para Estética Médica | Citas Online + WhatsApp",

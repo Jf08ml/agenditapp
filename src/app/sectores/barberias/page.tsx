@@ -8,15 +8,6 @@ export const metadata: Metadata = {
   title: "Software para Barberías | Reservas Online + WhatsApp 24/7",
   description:
     "Sistema de agendamiento para barberías: turnos express, gestión de barberos, recordatorios WhatsApp desde tu número propio. Reservas 24/7. Desde $10/mes.",
-  keywords: [
-    "software para barberías",
-    "agenda para barbería",
-    "sistema de turnos barbería",
-    "reservas online barbería",
-    "agendamiento barbero",
-    "software cortes de cabello",
-    "gestión de barbería",
-  ],
   alternates: { canonical: "https://agenditapp.com/sectores/barberias" },
   openGraph: {
     title: "Software para Barberías | Reservas Online + WhatsApp 24/7",

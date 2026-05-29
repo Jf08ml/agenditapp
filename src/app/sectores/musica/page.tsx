@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   title: "Software para Profesores de Música | Clases + WhatsApp 24/7",
   description:
     "Agenda para profesores de música: clases de guitarra, piano, canto y más. WhatsApp automático para alumnos. Sin permanencia. Desde $10/mes.",
-  keywords: ["software profesores música", "agenda clases música", "sistema de reservas clases guitarra", "agendamiento clases piano"],
   alternates: { canonical: "https://agenditapp.com/sectores/musica" },
   openGraph: {
     title: "Software para Profesores de Música | Clases + WhatsApp 24/7",

@@ -3,9 +3,8 @@ import PageHeader from "../(landing)/components/ui/PageHeader";
 import PageFooter from "../(landing)/components/ui/PageFooter";
 
 export const metadata: Metadata = {
-  title: "Términos y Condiciones | AgenditApp - Sistema de Reservas Online",
+  title: "Términos y Condiciones - Sistema de Reservas Online",
   description: "Términos y condiciones de uso de AgenditApp. Conoce las políticas de nuestro software de agendamiento online, planes, pagos y uso de la plataforma.",
-  keywords: ["términos y condiciones", "AgenditApp términos", "condiciones de uso", "políticas de servicio"],
   alternates: { canonical: "https://agenditapp.com/terminos" },
   robots: { index: true, follow: true },
 };

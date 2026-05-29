@@ -9,7 +9,6 @@ export const metadata: Metadata = {
   title: "Planes AgenditApp | Empieza Gratis · Sin Tarjeta · Sin Permanencia",
   description:
     "Empieza gratis hoy con 7 días de acceso completo. Planes de pago desde $10 USD/mes sin permanencia. Reservas ilimitadas + WhatsApp + página web incluida.",
-  keywords: ["plan gratuito agendamiento", "precios software de reservas", "planes agendamiento online", "costo sistema de citas", "precio agenda digital", "software sin permanencia", "precios AgenditApp"],
   alternates: { canonical: "https://agenditapp.com/precios" },
   openGraph: {
     title: "Planes AgenditApp | Empieza Gratis · Sin Tarjeta · Sin Permanencia",
@@ -29,23 +28,6 @@ const BREADCRUMB_SCHEMA = {
   ],
 };
 
-const DIGITAL_SHIPPING = {
-  "@type": "OfferShippingDetails",
-  shippingRate: { "@type": "MonetaryAmount", value: "0", currency: "USD" },
-  shippingDestination: { "@type": "DefinedRegion", addressCountry: "CO" },
-  deliveryTime: {
-    "@type": "ShippingDeliveryTime",
-    handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 0, unitCode: "HUR" },
-    transitTime:  { "@type": "QuantitativeValue", minValue: 0, maxValue: 0, unitCode: "HUR" },
-  },
-};
-
-const RETURN_POLICY = {
-  "@type": "MerchantReturnPolicy",
-  applicableCountry: "CO",
-  returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
-};
-
 const OFFER_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "Product",
@@ -53,7 +35,6 @@ const OFFER_SCHEMA = {
   description: "Software de agendamiento online para negocios de belleza y servicios en Latinoamérica. Reservas 24/7, recordatorios por WhatsApp y gestión completa del negocio.",
   image: "https://agenditapp.com/inicio_page.png",
   brand: { "@type": "Brand", name: "AgenditApp" },
-  aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", reviewCount: "45", ratingCount: "120", bestRating: "5", worstRating: "1" },
   offers: [
     {
       "@type": "Offer",
@@ -64,8 +45,6 @@ const OFFER_SCHEMA = {
       availability: "https://schema.org/InStock",
       description: "Reservas online 24/7, calendario visual, gestión de servicios y empleados, base de datos de clientes, comisiones, programa de fidelización, subdominio personalizado.",
       url: "https://agenditapp.com/precios",
-      shippingDetails: DIGITAL_SHIPPING,
-      hasMerchantReturnPolicy: RETURN_POLICY,
     },
     {
       "@type": "Offer",
@@ -76,8 +55,6 @@ const OFFER_SCHEMA = {
       availability: "https://schema.org/InStock",
       description: "Todo lo del plan Básico más integración WhatsApp desde tu número, recordatorios automáticos y enlace de confirmación/cancelación para clientes.",
       url: "https://agenditapp.com/precios",
-      shippingDetails: DIGITAL_SHIPPING,
-      hasMerchantReturnPolicy: RETURN_POLICY,
     },
     {
       "@type": "Offer",
@@ -88,8 +65,6 @@ const OFFER_SCHEMA = {
       availability: "https://schema.org/InStock",
       description: "Todo lo del plan Esencial más dominio personalizado, 2 recordatorios automáticos y campañas masivas por WhatsApp.",
       url: "https://agenditapp.com/precios",
-      shippingDetails: DIGITAL_SHIPPING,
-      hasMerchantReturnPolicy: RETURN_POLICY,
     },
   ],
 };

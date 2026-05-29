@@ -14,7 +14,9 @@
       "Bash(Write-Host \"Cache cleared\")",
       "Bash(npm list *)",
       "Bash(python -c ' *)",
-      "Bash(npx next *)"
+      "Bash(npx next *)",
+      "Bash(Get-ChildItem -Path \"d:\\\\proyectos-personales\\\\agenditapp\" -Force)",
+      "Bash(Select-Object Name)"
     ],
     "additionalDirectories": [
       "d:\\proyectos-personales\\agenditapp\\src\\app\\vs"

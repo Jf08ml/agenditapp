@@ -8,7 +8,6 @@ export const metadata: Metadata = {
   title: "Software para Lash & Brow Studios | Citas + WhatsApp",
   description:
     "Sistema de reservas para lash & brow studios: extensiones, microblading, lash lift. WhatsApp desde tu número, ausencias -70%. Desde $10/mes.",
-  keywords: ["software para lash studios", "agenda para extensiones pestañas", "sistema de citas microblading", "agendamiento lash brow"],
   alternates: { canonical: "https://agenditapp.com/sectores/lash-brow" },
   openGraph: {
     title: "Software para Lash & Brow Studios | Citas + WhatsApp",

@@ -28,23 +28,6 @@ export const metadata: Metadata = {
   description:
     "Plataforma de agendamiento online para negocios de belleza, bienestar y servicios profesionales. Automatiza reservas, envía recordatorios por WhatsApp y gestiona tu agenda 24/7.",
   icons: [{ rel: "icon", url: "/icono-full-blue.png" }],
-  keywords: [
-    "agendamiento online",
-    "sistema de reservas",
-    "agenda digital",
-    "software de citas",
-    "gestión de turnos",
-    "agenda para negocios",
-    "reservas automáticas",
-    "app para agendar citas",
-    "recordatorios automáticos",
-    "agendamiento profesional",
-    "software para salones de belleza",
-    "agenda para barberías",
-    "sistema de citas spa",
-    "gestión de clientes",
-    "reservas online Colombia",
-  ],
   alternates: {
     canonical: "https://agenditapp.com",
   },
