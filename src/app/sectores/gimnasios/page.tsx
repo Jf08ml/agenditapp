@@ -46,6 +46,20 @@ const FAQS = [
   { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes comienzan desde $10 USD al mes, sin permanencia. Cancelas cuando quieras. El plan Esencial incluye recordatorios automáticos por WhatsApp para confirmar asistencia." },
 ];
 
+const INTRO = (
+  <>
+    <p>
+      Gestionar la agenda de un gimnasio —entrenamiento personal, clases funcionales, yoga, spinning, sesiones grupales— sin un sistema digital genera colisiones constantes: entrenadores con horarios cruzados, clases llenas sin control de cupos, alumnos que reservan y no asisten. Cada espacio vacío en una sesión de entrenamiento personal es ingreso directo que no se recupera.
+    </p>
+    <p>
+      AgenditApp permite configurar clases grupales con límite de cupos y sesiones individuales con entrenadores asignados. El alumno reserva su lugar desde tu landing, recibe confirmación y recordatorio automático por <strong>WhatsApp</strong>. Tú ves la ocupación en tiempo real, puedes habilitar listas de espera para clases llenas y gestionar los horarios de cada entrenador con total independencia desde un solo panel.
+    </p>
+    <p>
+      El resultado es una operación más predecible: sabes con 24 horas de anticipación cuántos alumnos llegan a cada clase, puedes ajustar instructores según demanda real y tus alumnos desarrollan el hábito de reservar su lugar —lo que mejora la adherencia y reduce la rotación de membresías.
+    </p>
+  </>
+);
+
 export default function GimnasiosPage() {
   return (
     <>
@@ -56,9 +70,14 @@ export default function GimnasiosPage() {
         icon="🏋️‍♀️"
         h1="Gimnasios y Fitness"
         description="Gestiona clases grupales, entrenamientos personales y cupos en tiempo real. Sistema completo para gimnasios, boxes de crossfit y estudios de yoga."
+        sectorIntro={INTRO}
         features={features}
         featuresHeading="Todo para optimizar tu gimnasio"
         faqs={FAQS}
+        relatedPosts={[
+          { slug: "reducir-inasistencias-salon-belleza-whatsapp", title: "Cómo reducir las inasistencias con recordatorios automáticos por WhatsApp", readingTime: "8 min" },
+          { slug: "mejores-apps-agendar-citas-colombia-2026", title: "Las 7 mejores apps para agendar citas en Colombia (2026)", readingTime: "10 min" },
+        ]}
         relatedSectors={[
           { title: "Escuelas de Danza y Yoga", slug: "danza-yoga", icon: "💃", description: "Reserva de clases, talleres y gestión de instructores" },
           { title: "Nutricionistas", slug: "nutricion", icon: "🥗", description: "Consultas nutricionales y seguimiento de pacientes" },

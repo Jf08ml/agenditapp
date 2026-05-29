@@ -46,6 +46,20 @@ const FAQS = [
   { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes van desde $10 USD al mes, sin permanencia. Cancelas cuando quieras. Incluye reservas ilimitadas y panel administrativo completo." },
 ];
 
+const INTRO = (
+  <>
+    <p>
+      Un profesor de música o academia tiene un desafío de agenda que parece simple pero no lo es: cada alumno tiene nivel, instrumento y posiblemente profesor diferente. Gestionar esto por WhatsApp —coordinar cambios de horario, recuperar clases por lluvias o festivos, atender alumnos nuevos que quieren una clase de prueba— genera una distracción constante que resta tiempo de enseñanza.
+    </p>
+    <p>
+      AgenditApp permite crear servicios por instrumento y nivel (piano iniciación, guitarra intermedio, canto), asignar profesores con sus propios horarios, y dejar que alumnos y padres reserven directamente desde tu landing. Los recordatorios automáticos reducen significativamente los &ldquo;se me olvidó la clase&rdquo; y las clases de recuperación se agendan como cualquier otro servicio, sin generar una cadena de mensajes en WhatsApp.
+    </p>
+    <p>
+      Para academias con varios profesores, el panel central muestra la ocupación de toda la escuela. Sabes qué instrumento tiene más demanda, qué horarios están llenos y dónde hay disponibilidad para nuevos alumnos —sin tener que preguntar a cada profesor por separado.
+    </p>
+  </>
+);
+
 export default function MusicaPage() {
   return (
     <>
@@ -56,9 +70,14 @@ export default function MusicaPage() {
         icon="🎸"
         h1="Profesores de Música"
         description="Gestiona tu estudio musical de forma profesional. Organiza clases particulares, talleres y ensayos con recordatorios automáticos y reservas online."
+        sectorIntro={INTRO}
         features={features}
         featuresHeading="Todo para gestionar tus clases de música"
         faqs={FAQS}
+        relatedPosts={[
+          { slug: "primeros-clientes-salon-belleza-barberia", title: "Cómo conseguir los primeros 100 clientes para tu negocio de servicios", readingTime: "10 min" },
+          { slug: "mejores-apps-agendar-citas-colombia-2026", title: "Las 7 mejores apps para agendar citas en Colombia (2026)", readingTime: "10 min" },
+        ]}
         relatedSectors={[
           { title: "Tutores y Academias", slug: "tutorias", icon: "📚", description: "Sistema de reservas para clases particulares y academias" },
           { title: "Escuelas de Danza y Yoga", slug: "danza-yoga", icon: "💃", description: "Gestión de clases grupales y talleres" },

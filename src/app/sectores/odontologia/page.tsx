@@ -46,6 +46,20 @@ const FAQS = [
   { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes comienzan desde $10 USD al mes. Sin permanencia, sin contrato — cancelas cuando quieras. Reservas ilimitadas incluidas en todos los planes." },
 ];
 
+const INTRO = (
+  <>
+    <p>
+      La odontología tiene una complejidad de agenda particular: los tratamientos se extienden en múltiples sesiones (endodoncia, ortodoncia, prótesis), los pacientes tienen distintos odontólogos y una cita perdida no solo genera un hueco en la agenda —rompe un protocolo clínico. El problema frecuente es el paciente que después de la primera cita no regresa para las sesiones de continuación.
+    </p>
+    <p>
+      AgenditApp permite gestionar tratamientos multi-sesión creando servicios específicos para cada etapa. Los recordatorios automáticos aseguran que el paciente llegue a su próxima cita sin que tengas que llamarlo. Y cuando el mensaje llega desde <strong>tu propio número de WhatsApp</strong>, la tasa de confirmación es significativamente mayor que la de un remitente genérico.
+    </p>
+    <p>
+      Gestiona múltiples odontólogos con sus propios calendarios, procedimientos de distinta duración y control de ocupación desde un solo panel. Tus pacientes reservan desde tu página web 24/7, eligen especialidad y profesional, sin necesidad de llamar ni esperar en línea.
+    </p>
+  </>
+);
+
 export default function OdontologiaPage() {
   return (
     <>
@@ -56,9 +70,14 @@ export default function OdontologiaPage() {
         icon="🦷"
         h1="Odontología"
         description="Optimiza la gestión de tu consultorio dental. Sistema completo para citas, tratamientos, recordatorios automáticos y control de pacientes. Sin permanencia."
+        sectorIntro={INTRO}
         features={features}
         featuresHeading="Todo para gestionar tu consultorio dental"
         faqs={FAQS}
+        relatedPosts={[
+          { slug: "software-agendamiento-consultorios-terapeutas-colombia", title: "Software de agendamiento para consultorios y centros terapéuticos: guía completa 2026", readingTime: "9 min" },
+          { slug: "reducir-inasistencias-salon-belleza-whatsapp", title: "Cómo reducir las inasistencias con recordatorios automáticos por WhatsApp", readingTime: "8 min" },
+        ]}
         relatedSectors={[
           { title: "Consultorios y Clínicas", slug: "consultorios", icon: "🏥", description: "Sistema de citas para profesionales de la salud" },
           { title: "Psicología y Terapia", slug: "psicologia", icon: "🧠", description: "Agenda confidencial para psicólogos y terapeutas" },

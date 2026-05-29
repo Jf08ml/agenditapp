@@ -46,6 +46,20 @@ const FAQS = [
   { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes comienzan desde $10 USD al mes, sin permanencia. Puedes cancelar cuando quieras. Incluye reservas ilimitadas y panel administrativo completo." },
 ];
 
+const INTRO = (
+  <>
+    <p>
+      Un tutor o academia tiene un desafío de coordinación que se multiplica con cada alumno nuevo: distintas materias, niveles, tutores y horarios semanales que además cambian por festivos, evaluaciones del colegio o imprevistos. Gestionar esto por WhatsApp —entre padres, alumnos y profesores— significa mensajes perdidos, horarios confusos y clases que nadie confirma.
+    </p>
+    <p>
+      AgenditApp permite que cada tutor tenga su propio horario y materias asignadas. Los padres y alumnos reservan directamente desde tu página web, reciben confirmación inmediata y un recordatorio automático por <strong>WhatsApp</strong> antes de cada clase. Sin necesidad de llamar para confirmar, sin mensajes de &ldquo;¿hay clase hoy?&rdquo;.
+    </p>
+    <p>
+      Para academias con varios profesores, el panel central consolida toda la operación: ves qué tutores tienen mayor demanda, qué materias están más solicitadas y cuántos alumnos tiene cada uno. Las clases de recuperación se agendan como cualquier otro servicio, sin generar caos de coordinación.
+    </p>
+  </>
+);
+
 export default function TutoriasPage() {
   return (
     <>
@@ -56,6 +70,7 @@ export default function TutoriasPage() {
         icon="📚"
         h1="Tutores y Academias"
         description="Gestiona tu academia o clases particulares de forma profesional. Organiza tutorías, refuerzo escolar y horarios con recordatorios automáticos y reservas online."
+        sectorIntro={INTRO}
         features={features}
         featuresHeading="Todo para gestionar tu academia"
         testimonial={{
@@ -63,6 +78,10 @@ export default function TutoriasPage() {
           author: "Tutor particular — Colombia",
         }}
         faqs={FAQS}
+        relatedPosts={[
+          { slug: "primeros-clientes-salon-belleza-barberia", title: "Cómo conseguir los primeros 100 clientes para tu negocio de servicios", readingTime: "10 min" },
+          { slug: "mejores-apps-agendar-citas-colombia-2026", title: "Las 7 mejores apps para agendar citas en Colombia (2026)", readingTime: "10 min" },
+        ]}
         relatedSectors={[
           { title: "Profesores de Música", slug: "musica", icon: "🎸", description: "Agenda de clases particulares y talleres musicales" },
           { title: "Escuelas de Danza y Yoga", slug: "danza-yoga", icon: "💃", description: "Gestión de clases grupales y talleres" },

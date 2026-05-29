@@ -126,17 +126,25 @@ interface ComparativaLink {
   href: string;
 }
 
+interface RelatedPost {
+  slug: string;
+  title: string;
+  readingTime?: string;
+}
+
 interface SectorPageContentProps {
   sectorName: string;
   icon: string;
   h1: string;
   description: string;
+  sectorIntro?: React.ReactNode;
   features: Feature[];
   featuresHeading: string;
   testimonial?: Testimonial;
   faqs?: SectorFAQ[];
   comparativas?: ComparativaLink[];
   relatedSectors: RelatedSector[];
+  relatedPosts?: RelatedPost[];
   ctaHeading: string;
   ctaBody: string;
 }
@@ -146,12 +154,14 @@ export default function SectorPageContent({
   icon,
   h1,
   description,
+  sectorIntro,
   features,
   featuresHeading,
   testimonial,
   faqs,
   comparativas,
   relatedSectors,
+  relatedPosts,
   ctaHeading,
   ctaBody,
 }: SectorPageContentProps) {
@@ -206,6 +216,15 @@ export default function SectorPageContent({
           </div>
         </div>
       </section>
+
+      {/* Sector intro — problema → solución */}
+      {sectorIntro && (
+        <section className="pb-4 px-4 sm:px-6">
+          <div className="max-w-3xl mx-auto prose-custom">
+            {sectorIntro}
+          </div>
+        </section>
+      )}
 
       {/* Features Grid */}
       <section className="py-12 px-4 sm:px-6">
@@ -380,6 +399,39 @@ export default function SectorPageContent({
           </div>
         </div>
       </section>
+
+      {/* Related blog posts */}
+      {relatedPosts && relatedPosts.length > 0 && (
+        <section className="py-12 px-4 sm:px-6">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-xl font-semibold text-heading mb-6">
+              Recursos útiles para tu negocio
+            </h2>
+            <div className="flex flex-col gap-3">
+              {relatedPosts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="group flex items-center justify-between gap-4 bg-bg-card border border-brand/10 rounded-[14px] px-5 py-4 hover:border-brand/30 transition-all"
+                  style={{ boxShadow: "var(--shadow-card)" }}
+                >
+                  <span className="text-sm font-medium text-heading group-hover:text-brand transition-colors leading-snug">
+                    {post.title}
+                  </span>
+                  <div className="flex items-center gap-3 flex-shrink-0">
+                    {post.readingTime && (
+                      <span className="text-xs text-muted hidden sm:block">{post.readingTime}</span>
+                    )}
+                    <svg className="w-4 h-4 text-brand group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 16 16" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 3l5 5-5 5" />
+                    </svg>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA Final */}
       <section className="py-14 px-4 sm:px-6">

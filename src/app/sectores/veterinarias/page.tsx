@@ -46,6 +46,20 @@ const FAQS = [
   { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes van desde $10 USD al mes, sin permanencia. Cancelas cuando quieras. Incluye reservas ilimitadas y recordatorios por WhatsApp en los planes Esencial y Marca Propia." },
 ];
 
+const INTRO = (
+  <>
+    <p>
+      Las veterinarias gestionan una complejidad particular: la misma familia puede tener 2 o 3 mascotas con calendarios independientes de vacunas, desparasitaciones y controles. Cuando esto se maneja en papel o por WhatsApp, es fácil que una mascota se salte su vacuna anual o un control post-quirúrgico. Eso es un riesgo de salud y una pérdida de ingresos recurrentes.
+    </p>
+    <p>
+      AgenditApp permite crear servicios específicos por tipo de atención —consulta médica, baño y corte, vacunación, seguimiento de cirugía— cada uno con su duración y precio. Los recordatorios automáticos por <strong>WhatsApp</strong> aseguran que los dueños lleguen a los controles anuales sin que tengas que hacer seguimiento manual. Esto convierte la medicina preventiva en un flujo de agenda predecible.
+    </p>
+    <p>
+      Para clínicas con varios veterinarios y área de grooming, cada servicio y profesional tiene su propia disponibilidad desde el mismo panel. Tus clientes reservan online 24/7, sin llamar, y reciben confirmación instantánea con los datos de la cita.
+    </p>
+  </>
+);
+
 export default function VeterinariasPage() {
   return (
     <>
@@ -56,9 +70,14 @@ export default function VeterinariasPage() {
         icon="🐶"
         h1="Veterinarias"
         description="Gestiona tu veterinaria o centro de grooming de forma profesional. Organiza consultas, baños, vacunas y tratamientos con recordatorios automáticos por WhatsApp."
+        sectorIntro={INTRO}
         features={features}
         featuresHeading="Todo para tu clínica veterinaria"
         faqs={FAQS}
+        relatedPosts={[
+          { slug: "software-agendamiento-consultorios-terapeutas-colombia", title: "Software de agendamiento para centros de salud: guía completa 2026", readingTime: "9 min" },
+          { slug: "reducir-inasistencias-salon-belleza-whatsapp", title: "Cómo reducir las inasistencias con recordatorios automáticos por WhatsApp", readingTime: "8 min" },
+        ]}
         relatedSectors={[
           { title: "Consultorios y Clínicas", slug: "consultorios", icon: "🏥", description: "Sistema de citas para profesionales de la salud" },
           { title: "Salones de Belleza", slug: "salones-belleza", icon: "💇‍♀️", description: "Sistema para servicios de estética y cuidado personal" },

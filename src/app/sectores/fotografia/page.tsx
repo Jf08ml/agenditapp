@@ -46,6 +46,20 @@ const FAQS = [
   { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes inician desde $10 USD al mes, sin permanencia. Cancelas cuando quieras sin penalizaciones." },
 ];
 
+const INTRO = (
+  <>
+    <p>
+      La agenda de un fotógrafo es única: sesiones de distintos tipos (retrato, familia, recién nacido, eventos), ubicaciones variables, duraciones distintas y tarifas diferentes. Gestionar una semana con sesiones de retrato, familias y una pre-quinceañera por WhatsApp implica malabarear horarios, tarifas e instrucciones en conversaciones paralelas. Inevitablemente se olvida algo.
+    </p>
+    <p>
+      AgenditApp permite crear servicios específicos por tipo de sesión —cada uno con su duración, precio e instrucciones automáticas. El cliente reserva desde tu sitio web, recibe una confirmación con los detalles de preparación (vestuario, hora de llegada, qué traer) y un recordatorio 24 horas antes. Tú visualizas toda tu semana desde el panel, sin confusiones de última hora ni dobles reservas.
+    </p>
+    <p>
+      Para estudios que también alquilan espacio por horas, ese servicio se configura como cualquier otro: modelos, diseñadores y otros fotógrafos lo reservan directamente desde tu web, con confirmación y pago de anticipo registrado en el sistema.
+    </p>
+  </>
+);
+
 export default function FotografiaPage() {
   return (
     <>
@@ -56,9 +70,14 @@ export default function FotografiaPage() {
         icon="📸"
         h1="Fotógrafos y Estudios"
         description="Gestiona tu estudio fotográfico de forma profesional. Organiza sesiones, eventos y alquiler de estudio con reservas online y recordatorios automáticos."
+        sectorIntro={INTRO}
         features={features}
         featuresHeading="Todo para gestionar tu estudio fotográfico"
         faqs={FAQS}
+        relatedPosts={[
+          { slug: "primeros-clientes-salon-belleza-barberia", title: "Cómo conseguir los primeros 100 clientes para tu negocio de servicios", readingTime: "10 min" },
+          { slug: "mejores-apps-agendar-citas-colombia-2026", title: "Las 7 mejores apps para agendar citas en Colombia (2026)", readingTime: "10 min" },
+        ]}
         relatedSectors={[
           { title: "Abogados y Asesorías", slug: "abogados", icon: "⚖️", description: "Agenda de consultas legales y reuniones" },
           { title: "Profesores de Música", slug: "musica", icon: "🎸", description: "Agenda de clases particulares y talleres" },

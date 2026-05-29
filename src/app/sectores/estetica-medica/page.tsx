@@ -46,6 +46,20 @@ const FAQS = [
   { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes comienzan desde $10 USD al mes, sin permanencia. El plan Esencial ($20 USD/mes) incluye recordatorios automáticos por WhatsApp desde el número de tu centro." },
 ];
 
+const INTRO = (
+  <>
+    <p>
+      La estética médica combina la precisión de la práctica médica con la dinámica comercial de la belleza: procedimientos de 60 a 180 minutos, instrucciones específicas de preparación, pacientes que llegan sin haber seguido el protocolo previo e invalidan la sesión, y una lista de espera que hay que gestionar inteligentemente. Manejar todo esto por WhatsApp significa operar al límite.
+    </p>
+    <p>
+      AgenditApp permite automatizar los procesos clave: el mensaje de confirmación puede incluir instrucciones de preparación (no usar maquillaje, evitar alcohol 48h antes), el recordatorio 24 horas antes asegura que el paciente llegue listo, y si necesita reagendar lo hace en segundos desde su teléfono. Las sesiones no se pierden por falta de comunicación.
+    </p>
+    <p>
+      Para centros con varios médicos o especialistas, cada profesional gestiona su propia disponibilidad desde el mismo panel. Los pacientes reservan desde tu página web, ven los horarios reales y reciben confirmación inmediata. Sin llamadas, sin listas en papel, sin confusiones de última hora.
+    </p>
+  </>
+);
+
 export default function EsteticaMedicaPage() {
   return (
     <>
@@ -56,9 +70,15 @@ export default function EsteticaMedicaPage() {
         icon="💉"
         h1="Centros de Estética Médica"
         description="Gestiona tu centro de medicina estética con herramientas profesionales. Organiza tratamientos, procedimientos y seguimiento con reservas online y recordatorios automáticos."
+        sectorIntro={INTRO}
         features={features}
         featuresHeading="Todo para tu centro de estética médica"
         faqs={FAQS}
+        relatedPosts={[
+          { slug: "cuanto-cuesta-software-agendamiento-salon", title: "¿Cuánto cuesta un software de agendamiento? Comparativa completa 2026", readingTime: "8 min" },
+          { slug: "reducir-inasistencias-salon-belleza-whatsapp", title: "Cómo reducir las inasistencias con recordatorios automáticos por WhatsApp", readingTime: "8 min" },
+          { slug: "mejores-apps-agendar-citas-colombia-2026", title: "Las 7 mejores apps para agendar citas en Colombia (2026)", readingTime: "10 min" },
+        ]}
         relatedSectors={[
           { title: "Salones de Belleza", slug: "salones-belleza", icon: "💇‍♀️", description: "Sistema completo para manicure, pedicure y tratamientos" },
           { title: "Barberías", slug: "barberias", icon: "💈", description: "Sistema de turnos para barberos y servicios express" },

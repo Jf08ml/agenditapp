@@ -46,6 +46,20 @@ const FAQS = [
   { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes inician desde $10 USD al mes, sin permanencia ni contrato mínimo. Puedes cancelar cuando quieras sin trámites." },
 ];
 
+const INTRO = (
+  <>
+    <p>
+      Una consulta legal no es un servicio de conveniencia —el cliente que atraviesa un proceso jurídico necesita sentir que su tiempo y su caso son atendidos con seriedad. Cuando un despacho gestiona consultas por WhatsApp personal o correo, proyecta improvisación y hace difícil establecer horarios claros, cobrar anticipos o mantener un registro profesional de reuniones.
+    </p>
+    <p>
+      AgenditApp permite ofrecer agenda online con tipos diferenciados de atención: consulta inicial, revisión de documentos, asesoría por especialidad (laboral, civil, familiar). Los clientes reservan desde tu landing y reciben confirmación automática con el detalle de los documentos que deben traer —personalizas ese mensaje tú mismo. Los avisos llegan desde <strong>tu propio número de WhatsApp</strong>, manteniendo el tono profesional que exige la relación abogado-cliente.
+    </p>
+    <p>
+      Para despachos con varios abogados, cada profesional gestiona su propia agenda desde el mismo panel. Sin cruces de horario, sin coordinación manual y con un registro completo de atenciones por cliente.
+    </p>
+  </>
+);
+
 export default function AbogadosPage() {
   return (
     <>
@@ -56,9 +70,14 @@ export default function AbogadosPage() {
         icon="⚖️"
         h1="Abogados y Asesorías"
         description="Gestiona tu despacho legal con profesionalismo. Organiza consultas, reuniones y asesorías con una agenda inteligente y recordatorios automáticos."
+        sectorIntro={INTRO}
         features={features}
         featuresHeading="Todo para gestionar tu despacho legal"
         faqs={FAQS}
+        relatedPosts={[
+          { slug: "software-agendamiento-consultorios-terapeutas-colombia", title: "Software de agendamiento para servicios profesionales: guía completa 2026", readingTime: "9 min" },
+          { slug: "mejores-apps-agendar-citas-colombia-2026", title: "Las 7 mejores apps para agendar citas en Colombia (2026)", readingTime: "10 min" },
+        ]}
         relatedSectors={[
           { title: "Consultorios y Clínicas", slug: "consultorios", icon: "🏥", description: "Sistema de citas para profesionales de la salud" },
           { title: "Fotógrafos y Estudios", slug: "fotografia", icon: "📸", description: "Reserva de sesiones y gestión de agenda creativa" },

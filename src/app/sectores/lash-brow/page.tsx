@@ -46,6 +46,20 @@ const FAQS = [
   { q: "¿Hay permanencia o contrato mínimo?", a: "No. Es mensual, sin permanencia. Cancelas cuando quieras desde tu panel sin trámites." },
 ];
 
+const INTRO = (
+  <>
+    <p>
+      Los estudios de lash y brow enfrentan un problema de agenda específico: servicios de larga duración (1,5 a 3 horas), clientas que no se presentan y dejan un bloque enorme vacío, y retouches recurrentes cada 3–4 semanas que hay que coordinar con precisión. Gestionar todo esto por WhatsApp personal significa perder tiempo y dinero cada semana.
+    </p>
+    <p>
+      AgenditApp te permite configurar cada servicio con su duración exacta —extensión volumen ruso, lifting, microblading, diseño de cejas— y el sistema bloquea automáticamente ese tiempo en tu agenda, sin solapamientos. Los recordatorios llegan a tus clientas por WhatsApp desde <strong>tu propio número</strong> con las instrucciones específicas que configures: llegar sin maquillaje en los ojos, no usar cremas aceitosas en la zona.
+    </p>
+    <p>
+      Para los retouches, tus clientas reservan directamente desde tu página sin necesidad de que las llames. Esto convierte un servicio recurrente en un flujo de ingresos predecible, con mínimo esfuerzo de coordinación de tu parte.
+    </p>
+  </>
+);
+
 export default function LashBrowPage() {
   return (
     <>
@@ -56,6 +70,7 @@ export default function LashBrowPage() {
         icon="👁️"
         h1="Lash & Brow Studios"
         description="Optimiza tu agenda de extensiones de pestañas, microblading y servicios de cejas. Recordatorios automáticos, reservas online y gestión completa desde tu celular."
+        sectorIntro={INTRO}
         features={features}
         featuresHeading="Todo lo que necesitas para tu estudio"
         testimonial={{
@@ -63,6 +78,11 @@ export default function LashBrowPage() {
           author: "Laura — Lash Artist",
         }}
         faqs={FAQS}
+        relatedPosts={[
+          { slug: "fidelizar-clientes-salon-belleza", title: "Cómo fidelizar clientes: programas de lealtad que sí funcionan", readingTime: "9 min" },
+          { slug: "reducir-inasistencias-salon-belleza-whatsapp", title: "Cómo reducir las inasistencias con recordatorios automáticos por WhatsApp", readingTime: "8 min" },
+          { slug: "cuanto-cuesta-software-agendamiento-salon", title: "¿Cuánto cuesta un software de agendamiento? Comparativa 2026", readingTime: "8 min" },
+        ]}
         relatedSectors={[
           { title: "Salones de Belleza", slug: "salones-belleza", icon: "💇‍♀️", description: "Sistema completo para manicure, pedicure y tratamientos" },
           { title: "Barberías", slug: "barberias", icon: "💈", description: "Sistema de turnos para barberos y servicios express" },

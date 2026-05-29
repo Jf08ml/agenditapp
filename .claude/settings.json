@@ -13,7 +13,8 @@
       "Bash(Remove-Item -Recurse -Force \"d:\\\\proyectos-personales\\\\agenditapp\\\\.next\" -ErrorAction SilentlyContinue)",
       "Bash(Write-Host \"Cache cleared\")",
       "Bash(npm list *)",
-      "Bash(python -c ' *)"
+      "Bash(python -c ' *)",
+      "Bash(npx next *)"
     ],
     "additionalDirectories": [
       "d:\\proyectos-personales\\agenditapp\\src\\app\\vs"

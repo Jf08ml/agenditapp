@@ -46,6 +46,20 @@ const FAQS = [
   { q: "¿Hay permanencia o contrato mínimo?", a: "No. AgenditApp es mes a mes, sin permanencia. Puedes cancelar cuando quieras sin trámites ni penalizaciones." },
 ];
 
+const INTRO = (
+  <>
+    <p>
+      Las escuelas de danza y yoga tienen una dinámica particular: clases grupales con cupo limitado, horario semanal recurrente, alumnos que a veces no pueden asistir y necesitan recuperar, y nuevos estudiantes que quieren una clase de prueba antes de comprometerse. Gestionar todo esto en un cuaderno físico o por mensajes de WhatsApp dificulta ver la ocupación real y planear las clases.
+    </p>
+    <p>
+      AgenditApp permite crear clases con cupos máximos definidos —tu clase de yoga no puede exceder 12 alumnos y el sistema lo controla automáticamente. Cada alumno reserva su lugar online, recibe un recordatorio antes de su clase y si necesita recuperar puede hacerlo desde la misma plataforma sin generar una conversación de WhatsApp contigo.
+    </p>
+    <p>
+      Para escuelas con varios instructores y estilos (ballet, urbano, contemporáneo, hatha yoga, pilates), cada servicio tiene su propia disponibilidad independiente. Desde un solo panel ves toda la operación de la escuela: qué clases están llenas, cuáles tienen disponibilidad y qué instructores están más ocupados.
+    </p>
+  </>
+);
+
 export default function DanzaYogaPage() {
   return (
     <>
@@ -56,6 +70,7 @@ export default function DanzaYogaPage() {
         icon="💃"
         h1="Escuelas de Danza y Yoga"
         description="Gestiona tu escuela de danza, yoga o pilates de forma profesional. Controla clases, cupos, instructores y recordatorios automáticos desde cualquier dispositivo."
+        sectorIntro={INTRO}
         features={features}
         featuresHeading="Todo para tu escuela de danza y yoga"
         testimonial={{
@@ -63,6 +78,10 @@ export default function DanzaYogaPage() {
           author: "Instructora de Yoga — Colombia",
         }}
         faqs={FAQS}
+        relatedPosts={[
+          { slug: "primeros-clientes-salon-belleza-barberia", title: "Cómo conseguir los primeros 100 clientes para tu negocio de servicios", readingTime: "10 min" },
+          { slug: "mejores-apps-agendar-citas-colombia-2026", title: "Las 7 mejores apps para agendar citas en Colombia (2026)", readingTime: "10 min" },
+        ]}
         relatedSectors={[
           { title: "Gimnasios y Fitness", slug: "gimnasios", icon: "🏋️‍♀️", description: "Reservas de clases y entrenamiento personal" },
           { title: "Profesores de Música", slug: "musica", icon: "🎸", description: "Agenda de clases particulares y talleres musicales" },

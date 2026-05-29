@@ -46,6 +46,20 @@ const FAQS = [
   { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes inician desde $10 USD al mes, sin permanencia ni contrato mínimo. Puedes cancelar cuando quieras." },
 ];
 
+const INTRO = (
+  <>
+    <p>
+      Uno de los mayores desafíos en una consulta nutricional es la adherencia: el paciente agenda su primera cita con motivación, pero falla en los controles de seguimiento. Sin un sistema de recordatorios, hasta el 40% de los controles mensuales no se presentan. Y cuando el profesional tiene que llamar paciente por paciente para confirmar, la carga operativa es insostenible.
+    </p>
+    <p>
+      AgenditApp resuelve esto con recordatorios automáticos por WhatsApp enviados desde <strong>tu propio número</strong> —no de un número genérico. El paciente confirma o reprograma en segundos sin tener que llamarte. Esto mejora directamente la adherencia al plan nutricional y los resultados del tratamiento.
+    </p>
+    <p>
+      Además, al digitalizar tu agenda, eliminas el &ldquo;¿cuándo tiene disponible?&rdquo; por WhatsApp y liberas horas de tu día. Tus pacientes reservan desde tu página web, ven tus horarios en tiempo real y reciben confirmación inmediata. Tú te enfocas en la consulta, no en la coordinación.
+    </p>
+  </>
+);
+
 export default function NutricionPage() {
   return (
     <>
@@ -56,6 +70,7 @@ export default function NutricionPage() {
         icon="🥗"
         h1="Nutricionistas"
         description="Gestiona tu consulta nutricional con una herramienta profesional. Controla consultas, seguimiento y recordatorios automáticos para mejorar la adherencia de tus pacientes."
+        sectorIntro={INTRO}
         features={features}
         featuresHeading="Todo para optimizar tu consulta nutricional"
         testimonial={{
@@ -63,6 +78,10 @@ export default function NutricionPage() {
           author: "Nutricionista — Colombia",
         }}
         faqs={FAQS}
+        relatedPosts={[
+          { slug: "software-agendamiento-consultorios-terapeutas-colombia", title: "Software de agendamiento para consultorios y centros terapéuticos: guía completa 2026", readingTime: "9 min" },
+          { slug: "reducir-inasistencias-salon-belleza-whatsapp", title: "Cómo reducir las inasistencias con recordatorios automáticos por WhatsApp", readingTime: "8 min" },
+        ]}
         relatedSectors={[
           { title: "Consultorios y Clínicas", slug: "consultorios", icon: "🏥", description: "Sistema de citas para profesionales de la salud" },
           { title: "Psicología y Terapia", slug: "psicologia", icon: "🧠", description: "Agenda confidencial para psicólogos y terapeutas" },

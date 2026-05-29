@@ -63,6 +63,20 @@ const FAQS = [
   { q: "¿Hay permanencia o contrato mínimo?", a: "No. Es mes a mes, sin permanencia ni cláusulas. Puedes cancelar cuando quieras desde tu panel de administración." },
 ];
 
+const INTRO = (
+  <>
+    <p>
+      Las barberías enfrentan una combinación única de desafíos: servicios de corta duración (20–30 minutos), múltiples barberos con clientes propios y la tensión constante entre walk-ins y reservas. Gestionar esto a mano —especialmente los viernes en la tarde— significa estrés, confusiones y citas perdidas que nunca se recuperan.
+    </p>
+    <p>
+      AgenditApp le da a cada barbero su propio calendario y disponibilidad. Los clientes reservan a su barbero favorito desde tu landing en segundos, sin llamar. El sistema bloquea automáticamente el tiempo exacto por servicio, evita solapamientos y envía recordatorios por WhatsApp desde <strong>tu propio número</strong> —no de un remitente genérico— lo que genera tasas de confirmación mucho más altas.
+    </p>
+    <p>
+      El resultado es una agenda que se llena sola: menos tiempo pegado al teléfono coordinando turnos, menos ausencias y más ingresos. Barberías que usan AgenditApp reportan reducciones de hasta un 70% en inasistencias y recuperan entre 1 y 2 horas diarias que antes dedicaban a gestión manual.
+    </p>
+  </>
+);
+
 export default function BarberiasPage() {
   return (
     <>
@@ -73,9 +87,16 @@ export default function BarberiasPage() {
         icon="💈"
         h1="Barberías"
         description="Optimiza tu barbería con reservas online automáticas, control de turnos express y recordatorios por WhatsApp. Aumenta tu facturación sin perder tiempo."
+        sectorIntro={INTRO}
         features={features}
         featuresHeading="Todo lo que necesitas para tu barbería"
         faqs={FAQS}
+        relatedPosts={[
+          { slug: "gestionar-equipo-barberia-salon-comisiones", title: "Cómo gestionar el equipo de tu barbería: horarios, comisiones y agenda por empleado", readingTime: "9 min" },
+          { slug: "primeros-clientes-salon-belleza-barberia", title: "Cómo conseguir los primeros 100 clientes para tu barbería", readingTime: "10 min" },
+          { slug: "digitalizar-agenda-barberia-salon-2026", title: "Guía completa: cómo digitalizar la agenda de tu barbería en 2026", readingTime: "9 min" },
+          { slug: "reducir-inasistencias-salon-belleza-whatsapp", title: "Cómo reducir las inasistencias con recordatorios automáticos por WhatsApp", readingTime: "8 min" },
+        ]}
         relatedSectors={[
           { title: "Salones de Belleza", slug: "salones-belleza", icon: "💇‍♀️", description: "Sistema completo para manicure, pedicure y tratamientos" },
           { title: "Estética Médica", slug: "estetica-medica", icon: "💉", description: "Agenda para tratamientos faciales y procedimientos" },

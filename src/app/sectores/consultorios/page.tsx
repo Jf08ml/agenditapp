@@ -46,6 +46,20 @@ const FAQS = [
   { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes comienzan desde $10 USD al mes, sin permanencia. Puedes cancelar en cualquier momento. El plan Esencial ($20 USD) incluye recordatorios automáticos por WhatsApp." },
 ];
 
+const INTRO = (
+  <>
+    <p>
+      En un consultorio médico o centro de salud, una mala gestión de la agenda no solo cuesta tiempo —afecta la continuidad del tratamiento. Cuando los pacientes pierden citas de seguimiento o los protocolos se interrumpen por falta de coordinación, la calidad de la atención se resiente. Y gestionar todo por WhatsApp personal hace imposible mantener un registro real de asistencia.
+    </p>
+    <p>
+      AgenditApp te permite diferenciar tipos de consulta (primera vez, control, procedimiento), configurar duraciones distintas por servicio y enviar recordatorios automáticos desde <strong>tu propio número</strong>. El paciente confirma o reprograma sin llamar al consultorio, y tú tienes un registro completo de asistencia para hacer seguimiento de cada paciente.
+    </p>
+    <p>
+      Para centros con varios profesionales, cada uno gestiona su propia agenda desde el mismo panel. Sin cruces de horario, sin listas de espera en papel, sin la presión de coordinar todo por teléfono.
+    </p>
+  </>
+);
+
 export default function ConsultoriosPage() {
   return (
     <>
@@ -56,9 +70,15 @@ export default function ConsultoriosPage() {
         icon="🏥"
         h1="Consultorios y Clínicas"
         description="Moderniza tu consultorio con reservas online automáticas, control de pacientes, recordatorios por WhatsApp y agenda por profesional. Sin permanencia."
+        sectorIntro={INTRO}
         features={features}
         featuresHeading="Todo lo que necesitas para tu consultorio"
         faqs={FAQS}
+        relatedPosts={[
+          { slug: "software-agendamiento-consultorios-terapeutas-colombia", title: "Software de agendamiento para consultorios y centros terapéuticos: guía completa 2026", readingTime: "9 min" },
+          { slug: "reducir-inasistencias-salon-belleza-whatsapp", title: "Cómo reducir las inasistencias con recordatorios automáticos por WhatsApp", readingTime: "8 min" },
+          { slug: "mejores-apps-agendar-citas-colombia-2026", title: "Las 7 mejores apps para agendar citas en Colombia (2026)", readingTime: "10 min" },
+        ]}
         relatedSectors={[
           { title: "Odontología", slug: "odontologia", icon: "🦷", description: "Sistema de citas para dentistas y tratamientos" },
           { title: "Psicología y Terapia", slug: "psicologia", icon: "🧠", description: "Agenda confidencial para psicólogos y terapeutas" },

@@ -63,6 +63,20 @@ const FAQS = [
   { q: "¿Mis clientes necesitan descargar alguna aplicación?", a: "No. Tus clientes reservan directamente desde tu página web personalizada usando el navegador de su celular, sin necesidad de descargar nada." },
 ];
 
+const INTRO = (
+  <>
+    <p>
+      Gestionar un salón de belleza con varios estilistas, duraciones de servicio distintas y citas back-to-back es un desafío logístico que el WhatsApp personal no puede resolver. Cuando una clienta cancela a última hora y ese espacio queda vacío, son ingresos directos perdidos. Cuando dos clientas quedan agendadas al mismo tiempo con la misma estilista, se convierte en caos.
+    </p>
+    <p>
+      AgenditApp fue diseñado exactamente para esto: cada estilista tiene su propio horario, las clientas reservan el servicio y la profesional que prefieren, y los recordatorios automáticos por WhatsApp —enviados desde <strong>tu propio número</strong>— reducen las ausencias hasta un 70%. Recuperas una hora diaria que antes dedicabas a coordinar citas por mensajes.
+    </p>
+    <p>
+      El sistema también te da visibilidad financiera: qué servicios generan más ingresos, cuáles estilistas tienen mayor ocupación y qué horarios son más rentables. Toma decisiones con datos, no con intuición.
+    </p>
+  </>
+);
+
 export default function SalonesBellezaPage() {
   return (
     <>
@@ -73,6 +87,7 @@ export default function SalonesBellezaPage() {
         icon="💇‍♀️"
         h1="Salones de Belleza"
         description="Optimiza la gestión de tu salón con reservas online automáticas, recordatorios por WhatsApp y control completo de servicios y estilistas. Sin permanencia."
+        sectorIntro={INTRO}
         features={features}
         featuresHeading="Todo lo que necesitas para tu salón"
         testimonial={{
@@ -80,6 +95,12 @@ export default function SalonesBellezaPage() {
           author: "Laura M. — Salón de Belleza en Bogotá",
         }}
         faqs={FAQS}
+        relatedPosts={[
+          { slug: "fidelizar-clientes-salon-belleza", title: "Cómo fidelizar clientes en tu salón de belleza: programas de lealtad que sí funcionan", readingTime: "9 min" },
+          { slug: "marketing-digital-salon-belleza-colombia", title: "Marketing digital para salones de belleza: la guía completa para Colombia 2026", readingTime: "12 min" },
+          { slug: "reactivar-clientes-dormidos-whatsapp-salon", title: "Cómo reactivar clientes que llevan meses sin volver a tu salón con WhatsApp", readingTime: "8 min" },
+          { slug: "reducir-inasistencias-salon-belleza-whatsapp", title: "Cómo reducir las inasistencias con recordatorios automáticos por WhatsApp", readingTime: "8 min" },
+        ]}
         relatedSectors={[
           { title: "Barberías", slug: "barberias", icon: "💈", description: "Sistema de turnos para barberos y servicios express" },
           { title: "Spas y Bienestar", slug: "spas", icon: "🧖‍♀️", description: "Gestión de masajes, faciales y tratamientos" },

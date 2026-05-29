@@ -46,6 +46,20 @@ const FAQS = [
   { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes inician desde $10 USD al mes, sin permanencia. El plan Esencial ($20 USD) incluye recordatorios automáticos por WhatsApp desde tu número de consultorio." },
 ];
 
+const INTRO = (
+  <>
+    <p>
+      La terapia psicológica tiene un requisito fundamental: la consistencia. Un paciente que pierde una sesión o no reprograma rápidamente puede interrumpir un proceso terapéutico construido durante semanas. El problema para muchos psicólogos es que la gestión manual por WhatsApp genera fricción en el peor momento —cuando el paciente más necesita facilidad de contacto.
+    </p>
+    <p>
+      AgenditApp da un sistema de agenda que respeta la confidencialidad del paciente: cada persona solo ve sus propias citas y datos. El recordatorio automático por WhatsApp llega 24 horas antes y permite al paciente confirmar o reprogramar desde su propio teléfono. Y como el mensaje llega desde <strong>tu número de consultorio</strong>, la relación terapéutica se mantiene con el profesionalismo que exige el vínculo terapéutico.
+    </p>
+    <p>
+      Configura tiempo de buffer entre sesiones para tus notas clínicas, gestiona sesiones presenciales y virtuales desde el mismo panel, y controla pagos por sesión o por proceso terapéutico completo. Sin distracciones administrativas en medio de tu jornada.
+    </p>
+  </>
+);
+
 export default function PsicologiaPage() {
   return (
     <>
@@ -56,9 +70,14 @@ export default function PsicologiaPage() {
         icon="🧠"
         h1="Psicología y Terapia"
         description="Sistema confidencial diseñado para profesionales de salud mental. Gestiona sesiones, recordatorios y seguimiento de pacientes con total privacidad."
+        sectorIntro={INTRO}
         features={features}
         featuresHeading="Todo para profesionalizar tu práctica"
         faqs={FAQS}
+        relatedPosts={[
+          { slug: "software-agendamiento-consultorios-terapeutas-colombia", title: "Software de agendamiento para consultorios y centros terapéuticos: guía completa 2026", readingTime: "9 min" },
+          { slug: "reducir-inasistencias-salon-belleza-whatsapp", title: "Cómo reducir las inasistencias con recordatorios automáticos por WhatsApp", readingTime: "8 min" },
+        ]}
         relatedSectors={[
           { title: "Consultorios y Clínicas", slug: "consultorios", icon: "🏥", description: "Sistema de citas para profesionales de la salud" },
           { title: "Nutricionistas", slug: "nutricion", icon: "🥗", description: "Consultas nutricionales y seguimiento de pacientes" },

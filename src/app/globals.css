@@ -128,3 +128,22 @@ body {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
 }
+
+/* Prose para intro de páginas de sector */
+.prose-custom p {
+  color: var(--text-body);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+.prose-custom h2 {
+  color: var(--text-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+.prose-custom strong {
+  color: var(--text-heading);
+  font-weight: 600;
+}
