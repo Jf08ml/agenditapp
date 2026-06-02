@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 import type { ReferralSource } from "../sources";
 
 /* ─── Helpers de animación ──────────────────────────────── */
@@ -95,6 +96,14 @@ function CalendarIcon() {
   );
 }
 
+function ArrowDownIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 /* ─── Features de AgenditApp ────────────────────────────── */
 
 const FEATURES = [
@@ -128,6 +137,33 @@ export default function RefPageContent({ source, badge }: Props) {
   const headlinePrefix = isInfluencer
     ? `${firstName} te invitó. Reclama tu`
     : `Llegaste por ${source.name}. Reclama tu`;
+
+  const offerRef = useRef<HTMLElement>(null);
+  const [isOfferVisible, setIsOfferVisible] = useState(false);
+  // Delay showing the FAB so it doesn't flash immediately on desktop
+  const [fabReady, setFabReady] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setFabReady(true), 1200);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const el = offerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsOfferVisible(entry.isIntersecting),
+      { threshold: 0.25 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollToOffer = () => {
+    offerRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const showFab = fabReady && !isOfferVisible;
 
   return (
     <main className="min-h-screen pt-28">
@@ -300,6 +336,7 @@ export default function RefPageContent({ source, badge }: Props) {
 
             {/* ── Columna derecha: oferta ── */}
             <motion.aside
+              ref={offerRef}
               {...rise(0.23)}
               className="sticky top-7"
               style={{
@@ -324,7 +361,14 @@ export default function RefPageContent({ source, badge }: Props) {
                       "radial-gradient(circle, rgba(255,255,255,0.18), rgba(255,255,255,0))",
                   }}
                 />
-                <div className="text-[30px] leading-none relative">🎁</div>
+                {/* Emoji con rebote de atención */}
+                <motion.div
+                  className="text-[30px] leading-none relative"
+                  animate={{ rotate: [0, -12, 12, -8, 8, 0], scale: [1, 1.15, 1.15, 1.1, 1.1, 1] }}
+                  transition={{ duration: 0.7, delay: 1.6, ease: "easeInOut" }}
+                >
+                  🎁
+                </motion.div>
                 <div
                   className="font-semibold text-[23px] text-white mt-[10px] relative"
                   style={{ letterSpacing: "-0.01em" }}
@@ -387,7 +431,7 @@ export default function RefPageContent({ source, badge }: Props) {
                   </span>
                   <span className="text-[15px] text-body leading-[1.45]">
                     <b className="text-heading font-bold">
-                      Primer mes 100% gratis
+                      {source.offerBase}
                     </b>{" "}
                     — al crear tu cuenta con este enlace de invitación.
                   </span>
@@ -448,6 +492,40 @@ export default function RefPageContent({ source, badge }: Props) {
           </div>
         </div>
       </section>
+
+      {/* ── Botón flotante ── */}
+      <AnimatePresence>
+        {showFab && (
+          <motion.div
+            className="fixed bottom-6 left-1/2 z-50"
+            style={{ x: "-50%" }}
+            initial={{ opacity: 0, y: 24, scale: 0.92 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 16, scale: 0.94 }}
+            transition={{ duration: 0.38, ease: [0.22, 0.61, 0.36, 1] }}
+          >
+            <button
+              onClick={scrollToOffer}
+              className="flex items-center gap-[10px] text-white font-semibold text-[15px] px-9 py-[30px] rounded-full cursor-pointer"
+              style={{
+                background: "linear-gradient(135deg, #2a4ef2, #1a37c4)",
+                boxShadow: "0 12px 32px -8px rgba(35,71,230,0.75), 0 0 0 1px rgba(255,255,255,0.12) inset",
+                minWidth: "220px",
+                justifyContent: "center",
+              }}
+            >
+              <span>🎁</span>
+              Ver mi beneficio
+              <motion.span
+                animate={{ y: [0, 3, 0] }}
+                transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <ArrowDownIcon />
+              </motion.span>
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
