@@ -398,7 +398,7 @@ export default function RefPageContent({ source, badge }: Props) {
                       className="text-[13.5px] font-semibold flex items-center gap-[7px]"
                       style={{ color: "#8a5a12" }}
                     >
-                      ⚡ Cupos del 50% de descuento
+                      ⚡ Cupos del bono de 2 meses gratis
                     </span>
                     <span
                       className="font-semibold text-[14px]"
@@ -447,13 +447,13 @@ export default function RefPageContent({ source, badge }: Props) {
                         boxShadow: "0 6px 14px -6px rgba(35,71,230,0.7)",
                       }}
                     >
-                      %
+                      ★
                     </span>
                     <span className="text-[15px] text-body leading-[1.45]">
                       <b className="text-heading font-bold">
-                        50% de descuento los 2 primeros meses
+                        2 meses gratis
                       </b>{" "}
-                      — para los primeros 5 que activen un plan pago.
+                      — para los primeros 5 en registrarse.
                     </span>
                   </li>
                 )}
