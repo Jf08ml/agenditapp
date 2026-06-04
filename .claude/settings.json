@@ -19,7 +19,9 @@
       "Bash(Select-Object Name)",
       "Bash(findstr ref *)",
       "Bash(Write-Host \"Cache limpiado\")",
-      "WebFetch(domain:api.anthropic.com)"
+      "WebFetch(domain:api.anthropic.com)",
+      "Bash(Get-ChildItem -Path \"d:\\\\proyectos-personales\\\\agenditapp\" -Recurse -Directory -ErrorAction SilentlyContinue)",
+      "Bash(Select-Object -ExpandProperty FullName)"
     ],
     "additionalDirectories": [
       "d:\\proyectos-personales\\agenditapp\\src\\app\\vs"

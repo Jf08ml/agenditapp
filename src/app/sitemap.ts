@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: `${base}`,
-      lastModified: "2026-05-29",
+      lastModified: "2026-06-04",
       changeFrequency: "weekly",
       priority: 1.0,
     },
@@ -152,7 +152,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${base}/blog`,
-      lastModified: "2026-05-28",
+      lastModified: "2026-06-04",
       changeFrequency: "weekly",
       priority: 0.8,
     },
