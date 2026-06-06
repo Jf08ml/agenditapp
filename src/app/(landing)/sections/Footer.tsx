@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { DemoCtaButton } from "../components/ui/DemoCtaModal";
 import { motion, easeOut, type Variants } from "framer-motion";
-import { WHATSAPP_HREF, SIGNUP_HREF } from "../components/constants";
+import { getWhatsappHref, SIGNUP_HREF } from "../components/constants";
 import { CO, MX, CL, AR, ES, CR, EC } from "country-flag-icons/react/3x2";
 import { Clock, Lock, ChatCircle, type IconWeight } from "@phosphor-icons/react";
 
@@ -226,7 +226,7 @@ export default function Footer() {
                 <IconFacebook />
               </a>
               <a
-                href={WHATSAPP_HREF}
+                href={getWhatsappHref("footer")}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
@@ -236,7 +236,7 @@ export default function Footer() {
               </a>
             </div>
 
-            <DemoCtaButton className="inline-flex items-center gap-2 rounded-[10px] border border-brand/25 text-brand text-sm font-medium px-4 py-2 hover:bg-brand/6 transition-colors cursor-pointer w-fit">
+            <DemoCtaButton source="footer" className="inline-flex items-center gap-2 rounded-[10px] border border-brand/25 text-brand text-sm font-medium px-4 py-2 hover:bg-brand/6 transition-colors cursor-pointer w-fit">
               <ChatCircle size={16} weight="duotone" />
               Solicitar demo
             </DemoCtaButton>

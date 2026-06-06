@@ -204,7 +204,7 @@ export default function SectorPageContent({
             {description}
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <DemoCtaButton className="px-8 py-3.5 rounded-[14px] bg-brand text-white text-sm font-medium hover:bg-brand-hover transition-colors cursor-pointer shadow-[0_8px_24px_rgba(29,78,216,0.28)]">
+            <DemoCtaButton source="sector_page" className="px-8 py-3.5 rounded-[14px] bg-brand text-white text-sm font-medium hover:bg-brand-hover transition-colors cursor-pointer shadow-[0_8px_24px_rgba(29,78,216,0.28)]">
               Solicitar demo gratis
             </DemoCtaButton>
             <Link
@@ -443,7 +443,7 @@ export default function SectorPageContent({
             {ctaHeading}
           </h2>
           <p className="text-white/75 mb-8 leading-relaxed">{ctaBody}</p>
-          <DemoCtaButton className="inline-flex items-center px-8 py-4 rounded-[14px] bg-white text-brand font-semibold text-base hover:bg-white/90 transition-colors cursor-pointer shadow-md">
+          <DemoCtaButton source="sector_page_cta" className="inline-flex items-center px-8 py-4 rounded-[14px] bg-white text-brand font-semibold text-base hover:bg-white/90 transition-colors cursor-pointer shadow-md">
             Solicitar demo gratis
           </DemoCtaButton>
           <p className="text-white/50 text-sm mt-4">

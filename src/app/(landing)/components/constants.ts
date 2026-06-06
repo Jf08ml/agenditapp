@@ -1,5 +1,11 @@
-export const WHATSAPP_HREF =
-  "https://wa.me/573184345284?text=Hola%20%F0%9F%91%8B%20quiero%20mi%20demo%20de%20AgenditApp%20para%20mi%20negocio";
+const WA_NUMBER = "573506674686";
+const WA_BASE_TEXT = "Hola 👋 quiero mi demo de AgenditApp para mi negocio";
+
+export function getWhatsappHref(source: string): string {
+  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(`${WA_BASE_TEXT} - origen: ${source}`)}`;
+}
+
+export const WHATSAPP_HREF = getWhatsappHref("general");
 
 export const SIGNUP_HREF = "https://app.agenditapp.com/signup";
 
@@ -20,7 +26,7 @@ export const JSONLD_ORGANIZATION = {
   },
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+57-318-434-5284",
+    telephone: "+57-350-667-4686",
     contactType: "customer service",
     availableLanguage: ["Spanish"],
     areaServed: ["CO", "MX", "CR", "CL"],

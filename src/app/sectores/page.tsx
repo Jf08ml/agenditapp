@@ -93,7 +93,7 @@ export default function SectoresPage() {
               Automatiza reservas, envía recordatorios y gestiona tu agenda
               desde cualquier dispositivo.
             </p>
-            <DemoCtaButton className="inline-flex items-center gap-2 px-7 py-3.5 rounded-[14px] bg-brand text-white text-sm font-semibold hover:bg-brand-hover transition-colors shadow-md cursor-pointer">
+            <DemoCtaButton source="sectores" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-[14px] bg-brand text-white text-sm font-semibold hover:bg-brand-hover transition-colors shadow-md cursor-pointer">
               Consultar por mi sector
             </DemoCtaButton>
           </div>
@@ -160,7 +160,7 @@ export default function SectoresPage() {
               AgenditApp es flexible y se adapta a cualquier negocio de servicios.
               Contáctanos y te ayudamos a configurarlo.
             </p>
-            <DemoCtaButton className="inline-flex items-center px-7 py-3.5 rounded-[12px] bg-white text-brand font-semibold text-sm hover:bg-white/90 transition-colors cursor-pointer shadow-md">
+            <DemoCtaButton source="sectores_cta" className="inline-flex items-center px-7 py-3.5 rounded-[12px] bg-white text-brand font-semibold text-sm hover:bg-white/90 transition-colors cursor-pointer shadow-md">
               Contactar ahora
             </DemoCtaButton>
           </div>

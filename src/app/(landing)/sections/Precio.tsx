@@ -632,7 +632,7 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
               <h3 className="text-2xl font-semibold text-heading">Comparar planes</h3>
               <p className="text-body mt-1 text-sm">Revisa en detalle qué incluye cada plan.</p>
             </div>
-            <DemoCtaButton className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] border border-brand/25 text-brand text-sm font-medium hover:bg-brand/6 transition-colors cursor-pointer">
+            <DemoCtaButton source="precios" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] border border-brand/25 text-brand text-sm font-medium hover:bg-brand/6 transition-colors cursor-pointer">
               Ayúdame a elegir
             </DemoCtaButton>
           </div>

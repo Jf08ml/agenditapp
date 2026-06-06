@@ -291,7 +291,7 @@ export default function EcuadorPage() {
               >
                 Crear cuenta gratis — 7 días con todo incluido
               </a>
-              <DemoCtaButton className="inline-flex items-center justify-center rounded-[12px] border border-brand/20 text-brand font-medium px-8 py-3.5 text-[15px] hover:bg-brand/6 transition-colors cursor-pointer">
+              <DemoCtaButton source="landing_ec" className="inline-flex items-center justify-center rounded-[12px] border border-brand/20 text-brand font-medium px-8 py-3.5 text-[15px] hover:bg-brand/6 transition-colors cursor-pointer">
                 Hablar con ventas
               </DemoCtaButton>
             </div>

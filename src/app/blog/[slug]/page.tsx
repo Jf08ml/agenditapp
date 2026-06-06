@@ -152,7 +152,7 @@ const mdxComponents = {
     >
       <p className="text-lg font-semibold text-white mb-2">{title}</p>
       <p className="text-white/75 text-sm mb-5">{body}</p>
-      <DemoCtaButton className="inline-flex items-center px-7 py-3 rounded-[12px] bg-white text-brand font-semibold text-sm hover:bg-white/90 transition-colors cursor-pointer shadow-md">
+      <DemoCtaButton source="blog" className="inline-flex items-center px-7 py-3 rounded-[12px] bg-white text-brand font-semibold text-sm hover:bg-white/90 transition-colors cursor-pointer shadow-md">
         Solicitar demo gratis
       </DemoCtaButton>
     </div>

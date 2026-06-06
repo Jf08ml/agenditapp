@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { WHATSAPP_HREF } from "../constants";
+import { getWhatsappHref } from "../constants";
 
 const NAV_LINKS = [
   { href: "/funcionalidades", label: "Funciones" },
@@ -150,7 +150,7 @@ export default function Navbar() {
                     Crear cuenta gratis
                   </a>
                   <a
-                    href={WHATSAPP_HREF}
+                    href={getWhatsappHref("navbar")}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center py-3 px-4 rounded-[12px] border border-brand/20 text-brand font-medium text-sm hover:bg-brand/6 transition-colors"

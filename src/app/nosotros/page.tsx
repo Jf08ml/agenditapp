@@ -71,7 +71,7 @@ const ORGANIZATION_SCHEMA = {
   ],
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+57-318-434-5284",
+    telephone: "+57-350-667-4686",
     contactType: "customer service",
     availableLanguage: ["Spanish"],
     areaServed: ["CO", "MX", "CL", "CR"],
@@ -585,12 +585,12 @@ export default function NosotrosPage() {
               <div>
                 <p className="font-semibold text-heading mb-1">WhatsApp</p>
                 <a
-                  href="https://wa.me/573184345284"
+                  href="https://wa.me/573506674686"
                   className="text-brand hover:text-brand-hover transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  +57 318 434 5284
+                  +57 350 667 4686
                 </a>
               </div>
               <div>
@@ -633,7 +633,7 @@ export default function NosotrosPage() {
               Solicita una demo gratuita y en menos de 1 hora tienes tu agenda
               digital funcionando.
             </p>
-            <DemoCtaButton className="inline-flex items-center px-8 py-4 rounded-[14px] bg-brand text-white font-semibold text-base hover:bg-brand-hover transition-colors cursor-pointer shadow-[0_8px_24px_rgba(29,78,216,0.28)]">
+            <DemoCtaButton source="nosotros" className="inline-flex items-center px-8 py-4 rounded-[14px] bg-brand text-white font-semibold text-base hover:bg-brand-hover transition-colors cursor-pointer shadow-[0_8px_24px_rgba(29,78,216,0.28)]">
               Solicitar demo gratis
             </DemoCtaButton>
             <p className="text-muted text-sm mt-4">

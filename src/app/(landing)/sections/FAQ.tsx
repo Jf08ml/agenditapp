@@ -113,7 +113,7 @@ export default function FAQ() {
           <p className="text-sm text-body text-center sm:text-left">
             ¿Tienes alguna pregunta específica sobre tu negocio?
           </p>
-          <DemoCtaButton className="flex-shrink-0 inline-flex items-center gap-2 rounded-[10px] bg-brand text-white font-semibold px-4 py-2.5 text-sm hover:bg-brand-hover transition-colors cursor-pointer shadow-sm">
+          <DemoCtaButton source="faq" className="flex-shrink-0 inline-flex items-center gap-2 rounded-[10px] bg-brand text-white font-semibold px-4 py-2.5 text-sm hover:bg-brand-hover transition-colors cursor-pointer shadow-sm">
             <ChatCircle size={16} weight="duotone" />
             Preguntar por WhatsApp
           </DemoCtaButton>

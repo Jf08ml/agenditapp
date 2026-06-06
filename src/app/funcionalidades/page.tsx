@@ -137,7 +137,7 @@ export default function FuncionalidadesPage() {
               AgenditApp te ayuda a automatizar reservas, WhatsApp, fidelidad y
               la gestión completa del negocio para que crezcas sin complicaciones.
             </p>
-            <DemoCtaButton className="inline-flex items-center gap-2 px-7 py-3.5 rounded-[14px] bg-brand text-white text-sm font-semibold hover:bg-brand-hover transition-colors shadow-md cursor-pointer">
+            <DemoCtaButton source="funcionalidades" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-[14px] bg-brand text-white text-sm font-semibold hover:bg-brand-hover transition-colors shadow-md cursor-pointer">
               Solicitar demo gratis
             </DemoCtaButton>
           </div>
@@ -218,7 +218,7 @@ export default function FuncionalidadesPage() {
               Prueba AgenditApp y descubre cómo automatizar tu agenda puede transformar tu día a día.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
-              <DemoCtaButton className="inline-flex items-center px-7 py-3.5 rounded-[12px] bg-white text-brand font-semibold text-sm hover:bg-white/90 transition-colors cursor-pointer shadow-md">
+              <DemoCtaButton source="funcionalidades_cta" className="inline-flex items-center px-7 py-3.5 rounded-[12px] bg-white text-brand font-semibold text-sm hover:bg-white/90 transition-colors cursor-pointer shadow-md">
                 Probar gratis ahora
               </DemoCtaButton>
               <Link
