@@ -14,31 +14,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: `${base}`,
-      lastModified: "2026-06-04",
+      lastModified: "2026-06-10",
       changeFrequency: "weekly",
       priority: 1.0,
     },
     {
       url: `${base}/funcionalidades`,
-      lastModified: "2026-05-01",
+      lastModified: "2026-06-10",
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${base}/precios`,
-      lastModified: "2026-05-29",
+      lastModified: "2026-06-10",
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${base}/sectores`,
-      lastModified: "2026-05-01",
+      lastModified: "2026-06-10",
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${base}/sectores/salones-belleza`,
-      lastModified: "2026-05-01",
+      lastModified: "2026-06-10",
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -50,7 +50,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${base}/sectores/spas`,
-      lastModified: "2026-05-01",
+      lastModified: "2026-06-10",
       changeFrequency: "monthly",
       priority: 0.8,
     },
@@ -152,32 +152,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${base}/blog`,
-      lastModified: "2026-06-04",
+      lastModified: "2026-06-10",
       changeFrequency: "weekly",
       priority: 0.8,
     },
     // Comparativas vs competidores — alta prioridad, páginas transaccionales de fondo de embudo
     {
       url: `${base}/vs/fresha`,
-      lastModified: "2026-05-29",
+      lastModified: "2026-06-10",
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${base}/vs/agendapro`,
-      lastModified: "2026-05-29",
+      lastModified: "2026-06-10",
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${base}/vs/booksy`,
-      lastModified: "2026-05-29",
+      lastModified: "2026-06-10",
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${base}/vs/weibook`,
-      lastModified: "2026-05-29",
+      lastModified: "2026-06-10",
       changeFrequency: "monthly",
       priority: 0.9,
     },
