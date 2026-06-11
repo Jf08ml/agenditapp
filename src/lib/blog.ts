@@ -12,6 +12,7 @@ export interface HowToStep {
 export interface PostMeta {
   slug: string;
   title: string;
+  seoTitle?: string;
   description: string;
   publishedAt: string;
   keywords: string[];

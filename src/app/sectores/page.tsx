@@ -31,7 +31,7 @@ const SECTOR_ICON_MAP: Record<string, PIEntry> = {
 };
 
 export const metadata: Metadata = {
-  title: "Sectores | Software de Agendamiento para Belleza, Bienestar y Salud",
+  title: { absolute: "Software de Agendamiento por Sector | AgenditApp" },
   description:
     "Descubre cómo AgenditApp optimiza la gestión de citas para salones de belleza, barberías, spas, consultorios médicos, gimnasios y centros de bienestar.",
   alternates: { canonical: "https://agenditapp.com/sectores" },

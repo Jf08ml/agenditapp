@@ -5,9 +5,9 @@ import PageHeader from "@/app/(landing)/components/ui/PageHeader";
 import PageFooter from "@/app/(landing)/components/ui/PageFooter";
 
 export const metadata: Metadata = {
-  title: "Blog | Recursos para negocios de citas y agendamiento",
+  title: { absolute: "Blog AgenditApp | Guías para Salones, Barberías y Spas" },
   description:
-    "Guías, comparativas y consejos para dueños de salones de belleza, barberías y negocios de servicios. Aprende a digitalizar tu agenda, reducir ausencias y hacer crecer tu negocio.",
+    "Guías, comparativas y consejos para digitalizar tu salón, barbería o spa: WhatsApp, marketing, fidelización y agendamiento online.",
   alternates: { canonical: "https://agenditapp.com/blog" },
   openGraph: {
     title: "Blog AgenditApp — Recursos para negocios de citas",

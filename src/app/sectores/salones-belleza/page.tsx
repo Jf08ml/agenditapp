@@ -5,14 +5,14 @@ import PageFooter from "../../(landing)/components/ui/PageFooter";
 import SectorPageContent from "../../(landing)/components/ui/SectorPageContent";
 
 export const metadata: Metadata = {
-  title: "Software para Salones de Belleza | Reservas + WhatsApp 24/7",
+  title: { absolute: "Sistema de Citas para Salones de Belleza + Anticipos" },
   description:
-    "Sistema de agendamiento para tu salón de belleza. Reservas 24/7 + WhatsApp desde tu número. Reduce ausencias un 70%. Sin permanencia. Desde $10/mes.",
+    "Reservas online 24/7 para tu salón: cobra anticipos por Nequi o transferencia al agendar, recordatorios por WhatsApp y -70% inasistencias. Desde $10/mes.",
   alternates: { canonical: "https://agenditapp.com/sectores/salones-belleza" },
   openGraph: {
-    title: "Software para Salones de Belleza | Reservas 24/7 + WhatsApp",
+    title: "Sistema de Citas para Salones de Belleza + Anticipos",
     description:
-      "Sistema de agendamiento para tu salón de belleza. Reservas 24/7 + WhatsApp desde tu número. Reduce ausencias un 70%. Sin permanencia. Desde $10/mes.",
+      "Reservas online 24/7 para tu salón: cobra anticipos por Nequi o transferencia al agendar, recordatorios por WhatsApp y -70% inasistencias. Desde $10/mes.",
     url: "https://agenditapp.com/sectores/salones-belleza",
     images: [{ url: "/og?title=Salones%20de%20Belleza&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Salones de Belleza — AgenditApp" }],
   },
@@ -42,7 +42,7 @@ const features = [
   { title: "Recordatorios automáticos", description: "Reduce ausencias hasta 70% con recordatorios por WhatsApp 24 horas antes.", icon: "📲" },
   { title: "Gestión de estilistas", description: "Asigna citas por estilista, controla horarios y disponibilidad en tiempo real.", icon: "👩‍🦰" },
   { title: "Catálogo de servicios", description: "Muestra tus servicios con precios y duración. Tus clientes reservan lo que necesitan.", icon: "💅" },
-  { title: "Control de pagos", description: "Registra pagos, abonos y métodos de pago. Reportes financieros automáticos.", icon: "💰" },
+  { title: "Anticipos por Nequi o transferencia", description: "Tus clientas reservan y dejan un anticipo por Nequi o transferencia desde el mismo link — sin llamadas ni confirmaciones manuales.", icon: "💰" },
   { title: "Página web incluida", description: "Landing personalizada para que tus clientes reserven online 24/7.", icon: "🌐" },
 ];
 
@@ -76,7 +76,7 @@ export default function SalonesBellezaPage() {
       <SectorPageContent
         sectorName="Salones de Belleza"
         icon="💇‍♀️"
-        h1="Salones de Belleza"
+        h1="Sistema de Agendamiento para Salones de Belleza"
         description="Optimiza la gestión de tu salón con reservas online automáticas, recordatorios por WhatsApp y control completo de servicios y estilistas. Sin permanencia."
         sectorIntro={INTRO}
         features={features}

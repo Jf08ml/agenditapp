@@ -285,8 +285,11 @@ export async function generateMetadata({
   const post = getPost(slug);
   if (!post) return {};
   const ogImage = `/og?title=${encodeURIComponent(post.title)}&subtitle=${encodeURIComponent(post.category)}&tag=Blog`;
+  const seoTitle =
+    post.seoTitle ||
+    (post.title.length > 57 ? `${post.title.slice(0, 57)}...` : post.title);
   return {
-    title: post.title,
+    title: { absolute: seoTitle },
     description: post.description,
     alternates: { canonical: `https://agenditapp.com/blog/${slug}` },
     openGraph: {

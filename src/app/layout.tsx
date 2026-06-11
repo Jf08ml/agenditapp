@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 import { Poppins, Instrument_Serif } from "next/font/google";
+import WhatsAppFAB from "./(landing)/components/ui/WhatsAppFAB";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -91,6 +92,7 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         <Analytics />
         {children}
+        <WhatsAppFAB />
       </body>
     </html>
   );

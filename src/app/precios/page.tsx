@@ -6,14 +6,14 @@ import PageFooter from "../(landing)/components/ui/PageFooter";
 import Precio from "../(landing)/sections/Precio";
 
 export const metadata: Metadata = {
-  title: "Planes AgenditApp | Empieza Gratis · Sin Tarjeta · Sin Permanencia",
+  title: { absolute: "Precios del Software de Agendamiento 2026 | Desde $10/mes" },
   description:
-    "Empieza gratis hoy con 7 días de acceso completo. Planes de pago desde $10 USD/mes sin permanencia. Reservas ilimitadas + WhatsApp + página web incluida.",
+    "Planes desde $10 USD/mes para salones, barberías y spas en LATAM. WhatsApp automático desde tu número, sin tarjeta y sin permanencia. Prueba 7 días gratis.",
   alternates: { canonical: "https://agenditapp.com/precios" },
   openGraph: {
-    title: "Planes AgenditApp | Empieza Gratis · Sin Tarjeta · Sin Permanencia",
+    title: "Precios del Software de Agendamiento 2026 | Desde $10/mes",
     description:
-      "Empieza gratis hoy con 7 días de acceso completo. Planes de pago desde $10 USD/mes sin permanencia. Reservas ilimitadas + WhatsApp + página web incluida.",
+      "Planes desde $10 USD/mes para salones, barberías y spas en LATAM. WhatsApp automático desde tu número, sin tarjeta y sin permanencia. Prueba 7 días gratis.",
     url: "https://agenditapp.com/precios",
     images: ["/inicio_page.png"],
   },

@@ -324,8 +324,7 @@ function PlanCard({ plan, yearly }: { plan: typeof PLANS[number]; yearly: boolea
             href={SIGNUP_HREF}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full px-5 py-3 rounded-[12px] text-sm font-bold text-center transition-all duration-200 shadow-sm flex items-center justify-center gap-2"
-            style={{ background: "#25D366", color: "#fff" }}
+            className="w-full px-5 py-3 rounded-[12px] text-sm font-bold text-center transition-all duration-200 shadow-sm flex items-center justify-center gap-2 bg-brand text-white hover:bg-brand-hover"
           >
             {plan.ctaLabel}
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
@@ -559,6 +558,11 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
           <p className="mt-4 text-base text-body leading-relaxed">
             Regístrate y obtén 7 días con todo incluido. Después, el plan gratuito para siempre — o elige un plan de pago cuando quieras.
           </p>
+          <div className="mt-5 flex justify-center">
+            <DemoCtaButton source="precios" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] border border-brand/25 text-brand text-sm font-medium hover:bg-brand/6 transition-colors cursor-pointer">
+              ¿No sabes qué plan elegir? Habla con un asesor
+            </DemoCtaButton>
+          </div>
         </motion.div>
 
         {/* ── Toggle mensual / anual ── */}
@@ -632,9 +636,6 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
               <h3 className="text-2xl font-semibold text-heading">Comparar planes</h3>
               <p className="text-body mt-1 text-sm">Revisa en detalle qué incluye cada plan.</p>
             </div>
-            <DemoCtaButton source="precios" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] border border-brand/25 text-brand text-sm font-medium hover:bg-brand/6 transition-colors cursor-pointer">
-              Ayúdame a elegir
-            </DemoCtaButton>
           </div>
 
           {/* Desktop table */}
@@ -720,8 +721,7 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
                       href={SIGNUP_HREF}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full px-3 py-2.5 rounded-[10px] text-xs font-bold text-center transition-all flex items-center justify-center"
-                      style={{ background: "#25D366", color: "#fff" }}
+                      className="w-full px-3 py-2.5 rounded-[10px] text-xs font-bold text-center transition-all flex items-center justify-center bg-brand text-white hover:bg-brand-hover"
                     >
                       Gratis
                     </a>
@@ -842,8 +842,7 @@ function MobileCompare({
                   href={SIGNUP_HREF}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full px-5 py-3 rounded-[12px] text-sm font-bold text-center mt-2 flex items-center justify-center gap-2"
-                  style={{ background: "#25D366", color: "#fff" }}
+                  className="w-full px-5 py-3 rounded-[12px] text-sm font-bold text-center mt-2 flex items-center justify-center gap-2 bg-brand text-white hover:bg-brand-hover"
                 >
                   {plan.ctaLabel}
                 </a>

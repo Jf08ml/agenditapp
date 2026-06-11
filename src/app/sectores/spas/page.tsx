@@ -5,14 +5,14 @@ import PageFooter from "../../(landing)/components/ui/PageFooter";
 import SectorPageContent from "../../(landing)/components/ui/SectorPageContent";
 
 export const metadata: Metadata = {
-  title: "Software para Spas y Bienestar | Reservas + WhatsApp 24/7",
+  title: { absolute: "Software para Spas y Centros de Bienestar | WhatsApp 24/7" },
   description:
-    "Software para spas y centros de bienestar: reservas online, gestión de terapeutas y salas, WhatsApp desde tu número. Reduce ausencias 70%. Desde $10/mes.",
+    "Sistema de reservas para spas y centros de bienestar: gestiona terapeutas, salas y WhatsApp desde tu número. Reduce ausencias 70%. Desde $10/mes.",
   alternates: { canonical: "https://agenditapp.com/sectores/spas" },
   openGraph: {
-    title: "Software para Spas y Bienestar | Reservas + WhatsApp — AgenditApp",
+    title: "Software para Spas y Centros de Bienestar | WhatsApp 24/7",
     description:
-      "Software para spas y centros de bienestar: reservas online, gestión de terapeutas y salas, WhatsApp desde tu número. Reduce ausencias 70%. Desde $10/mes.",
+      "Sistema de reservas para spas y centros de bienestar: gestiona terapeutas, salas y WhatsApp desde tu número. Reduce ausencias 70%. Desde $10/mes.",
     url: "https://agenditapp.com/sectores/spas",
     images: [{ url: "/og?title=Spas%20y%20Bienestar&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Spas y Centros de Bienestar — AgenditApp" }],
   },

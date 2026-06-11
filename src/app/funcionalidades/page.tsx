@@ -13,9 +13,9 @@ import PageFooter from "../(landing)/components/ui/PageFooter";
 type PhosphorIcon = React.ComponentType<{ size?: number; weight?: IconWeight; color?: string }>;
 
 export const metadata: Metadata = {
-  title: "Funcionalidades | Características del Sistema de Agendamiento AgenditApp",
+  title: { absolute: "Funcionalidades del Software de Agendamiento | AgenditApp" },
   description:
-    "Descubre todas las funcionalidades de AgenditApp: reservas online 24/7, confirmación/cancelación por WhatsApp, recordatorios automáticos, fidelidad, branding personalizado, gestión de empleados, comisiones, analíticas y página web.",
+    "Reservas 24/7, WhatsApp automático, fidelización, gestión de empleados, comisiones y página web — todo en una sola plataforma. Sin permanencia.",
   alternates: { canonical: "https://agenditapp.com/funcionalidades" },
   openGraph: {
     title: "Funcionalidades | Sistema de Agendamiento AgenditApp",

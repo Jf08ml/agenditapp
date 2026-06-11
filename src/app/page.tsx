@@ -27,7 +27,7 @@ import {
 } from "./(landing)/components/constants";
 
 export const metadata: Metadata = {
-  title: "AgenditApp | Sistema de Agendamiento Online y Gestión de Citas Automático",
+  title: { absolute: "Agendamiento Online con WhatsApp Automático | AgenditApp" },
   description:
     "Plataforma moderna de agendamiento inteligente para negocios de belleza, bienestar y servicios profesionales. Recibe citas online, envía recordatorios automáticos por WhatsApp y gestiona tu agenda desde cualquier dispositivo. Ideal para salones, barberías, spas, consultorios y más.",
   openGraph: {

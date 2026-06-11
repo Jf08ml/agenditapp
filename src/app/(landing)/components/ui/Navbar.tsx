@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { getWhatsappHref } from "../constants";
+import { DemoCtaButton } from "./DemoCtaModal";
 
 const NAV_LINKS = [
   { href: "/funcionalidades", label: "Funciones" },
@@ -68,6 +68,12 @@ export default function Navbar() {
 
             {/* Right: CTA */}
             <div className="hidden lg:flex items-center gap-3">
+              <DemoCtaButton
+                source="navbar_desktop"
+                className="px-5 py-2.5 rounded-[12px] border border-[#25D366]/30 bg-[#25D366]/10 text-[#128C7E] text-sm font-medium hover:bg-[#25D366]/20 transition-colors"
+              >
+                Hablar por WhatsApp
+              </DemoCtaButton>
               <a
                 href="https://app.agenditapp.com/signup"
                 target="_blank"
@@ -149,15 +155,13 @@ export default function Navbar() {
                   >
                     Crear cuenta gratis
                   </a>
-                  <a
-                    href={getWhatsappHref("navbar")}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <DemoCtaButton
+                    source="navbar_mobile"
                     className="flex items-center justify-center py-3 px-4 rounded-[12px] border border-brand/20 text-brand font-medium text-sm hover:bg-brand/6 transition-colors"
                     onClick={() => setMobileOpen(false)}
                   >
                     Hablar con un asesor
-                  </a>
+                  </DemoCtaButton>
                 </motion.div>
               </motion.nav>
             )}
