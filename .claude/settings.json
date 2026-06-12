@@ -21,7 +21,25 @@
       "Bash(Write-Host \"Cache limpiado\")",
       "WebFetch(domain:api.anthropic.com)",
       "Bash(Get-ChildItem -Path \"d:\\\\proyectos-personales\\\\agenditapp\" -Recurse -Directory -ErrorAction SilentlyContinue)",
-      "Bash(Select-Object -ExpandProperty FullName)"
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(timeout 60 bash -c 'until curl -sf http://localhost:3000 >/dev/null; do sleep 1; done')",
+      "Bash(npx --yes playwright install chromium)",
+      "Bash(node tmp-verify-popup.mjs)",
+      "Bash(find ~/AppData/Local/npm-cache/_npx -maxdepth 3 -iname \"playwright\" -type d 2>/dev/null)",
+      "Read(//c/Users/pipe0/AppData/Local/npm-cache/_npx/**)",
+      "Bash(NODE_PATH=\"/c/Users/pipe0/AppData/Local/npm-cache/_npx/e41f203b7505f1fb/node_modules\" node tmp-verify-popup.mjs)",
+      "Bash(node tmp-verify-mobile.mjs)",
+      "Read(//tmp/**)",
+      "Bash(curl -sf http://localhost:3000 -o /dev/null -w \"%{http_code}\\\\n\")",
+      "Bash(curl -sf http://localhost:3001 -o /dev/null -w \"3001: %{http_code}\\\\n\")",
+      "Bash(tasklist)",
+      "Bash(curl -sf http://localhost:3000 -o /dev/null -w \"3000: %{http_code}\\\\n\")",
+      "Bash(node tmp-verify-popup2.mjs)",
+      "Bash(node tmp-verify-popup3.mjs)",
+      "Bash(netstat -ano)",
+      "Bash(taskkill //F //PID 65120)"
     ],
     "additionalDirectories": [
       "d:\\proyectos-personales\\agenditapp\\src\\app\\vs"

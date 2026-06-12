@@ -16,6 +16,7 @@ import Precio from "./(landing)/sections/Precio";
 import FAQ from "./(landing)/sections/FAQ";
 import DemoLead from "./(landing)/sections/DemoLead";
 import Footer from "./(landing)/sections/Footer";
+import PromoPopup from "./(landing)/components/ui/PromoPopup";
 import SchemaOrg from "./(landing)/components/seo/SchemaOrg";
 import {
   JSONLD_SOFTWARE,
@@ -90,6 +91,7 @@ export default function Page() {
       <FAQ />
       <DemoLead />
       <Footer />
+      <PromoPopup source="home" />
     </>
   );
 }

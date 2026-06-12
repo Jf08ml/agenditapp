@@ -4,6 +4,7 @@ import { HREFLANG_ALTERNATES } from "@/lib/hreflang";
 import PageHeader from "@/app/(landing)/components/ui/PageHeader";
 import PageFooter from "@/app/(landing)/components/ui/PageFooter";
 import { DemoCtaButton } from "@/app/(landing)/components/ui/DemoCtaModal";
+import PromoPopup from "@/app/(landing)/components/ui/PromoPopup";
 
 const SIGNUP_HREF = "https://app.agenditapp.com/signup";
 
@@ -299,6 +300,7 @@ export default function ArgentinaPage() {
         </section>
       </main>
       <PageFooter />
+      <PromoPopup source="ar" />
     </>
   );
 }
