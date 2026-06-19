@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
-import { getAllSlugs, getPost } from "@/lib/blog";
+import { getAllSlugs, getPost, getRelatedPosts } from "@/lib/blog";
 import PageHeader from "@/app/(landing)/components/ui/PageHeader";
 import PageFooter from "@/app/(landing)/components/ui/PageFooter";
 import { DemoCtaButton } from "@/app/(landing)/components/ui/DemoCtaModal";
@@ -318,6 +318,8 @@ export default async function BlogPostPage({
   const post = getPost(slug);
   if (!post) notFound();
 
+  const relatedPosts = getRelatedPosts(slug, 3);
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -467,6 +469,38 @@ export default async function BlogPostPage({
             />
           </div>
         </article>
+
+        {/* Related posts */}
+        {relatedPosts.length > 0 && (
+          <section className="px-4 sm:px-6 pb-16">
+            <div className="max-w-3xl mx-auto border-t border-brand/10 pt-10">
+              <h2 className="text-xl sm:text-2xl font-semibold text-heading mb-6">
+                Artículos relacionados
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                {relatedPosts.map((rp) => (
+                  <Link
+                    key={rp.slug}
+                    href={`/blog/${rp.slug}`}
+                    className="group bg-bg-card border border-brand/10 rounded-[16px] p-5 hover:border-brand/30 transition-all flex flex-col gap-3"
+                    style={{ boxShadow: "var(--shadow-card)" }}
+                  >
+                    <span
+                      className="inline-flex w-fit items-center px-2.5 py-1 rounded-full text-[11px] font-semibold text-brand"
+                      style={{ background: "color-mix(in srgb, var(--brand) 10%, transparent)" }}
+                    >
+                      {rp.category}
+                    </span>
+                    <h3 className="text-sm font-semibold text-heading group-hover:text-brand transition-colors leading-snug line-clamp-3">
+                      {rp.title}
+                    </h3>
+                    <span className="mt-auto text-xs text-muted">{rp.readingTime} de lectura</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Back to blog */}
         <div className="px-4 sm:px-6 pb-16">

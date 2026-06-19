@@ -39,7 +39,9 @@
       "Bash(node tmp-verify-popup2.mjs)",
       "Bash(node tmp-verify-popup3.mjs)",
       "Bash(netstat -ano)",
-      "Bash(taskkill //F //PID 65120)"
+      "Bash(taskkill //F //PID 65120)",
+      "PowerShell(npm run lint)",
+      "PowerShell(npm run build 2>&1)"
     ],
     "additionalDirectories": [
       "d:\\proyectos-personales\\agenditapp\\src\\app\\vs"

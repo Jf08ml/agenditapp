@@ -1,9 +1,12 @@
 // src/app/sitemap.ts
 import { MetadataRoute } from "next";
-import { getAllPosts } from "@/lib/blog";
+import { getAllPosts, getLatestPublishedAt } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://agenditapp.com";
+
+  // Keep the blog index "fresh" automatically: use the latest post date.
+  const blogIndexLastModified = getLatestPublishedAt() ?? "2026-06-10";
 
   const blogPosts = getAllPosts().map((post) => ({
     url: `${base}/blog/${post.slug}`,
@@ -152,7 +155,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${base}/blog`,
-      lastModified: "2026-06-10",
+      lastModified: blogIndexLastModified,
       changeFrequency: "weekly",
       priority: 0.8,
     },
