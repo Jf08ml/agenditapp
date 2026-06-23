@@ -1,11 +1,18 @@
 const WA_NUMBER = "573506674686";
 const WA_BASE_TEXT = "Hola 👋 quiero mi demo de AgenditApp para mi negocio";
 
-export function getWhatsappHref(source: string): string {
-  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(`${WA_BASE_TEXT} - origen: ${source}`)}`;
-}
+export const WHATSAPP_HREF = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_BASE_TEXT)}`;
 
-export const WHATSAPP_HREF = getWhatsappHref("general");
+/**
+ * Link directo a WhatsApp. El "origen" ya NO se incrusta en el texto del mensaje;
+ * ahora se mide con un evento de Google Analytics al hacer click (ver el handler
+ * `trackWhatsAppClick` en DemoCtaModal y `trackPopupEvent` en PromoPopup).
+ * Se mantiene la firma sin argumentos por compatibilidad con los componentes
+ * que la importan.
+ */
+export function getWhatsappHref(): string {
+  return WHATSAPP_HREF;
+}
 
 export const SIGNUP_HREF = "https://app.agenditapp.com/signup";
 

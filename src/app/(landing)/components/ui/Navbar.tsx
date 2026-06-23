@@ -70,30 +70,20 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center gap-3">
               <DemoCtaButton
                 source="navbar_desktop"
-                className="px-5 py-2.5 rounded-[12px] border border-[#25D366]/30 bg-[#25D366]/10 text-[#128C7E] text-sm font-medium hover:bg-[#25D366]/20 transition-colors"
+                className="px-5 py-2.5 rounded-[12px] bg-[#25D366] text-white text-sm font-medium hover:bg-[#22c35e] transition-colors shadow-[0_4px_16px_rgba(37,211,102,0.35)]"
               >
                 Hablar por WhatsApp
               </DemoCtaButton>
-              <a
-                href="https://app.agenditapp.com/signup"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-2.5 rounded-[12px] bg-brand text-white text-sm font-medium hover:bg-brand-hover transition-colors shadow-[0_4px_16px_rgba(29,78,216,0.35)]"
-              >
-                Registrarse
-              </a>
             </div>
 
-            {/* Mobile: signup + hamburger */}
+            {/* Mobile: WhatsApp + hamburger */}
             <div className="flex items-center gap-2 lg:hidden">
-              <a
-                href="https://app.agenditapp.com/signup"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3.5 py-2 rounded-[10px] bg-brand text-white text-xs font-medium"
+              <DemoCtaButton
+                source="navbar_mobile"
+                className="px-3.5 py-2 rounded-[10px] bg-[#25D366] text-white text-xs font-medium"
               >
-                Registrarse
-              </a>
+                WhatsApp
+              </DemoCtaButton>
               <button
                 onClick={() => setMobileOpen((v) => !v)}
                 className="p-2.5 rounded-[10px] text-body hover:bg-brand/8 transition-colors"
@@ -146,21 +136,12 @@ export default function Navbar() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.15 }}
                 >
-                  <a
-                    href="https://app.agenditapp.com/signup"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center py-3 px-4 rounded-[12px] bg-brand text-white font-medium text-sm"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    Crear cuenta gratis
-                  </a>
                   <DemoCtaButton
-                    source="navbar_mobile"
-                    className="flex items-center justify-center py-3 px-4 rounded-[12px] border border-brand/20 text-brand font-medium text-sm hover:bg-brand/6 transition-colors"
+                    source="navbar_mobile_menu"
+                    className="flex items-center justify-center py-3 px-4 rounded-[12px] bg-[#25D366] text-white font-medium text-sm hover:bg-[#22c35e] transition-colors"
                     onClick={() => setMobileOpen(false)}
                   >
-                    Hablar con un asesor
+                    Hablar por WhatsApp
                   </DemoCtaButton>
                 </motion.div>
               </motion.nav>

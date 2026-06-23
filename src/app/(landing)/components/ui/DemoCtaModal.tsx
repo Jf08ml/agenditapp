@@ -31,7 +31,7 @@ export function DemoCtaButton({
 }: DemoCtaButtonProps) {
   return (
     <a
-      href={getWhatsappHref(source)}
+      href={getWhatsappHref()}
       target="_blank"
       rel="noopener noreferrer"
       className={className}

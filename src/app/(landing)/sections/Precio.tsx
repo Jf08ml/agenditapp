@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { DemoCtaButton } from "../components/ui/DemoCtaModal";
 import { motion, AnimatePresence, easeOut, type Variants } from "framer-motion";
-import { SIGNUP_HREF } from "../components/constants";
 
 import { Lightbulb } from "@phosphor-icons/react";
 
@@ -57,7 +56,7 @@ const PLANS: Array<{
       "Agenda virtual semanal y mensual",
       "Subdominio tunegocio.agenditapp.com",
     ],
-    ctaLabel: "Crear cuenta gratis",
+    ctaLabel: "Empezar gratis",
     free: true,
   },
   {
@@ -320,17 +319,15 @@ function PlanCard({ plan, yearly }: { plan: typeof PLANS[number]; yearly: boolea
 
           <div className="flex-1" />
 
-          <a
-            href={SIGNUP_HREF}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full px-5 py-3 rounded-[12px] text-sm font-bold text-center transition-all duration-200 shadow-sm flex items-center justify-center gap-2 bg-brand text-white hover:bg-brand-hover"
+          <DemoCtaButton
+            source={`precio_${plan.key}`}
+            className="w-full px-5 py-3 rounded-[12px] text-sm font-bold text-center transition-all duration-200 shadow-sm flex items-center justify-center gap-2 bg-brand text-white hover:bg-brand-hover cursor-pointer"
           >
             {plan.ctaLabel}
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
               <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-          </a>
+          </DemoCtaButton>
         </div>
       </motion.div>
     );
@@ -425,15 +422,13 @@ function PlanCard({ plan, yearly }: { plan: typeof PLANS[number]; yearly: boolea
             <div className="flex-1" />
 
             {/* CTA — white on featured */}
-            <a
-              href={`${SIGNUP_HREF}?plan=${plan.key}`}
-              target="_blank"
-              rel="noopener noreferrer"
+            <DemoCtaButton
+              source={`precio_${plan.key}`}
               className="w-full px-5 py-3 rounded-[12px] text-sm font-bold text-center
-                bg-white text-[#0A2A6B] hover:bg-white/90 transition-all duration-200 shadow-md flex items-center justify-center"
+                bg-white text-[#0A2A6B] hover:bg-white/90 transition-all duration-200 shadow-md flex items-center justify-center cursor-pointer"
             >
               {plan.ctaLabel}
-            </a>
+            </DemoCtaButton>
           </div>
         </div>
       </motion.div>
@@ -517,15 +512,13 @@ function PlanCard({ plan, yearly }: { plan: typeof PLANS[number]; yearly: boolea
 
         <div className="flex-1" />
 
-        <a
-          href={`${SIGNUP_HREF}?plan=${plan.key}`}
-          target="_blank"
-          rel="noopener noreferrer"
+        <DemoCtaButton
+          source={`precio_${plan.key}`}
           className="w-full px-5 py-3 rounded-[12px] text-sm font-semibold text-center
-            transition-all duration-200 border border-brand/25 text-brand hover:bg-brand/6 flex items-center justify-center"
+            transition-all duration-200 border border-brand/25 text-brand hover:bg-brand/6 flex items-center justify-center cursor-pointer"
         >
           {plan.ctaLabel}
-        </a>
+        </DemoCtaButton>
       </div>
     </motion.div>
   );
@@ -717,27 +710,23 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
                 <div key={p.key}
                   className={`px-4 py-5 border-l border-brand/10 ${p.featured ? "bg-[rgba(232,240,255,0.4)]" : ""}`}>
                   {p.free ? (
-                    <a
-                      href={SIGNUP_HREF}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full px-3 py-2.5 rounded-[10px] text-xs font-bold text-center transition-all flex items-center justify-center bg-brand text-white hover:bg-brand-hover"
+                    <DemoCtaButton
+                      source={`precio_tabla_${p.key}`}
+                      className="w-full px-3 py-2.5 rounded-[10px] text-xs font-bold text-center transition-all flex items-center justify-center bg-brand text-white hover:bg-brand-hover cursor-pointer"
                     >
                       Gratis
-                    </a>
+                    </DemoCtaButton>
                   ) : (
-                    <a
-                      href={`${SIGNUP_HREF}?plan=${p.key}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`w-full px-3 py-2.5 rounded-[10px] text-xs font-semibold text-center transition-all flex items-center justify-center ${
+                    <DemoCtaButton
+                      source={`precio_tabla_${p.key}`}
+                      className={`w-full px-3 py-2.5 rounded-[10px] text-xs font-semibold text-center transition-all flex items-center justify-center cursor-pointer ${
                         p.featured
                           ? "bg-brand text-white hover:bg-brand-hover"
                           : "border border-brand/25 text-brand hover:bg-brand/6"
                       }`}
                     >
                       ${yearly ? p.monthlyPrice * 10 : p.monthlyPrice} USD {yearly ? "/ año" : "/ mes"}
-                    </a>
+                    </DemoCtaButton>
                   )}
                 </div>
               ))}
@@ -838,27 +827,23 @@ function MobileCompare({
               ))}
 
               {plan.free ? (
-                <a
-                  href={SIGNUP_HREF}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full px-5 py-3 rounded-[12px] text-sm font-bold text-center mt-2 flex items-center justify-center gap-2 bg-brand text-white hover:bg-brand-hover"
+                <DemoCtaButton
+                  source={`precio_movil_${plan.key}`}
+                  className="w-full px-5 py-3 rounded-[12px] text-sm font-bold text-center mt-2 flex items-center justify-center gap-2 bg-brand text-white hover:bg-brand-hover cursor-pointer"
                 >
                   {plan.ctaLabel}
-                </a>
+                </DemoCtaButton>
               ) : (
-                <a
-                  href={`${SIGNUP_HREF}?plan=${plan.key}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`w-full px-5 py-3 rounded-[12px] text-sm font-semibold text-center mt-2 flex items-center justify-center ${
+                <DemoCtaButton
+                  source={`precio_movil_${plan.key}`}
+                  className={`w-full px-5 py-3 rounded-[12px] text-sm font-semibold text-center mt-2 flex items-center justify-center cursor-pointer ${
                     plan.featured
                       ? "bg-brand text-white hover:bg-brand-hover"
                       : "border border-brand/25 text-brand hover:bg-brand/6"
                   }`}
                 >
                   {plan.ctaLabel}
-                </a>
+                </DemoCtaButton>
               )}
             </div>
           </motion.div>

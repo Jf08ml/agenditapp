@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { DemoCtaButton } from "../components/ui/DemoCtaModal";
 import { motion, easeOut, type Variants } from "framer-motion";
-import { getWhatsappHref, SIGNUP_HREF } from "../components/constants";
+import { getWhatsappHref } from "../components/constants";
 import { CO, MX, CL, AR, ES, CR, EC } from "country-flag-icons/react/3x2";
 import { Clock, Lock, ChatCircle, type IconWeight } from "@phosphor-icons/react";
 
@@ -157,15 +157,13 @@ export default function Footer() {
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <Link
-                href={SIGNUP_HREF}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-[12px] px-6 py-3.5 text-[15px] font-semibold transition-colors"
+              <DemoCtaButton
+                source="footer_cta"
+                className="inline-flex items-center justify-center rounded-[12px] px-6 py-3.5 text-[15px] font-semibold transition-colors cursor-pointer"
                 style={{ background: "var(--warm)", color: "white" }}
               >
-                Crear cuenta gratis
-              </Link>
+                Hablar por WhatsApp
+              </DemoCtaButton>
               <Link
                 href="/precios"
                 className="inline-flex items-center justify-center rounded-[12px] px-6 py-3.5 text-[15px] font-semibold transition-colors hover:bg-white/15"
@@ -226,7 +224,7 @@ export default function Footer() {
                 <IconFacebook />
               </a>
               <a
-                href={getWhatsappHref("footer")}
+                href={getWhatsappHref()}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"

@@ -6,8 +6,6 @@ import PageFooter from "@/app/(landing)/components/ui/PageFooter";
 import { DemoCtaButton } from "@/app/(landing)/components/ui/DemoCtaModal";
 import PromoPopup from "@/app/(landing)/components/ui/PromoPopup";
 
-const SIGNUP_HREF = "https://app.agenditapp.com/signup";
-
 export const metadata: Metadata = {
   title: "Software de Agendamiento para Negocios en Chile",
   description:
@@ -129,14 +127,12 @@ export default function ChilePage() {
               belleza, bienestar y servicios profesionales en Chile.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <a
-                href={SIGNUP_HREF}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary px-8 py-3.5 rounded-[12px] text-[15px] font-semibold inline-flex items-center justify-center"
+              <DemoCtaButton
+                source="landing_cl_hero"
+                className="btn-primary px-8 py-3.5 rounded-[12px] text-[15px] font-semibold inline-flex items-center justify-center cursor-pointer"
               >
-                Crear cuenta gratis — sin tarjeta
-              </a>
+                Hablar por WhatsApp
+              </DemoCtaButton>
               <Link
                 href="/precios"
                 className="inline-flex items-center justify-center rounded-[12px] border border-brand/20 text-brand font-medium px-8 py-3.5 text-[15px] hover:bg-brand/6 transition-colors"
@@ -264,18 +260,16 @@ export default function ChilePage() {
                   <p className={`text-sm mt-2 mb-5 ${featured ? "text-white/80" : "text-body"}`}>
                     {desc}
                   </p>
-                  <a
-                    href={`${SIGNUP_HREF}?plan=${plan}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`block text-center rounded-[10px] px-4 py-2.5 text-sm font-semibold transition-colors ${
+                  <DemoCtaButton
+                    source={`landing_cl_${plan}`}
+                    className={`block text-center rounded-[10px] px-4 py-2.5 text-sm font-semibold transition-colors cursor-pointer ${
                       featured
                         ? "bg-white text-brand hover:bg-white/90"
                         : "border border-brand/25 text-brand hover:bg-brand/6"
                     }`}
                   >
                     Empezar gratis
-                  </a>
+                  </DemoCtaButton>
                 </div>
               ))}
             </div>
@@ -299,17 +293,18 @@ export default function ChilePage() {
               sin depender de WhatsApp manual.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <a
-                href={SIGNUP_HREF}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary px-8 py-3.5 rounded-[12px] text-[15px] font-semibold inline-flex items-center justify-center"
+              <DemoCtaButton
+                source="landing_cl_final"
+                className="btn-primary px-8 py-3.5 rounded-[12px] text-[15px] font-semibold inline-flex items-center justify-center cursor-pointer"
               >
-                Crear cuenta gratis — 7 días con todo incluido
-              </a>
-              <DemoCtaButton source="landing_cl" className="inline-flex items-center justify-center rounded-[12px] border border-brand/20 text-brand font-medium px-8 py-3.5 text-[15px] hover:bg-brand/6 transition-colors cursor-pointer">
-                Hablar con ventas
+                Hablar por WhatsApp
               </DemoCtaButton>
+              <Link
+                href="/precios"
+                className="inline-flex items-center justify-center rounded-[12px] border border-brand/20 text-brand font-medium px-8 py-3.5 text-[15px] hover:bg-brand/6 transition-colors"
+              >
+                Ver planes y precios
+              </Link>
             </div>
           </div>
         </section>

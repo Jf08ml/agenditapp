@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { SIGNUP_HREF, getWhatsappHref } from "../constants";
+import { getWhatsappHref } from "../constants";
 
 const STORAGE_KEY = "agp_promo_popup_seen";
 const SHOW_DELAY_MS = 5000;
@@ -78,8 +78,7 @@ export default function PromoPopup({ source }: PromoPopupProps) {
     };
   }, [open, close]);
 
-  const signupHref = `${SIGNUP_HREF}?promo=mes_gratis&utm_source=popup&utm_medium=site&utm_campaign=${source}`;
-  const whatsappHref = getWhatsappHref(`promo_popup_${source}`);
+  const whatsappHref = getWhatsappHref();
 
   return (
     <AnimatePresence>
@@ -154,26 +153,16 @@ export default function PromoPopup({ source }: PromoPopupProps) {
               </ul>
 
               <motion.a
-                href={signupHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => trackPopupEvent("promo_popup_signup_click", source)}
-                className="btn-primary w-full flex items-center justify-center text-[15px] font-semibold mb-3"
-                animate={{ scale: [1, 1.03, 1] }}
-                transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-              >
-                Reclamar mi mes gratis →
-              </motion.a>
-
-              <a
                 href={whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackPopupEvent("promo_popup_whatsapp_click", source)}
-                className="text-sm text-muted hover:text-brand transition-colors"
+                className="btn-primary w-full flex items-center justify-center text-[15px] font-semibold mb-3"
+                animate={{ scale: [1, 1.03, 1] }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
               >
-                ¿Tienes dudas? Habla con nosotros por WhatsApp
-              </a>
+                Reclamar mi mes gratis por WhatsApp →
+              </motion.a>
 
               <p className="text-xs text-muted mt-4">
                 Sin tarjeta de crédito · Cancela cuando quieras
