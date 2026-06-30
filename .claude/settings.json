@@ -41,7 +41,15 @@
       "Bash(netstat -ano)",
       "Bash(taskkill //F //PID 65120)",
       "PowerShell(npm run lint)",
-      "PowerShell(npm run build 2>&1)"
+      "PowerShell(npm run build 2>&1)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(mkdir -p __TRACKED_VAR__/bak)",
+      "Bash(mv src/app/presentacion src/app/oferta src/app/oferta-registro 'src/app/\\(landing\\)/components/lp' __TRACKED_VAR__/bak/)",
+      "Bash(mv __TRACKED_VAR__/bak/presentacion __TRACKED_VAR__/bak/oferta __TRACKED_VAR__/bak/oferta-registro src/app/)",
+      "Bash(mv __TRACKED_VAR__/bak/lp 'src/app/\\(landing\\)/components/')",
+      "Bash(cd \"d:/proyectos-personales/agenditapp\" && grep -E \"/oferta|/presentacion|/oferta-registro\" /tmp/build2.log)"
     ],
     "additionalDirectories": [
       "d:\\proyectos-personales\\agenditapp\\src\\app\\vs"
