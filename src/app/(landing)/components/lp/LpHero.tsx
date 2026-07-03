@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
+import { PhoneMockup } from "../ui/PhoneMockup";
 import { LeadCtas, type CtaVariant } from "./cta";
 
 const fadeUp: Variants = {
@@ -10,7 +11,10 @@ const fadeUp: Variants = {
 };
 
 /* Hero compartido por las landings de campaña. Texto a la izquierda
-   (badge, titular, subtítulo, CTAs, microcopy) y captura a la derecha. */
+   (badge, titular, subtítulo, CTAs, microcopy) y captura a la derecha.
+   En móvil la captura desktop es ilegible, así que ahí se muestra un
+   mockup de teléfono con el flujo de reserva (coincide con lo que el
+   visitante acaba de ver en el anuncio). */
 export default function LpHero({
   variant,
   source,
@@ -20,6 +24,8 @@ export default function LpHero({
   microcopy = "Sin tarjeta · Listo en 10 min · Cancela cuando quieras",
   image = "/screenshots/agenda-virtual-desktop-1.png",
   imageAlt = "Agenda virtual de AgenditApp",
+  phoneImage = "/screenshots/reserva-paso-1-mockup.png",
+  phoneImageAlt = "Cliente reservando una cita desde el celular con AgenditApp",
   whatsappLabel,
   signupLabel,
 }: {
@@ -31,6 +37,8 @@ export default function LpHero({
   microcopy?: string;
   image?: string;
   imageAlt?: string;
+  phoneImage?: string;
+  phoneImageAlt?: string;
   whatsappLabel?: string;
   signupLabel?: string;
 }) {
@@ -139,10 +147,16 @@ export default function LpHero({
               transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1], delay: 0.2 },
             }}
           >
+            {/* Móvil / tablet: mockup de teléfono legible */}
+            <div className="lg:hidden flex justify-center">
+              <PhoneMockup src={phoneImage} alt={phoneImageAlt} priority />
+            </div>
+
+            {/* Desktop: captura del panel en chrome de navegador */}
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
-              className="rounded-[20px] overflow-hidden bg-white border border-[#0F172A]/8 shadow-[0_4px_40px_rgba(29,78,216,0.14),0_24px_80px_rgba(15,23,42,0.16)]"
+              className="hidden lg:block rounded-[20px] overflow-hidden bg-white border border-[#0F172A]/8 shadow-[0_4px_40px_rgba(29,78,216,0.14),0_24px_80px_rgba(15,23,42,0.16)]"
               style={{
                 transform: "perspective(1400px) rotateY(-4deg) rotateX(2deg)",
                 transformOrigin: "center center",

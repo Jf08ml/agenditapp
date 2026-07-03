@@ -1,6 +1,11 @@
 "use client";
 
-import { type ReactNode, type AnchorHTMLAttributes } from "react";
+import {
+  useEffect,
+  useState,
+  type ReactNode,
+  type AnchorHTMLAttributes,
+} from "react";
 import { SIGNUP_HREF, getWhatsappHref } from "../constants";
 
 /* ─────────────────────────────────────────────────────────────
@@ -81,6 +86,23 @@ export function WhatsAppCtaButton({
 }
 
 /* ── Botón Registro ── */
+
+/* El registro vive en app.agenditapp.com (otro dominio): los UTMs y el
+   fbclid con los que llegó el visitante se perderían al cruzar. Este
+   helper reenvía los query params de la landing al enlace de signup y
+   añade `utm_content` con el bloque de origen, para poder atribuir
+   registros a la campaña y al CTA que los generó. */
+function buildSignupHref(source: string): string {
+  const url = new URL(SIGNUP_HREF);
+  const current = new URLSearchParams(window.location.search);
+  current.forEach((value, key) => url.searchParams.set(key, value));
+  if (!url.searchParams.has("utm_source")) {
+    url.searchParams.set("utm_source", "landing_web");
+  }
+  url.searchParams.set("utm_content", source);
+  return url.toString();
+}
+
 export function SignupCtaButton({
   children,
   className,
@@ -88,9 +110,14 @@ export function SignupCtaButton({
   onClick,
   ...rest
 }: CtaProps) {
+  const [href, setHref] = useState(SIGNUP_HREF);
+  useEffect(() => {
+    setHref(buildSignupHref(source));
+  }, [source]);
+
   return (
     <a
-      href={SIGNUP_HREF}
+      href={href}
       className={className}
       onClick={(e) => {
         track("signup_click", source);

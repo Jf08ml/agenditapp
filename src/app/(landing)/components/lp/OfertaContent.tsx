@@ -56,7 +56,7 @@ const BENEFITS: Benefit[] = [
 const FAQ = [
   {
     q: "¿Cuánto cuesta?",
-    a: "Empiezas gratis con 7 días de acceso completo. Después puedes quedarte en el plan gratuito para siempre o elegir un plan desde $10 USD/mes. Sin permanencia.",
+    a: "Empiezas gratis con 7 días de acceso completo. Después puedes quedarte en el plan gratuito para siempre o elegir un plan desde $10 USD al mes — menos de lo que te cuesta una sola cita a la que el cliente no llegó. Sin permanencia.",
   },
   {
     q: "¿Los recordatorios salen desde mi número?",
@@ -126,14 +126,16 @@ export default function OfertaContent({ variant }: { variant: CtaVariant }) {
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-bold tracking-wide uppercase mb-4"
             style={{ background: "rgba(37,211,102,0.14)", color: "#128C7E" }}
           >
-            🎁 Solo por tiempo limitado
+            🎁 Solo 10 cupos de acompañamiento este mes
           </span>
           <h2 className="text-2xl sm:text-3xl font-semibold text-heading tracking-tight">
             7 días con TODO incluido + acompañamiento 1:1
           </h2>
           <p className="mt-3 text-body leading-relaxed max-w-xl mx-auto">
-            Activa tu cuenta hoy y te ayudamos a configurar tu agenda por
-            WhatsApp, sin costo. Sin tarjeta de crédito y sin permanencia.
+            Activa tu cuenta hoy y una persona de nuestro equipo te acompaña a
+            configurar tu agenda por WhatsApp, sin costo. Abrimos solo 10 cupos
+            de acompañamiento personalizado al mes. Sin tarjeta de crédito y
+            sin permanencia.
           </p>
           <div className="mt-7 flex justify-center">
             <LeadCtas
@@ -156,6 +158,29 @@ export default function OfertaContent({ variant }: { variant: CtaVariant }) {
       <LpHowItWorks />
 
       <LpTestimonials />
+
+      {/* ── CTA intermedio: cierra el tramo largo entre la banda de
+          oferta y el CTA final (clave en móvil) ── */}
+      <section className="pb-6 px-6">
+        <motion.div
+          variants={fadeUp}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.4 }}
+          className="flex flex-col items-center gap-3"
+        >
+          <LeadCtas
+            variant={variant}
+            source="oferta_media"
+            className="justify-center"
+            whatsappLabel="Quiero llenar mi agenda"
+            signupLabel="Crear mi cuenta gratis"
+          />
+          <p className="text-[13px] text-muted">
+            Sin tarjeta · Listo en 10 minutos
+          </p>
+        </motion.div>
+      </section>
 
       {/* ── FAQ corto ── */}
       <section className="py-16 sm:py-20">
