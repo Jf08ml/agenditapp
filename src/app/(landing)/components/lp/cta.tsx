@@ -7,6 +7,7 @@ import {
   type AnchorHTMLAttributes,
 } from "react";
 import { SIGNUP_HREF, getWhatsappHref } from "../constants";
+import { trackMetaContactFromSource } from "../metaTracking";
 
 /* ─────────────────────────────────────────────────────────────
    CTA helpers para las landings de campaña (Meta Ads).
@@ -76,6 +77,7 @@ export function WhatsAppCtaButton({
       className={className}
       onClick={(e) => {
         track("demo_whatsapp_click", source);
+        trackMetaContactFromSource(source);
         onClick?.(e);
       }}
       {...rest}

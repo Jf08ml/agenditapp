@@ -2,6 +2,7 @@
 
 import { type ReactNode, type AnchorHTMLAttributes } from "react";
 import { getWhatsappHref } from "../constants";
+import { trackMetaContactFromSource } from "../metaTracking";
 
 function trackWhatsAppClick(source: string) {
   if (
@@ -37,6 +38,7 @@ export function DemoCtaButton({
       className={className}
       onClick={(e) => {
         trackWhatsAppClick(source);
+        trackMetaContactFromSource(source);
         onClick?.(e);
       }}
       {...rest}

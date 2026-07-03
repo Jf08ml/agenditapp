@@ -60,7 +60,9 @@
       "Bash(timeout 90 bash -c 'until curl -sf http://localhost:3000 >/dev/null 2>&1; do sleep 2; done')",
       "Bash(node shots.js)",
       "Bash(node -e ' *)",
-      "Bash(node verify.js)"
+      "Bash(node verify.js)",
+      "WebSearch",
+      "PowerShell(npm run dev)"
     ],
     "additionalDirectories": [
       "d:\\proyectos-personales\\agenditapp\\src\\app\\vs"
