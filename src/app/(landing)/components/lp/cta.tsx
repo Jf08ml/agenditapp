@@ -40,11 +40,6 @@ export const BTN_GHOST =
   "border border-[#0F172A]/12 text-[#0F172A] text-[15px] font-semibold " +
   "bg-white/70 backdrop-blur-sm transition-all hover:bg-white/90";
 
-export const BTN_GHOST_WA =
-  "inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-[14px] " +
-  "border border-[#25D366]/40 text-[#128C7E] text-[15px] font-semibold " +
-  "bg-white/70 backdrop-blur-sm transition-all hover:bg-[#25D366]/8";
-
 /* ── Icono WhatsApp ── */
 export function WaIcon({ size = 18 }: { size?: number }) {
   return (
@@ -109,9 +104,10 @@ export function SignupCtaButton({
 }
 
 /* ─────────────────────────────────────────────────────────────
-   Par de CTAs primario/secundario según la variante de la landing.
-   - variant="whatsapp" → primario WhatsApp (verde), secundario Registro (ghost)
-   - variant="signup"   → primario Registro (azul), secundario WhatsApp (ghost)
+   CTA único según la variante de la landing. Una sola meta de
+   conversión por página:
+   - variant="whatsapp" → botón WhatsApp (verde)
+   - variant="signup"   → botón Registro (azul)
 ───────────────────────────────────────────────────────────── */
 export type CtaVariant = "whatsapp" | "signup";
 
@@ -120,14 +116,12 @@ export function LeadCtas({
   source,
   whatsappLabel = "Hablar por WhatsApp",
   signupLabel = "Crear mi cuenta gratis",
-  whatsappSecondaryLabel = "¿Dudas? Escríbenos por WhatsApp",
   className = "",
 }: {
   variant: CtaVariant;
   source: string;
   whatsappLabel?: string;
   signupLabel?: string;
-  whatsappSecondaryLabel?: string;
   className?: string;
 }) {
   if (variant === "signup") {
@@ -137,10 +131,6 @@ export function LeadCtas({
           {signupLabel}
           <span aria-hidden>→</span>
         </SignupCtaButton>
-        <WhatsAppCtaButton source={`${source}_whatsapp`} className={BTN_GHOST_WA}>
-          <WaIcon size={17} />
-          {whatsappSecondaryLabel}
-        </WhatsAppCtaButton>
       </div>
     );
   }
@@ -151,10 +141,6 @@ export function LeadCtas({
         <WaIcon />
         {whatsappLabel}
       </WhatsAppCtaButton>
-      <SignupCtaButton source={`${source}_signup`} className={BTN_GHOST}>
-        {signupLabel}
-        <span aria-hidden>→</span>
-      </SignupCtaButton>
     </div>
   );
 }

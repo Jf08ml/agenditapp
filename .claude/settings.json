@@ -49,7 +49,9 @@
       "Bash(mv src/app/presentacion src/app/oferta src/app/oferta-registro 'src/app/\\(landing\\)/components/lp' __TRACKED_VAR__/bak/)",
       "Bash(mv __TRACKED_VAR__/bak/presentacion __TRACKED_VAR__/bak/oferta __TRACKED_VAR__/bak/oferta-registro src/app/)",
       "Bash(mv __TRACKED_VAR__/bak/lp 'src/app/\\(landing\\)/components/')",
-      "Bash(cd \"d:/proyectos-personales/agenditapp\" && grep -E \"/oferta|/presentacion|/oferta-registro\" /tmp/build2.log)"
+      "Bash(cd \"d:/proyectos-personales/agenditapp\" && grep -E \"/oferta|/presentacion|/oferta-registro\" /tmp/build2.log)",
+      "PowerShell(npx tsc --noEmit)",
+      "PowerShell(npm run build)"
     ],
     "additionalDirectories": [
       "d:\\proyectos-personales\\agenditapp\\src\\app\\vs"

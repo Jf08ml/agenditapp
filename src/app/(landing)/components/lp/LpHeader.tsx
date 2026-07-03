@@ -1,17 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { WhatsAppCtaButton, WaIcon } from "./cta";
+import { WhatsAppCtaButton, SignupCtaButton, WaIcon, type CtaVariant } from "./cta";
 
 /* Header minimal para landings de campaña: solo el logo (sin tabs de
-   navegación) y, opcionalmente, un botón de WhatsApp de respaldo.
-   El logo NO enlaza a ningún lado para mantener al visitante dentro
-   del funnel. */
+   navegación) y un botón alineado con la meta de conversión de la
+   página (WhatsApp o registro). El logo NO enlaza a ningún lado para
+   mantener al visitante dentro del funnel. */
 export default function LpHeader({
-  showWhatsApp = true,
+  cta = "whatsapp",
   source = "lp_header",
 }: {
-  showWhatsApp?: boolean;
+  cta?: CtaVariant | "none";
   source?: string;
 }) {
   return (
@@ -26,7 +26,7 @@ export default function LpHeader({
           className="h-9 sm:h-10 w-auto object-contain select-none"
         />
 
-        {showWhatsApp && (
+        {cta === "whatsapp" && (
           <WhatsAppCtaButton
             source={source}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-[12px] bg-[#25D366] text-white text-[13px] sm:text-sm font-semibold shadow-[0_4px_16px_rgba(37,211,102,0.35)] transition-colors hover:bg-[#22c35e]"
@@ -35,6 +35,16 @@ export default function LpHeader({
             <span className="hidden sm:inline">Hablar por WhatsApp</span>
             <span className="sm:hidden">WhatsApp</span>
           </WhatsAppCtaButton>
+        )}
+        {cta === "signup" && (
+          <SignupCtaButton
+            source={source}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-[12px] bg-brand text-white text-[13px] sm:text-sm font-semibold shadow-[0_4px_16px_rgba(29,78,216,0.35)] transition-colors hover:bg-brand-hover"
+          >
+            <span className="hidden sm:inline">Crear cuenta gratis</span>
+            <span className="sm:hidden">Crear cuenta</span>
+            <span aria-hidden>→</span>
+          </SignupCtaButton>
         )}
       </div>
     </header>

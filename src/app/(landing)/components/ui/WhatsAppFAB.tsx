@@ -1,8 +1,17 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { DemoCtaButton } from "./DemoCtaModal";
 
+/* Rutas que montan su propio botón flotante (LpWhatsAppFab) con
+   atribución específica; ahí el FAB global se oculta para no
+   duplicarse en la misma esquina. */
+const ROUTES_WITH_OWN_FAB = ["/oferta-registro"];
+
 export default function WhatsAppFAB() {
+  const pathname = usePathname();
+  if (ROUTES_WITH_OWN_FAB.includes(pathname)) return null;
+
   return (
     <DemoCtaButton
       source="fab"

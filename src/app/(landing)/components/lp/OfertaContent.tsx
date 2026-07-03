@@ -4,6 +4,7 @@ import { motion, type Variants } from "framer-motion";
 import LpHeader from "./LpHeader";
 import LpFooter from "./LpFooter";
 import LpHero from "./LpHero";
+import LpWhatsAppFab from "./LpWhatsAppFab";
 import {
   LpProofStats,
   LpBenefits,
@@ -76,7 +77,7 @@ export default function OfertaContent({ variant }: { variant: CtaVariant }) {
 
   return (
     <main className="min-h-screen overflow-x-hidden">
-      <LpHeader source="oferta_header" />
+      <LpHeader source="oferta_header" cta={variant} />
 
       <LpHero
         variant={variant}
@@ -139,7 +140,7 @@ export default function OfertaContent({ variant }: { variant: CtaVariant }) {
               variant={variant}
               source="oferta_banda"
               className="justify-center"
-              whatsappLabel="Activar mi cuenta gratis"
+              whatsappLabel="Quiero activar mi cuenta"
               signupLabel="Activar mi cuenta gratis"
             />
           </div>
@@ -208,9 +209,15 @@ export default function OfertaContent({ variant }: { variant: CtaVariant }) {
           ) : undefined
         }
         subtitle="Sin tarjeta · Listo en 10 minutos · Cancela cuando quieras."
+        whatsappLabel="Quiero llenar mi agenda"
+        signupLabel="Crear mi cuenta gratis"
       />
 
       <LpFooter />
+
+      {/* En la variante de registro, WhatsApp queda solo como canal
+          flotante de soporte para no competir con el CTA principal. */}
+      {primaryIsSignup && <LpWhatsAppFab source="oferta_registro_fab" />}
     </main>
   );
 }

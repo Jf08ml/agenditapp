@@ -318,11 +318,15 @@ export function LpFinalCta({
   source,
   title,
   subtitle,
+  whatsappLabel,
+  signupLabel,
 }: {
   variant: CtaVariant;
   source: string;
   title?: React.ReactNode;
   subtitle?: string;
+  whatsappLabel?: string;
+  signupLabel?: string;
 }) {
   return (
     <section className="py-16 px-6">
@@ -374,7 +378,13 @@ export function LpFinalCta({
               "Sin tarjeta · Listo en 10 minutos · Cancela cuando quieras."}
           </p>
           <div className="mt-8 flex justify-center">
-            <LeadCtas variant={variant} source={source} className="justify-center" />
+            <LeadCtas
+              variant={variant}
+              source={source}
+              className="justify-center"
+              whatsappLabel={whatsappLabel}
+              signupLabel={signupLabel}
+            />
           </div>
         </div>
       </motion.div>
