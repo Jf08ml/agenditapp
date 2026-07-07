@@ -2,11 +2,12 @@ import Script from "next/script";
 
 const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 
-/* Código base del Meta Pixel (fbq) + PageView. Por ahora solo se monta
-   en /oferta (ver src/app/oferta/page.tsx), no site-wide: es la única
-   landing con campaña de Meta que mide el evento "Contact". El evento
-   se dispara desde trackMetaContactFromSource (ver ../metaTracking.ts)
-   y se duplica al server por /api/capi con el mismo event_id. */
+/* Código base del Meta Pixel (fbq) + PageView. Se monta en las
+   landings de campaña de Meta: /oferta (evento "Contact") y
+   /oferta-registro (evento personalizado "CTA Registro"), no
+   site-wide. Los eventos se disparan desde trackMetaContactFromSource
+   / trackMetaCtaRegistroFromSource (ver ../metaTracking.ts) y se
+   duplican al server por /api/capi con el mismo event_id. */
 export default function MetaPixel() {
   if (!PIXEL_ID) return null;
 

@@ -3,9 +3,11 @@ import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 
-/* Meta Conversions API: recibe el evento "Contact" disparado en el
-   browser (ver components/metaTracking.ts) y lo reenvía server-side a
-   Meta con el mismo event_id para que deduplique contra el Pixel. */
+/* Meta Conversions API: recibe el evento disparado en el browser (ver
+   components/metaTracking.ts) y lo reenvía server-side a Meta con el
+   mismo event_id para que deduplique contra el Pixel. event_name por
+   default es "Contact" (/oferta); /oferta-registro manda
+   "CTA Registro" explícitamente. */
 
 const GRAPH_API_VERSION = "v24.0";
 const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
@@ -21,7 +23,14 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { event_id, content_name, event_source_url, fbp, fbc } = body ?? {};
+    const {
+      event_name,
+      event_id,
+      content_name,
+      event_source_url,
+      fbp,
+      fbc,
+    } = body ?? {};
 
     if (!event_id || !content_name) {
       console.error("CAPI: evento sin event_id o content_name", body);
@@ -42,7 +51,7 @@ export async function POST(request: Request) {
     const payload: Record<string, unknown> = {
       data: [
         {
-          event_name: "Contact",
+          event_name: event_name || "Contact",
           event_time: Math.floor(Date.now() / 1000),
           event_id,
           action_source: "website",

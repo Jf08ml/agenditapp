@@ -1,15 +1,17 @@
 /* ─────────────────────────────────────────────────────────────
-   Meta Pixel + Conversions API (CAPI) para la landing /oferta.
+   Meta Pixel + Conversions API (CAPI) para las landings de campaña
+   /oferta y /oferta-registro.
 
-   Cada click en un botón de WhatsApp dispara el evento estándar
-   "Contact" dos veces con el MISMO event_id:
+   Cada click en un CTA dispara un evento dos veces con el MISMO
+   event_id:
    - browser: window.fbq (Pixel)
    - server:  POST /api/capi (Conversions API)
    Meta deduplica automáticamente por event_name + event_id.
 ───────────────────────────────────────────────────────────── */
 
-/* source (event_label de GA) → content_name del evento "Contact".
-   Solo los CTAs de /oferta; cualquier otro source es un no-op. */
+/* source (event_label de GA) → content_name del evento estándar
+   "Contact". Solo los CTAs de WhatsApp en /oferta; cualquier otro
+   source es un no-op. */
 const OFERTA_CONTACT_NAMES: Record<string, string> = {
   oferta_header: "land1_header",
   oferta_hero_whatsapp: "land1_hero",
@@ -17,6 +19,18 @@ const OFERTA_CONTACT_NAMES: Record<string, string> = {
   oferta_media_whatsapp: "land1_media",
   oferta_final_whatsapp: "land1_final",
   fab: "flotante",
+};
+
+/* source (event_label de GA) → content_name del evento personalizado
+   "CTA Registro". Solo los CTAs de registro en /oferta-registro; el
+   botón flotante de esa landing sigue siendo soporte por WhatsApp y
+   no se mide aquí. */
+const OFERTA_REGISTRO_NAMES: Record<string, string> = {
+  oferta_header: "land2_header",
+  oferta_hero_signup: "land2_hero",
+  oferta_banda_signup: "land2_oferta",
+  oferta_media_signup: "land2_media",
+  oferta_final_signup: "land2_final",
 };
 
 type FbqWindow = Window & {
@@ -28,25 +42,15 @@ function readCookie(name: string): string | undefined {
   return match ? decodeURIComponent(match[1]) : undefined;
 }
 
-export function trackContact(contentName: string) {
-  const eventId = crypto.randomUUID();
-
-  const { fbq } = window as FbqWindow;
-  if (fbq) {
-    fbq(
-      "track",
-      "Contact",
-      { content_name: contentName },
-      { eventID: eventId },
-    );
-  }
-
-  /* keepalive: el click navega a WhatsApp y descarga la página;
-     garantiza que el beacon al CAPI se complete igual. */
+/* keepalive: el click navega fuera de la página (WhatsApp o el
+   registro en app.agenditapp.com); garantiza que el beacon al CAPI
+   se complete igual. */
+function sendCapiEvent(eventName: string, eventId: string, contentName: string) {
   fetch("/api/capi", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
+      event_name: eventName,
       event_id: eventId,
       content_name: contentName,
       event_source_url: window.location.href,
@@ -57,9 +61,37 @@ export function trackContact(contentName: string) {
   }).catch(() => {});
 }
 
+export function trackContact(contentName: string) {
+  const eventId = crypto.randomUUID();
+  const { fbq } = window as FbqWindow;
+  if (fbq) {
+    fbq(
+      "track",
+      "Contact",
+      { content_name: contentName },
+      { eventID: eventId },
+    );
+  }
+  sendCapiEvent("Contact", eventId, contentName);
+}
+
+export function trackCtaRegistro(contentName: string) {
+  const eventId = crypto.randomUUID();
+  const { fbq } = window as FbqWindow;
+  if (fbq) {
+    fbq(
+      "trackCustom",
+      "CTA Registro",
+      { content_name: contentName },
+      { eventID: eventId },
+    );
+  }
+  sendCapiEvent("CTA Registro", eventId, contentName);
+}
+
 /* Punto de entrada desde los botones de WhatsApp (compartidos con otras
-   páginas): solo dispara en /oferta — única ruta con el pixel montado —
-   y solo para los sources mapeados. */
+   páginas): solo dispara en /oferta — única ruta con el pixel montado
+   para el evento "Contact" — y solo para los sources mapeados. */
 export function trackMetaContactFromSource(source: string) {
   if (typeof window === "undefined") return;
   if (window.location.pathname.replace(/\/+$/, "") !== "/oferta") return;
@@ -67,3 +99,16 @@ export function trackMetaContactFromSource(source: string) {
   const contentName = OFERTA_CONTACT_NAMES[source];
   if (contentName) trackContact(contentName);
 }
+
+/* Punto de entrada desde los botones de registro (compartidos con
+   otras páginas): solo dispara en /oferta-registro y solo para los
+   sources mapeados. */
+export function trackMetaCtaRegistroFromSource(source: string) {
+  if (typeof window === "undefined") return;
+  if (window.location.pathname.replace(/\/+$/, "") !== "/oferta-registro") return;
+
+  const contentName = OFERTA_REGISTRO_NAMES[source];
+  if (contentName) trackCtaRegistro(contentName);
+}
+
+export { readCookie };

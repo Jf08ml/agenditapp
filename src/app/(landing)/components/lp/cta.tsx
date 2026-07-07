@@ -7,7 +7,11 @@ import {
   type AnchorHTMLAttributes,
 } from "react";
 import { SIGNUP_HREF, getWhatsappHref } from "../constants";
-import { trackMetaContactFromSource } from "../metaTracking";
+import {
+  trackMetaContactFromSource,
+  trackMetaCtaRegistroFromSource,
+  readCookie,
+} from "../metaTracking";
 
 /* ─────────────────────────────────────────────────────────────
    CTA helpers para las landings de campaña (Meta Ads).
@@ -93,7 +97,11 @@ export function WhatsAppCtaButton({
    fbclid con los que llegó el visitante se perderían al cruzar. Este
    helper reenvía los query params de la landing al enlace de signup y
    añade `utm_content` con el bloque de origen, para poder atribuir
-   registros a la campaña y al CTA que los generó. */
+   registros a la campaña y al CTA que los generó.
+   También reenvía _fbp/_fbc por query string: además de las cookies
+   compartidas a nivel de dominio raíz .agenditapp.com, esto blinda
+   casos límite de ITP o cookies recién creadas antes de cruzar de
+   subdominio. */
 function buildSignupHref(source: string): string {
   const url = new URL(SIGNUP_HREF);
   const current = new URLSearchParams(window.location.search);
@@ -102,6 +110,12 @@ function buildSignupHref(source: string): string {
     url.searchParams.set("utm_source", "landing_web");
   }
   url.searchParams.set("utm_content", source);
+
+  const fbp = readCookie("_fbp");
+  const fbc = readCookie("_fbc");
+  if (fbp) url.searchParams.set("fbp", fbp);
+  if (fbc) url.searchParams.set("fbc", fbc);
+
   return url.toString();
 }
 
@@ -122,7 +136,12 @@ export function SignupCtaButton({
       href={href}
       className={className}
       onClick={(e) => {
+        /* _fbp/_fbc pueden llegar después del useEffect de montaje (el
+           pixel carga con strategy="afterInteractive"): se recalcula el
+           href de forma síncrona al click para no perder el forwarding. */
+        e.currentTarget.href = buildSignupHref(source);
         track("signup_click", source);
+        trackMetaCtaRegistroFromSource(source);
         onClick?.(e);
       }}
       {...rest}

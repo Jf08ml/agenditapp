@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import OfertaContent from "../(landing)/components/lp/OfertaContent";
+import MetaPixel from "../(landing)/components/lp/MetaPixel";
 
 export const metadata: Metadata = {
   title: "Crea tu cuenta gratis en AgenditApp — Agenda por WhatsApp",
@@ -10,5 +11,10 @@ export const metadata: Metadata = {
 };
 
 export default function OfertaRegistroPage() {
-  return <OfertaContent variant="signup" />;
+  return (
+    <>
+      <MetaPixel />
+      <OfertaContent variant="signup" />
+    </>
+  );
 }
