@@ -10,8 +10,9 @@
 ───────────────────────────────────────────────────────────── */
 
 /* source (event_label de GA) → content_name del evento estándar
-   "Contact". Solo los CTAs de WhatsApp en /oferta; cualquier otro
-   source es un no-op. */
+   "Contact". CTAs de WhatsApp en /oferta y el flotante de soporte de
+   /oferta-registro (que también es contacto por WhatsApp, no
+   registro); cualquier otro source es un no-op. */
 const OFERTA_CONTACT_NAMES: Record<string, string> = {
   oferta_header: "land1_header",
   oferta_hero_whatsapp: "land1_hero",
@@ -19,6 +20,7 @@ const OFERTA_CONTACT_NAMES: Record<string, string> = {
   oferta_media_whatsapp: "land1_media",
   oferta_final_whatsapp: "land1_final",
   fab: "flotante",
+  oferta_registro_fab: "flotante",
 };
 
 /* source (event_label de GA) → content_name del evento personalizado
@@ -90,11 +92,13 @@ export function trackCtaRegistro(contentName: string) {
 }
 
 /* Punto de entrada desde los botones de WhatsApp (compartidos con otras
-   páginas): solo dispara en /oferta — única ruta con el pixel montado
-   para el evento "Contact" — y solo para los sources mapeados. */
+   páginas): dispara en /oferta y en /oferta-registro (su flotante es
+   soporte por WhatsApp, no un CTA de registro) y solo para los sources
+   mapeados. */
 export function trackMetaContactFromSource(source: string) {
   if (typeof window === "undefined") return;
-  if (window.location.pathname.replace(/\/+$/, "") !== "/oferta") return;
+  const path = window.location.pathname.replace(/\/+$/, "");
+  if (path !== "/oferta" && path !== "/oferta-registro") return;
 
   const contentName = OFERTA_CONTACT_NAMES[source];
   if (contentName) trackContact(contentName);
