@@ -106,7 +106,9 @@ export default function PreciosPage() {
                 { q: "¿Incluye página web / landing?", a: "Sí. Incluye landing de bienvenida. En Marca Propia es más profesional y funciona con tu propio dominio." },
                 { q: "¿Necesito conocimientos técnicos?", a: "No. Te ayudamos con la configuración inicial y soporte para que empieces rápido." },
                 { q: "¿Hay costos de instalación o configuración?", a: "No. Todo está incluido en el plan mensual. Sin costos ocultos." },
-                { q: "¿Qué métodos de pago aceptan?", a: "Aceptamos transferencia bancaria, Nequi, Daviplata y tarjetas de crédito/débito." },
+                { q: "¿Cómo pago mi suscripción a AgenditApp?", a: "Aceptamos transferencia bancaria, Nequi, Daviplata y tarjetas de crédito/débito." },
+                { q: "¿Puedo cobrarle a mis clientes por sus reservas?", a: "Sí. Desde el plan Básico puedes cobrar abonos o el pago completo de la reserva con Mercado Pago (comisión por transacción según su tarifa vigente) o con comprobante de transferencia, sin comisión. Los mismos métodos sirven para cobros internos del negocio, como ventas de tu tienda en línea." },
+                { q: "¿Puedo vender paquetes de sesiones, como 4 sesiones de masaje?", a: "Sí, en el plan Marca Propia puedes crear paquetes de sesiones prepagadas y el sistema descuenta automáticamente cada sesión que tu cliente utiliza." },
               ].map((faq, i) => (
                 <details
                   key={i}

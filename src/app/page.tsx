@@ -7,6 +7,7 @@ import QueObtendras from "./(landing)/sections/QueObtendras";
 import Sectores from "./(landing)/sections/Sectores";
 import Reserva from "./(landing)/sections/Reserva";
 import Servicios from "./(landing)/sections/Servicios";
+import PagosVentas from "./(landing)/sections/PagosVentas";
 import WhatsAppShowcase from "./(landing)/sections/WhatsAppShowcase";
 import Software from "./(landing)/sections/Software";
 import CasosDeExito from "./(landing)/sections/CasosDeExito";
@@ -81,6 +82,7 @@ export default function Page() {
       <Problem />
       <Reserva />
       <Servicios />
+      <PagosVentas />
       <WhatsAppShowcase />
       <Software />
       <Sectores />

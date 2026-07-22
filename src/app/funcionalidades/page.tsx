@@ -4,6 +4,7 @@ import type { IconWeight } from "@phosphor-icons/react";
 import {
   CalendarBlank, ChatsCircle, Briefcase, Gift, Globe,
   Megaphone, ShieldCheck, Rocket, Lightbulb, GraduationCap,
+  CreditCard, Stack, Storefront,
 } from "@phosphor-icons/react/dist/ssr";
 import SchemaOrg from "../(landing)/components/seo/SchemaOrg";
 import { DemoCtaButton } from "../(landing)/components/ui/DemoCtaModal";
@@ -68,6 +69,33 @@ const funcionalidades: { categoria: string; Icon: PhosphorIcon; color: string; f
       { nombre: "Gestión de clientes", descripcion: "Base de datos de clientes con historial de citas, observaciones y mejor seguimiento." },
       { nombre: "Analíticas y reportes", descripcion: "Mide horas pico, servicios más vendidos, rendimiento por empleado y evolución del negocio." },
       { nombre: "Gestión de caja", descripcion: "Registra pagos, métodos de pago y genera reportes para tener claridad de ingresos." },
+    ],
+  },
+  {
+    categoria: "Pagos y Cobros",
+    Icon: CreditCard, color: "#16A34A",
+    features: [
+      { nombre: "Abonos o pago completo de la reserva", descripcion: "Tus clientes pueden pagar un anticipo o el valor completo de su cita al reservar, para asegurar el cupo y reducir inasistencias. Disponible en los planes Básico, Esencial y Marca Propia." },
+      { nombre: "Mercado Pago integrado", descripcion: "Acepta pagos con tarjeta, PSE y más a través de Mercado Pago. Aplica una comisión por transacción según la tarifa vigente de Mercado Pago." },
+      { nombre: "Comprobante de transferencia", descripcion: "El cliente sube el comprobante de su transferencia y tú lo confirmas desde el panel. Sin comisión por transacción." },
+      { nombre: "Mismos métodos para cobros internos", descripcion: "Usa Mercado Pago o comprobante de transferencia también para ventas de tienda y otros cobros del negocio, no solo para reservas." },
+    ],
+  },
+  {
+    categoria: "Paquetes y Planes de Servicios",
+    Icon: Stack, color: "#0EA5E9",
+    features: [
+      { nombre: "Paquetes de sesiones prepagadas", descripcion: "Vende paquetes de varias sesiones de un mismo servicio —por ejemplo, 4 sesiones de masaje— y el sistema descuenta automáticamente cada sesión que tu cliente utiliza. Exclusivo del plan Marca Propia." },
+      { nombre: "Seguimiento de sesiones restantes", descripcion: "Consulta en cualquier momento cuántas sesiones le quedan a cada cliente de su paquete, sin llevar el conteo aparte." },
+    ],
+  },
+  {
+    categoria: "Tienda e Inventario",
+    Icon: Storefront, color: "#CA8A04",
+    features: [
+      { nombre: "Inventario de insumos", descripcion: "Controla los insumos que usas en cada servicio y evita quedarte sin existencias en el momento menos indicado. Disponible en los planes Básico, Esencial y Marca Propia." },
+      { nombre: "Tienda en línea", descripcion: "Vende productos directamente desde tu página, además de tus servicios por cita." },
+      { nombre: "Control de stock de productos", descripcion: "Visibilidad clara de tus existencias de insumos y de los productos que vendes." },
     ],
   },
   {

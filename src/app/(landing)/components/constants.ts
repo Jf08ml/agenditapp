@@ -78,6 +78,9 @@ export const JSONLD_SOFTWARE = {
     "Página de reservas con marca propia",
     "Análisis de horas pico",
     "Panel administrativo completo",
+    "Cobro de reservas con Mercado Pago o comprobante de transferencia",
+    "Paquetes de sesiones prepagadas",
+    "Tienda en línea e inventario de insumos",
   ],
   offers: {
     "@type": "AggregateOffer",

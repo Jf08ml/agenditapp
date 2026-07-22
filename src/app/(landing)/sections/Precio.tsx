@@ -110,6 +110,7 @@ const PLANS: Array<{
       "Dominio propio (tumarca.com)",
       "2 recordatorios automáticos",
       "Campañas de WhatsApp (envío masivo)",
+      "Paquetes de sesiones prepagadas (exclusivo)",
     ],
     ctaLabel: "Empezar con Marca Propia",
   },
@@ -127,6 +128,8 @@ const EXTRA_FEATURES: Record<PlanKey, string[]> = {
     "Branding personalizado (logo, nombre y colores)",
     "Horarios por empleado y bloqueo de disponibilidad",
     "Landing de bienvenida sencilla",
+    "Cobro de reservas: Mercado Pago (con comisión) o comprobante de transferencia (sin comisión)",
+    "Tienda en línea con inventario de insumos y productos",
   ],
   esencial: [
     "Analíticas de negocio + comisiones / nómina por empleado",
@@ -135,6 +138,8 @@ const EXTRA_FEATURES: Record<PlanKey, string[]> = {
     "Mensaje de agendamiento configurable",
     "Mensajes de WhatsApp editables a tu gusto",
     "Landing de bienvenida sencilla",
+    "Cobro de reservas: Mercado Pago (con comisión) o comprobante de transferencia (sin comisión)",
+    "Tienda en línea con inventario de insumos y productos",
   ],
   marca: [
     "Analíticas de negocio + comisiones / nómina por empleado",
@@ -144,6 +149,8 @@ const EXTRA_FEATURES: Record<PlanKey, string[]> = {
     "Mensajes de WhatsApp editables a tu gusto",
     "Landing de bienvenida profesional",
     "Soporte prioritario + acompañamiento para dominio",
+    "Cobro de reservas: Mercado Pago (con comisión) o comprobante de transferencia (sin comisión)",
+    "Tienda en línea con inventario de insumos y productos",
   ],
 };
 
@@ -177,6 +184,15 @@ const COMPARISON_GROUPS: Array<{ group: string; rows: CompRow[] }> = [
       { label: "Mensajes editables", values: { gratuito: false, basico: false, esencial: true, marca: true } },
       { label: "Enlace para confirmar / cancelar citas", hint: "El cliente confirma o cancela desde WhatsApp", values: { gratuito: false, basico: false, esencial: true, marca: true } },
       { label: "Campañas masivas de WhatsApp", values: { gratuito: false, basico: false, esencial: false, marca: true } },
+    ],
+  },
+  {
+    group: "Pagos y ventas",
+    rows: [
+      { label: "Cobro de reservas (abono o pago completo)", hint: "Mercado Pago con comisión, o comprobante de transferencia sin comisión", values: { gratuito: false, basico: true, esencial: true, marca: true } },
+      { label: "Mismos métodos para cobros internos", hint: "Ventas de tienda y otros cobros del negocio", values: { gratuito: false, basico: true, esencial: true, marca: true } },
+      { label: "Tienda en línea e inventario de insumos", values: { gratuito: false, basico: true, esencial: true, marca: true } },
+      { label: "Paquetes de sesiones prepagadas", hint: "Ej: 4 sesiones de masaje, con descuento automático por sesión usada", values: { gratuito: false, basico: false, esencial: false, marca: true } },
     ],
   },
 ];

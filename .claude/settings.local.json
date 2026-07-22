@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Read(//tmp/pw-screens/**)",
+      "Read(//d/tmp/pw-screens/**)",
+      "Bash(node -e ' *)",
+      "Bash(lsof -ti:3000 -sTCP:LISTEN)",
+      "Bash(xargs -r kill)"
     ]
   }
 }
