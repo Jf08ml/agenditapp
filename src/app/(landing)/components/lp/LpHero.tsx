@@ -28,6 +28,7 @@ export default function LpHero({
   phoneImageAlt = "Cliente reservando una cita desde el celular con AgenditApp",
   whatsappLabel,
   signupLabel,
+  showCta = true,
 }: {
   variant: CtaVariant;
   source: string;
@@ -41,6 +42,10 @@ export default function LpHero({
   phoneImageAlt?: string;
   whatsappLabel?: string;
   signupLabel?: string;
+  /** Oculta el CTA del Hero (queda solo la línea de confianza). Usado en
+   * /oferta para no ofrecer el botón de WhatsApp antes de que la persona
+   * lea beneficios y oferta. */
+  showCta?: boolean;
 }) {
   return (
     <section className="relative overflow-x-hidden pt-28 sm:pt-32 pb-14 md:pb-20">
@@ -108,15 +113,17 @@ export default function LpHero({
               {subtitle}
             </motion.p>
 
-            <motion.div variants={fadeUp} transition={{ duration: 0.6 }} className="mt-8">
-              <LeadCtas
-                variant={variant}
-                source={source}
-                className="justify-center lg:justify-start"
-                whatsappLabel={whatsappLabel}
-                signupLabel={signupLabel}
-              />
-            </motion.div>
+            {showCta && (
+              <motion.div variants={fadeUp} transition={{ duration: 0.6 }} className="mt-8">
+                <LeadCtas
+                  variant={variant}
+                  source={source}
+                  className="justify-center lg:justify-start"
+                  whatsappLabel={whatsappLabel}
+                  signupLabel={signupLabel}
+                />
+              </motion.div>
+            )}
 
             <motion.p
               variants={fadeUp}

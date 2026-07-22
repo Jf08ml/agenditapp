@@ -14,7 +14,7 @@ export default function OfertaRegistroPage() {
   return (
     <>
       <MetaPixel />
-      <OfertaContent variant="signup" />
+      <OfertaContent variant="signup" compact />
     </>
   );
 }

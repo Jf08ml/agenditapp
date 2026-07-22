@@ -3,14 +3,18 @@
 import { usePathname } from "next/navigation";
 import { DemoCtaButton } from "./DemoCtaModal";
 
-/* Rutas que montan su propio botón flotante (LpWhatsAppFab) con
-   atribución específica; ahí el FAB global se oculta para no
-   duplicarse en la misma esquina. */
-const ROUTES_WITH_OWN_FAB = ["/oferta-registro"];
+/* Rutas donde no debe aparecer el FAB global:
+   - /oferta-registro monta su propio FAB de soporte (LpWhatsAppFab), así
+     que el global se oculta para no duplicarse en la misma esquina.
+   - /oferta no muestra ningún botón flotante: los datos de campaña
+     mostraban que la mayoría de los contactos llegaban por ahí (y por
+     header/Hero) sin haber leído nada de la landing. El CTA solo vive
+     dentro del contenido (banda de oferta, CTA intermedio, CTA final). */
+const ROUTES_WITHOUT_GLOBAL_FAB = ["/oferta-registro", "/oferta"];
 
 export default function WhatsAppFAB() {
   const pathname = usePathname();
-  if (ROUTES_WITH_OWN_FAB.includes(pathname)) return null;
+  if (ROUTES_WITHOUT_GLOBAL_FAB.includes(pathname)) return null;
 
   return (
     <DemoCtaButton

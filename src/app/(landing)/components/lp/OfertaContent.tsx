@@ -72,16 +72,34 @@ const FAQ = [
   },
 ];
 
-export default function OfertaContent({ variant }: { variant: CtaVariant }) {
+export default function OfertaContent({
+  variant,
+  hideEarlyCtas = false,
+  compact = false,
+}: {
+  variant: CtaVariant;
+  /** Oculta el CTA del header y del Hero (queda solo el logo / la línea de
+   * confianza). Usado en /oferta: los datos de campaña mostraban que la
+   * mayoría de los contactos llegaban por esos botones sin leer nada de
+   * la landing. El primer CTA disponible pasa a ser la banda de oferta,
+   * después de beneficios. */
+  hideEarlyCtas?: boolean;
+  /** Corta la landing después de "Cómo funciona": quita Testimonios, el
+   * CTA intermedio, el FAQ y el banner de CTA final. Usado en
+   * /oferta-registro: la campaña mostraba 88.8% de rebote sin ninguna
+   * interacción, así que se acorta la página en vez de solo reordenarla. */
+  compact?: boolean;
+}) {
   const primaryIsSignup = variant === "signup";
 
   return (
     <main className="min-h-screen overflow-x-hidden">
-      <LpHeader source="oferta_header" cta={variant} />
+      <LpHeader source="oferta_header" cta={hideEarlyCtas ? "none" : variant} />
 
       <LpHero
         variant={variant}
         source="oferta_hero"
+        showCta={!hideEarlyCtas}
         badge="Oferta de lanzamiento · Empieza gratis"
         whatsappLabel="Quiero llenar mi agenda"
         signupLabel="Crear mi cuenta gratis"
@@ -106,6 +124,12 @@ export default function OfertaContent({ variant }: { variant: CtaVariant }) {
       />
 
       <LpProofStats />
+
+      <LpBenefits
+        badge="Todo en un solo lugar"
+        title="Lo que tu negocio gana con AgenditApp"
+        items={BENEFITS}
+      />
 
       {/* ── Banda de oferta ── */}
       <section className="py-12 px-6">
@@ -149,94 +173,92 @@ export default function OfertaContent({ variant }: { variant: CtaVariant }) {
         </motion.div>
       </section>
 
-      <LpBenefits
-        badge="Todo en un solo lugar"
-        title="Lo que tu negocio gana con AgenditApp"
-        items={BENEFITS}
-      />
-
       <LpHowItWorks />
 
-      <LpTestimonials />
+      {!compact && (
+        <>
+          <LpTestimonials />
 
-      {/* ── CTA intermedio: cierra el tramo largo entre la banda de
-          oferta y el CTA final (clave en móvil) ── */}
-      <section className="pb-6 px-6">
-        <motion.div
-          variants={fadeUp}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true, amount: 0.4 }}
-          className="flex flex-col items-center gap-3"
-        >
-          <LeadCtas
-            variant={variant}
-            source="oferta_media"
-            className="justify-center"
-            whatsappLabel="Quiero llenar mi agenda"
-            signupLabel="Crear mi cuenta gratis"
-          />
-          <p className="text-[13px] text-muted">
-            Sin tarjeta · Listo en 10 minutos
-          </p>
-        </motion.div>
-      </section>
+          {/* ── CTA intermedio: cierra el tramo largo entre la banda de
+              oferta y el CTA final (clave en móvil) ── */}
+          <section className="pb-6 px-6">
+            <motion.div
+              variants={fadeUp}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true, amount: 0.4 }}
+              className="flex flex-col items-center gap-3"
+            >
+              <LeadCtas
+                variant={variant}
+                source="oferta_media"
+                className="justify-center"
+                whatsappLabel="Quiero llenar mi agenda"
+                signupLabel="Crear mi cuenta gratis"
+              />
+              <p className="text-[13px] text-muted">
+                Sin tarjeta · Listo en 10 minutos
+              </p>
+            </motion.div>
+          </section>
 
-      {/* ── FAQ corto ── */}
-      <section className="py-16 sm:py-20">
-        <div className="max-w-3xl mx-auto px-6">
-          <motion.h2
-            variants={fadeUp}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, amount: 0.3 }}
-            className="text-center text-3xl md:text-4xl font-semibold text-heading tracking-tight mb-10"
-          >
-            Preguntas frecuentes
-          </motion.h2>
-          <div className="flex flex-col gap-3">
-            {FAQ.map((f) => (
-              <motion.div
-                key={f.q}
+          {/* ── FAQ corto ── */}
+          <section className="py-16 sm:py-20">
+            <div className="max-w-3xl mx-auto px-6">
+              <motion.h2
                 variants={fadeUp}
                 initial="initial"
                 whileInView="animate"
-                viewport={{ once: true, amount: 0.4 }}
-                className="card p-5 border border-brand/10"
+                viewport={{ once: true, amount: 0.3 }}
+                className="text-center text-3xl md:text-4xl font-semibold text-heading tracking-tight mb-10"
               >
-                <h3 className="font-semibold text-heading text-[15px] mb-1.5">
-                  {f.q}
-                </h3>
-                <p className="text-sm text-body leading-relaxed">{f.a}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+                Preguntas frecuentes
+              </motion.h2>
+              <div className="flex flex-col gap-3">
+                {FAQ.map((f) => (
+                  <motion.div
+                    key={f.q}
+                    variants={fadeUp}
+                    initial="initial"
+                    whileInView="animate"
+                    viewport={{ once: true, amount: 0.4 }}
+                    className="card p-5 border border-brand/10"
+                  >
+                    <h3 className="font-semibold text-heading text-[15px] mb-1.5">
+                      {f.q}
+                    </h3>
+                    <p className="text-sm text-body leading-relaxed">{f.a}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
 
-      <LpFinalCta
-        variant={variant}
-        source="oferta_final"
-        title={
-          primaryIsSignup ? (
-            <>
-              Crea tu cuenta y empieza{" "}
-              <span
-                style={{
-                  fontFamily: "var(--font-instrument-serif), Georgia, serif",
-                  fontStyle: "italic",
-                  fontWeight: 400,
-                }}
-              >
-                gratis hoy.
-              </span>
-            </>
-          ) : undefined
-        }
-        subtitle="Sin tarjeta · Listo en 10 minutos · Cancela cuando quieras."
-        whatsappLabel="Quiero llenar mi agenda"
-        signupLabel="Crear mi cuenta gratis"
-      />
+          <LpFinalCta
+            variant={variant}
+            source="oferta_final"
+            title={
+              primaryIsSignup ? (
+                <>
+                  Crea tu cuenta y empieza{" "}
+                  <span
+                    style={{
+                      fontFamily: "var(--font-instrument-serif), Georgia, serif",
+                      fontStyle: "italic",
+                      fontWeight: 400,
+                    }}
+                  >
+                    gratis hoy.
+                  </span>
+                </>
+              ) : undefined
+            }
+            subtitle="Sin tarjeta · Listo en 10 minutos · Cancela cuando quieras."
+            whatsappLabel="Quiero llenar mi agenda"
+            signupLabel="Crear mi cuenta gratis"
+          />
+        </>
+      )}
 
       <LpFooter />
 

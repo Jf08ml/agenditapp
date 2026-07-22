@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import OfertaContent from "../(landing)/components/lp/OfertaContent";
 import MetaPixel from "../(landing)/components/lp/MetaPixel";
+import LpScrollDepth from "../(landing)/components/lp/LpScrollDepth";
 
 export const metadata: Metadata = {
   title: "Empieza gratis con AgenditApp — Llena tu agenda por WhatsApp",
@@ -14,7 +15,8 @@ export default function OfertaPage() {
   return (
     <>
       <MetaPixel />
-      <OfertaContent variant="whatsapp" />
+      <LpScrollDepth source="oferta" />
+      <OfertaContent variant="whatsapp" hideEarlyCtas />
     </>
   );
 }
