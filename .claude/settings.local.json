@@ -6,7 +6,10 @@
       "Read(//d/tmp/pw-screens/**)",
       "Bash(node -e ' *)",
       "Bash(lsof -ti:3000 -sTCP:LISTEN)",
-      "Bash(xargs -r kill)"
+      "Bash(xargs -r kill)",
+      "Bash(grep -o 'href=\"[^\"]*wa\\\\.me[^\"]*\"' \"/tmp/oferta_page.html\" | wc -l)",
+      "Read(//tmp/**)",
+      "Bash(curl -s \"http://localhost:3000/oferta-registro\" -o \"/tmp/oferta_registro_page.html\")"
     ]
   }
 }

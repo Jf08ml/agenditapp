@@ -13,7 +13,7 @@ import {
   LpFinalCta,
   type Benefit,
 } from "./sections";
-import { LeadCtas, type CtaVariant } from "./cta";
+import { LeadCtas, WhatsAppCtaButton, WaIcon, BTN_WHATSAPP, type CtaVariant } from "./cta";
 
 const fadeUp: Variants = {
   initial: { opacity: 0, y: 24 },
@@ -130,6 +130,26 @@ export default function OfertaContent({
         title="Lo que tu negocio gana con AgenditApp"
         items={BENEFITS}
       />
+
+      {/* ── CTA WhatsApp tras Beneficios: primer botón visible cuando
+          hideEarlyCtas oculta el del header/Hero. Solo en la variante
+          WhatsApp para no competir con el registro en /oferta-registro. ── */}
+      {variant === "whatsapp" && (
+        <section className="pb-8 px-6">
+          <motion.div
+            variants={fadeUp}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, amount: 0.4 }}
+            className="flex justify-center"
+          >
+            <WhatsAppCtaButton source="oferta_beneficios" className={BTN_WHATSAPP}>
+              <WaIcon />
+              Quiero llenar mi agenda
+            </WhatsAppCtaButton>
+          </motion.div>
+        </section>
+      )}
 
       {/* ── Banda de oferta ── */}
       <section className="py-12 px-6">
