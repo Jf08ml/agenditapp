@@ -154,6 +154,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.3,
     },
     {
+      url: `${base}/seguridad`,
+      lastModified: "2026-09-07",
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
       url: `${base}/blog`,
       lastModified: blogIndexLastModified,
       changeFrequency: "weekly",

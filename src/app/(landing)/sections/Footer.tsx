@@ -29,6 +29,7 @@ const NAV_LINKS = [
   { label: "Nosotros", href: "/nosotros" },
   { label: "Términos", href: "/terminos" },
   { label: "Privacidad", href: "/privacidad" },
+  { label: "Seguridad", href: "/seguridad" },
 ];
 
 const COMPARATIVAS_LINKS = [
