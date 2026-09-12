@@ -1,0 +1,11 @@
+{
+  "badge": "Pagos y ventas",
+  "heading": "Cobra, vende paquetes y controla tu inventario",
+  "description": "Todo desde la misma plataforma, sin planillas aparte ni procesos manuales.",
+  "features": [
+    { "title": "Cobra reservas online", "description": "Acepta abonos o el pago completo al momento de reservar, con Mercado Pago (comisión por transacción) o comprobante de transferencia, sin comisión." },
+    { "title": "Paquetes de sesiones", "description": "Vende paquetes prepagados —como 4 sesiones de masaje— y el sistema descuenta automáticamente cada sesión que tu cliente utiliza." },
+    { "title": "Tienda e inventario", "description": "Vende productos desde tu página y controla el inventario de insumos de tu negocio, con los mismos métodos de pago que usas para las reservas." }
+  ],
+  "footnote": "Pagos, tienda e inventario disponibles desde el plan Básico. Los paquetes de sesiones son exclusivos del plan Marca Propia. <link>Ver todas las funcionalidades →</link>"
+}

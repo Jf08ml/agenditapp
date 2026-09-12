@@ -1,0 +1,14 @@
+{
+  "badge": "Calcula tu retorno",
+  "heading": {
+    "prefix": "Se paga solo con",
+    "highlight": "1 cita recuperada al mes."
+  },
+  "description": "Promedio: nuestros clientes recuperan entre 8 y 20 citas perdidas al mes gracias a recordatorios automáticos.",
+  "ticketLabel": "Ticket promedio por cita",
+  "noshowsLabel": "Inasistencias por mes hoy",
+  "resultLabel": "Recuperas hasta",
+  "resultUnit": "al mes",
+  "noteBold": "Tu inversión se recupera con menos de 1 cita.",
+  "noteSub": "vs $20 USD del plan Esencial"
+}

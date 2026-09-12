@@ -1,0 +1,31 @@
+{
+  "badge": "Plataforma completa",
+  "heading": "El software de gestión y reservas <highlight>más completo</highlight> a tu medida",
+  "subheading": "Estas son las funciones favoritas de nuestros clientes para ahorrar tiempo, reducir inasistencias y multiplicar sus ingresos gracias a su agenda digital.",
+  "features": [
+    {
+      "title": "Fidelidad y Retención",
+      "description": "Fideliza clientes con recompensas y mejora su experiencia con reservas fáciles y recordatorios automáticos."
+    },
+    {
+      "title": "Presencia Digital",
+      "description": "Landing profesional con dominio propio, diseño responsive y SEO optimizado para atraer más clientes."
+    },
+    {
+      "title": "Campañas y Crecimiento",
+      "description": "Envía campañas masivas por WhatsApp, segmentando a tus clientes para lograr mayor efectividad en ventas."
+    },
+    {
+      "title": "Branding, Seguridad y Soporte",
+      "description": "Plataforma segura en la nube, personalizable, con acceso total, soporte dedicado y actualizaciones automáticas."
+    },
+    {
+      "title": "Fácil de Usar",
+      "description": "Recibe reservas online ilimitadas sin interrupciones, gestionando fácilmente tu agenda, servicios y horarios."
+    },
+    {
+      "title": "Gestión de Negocio",
+      "description": "Gestiona empleados, clientes, comisiones y caja, usando analíticas para controlar todo el negocio."
+    }
+  ]
+}

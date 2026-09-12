@@ -1,0 +1,173 @@
+{
+  "header": {
+    "badge": "Planes y precios",
+    "headingPrefix": "Empieza gratis.",
+    "headingHighlight": "Sin tarjeta.",
+    "subheading": "Regístrate y obtén 7 días con todo incluido. Después, el plan gratuito para siempre — o elige un plan de pago cuando quieras.",
+    "advisorCta": "¿No sabes qué plan elegir? Habla con un asesor"
+  },
+  "toggle": {
+    "monthly": "Mensual",
+    "yearly": "Anual",
+    "yearlyDiscount": "−17%"
+  },
+  "trialNote": "Los primeros 7 días con acceso completo al activar tu cuenta. Sin tarjeta de crédito.",
+  "priceUnit": {
+    "free": "/ siempre gratis",
+    "monthly": "/ mes",
+    "yearly": "/ año"
+  },
+  "priceNote": {
+    "free": "Sin tarjeta · Sin permanencia",
+    "yearly": "2 meses gratis · facturación anual",
+    "monthly": "Sin permanencia · Cancela cuando quieras"
+  },
+  "trialRibbon": "7 días con acceso COMPLETO al registrarte — luego gratis para siempre",
+  "expandToggle": {
+    "show": "Ver más características",
+    "hide": "Ocultar características"
+  },
+  "comparison": {
+    "heading": "Comparar planes",
+    "subheading": "Revisa en detalle qué incluye cada plan.",
+    "featureColumnLabel": "Funcionalidad"
+  },
+  "freeCta": "Gratis",
+  "tip": {
+    "intro": "¿No sabes cuál elegir?",
+    "essentialLead": "Si quieres reducir ausencias →",
+    "essentialPlan": "Esencial",
+    "brandLead": "Si quieres crecer con campañas →",
+    "brandPlan": "Marca Propia"
+  },
+  "plans": {
+    "gratuito": {
+      "name": "Gratuito",
+      "badge": "Siempre gratis",
+      "tagline": "Empieza sin costo. Los primeros 7 días con acceso completo a todo.",
+      "highlights": [
+        "1 profesional incluido",
+        "Hasta 5 servicios",
+        "Clientes ilimitados",
+        "Reservas online 24/7",
+        "Agenda virtual semanal y mensual",
+        "Subdominio tunegocio.agenditapp.com"
+      ],
+      "ctaLabel": "Empezar gratis"
+    },
+    "basico": {
+      "name": "Básico",
+      "badge": "Starter",
+      "tagline": "Para organizar tu agenda y empezar a recibir reservas online.",
+      "highlights": [
+        "Reservas y citas ilimitadas 24/7",
+        "Panel administrativo completo",
+        "Gestión de servicios, empleados y clientes",
+        "Subdominio tu-negocio.agenditapp.com"
+      ],
+      "ctaLabel": "Empezar con el Básico"
+    },
+    "esencial": {
+      "name": "Esencial",
+      "badge": "Más elegido",
+      "tagline": "Automatiza WhatsApp y reduce ausencias con recordatorios.",
+      "highlights": [
+        "Todo lo del plan Básico",
+        "WhatsApp desde tu número Business",
+        "1 recordatorio automático configurable",
+        "Enlace para confirmar o cancelar citas"
+      ],
+      "ctaLabel": "Empezar con el Esencial"
+    },
+    "marca": {
+      "name": "Marca Propia",
+      "badge": "Pro",
+      "tagline": "Dominio propio y campañas masivas de WhatsApp para crecer.",
+      "highlights": [
+        "Todo lo del plan Esencial",
+        "Dominio propio (tumarca.com)",
+        "2 recordatorios automáticos",
+        "Campañas de WhatsApp (envío masivo)",
+        "Paquetes de sesiones prepagadas (exclusivo)"
+      ],
+      "ctaLabel": "Empezar con Marca Propia"
+    }
+  },
+  "extraFeatures": {
+    "gratuito": [
+      "Analíticas básicas del negocio",
+      "Gestión básica de ingresos",
+      "Branding AgenditApp visible"
+    ],
+    "basico": [
+      "Analíticas de negocio + comisiones / nómina por empleado",
+      "Sistema de fidelidad para retener clientes",
+      "Branding personalizado (logo, nombre y colores)",
+      "Horarios por empleado y bloqueo de disponibilidad",
+      "Landing de bienvenida sencilla",
+      "Cobro de reservas: Mercado Pago (con comisión) o comprobante de transferencia (sin comisión)",
+      "Tienda en línea con inventario de insumos y productos"
+    ],
+    "esencial": [
+      "Analíticas de negocio + comisiones / nómina por empleado",
+      "Sistema de fidelidad para retener clientes",
+      "Branding personalizado (logo, nombre y colores)",
+      "Mensaje de agendamiento configurable",
+      "Mensajes de WhatsApp editables a tu gusto",
+      "Landing de bienvenida sencilla",
+      "Cobro de reservas: Mercado Pago (con comisión) o comprobante de transferencia (sin comisión)",
+      "Tienda en línea con inventario de insumos y productos"
+    ],
+    "marca": [
+      "Analíticas de negocio + comisiones / nómina por empleado",
+      "Sistema de fidelidad para retener clientes",
+      "Branding personalizado (logo, nombre y colores)",
+      "Mensaje de agendamiento configurable",
+      "Mensajes de WhatsApp editables a tu gusto",
+      "Landing de bienvenida profesional",
+      "Soporte prioritario + acompañamiento para dominio",
+      "Cobro de reservas: Mercado Pago (con comisión) o comprobante de transferencia (sin comisión)",
+      "Tienda en línea con inventario de insumos y productos"
+    ]
+  },
+  "comparisonGroups": [
+    {
+      "group": "Base",
+      "rows": [
+        { "label": "Reservas y citas (24/7)", "values": { "gratuito": true, "basico": true, "esencial": true, "marca": true } },
+        { "label": "Panel administrativo y agenda visual", "values": { "gratuito": true, "basico": true, "esencial": true, "marca": true } },
+        { "label": "Servicios y empleados", "values": { "gratuito": "1 emp · 5 serv", "basico": true, "esencial": true, "marca": true } },
+        { "label": "Analíticas del negocio", "values": { "gratuito": "Básicas", "basico": true, "esencial": true, "marca": true } },
+        { "label": "Fidelidad + branding personalizado", "values": { "gratuito": false, "basico": true, "esencial": true, "marca": true } }
+      ]
+    },
+    {
+      "group": "Presencia web",
+      "rows": [
+        { "label": "Landing de bienvenida", "values": { "gratuito": false, "basico": "Sencilla", "esencial": "Sencilla", "marca": "Profesional" } },
+        { "label": "Subdominio (tu-negocio.agenditapp.com)", "values": { "gratuito": true, "basico": true, "esencial": true, "marca": false } },
+        { "label": "Dominio propio (tumarca.com)", "values": { "gratuito": false, "basico": false, "esencial": false, "marca": true } }
+      ]
+    },
+    {
+      "group": "Automatización WhatsApp",
+      "rows": [
+        { "label": "WhatsApp desde tu número Business", "hint": "Mensajes enviados desde tu propio número", "values": { "gratuito": false, "basico": false, "esencial": true, "marca": true } },
+        { "label": "Mensaje de agendamiento configurable", "values": { "gratuito": false, "basico": false, "esencial": true, "marca": true } },
+        { "label": "Recordatorios automáticos", "values": { "gratuito": false, "basico": false, "esencial": "1 recordatorio", "marca": "2 recordatorios" } },
+        { "label": "Mensajes editables", "values": { "gratuito": false, "basico": false, "esencial": true, "marca": true } },
+        { "label": "Enlace para confirmar / cancelar citas", "hint": "El cliente confirma o cancela desde WhatsApp", "values": { "gratuito": false, "basico": false, "esencial": true, "marca": true } },
+        { "label": "Campañas masivas de WhatsApp", "values": { "gratuito": false, "basico": false, "esencial": false, "marca": true } }
+      ]
+    },
+    {
+      "group": "Pagos y ventas",
+      "rows": [
+        { "label": "Cobro de reservas (abono o pago completo)", "hint": "Mercado Pago con comisión, o comprobante de transferencia sin comisión", "values": { "gratuito": false, "basico": true, "esencial": true, "marca": true } },
+        { "label": "Mismos métodos para cobros internos", "hint": "Ventas de tienda y otros cobros del negocio", "values": { "gratuito": false, "basico": true, "esencial": true, "marca": true } },
+        { "label": "Tienda en línea e inventario de insumos", "values": { "gratuito": false, "basico": true, "esencial": true, "marca": true } },
+        { "label": "Paquetes de sesiones prepagadas", "hint": "Ej: 4 sesiones de masaje, con descuento automático por sesión usada", "values": { "gratuito": false, "basico": false, "esencial": false, "marca": true } }
+      ]
+    }
+  ]
+}

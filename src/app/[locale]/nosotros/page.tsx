@@ -6,6 +6,7 @@ import MX from "country-flag-icons/react/3x2/MX";
 import CR from "country-flag-icons/react/3x2/CR";
 import CL from "country-flag-icons/react/3x2/CL";
 import type { IconWeight } from "@phosphor-icons/react";
+import { routing } from "@/i18n/routing";
 import {
   Crosshair,
   Cpu,
@@ -646,3 +647,11 @@ export default function NosotrosPage() {
     </>
   );
 }
+
+// Sin versión en inglés todavía: se genera solo para el locale por defecto
+// y cualquier /en/* de esta ruta debe devolver 404 en vez de renderizar en español.
+export function generateStaticParams() {
+  return [{ locale: routing.defaultLocale }];
+}
+
+export const dynamicParams = false;

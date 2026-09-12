@@ -1,0 +1,20 @@
+{
+  "badge": "New · Start free — no credit card",
+  "heading": {
+    "line1": "Stop chasing appointments",
+    "highlight": "over WhatsApp.",
+    "line2": "Let your calendar do it for you."
+  },
+  "subtitle": "AgenditApp takes bookings 24/7, confirms them with your clients over WhatsApp, and cuts no-shows by up to 70% — without you lifting a finger.",
+  "cta": {
+    "whatsapp": "Chat on WhatsApp",
+    "pricing": "See plans & pricing"
+  },
+  "microcopy": "No credit card · Live in 10 minutes · Cancel anytime",
+  "liveBooking": {
+    "confirmed": "booking confirmed {secs}s ago",
+    "example": "Kate → Glow Studio"
+  },
+  "screenshotAlt": "Weekly appointment view with columns per staff member — AgenditApp",
+  "lightboxAlt": "Online booking calendar — AgenditApp"
+}

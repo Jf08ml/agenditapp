@@ -1,0 +1,16 @@
+{
+  "badge": "Service catalog",
+  "heading": "Your professional menu, <highlight>always up to date.</highlight>",
+  "description": "Your clients see prices, duration, and descriptions before booking — no more “how much does it cost?” messages.",
+  "features": [
+    { "title": "Price, duration, and details", "description": "Set up every service with full information. Great for combos, packages, and promos." },
+    { "title": "Organized by category", "description": "Group services by type: nails, hair, facials, massages… easy to browse." },
+    { "title": "Real-time updates", "description": "Change prices or durations anytime — changes show up instantly." },
+    { "title": "SEO and Google Maps ready", "description": "Titles, descriptions, and structured data so Google can find you." }
+  ],
+  "screenshotAlt": "Service catalog and pricing — AgenditApp",
+  "expandAriaLabel": "Expand: service catalog and pricing",
+  "priceLabel": "Price",
+  "demoPrice": "$45",
+  "demoDetail": "45 min · Gel manicure"
+}

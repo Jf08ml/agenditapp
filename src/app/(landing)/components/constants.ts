@@ -1,3 +1,6 @@
+import { getTranslations } from "next-intl/server";
+import { routing, type Locale } from "@/i18n/routing";
+
 const WA_NUMBER = "573506674686";
 const WA_BASE_TEXT = "Hola 👋 quiero mi demo de AgenditApp para mi negocio";
 
@@ -16,14 +19,15 @@ export function getWhatsappHref(): string {
 
 export const SIGNUP_HREF = "https://app.agenditapp.com/signup";
 
-export const JSONLD_ORGANIZATION = {
+export async function getJsonldOrganization(locale: Locale) {
+  const t = await getTranslations({ locale, namespace: "Jsonld" });
+  return {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "AgenditApp",
   url: "https://agenditapp.com",
   logo: "https://agenditapp.com/logo_dorado.png",
-  description:
-    "Software de agendamiento online y gestión de negocios para salones de belleza, barberías, spas y consultorios en Latinoamérica.",
+  description: t("organizationDescription"),
   foundingDate: "2024",
   address: {
     "@type": "PostalAddress",
@@ -35,7 +39,7 @@ export const JSONLD_ORGANIZATION = {
     "@type": "ContactPoint",
     telephone: "+57-350-667-4686",
     contactType: "customer service",
-    availableLanguage: ["Spanish"],
+    availableLanguage: ["Spanish", "English"],
     areaServed: ["CO", "MX", "CR", "CL"],
   },
   sameAs: [
@@ -44,15 +48,13 @@ export const JSONLD_ORGANIZATION = {
     "https://www.linkedin.com/company/agenditapp",
     "https://www.g2.com/products/agenditapp",
   ],
-  knowsAbout: [
-    "Software de agendamiento",
-    "Gestión de citas",
-    "Automatización de reservas",
-    "Marketing para salones de belleza",
-  ],
-} as const;
+    knowsAbout: t.raw("knowsAbout") as string[],
+  };
+}
 
-export const JSONLD_SOFTWARE = {
+export async function getJsonldSoftware(locale: Locale) {
+  const t = await getTranslations({ locale, namespace: "Jsonld" });
+  return {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   name: "AgenditApp",
@@ -62,26 +64,9 @@ export const JSONLD_SOFTWARE = {
   operatingSystem: "Web",
   softwareVersion: "1.0",
   datePublished: "2024-01-01",
-  inLanguage: "es-CO",
-  description:
-    "Software de agendamiento online y gestión de negocios para salones de belleza, barberías, spas y consultorios en Latinoamérica. Reservas 24/7, recordatorios automáticos por WhatsApp y gestión completa del negocio.",
-  featureList: [
-    "Reservas online 24/7",
-    "Recordatorios automáticos por WhatsApp",
-    "Calendario visual de citas",
-    "Gestión de servicios y empleados",
-    "Base de datos de clientes",
-    "Comisiones y nómina",
-    "Programa de fidelización",
-    "Campañas masivas por WhatsApp",
-    "Dominio personalizado",
-    "Página de reservas con marca propia",
-    "Análisis de horas pico",
-    "Panel administrativo completo",
-    "Cobro de reservas con Mercado Pago o comprobante de transferencia",
-    "Paquetes de sesiones prepagadas",
-    "Tienda en línea e inventario de insumos",
-  ],
+  inLanguage: locale === routing.defaultLocale ? "es-CO" : "en",
+  description: t("softwareDescription"),
+  featureList: t.raw("featureList") as string[],
   offers: {
     "@type": "AggregateOffer",
     lowPrice: "10",
@@ -116,113 +101,64 @@ export const JSONLD_SOFTWARE = {
     "https://www.linkedin.com/company/agenditapp",
     "https://www.g2.com/products/agenditapp",
   ],
-} as const;
+  };
+}
 
-export const JSONLD_FAQ = {
+export async function getJsonldFaq(locale: Locale) {
+  const t = await getTranslations({ locale, namespace: "Jsonld" });
+  const faq = t.raw("faq") as Array<{ question: string; answer: string }>;
+  return {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "¿Cuánto cuesta AgenditApp?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Los planes van desde $10 USD/mes (Básico) hasta $30 USD/mes (Marca Propia). Todos son mes a mes, sin contratos ni permanencia. Incluyen reservas ilimitadas y soporte por WhatsApp.",
-      },
+  mainEntity: faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
     },
-    {
-      "@type": "Question",
-      name: "¿Tiene permanencia o cláusulas?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "No. Todos los planes son mes a mes y puedes cancelar cuando quieras sin penalizaciones ni trámites.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "¿Los recordatorios salen desde mi número de WhatsApp?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Sí. En los planes que incluyen WhatsApp, los mensajes se envían desde tu número oficial de WhatsApp Business, no desde un número desconocido.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "¿Cuántas citas puedo recibir con AgenditApp?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ilimitadas en todos los planes. No hay cobro extra por cantidad de reservas ni por número de clientes.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "¿Mis clientes necesitan descargar una app para reservar?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "No. Tus clientes reservan desde un enlace web que puedes compartir por WhatsApp, Instagram o redes sociales. No necesitan instalar nada.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "¿Qué tipo de negocios pueden usar AgenditApp?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Si trabajas con citas o turnos, AgenditApp es para ti. Se usa en salones de belleza, barberías, spas, consultorios médicos, psicólogos, odontólogos, nutricionistas, veterinarias, gimnasios, estudios de fotografía, profesores de música, yoga, danza, tutorías y más.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "¿Necesito conocimientos técnicos para usar la plataforma?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "No. AgenditApp es muy intuitivo y fácil de usar. Ofrecemos capacitación inicial y soporte técnico para que empieces desde el primer día.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "¿Puedo gestionar varios empleados?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Sí. Cada empleado tiene su propio horario, servicios y agenda. Puedes ver todo desde un solo panel y gestionar comisiones automáticamente.",
-      },
-    },
-  ],
-} as const;
+  })),
+  };
+}
 
-export const JSONLD_SERVICES = {
-  "@context": "https://schema.org",
-  "@type": "OfferCatalog",
-  name: "Planes de AgenditApp — Software de Agendamiento Online",
-  itemListElement: [
-    {
-      "@type": "Offer",
-      name: "Plan Básico",
-      description: "Para organizar tu agenda y empezar a recibir reservas online. Incluye reservas y citas ilimitadas 24/7, panel administrativo completo, gestión de servicios, empleados y clientes.",
-      price: "10",
-      priceCurrency: "USD",
-      priceSpecification: { "@type": "UnitPriceSpecification", price: "10", priceCurrency: "USD", unitText: "mes" },
-      itemOffered: { "@type": "Service", name: "AgenditApp Plan Básico" },
-    },
-    {
-      "@type": "Offer",
-      name: "Plan Esencial",
-      description: "Automatiza WhatsApp y reduce ausencias con recordatorios. Incluye todo lo del plan Básico más recordatorios automáticos por WhatsApp desde tu número Business.",
-      price: "20",
-      priceCurrency: "USD",
-      priceSpecification: { "@type": "UnitPriceSpecification", price: "20", priceCurrency: "USD", unitText: "mes" },
-      itemOffered: { "@type": "Service", name: "AgenditApp Plan Esencial" },
-    },
-    {
-      "@type": "Offer",
-      name: "Plan Marca Propia",
-      description: "Dominio propio y campañas masivas de WhatsApp para crecer. Incluye todo lo del plan Esencial más dominio personalizado y envíos masivos.",
-      price: "30",
-      priceCurrency: "USD",
-      priceSpecification: { "@type": "UnitPriceSpecification", price: "30", priceCurrency: "USD", unitText: "mes" },
-      itemOffered: { "@type": "Service", name: "AgenditApp Plan Marca Propia" },
-    },
-  ],
-} as const;
+export async function getJsonldServices(locale: Locale) {
+  const t = await getTranslations({ locale, namespace: "Jsonld" });
+  const unitText = locale === routing.defaultLocale ? "mes" : "month";
+  return {
+    "@context": "https://schema.org",
+    "@type": "OfferCatalog",
+    name: t("services.catalogName"),
+    itemListElement: [
+      {
+        "@type": "Offer",
+        name: t("services.basico.name"),
+        description: t("services.basico.description"),
+        price: "10",
+        priceCurrency: "USD",
+        priceSpecification: { "@type": "UnitPriceSpecification", price: "10", priceCurrency: "USD", unitText },
+        itemOffered: { "@type": "Service", name: `AgenditApp ${t("services.basico.name")}` },
+      },
+      {
+        "@type": "Offer",
+        name: t("services.esencial.name"),
+        description: t("services.esencial.description"),
+        price: "20",
+        priceCurrency: "USD",
+        priceSpecification: { "@type": "UnitPriceSpecification", price: "20", priceCurrency: "USD", unitText },
+        itemOffered: { "@type": "Service", name: `AgenditApp ${t("services.esencial.name")}` },
+      },
+      {
+        "@type": "Offer",
+        name: t("services.marca.name"),
+        description: t("services.marca.description"),
+        price: "30",
+        priceCurrency: "USD",
+        priceSpecification: { "@type": "UnitPriceSpecification", price: "30", priceCurrency: "USD", unitText },
+        itemOffered: { "@type": "Service", name: `AgenditApp ${t("services.marca.name")}` },
+      },
+    ],
+  };
+}
 
 export const JSONLD_TESTIMONIALS = {
   "@context": "https://schema.org",
@@ -304,24 +240,26 @@ export const JSONLD_TESTIMONIALS = {
   ],
 } as const;
 
-export const JSONLD_WEBSITE = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "AgenditApp",
-  url: "https://agenditapp.com",
-  description:
-    "Sistema de agendamiento online y gestión de citas para negocios de belleza, bienestar y servicios profesionales en Colombia",
-  inLanguage: "es-CO",
-  publisher: {
-    "@type": "Organization",
+export async function getJsonldWebsite(locale: Locale) {
+  const t = await getTranslations({ locale, namespace: "Jsonld" });
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
     name: "AgenditApp",
-  },
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: "https://agenditapp.com/sectores?q={search_term_string}",
+    url: "https://agenditapp.com",
+    description: t("websiteDescription"),
+    inLanguage: locale === routing.defaultLocale ? "es-CO" : "en",
+    publisher: {
+      "@type": "Organization",
+      name: "AgenditApp",
     },
-    "query-input": "required name=search_term_string",
-  },
-} as const;
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://agenditapp.com/sectores?q={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+}

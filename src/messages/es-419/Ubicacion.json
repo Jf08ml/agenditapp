@@ -1,0 +1,14 @@
+{
+  "badge": "Ubicación",
+  "heading": "Que tus clientes lleguen <highlight>sin preguntar.</highlight>",
+  "description": "Tu página de reservas muestra la dirección, mapa integrado y acceso directo a Google Maps o Waze. Sin el clásico “¿dónde queda?”.",
+  "features": [
+    { "title": "Dirección exacta visible", "description": "Barrio, ciudad y referencia tal como aparece en Google Maps." },
+    { "title": "Botón \"Cómo llegar\"", "description": "Un tap abre la ruta en Google Maps o Waze desde el celular del cliente." },
+    { "title": "Fácil de compartir", "description": "Enlace por WhatsApp, Instagram o Google Business — llegan sin preguntar." }
+  ],
+  "screenshotAlt": "Ubicación del negocio — AgenditApp",
+  "expandAriaLabel": "Ampliar: ubicación del negocio",
+  "addressLabel": "Dirección",
+  "openInMaps": "Abierto en Maps"
+}

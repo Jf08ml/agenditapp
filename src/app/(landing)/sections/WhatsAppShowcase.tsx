@@ -2,24 +2,37 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
-const MESSAGES = [
-  { from: "biz" as const, t: "¡Hola Camila! 👋 Tu cita en Estudio Rosa está confirmada:", meta: "10:32" },
-  { from: "biz" as const, t: "✂️ Manicure Gel · 45 min\n📅 Martes 12 · 3:00 pm\n💵 $45.000", meta: "10:32" },
-  { from: "me" as const,  t: "¡Perfecto, ahí estaré! 💅", meta: "10:34" },
-  { from: "biz" as const, t: "Recordatorio: tu cita es mañana a las 3:00 pm. ¿Sigues asistiendo?", meta: "Lun 5:00 pm" },
-  { from: "me" as const,  t: "✅ Confirmar", meta: "Lun 5:01 pm", isButton: true },
+// Datos estructurales del mock de chat (quién envía, si es un botón); el
+// texto y el timestamp de cada mensaje vienen de las traducciones y se
+// combinan con este array por índice.
+const MESSAGE_META = [
+  { from: "biz" as const },
+  { from: "biz" as const },
+  { from: "me" as const },
+  { from: "biz" as const },
+  { from: "me" as const, isButton: true },
 ];
 
-const BULLETS = [
-  "Confirmación automática al reservar",
-  "1 o 2 recordatorios programables",
-  "Cliente confirma o cancela con 1 toque",
-  "Campañas masivas segmentadas",
-  "Mensajes 100% editables a tu tono",
-];
+type PhoneMessage = {
+  from: "biz" | "me";
+  isButton?: boolean;
+  t: string;
+  meta: string;
+};
 
-function WAPhone({ shown }: { shown: number[] }) {
+function WAPhone({
+  shown,
+  businessName,
+  onlineStatus,
+  messages,
+}: {
+  shown: number[];
+  businessName: string;
+  onlineStatus: string;
+  messages: PhoneMessage[];
+}) {
   return (
     <div className="flex justify-center">
       <div
@@ -39,8 +52,8 @@ function WAPhone({ shown }: { shown: number[] }) {
               R
             </div>
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 12, fontWeight: 600 }}>Estudio Rosa</div>
-              <div style={{ fontSize: 9, opacity: 0.7 }}>en línea</div>
+              <div style={{ fontSize: 12, fontWeight: 600 }}>{businessName}</div>
+              <div style={{ fontSize: 9, opacity: 0.7 }}>{onlineStatus}</div>
             </div>
             <svg width="14" height="14" viewBox="0 0 16 16" fill="white" aria-hidden>
               <circle cx="8" cy="3" r="1.4" /><circle cx="8" cy="8" r="1.4" /><circle cx="8" cy="13" r="1.4" />
@@ -49,7 +62,7 @@ function WAPhone({ shown }: { shown: number[] }) {
 
           {/* Chat */}
           <div style={{ padding: "12px 10px", height: "calc(100% - 50px)", overflow: "hidden", background: "linear-gradient(180deg,#ECE5DD 0%,#E0DDD4 100%)", display: "flex", flexDirection: "column", justifyContent: "flex-end", gap: 5 }}>
-            {MESSAGES.map((m, i) => {
+            {messages.map((m, i) => {
               const visible = shown.includes(i);
               const isMe = m.from === "me";
               return (
@@ -87,6 +100,15 @@ function WAPhone({ shown }: { shown: number[] }) {
 }
 
 export default function WhatsAppShowcase() {
+  const t = useTranslations("WhatsAppShowcase");
+  const bullets = t.raw("bullets") as string[];
+  const phoneMessages = t.raw("phone.messages") as { text: string; meta: string }[];
+  const messages: PhoneMessage[] = MESSAGE_META.map((m, i) => ({
+    ...m,
+    t: phoneMessages[i].text,
+    meta: phoneMessages[i].meta,
+  }));
+
   const [shown, setShown] = useState([0, 1, 2]);
 
   useEffect(() => {
@@ -136,24 +158,23 @@ export default function WhatsAppShowcase() {
               style={{ background: "rgba(37,211,102,0.15)", color: "#25D366", border: "1px solid rgba(37,211,102,0.28)" }}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-[#25D366] animate-pulse" />
-              WhatsApp es nuestro corazón
+              {t("badge")}
             </span>
 
             <h2
               className="font-bold leading-[1.1] tracking-tight text-white text-balance m-0"
               style={{ fontSize: "clamp(28px, 4vw, 46px)" }}
             >
-              El único sistema que habla por ti,{" "}
-              <span style={{ color: "#25D366" }}>en tu número.</span>
+              {t("heading.prefix")}{" "}
+              <span style={{ color: "#25D366" }}>{t("heading.highlight")}</span>
             </h2>
 
             <p className="mt-4 text-[17px] leading-relaxed" style={{ color: "rgba(255,255,255,0.72)" }}>
-              Mientras otros te cobran cada mensaje, nosotros automatizamos
-              confirmación, recordatorios y campañas — todo desde tu WhatsApp Business.
+              {t("description")}
             </p>
 
             <ul className="mt-7 flex flex-col gap-3 p-0 m-0 list-none">
-              {BULLETS.map((b, i) => (
+              {bullets.map((b, i) => (
                 <motion.li
                   key={i}
                   initial={{ opacity: 0, x: -12 }}
@@ -181,7 +202,12 @@ export default function WhatsAppShowcase() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           >
-            <WAPhone shown={shown} />
+            <WAPhone
+              shown={shown}
+              businessName={t("phone.businessName")}
+              onlineStatus={t("phone.onlineStatus")}
+              messages={messages}
+            />
           </motion.div>
         </div>
       </div>

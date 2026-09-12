@@ -1,31 +1,23 @@
 "use client";
 
-import Link from "next/link";
+import { Link as IntlLink } from "@/i18n/navigation";
 import { motion, easeOut, type Variants } from "framer-motion";
 import { CreditCard, Stack, Storefront } from "@phosphor-icons/react";
+import { useTranslations } from "next-intl";
 
-const FEATURES = [
-  {
-    Icon: CreditCard,
-    color: "#16A34A",
-    title: "Cobra reservas online",
-    description:
-      "Acepta abonos o el pago completo al momento de reservar, con Mercado Pago (comisión por transacción) o comprobante de transferencia, sin comisión.",
-  },
-  {
-    Icon: Stack,
-    color: "#0EA5E9",
-    title: "Paquetes de sesiones",
-    description:
-      "Vende paquetes prepagados —como 4 sesiones de masaje— y el sistema descuenta automáticamente cada sesión que tu cliente utiliza.",
-  },
-  {
-    Icon: Storefront,
-    color: "#CA8A04",
-    title: "Tienda e inventario",
-    description:
-      "Vende productos desde tu página y controla el inventario de insumos de tu negocio, con los mismos métodos de pago que usas para las reservas.",
-  },
+type Feature = {
+  Icon: typeof CreditCard;
+  color: string;
+  title: string;
+  description: string;
+};
+
+// Solo datos estructurales (icono, color); el copy (title/description) viene
+// de los mensajes de next-intl y se combina por índice en el componente.
+const FEATURE_ICONS: Omit<Feature, "title" | "description">[] = [
+  { Icon: CreditCard, color: "#16A34A" },
+  { Icon: Stack, color: "#0EA5E9" },
+  { Icon: Storefront, color: "#CA8A04" },
 ];
 
 const fadeInUp: Variants = {
@@ -39,6 +31,13 @@ const stagger: Variants = {
 };
 
 export default function PagosVentas() {
+  const t = useTranslations("PagosVentas");
+  const featureCopy = t.raw("features") as { title: string; description: string }[];
+  const features: Feature[] = FEATURE_ICONS.map((f, i) => ({
+    ...f,
+    ...featureCopy[i],
+  }));
+
   return (
     <section className="py-24 sm:py-28">
       <div className="max-w-6xl mx-auto px-6 sm:px-8">
@@ -54,13 +53,13 @@ export default function PagosVentas() {
               text-[11px] font-semibold tracking-widest uppercase mb-5"
             style={{ background: "var(--warm-soft)", color: "var(--warm-deep)" }}
           >
-            Pagos y ventas
+            {t("badge")}
           </span>
           <h2 className="text-[clamp(28px,4vw,44px)] font-bold leading-[1.1] tracking-tight text-[#0F172A] text-balance m-0">
-            Cobra, vende paquetes y controla tu inventario
+            {t("heading")}
           </h2>
           <p className="mt-4 text-[17px] text-[#64748B] leading-relaxed">
-            Todo desde la misma plataforma, sin planillas aparte ni procesos manuales.
+            {t("description")}
           </p>
         </motion.div>
 
@@ -71,7 +70,7 @@ export default function PagosVentas() {
           viewport={{ once: true, amount: 0.2 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          {FEATURES.map((f) => (
+          {features.map((f) => (
             <motion.div
               key={f.title}
               variants={fadeInUp}
@@ -100,11 +99,13 @@ export default function PagosVentas() {
           viewport={{ once: true, amount: 0.5 }}
           className="mt-8 text-center text-sm text-[#64748B]"
         >
-          Pagos, tienda e inventario disponibles desde el plan Básico. Los paquetes de
-          sesiones son exclusivos del plan Marca Propia.{" "}
-          <Link href="/funcionalidades" className="text-[#1D4ED8] font-medium hover:underline">
-            Ver todas las funcionalidades →
-          </Link>
+          {t.rich("footnote", {
+            link: (chunks) => (
+              <IntlLink href="/funcionalidades" className="text-[#1D4ED8] font-medium hover:underline">
+                {chunks}
+              </IntlLink>
+            ),
+          })}
         </motion.p>
       </div>
     </section>

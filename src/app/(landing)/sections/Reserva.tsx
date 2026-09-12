@@ -4,72 +4,43 @@ import dynamic from "next/dynamic";
 import { useState, useRef, useEffect } from "react";
 import { PhoneMockup } from "../components/ui/PhoneMockup";
 import { motion, AnimatePresence, easeOut, type Variants } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const ImageLightbox = dynamic(
   () => import("../components/images/ImageLightbox"),
   { ssr: false }
 );
 
-const steps = [
-  {
-    src: "/screenshots/reserva-paso-1-mockup.png",
-    alt: "Paso 1: Selecciona servicios y trabajador",
-    title: "Elige servicio y profesional",
-    desc: "El cliente selecciona uno o varios servicios y su profesional favorito, o deja que el sistema asigne el disponible.",
-  },
-  {
-    src: "/screenshots/reserva-paso-2-mockup.png",
-    alt: "Paso 2: Selecciona fecha y hora",
-    title: "Escoge fecha y horario",
-    desc: "Ve horarios disponibles en tiempo real por trabajador o de todo el equipo, incluso en días distintos si tiene varios servicios.",
-  },
-  {
-    src: "/screenshots/reserva-paso-3-mockup.png",
-    alt: "Paso 3: Resumen de la reserva",
-    title: "Confirma el resumen",
-    desc: "El cliente revisa servicios, profesional, fecha, hora y precio antes de confirmar. Todo en un solo vistazo.",
-  },
-  {
-    src: "/screenshots/reserva-paso-4-mockup.png",
-    alt: "Paso 4: Confirmación automática o manual",
-    title: "Cita confirmada al instante",
-    desc: "La reserva se confirma automáticamente o pasa a aprobación según tu configuración. WhatsApp notifica al cliente.",
-  },
+// Solo datos estructurales (imagen); el copy (alt/title/desc) viene de los
+// mensajes de next-intl y se combina por índice en el componente.
+const STEP_IMAGES = [
+  "/screenshots/reserva-paso-1-mockup.png",
+  "/screenshots/reserva-paso-2-mockup.png",
+  "/screenshots/reserva-paso-3-mockup.png",
+  "/screenshots/reserva-paso-4-mockup.png",
 ];
 
-const highlights = [
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-        <path d="M11 2C6.03 2 2 6.03 2 11s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z" stroke="currentColor" strokeWidth="1.6"/>
-        <path d="M11 6v5l3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
-      </svg>
-    ),
-    label: "24/7 disponible",
-    sub: "Reservas sin horario de atención",
-  },
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-        <path d="M4 4h14a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z" stroke="currentColor" strokeWidth="1.6"/>
-        <path d="M2 8h18" stroke="currentColor" strokeWidth="1.6"/>
-        <circle cx="7" cy="13" r="1" fill="currentColor"/>
-        <circle cx="11" cy="13" r="1" fill="currentColor"/>
-      </svg>
-    ),
-    label: "Sin apps adicionales",
-    sub: "Solo un enlace que puedes compartir",
-  },
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-        <path d="M3 20l3.5-3.5M13 3l6 6-10 10L3 13l10-10z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M14 4l4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
-      </svg>
-    ),
-    label: "Confirmación automática",
-    sub: "O por aprobación manual, tú eliges",
-  },
+const HIGHLIGHT_ICONS: React.ReactNode[] = [
+  (
+    <svg key="clock" width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <path d="M11 2C6.03 2 2 6.03 2 11s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z" stroke="currentColor" strokeWidth="1.6"/>
+      <path d="M11 6v5l3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+    </svg>
+  ),
+  (
+    <svg key="calendar" width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <path d="M4 4h14a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z" stroke="currentColor" strokeWidth="1.6"/>
+      <path d="M2 8h18" stroke="currentColor" strokeWidth="1.6"/>
+      <circle cx="7" cy="13" r="1" fill="currentColor"/>
+      <circle cx="11" cy="13" r="1" fill="currentColor"/>
+    </svg>
+  ),
+  (
+    <svg key="magic" width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <path d="M3 20l3.5-3.5M13 3l6 6-10 10L3 13l10-10z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M14 4l4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+    </svg>
+  ),
 ];
 
 const fadeInUp: Variants = {
@@ -84,6 +55,14 @@ const mockupVariants = {
 };
 
 export default function Reserva() {
+  const t = useTranslations("Reserva");
+
+  const stepsCopy = t.raw("steps") as { alt: string; title: string; desc: string }[];
+  const steps = STEP_IMAGES.map((src, i) => ({ src, ...stepsCopy[i] }));
+
+  const highlightsCopy = t.raw("highlights") as { label: string; sub: string }[];
+  const highlights = HIGHLIGHT_ICONS.map((icon, i) => ({ icon, ...highlightsCopy[i] }));
+
   const [active, setActive] = useState(0);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -133,15 +112,15 @@ export default function Reserva() {
               text-[11px] font-semibold tracking-widest uppercase mb-5"
             style={{ background: "var(--warm-soft)", color: "var(--warm-deep)" }}
           >
-            Así de simple
+            {t("badge")}
           </span>
           <h2 className="text-[clamp(28px,4vw,44px)] font-bold leading-[1.1] tracking-tight text-[#0F172A] text-balance m-0">
-            Tus clientes reservan en{" "}
-            <span style={{ color: "#1D4ED8" }}>4 pasos.</span>
+            {t.rich("heading", {
+              highlight: (chunks) => <span style={{ color: "#1D4ED8" }}>{chunks}</span>,
+            })}
           </h2>
           <p className="mt-4 text-[17px] text-[#64748B] leading-relaxed">
-            Sin descargar apps. Sin formularios largos. Solo un enlace que compartes
-            por WhatsApp, Instagram o Google.
+            {t("description")}
           </p>
         </motion.div>
 
@@ -248,7 +227,7 @@ export default function Reserva() {
                   <motion.button
                     onClick={() => openLightbox(steps[active].src, steps[active].alt)}
                     className="w-full text-left"
-                    aria-label={`Ampliar: ${steps[active].alt}`}
+                    aria-label={t("expandAriaLabel", { alt: steps[active].alt })}
                     whileTap={{ scale: 0.985 }}
                     transition={{ type: "spring", stiffness: 280, damping: 22 }}
                   >
@@ -265,7 +244,7 @@ export default function Reserva() {
               <div className="absolute -bottom-4 left-1/2 -translate-x-1/2">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand text-white text-[11px] font-semibold shadow-lg">
                   <span className="w-1.5 h-1.5 rounded-full bg-white/70" />
-                  Paso {active + 1} de {steps.length}
+                  {t("stepOf", { current: active + 1, total: steps.length })}
                 </span>
               </div>
             </div>

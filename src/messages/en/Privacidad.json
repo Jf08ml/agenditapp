@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "title": "Privacy Policy - Online Scheduling System",
+    "description": "AgenditApp's privacy policy and personal data handling practices. Learn how we protect your information on our scheduling and appointment management platform."
+  },
+  "badge": "Legal",
+  "title": "Privacy Policy",
+  "intro": "At AgenditApp, we respect and protect your privacy. This policy explains how we collect, use, and protect your personal information.",
+  "sections": [
+    { "n": "1", "title": "Information We Collect", "body": "When you sign up, we may ask for your name, email, phone number, business information, and usage preferences." },
+    { "n": "2", "title": "How We Use Your Data", "body": "We use this information solely to provide the service, send booking notifications, and share related communications." },
+    { "n": "3", "title": "Data Protection", "body": "We implement technical and organizational measures to protect your information from unauthorized access or misuse." },
+    { "n": "4", "title": "Your Data Rights" },
+    { "n": "5", "title": "Cookies", "body": "We use essential cookies for the site to function properly and to improve your experience." }
+  ],
+  "arcoText": "AgenditApp is a Colombian company, and Colombian law grants you Access, Correction, Cancellation, and Objection rights (known locally as \"derechos ARCO\") over your personal data. Wherever you're located, you can access, correct, or delete your data by writing to us at <email>soporte@agenditapp.com</email>.",
+  "lastUpdated": "Last updated: {date}"
+}

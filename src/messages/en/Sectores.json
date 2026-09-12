@@ -1,0 +1,20 @@
+{
+  "badge": "Industries",
+  "heading": "Built for any appointment-based business.",
+  "subheading": "From a one-chair barbershop to a clinic with 8 practitioners. AgenditApp adapts to you.",
+  "items": [
+    "Salons & nails",
+    "Barbershops",
+    "Spas & massage",
+    "Lashes & brows",
+    "Medical practices",
+    "Dental clinics",
+    "Psychology & therapy",
+    "Personal trainers",
+    "Academies & classes",
+    "Aesthetic medicine"
+  ],
+  "viewAll": "See all industries",
+  "availableIn": "Available in",
+  "countries": ["Colombia", "Mexico", "Chile", "Argentina", "Spain", "Costa Rica", "Ecuador"]
+}

@@ -1,0 +1,51 @@
+{
+  "cta": {
+    "badge": "¿Listo?",
+    "heading": "Tu próxima cita podría reservarse",
+    "headingHighlight": "mientras lees esto.",
+    "subheading": "Únete a los negocios en Latinoamérica que ya gestionan más de 27.000 citas con AgenditApp.",
+    "whatsappButton": "Hablar por WhatsApp",
+    "pricingButton": "Ver planes y precios"
+  },
+  "brand": {
+    "tagline": "Sistema de agendamiento online para negocios de belleza, bienestar y servicios profesionales en Latinoamérica.",
+    "requestDemo": "Solicitar demo"
+  },
+  "productHeader": "Producto",
+  "nav": {
+    "features": "Funcionalidades",
+    "pricing": "Planes y precios",
+    "sectors": "Sectores",
+    "blog": "Blog",
+    "about": "Nosotros",
+    "terms": "Términos",
+    "privacy": "Privacidad",
+    "security": "Seguridad"
+  },
+  "sectorsHeader": "Sectores",
+  "sectorLinks": {
+    "salones": "Salones de belleza",
+    "barberias": "Barberías",
+    "spas": "Spas y masajes",
+    "consultorios": "Consultorios",
+    "psicologia": "Psicólogos",
+    "odontologia": "Odontólogos"
+  },
+  "viewAllSectors": "Ver todos los sectores →",
+  "availableInHeader": "Disponible en",
+  "comparativasHeader": "Comparativas",
+  "comparativas": {
+    "fresha": "vs Fresha",
+    "agendapro": "vs AgendaPro",
+    "booksy": "vs Booksy",
+    "weibook": "vs Weibook"
+  },
+  "supportHeader": "Soporte",
+  "trust": {
+    "hours": "Soporte por WhatsApp · Lun–Sáb",
+    "noCommitment": "Sin permanencia. Cancela cuando quieras."
+  },
+  "copyright": "© {year} AgenditApp. Todos los derechos reservados.",
+  "madeWith": "Hecho con ❤️ para negocios que viven de las citas.",
+  "countriesAvailable": "Colombia · México · Chile · Argentina · Costa Rica y más"
+}

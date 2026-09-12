@@ -4,18 +4,12 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 import { PhoneMockup } from "../components/ui/PhoneMockup";
 import { motion, easeOut, type Variants } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const ImageLightbox = dynamic(
   () => import("../components/images/ImageLightbox"),
   { ssr: false },
 );
-
-const FEATURES = [
-  { t: "Precio, duración y detalle",   d: "Configura cada servicio con toda la información. Ideal para combos, paquetes y promos." },
-  { t: "Organizado por categorías",    d: "Agrupa por tipo: uñas, cabello, faciales, masajes… fácil de navegar." },
-  { t: "Actualización en tiempo real", d: "Cambia precios o tiempos cuando quieras. Se refleja al instante." },
-  { t: "Listo para SEO y Google Maps", d: "Títulos, descripciones y datos estructurados para que Google te encuentre." },
-];
 
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 24 },
@@ -23,7 +17,12 @@ const fadeInUp: Variants = {
 };
 
 export default function Servicios() {
+  const t = useTranslations("Servicios");
+  const features = t.raw("features") as { title: string; description: string }[];
+
   const [open, setOpen] = useState(false);
+
+  const screenshotAlt = t("screenshotAlt");
 
   return (
     <section id="servicios" className="py-24 sm:py-28">
@@ -43,35 +42,37 @@ export default function Servicios() {
                 text-[11px] font-semibold tracking-widest uppercase mb-5"
               style={{ background: "var(--warm-soft)", color: "var(--warm-deep)" }}
             >
-              Catálogo de servicios
+              {t("badge")}
             </motion.span>
 
             <motion.h2
               variants={fadeInUp}
               className="text-[clamp(28px,4vw,44px)] font-bold leading-[1.1] tracking-tight text-[#0F172A] text-balance m-0"
             >
-              Tu menú profesional,{" "}
-              <span
-                style={{
-                  fontFamily: "var(--font-instrument-serif), Georgia, serif",
-                  fontStyle: "italic",
-                  fontWeight: 400,
-                }}
-              >
-                siempre actualizado.
-              </span>
+              {t.rich("heading", {
+                highlight: (chunks) => (
+                  <span
+                    style={{
+                      fontFamily: "var(--font-instrument-serif), Georgia, serif",
+                      fontStyle: "italic",
+                      fontWeight: 400,
+                    }}
+                  >
+                    {chunks}
+                  </span>
+                ),
+              })}
             </motion.h2>
 
             <motion.p
               variants={fadeInUp}
               className="mt-4 text-[17px] text-[#64748B] leading-relaxed"
             >
-              Tus clientes ven precios, duración y descripción antes de reservar.
-              Adiós a &ldquo;¿cuánto vale?&rdquo; por WhatsApp.
+              {t("description")}
             </motion.p>
 
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {FEATURES.map((f, i) => (
+              {features.map((f, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 16 }}
@@ -89,8 +90,8 @@ export default function Servicios() {
                     </svg>
                   </span>
                   <div>
-                    <p className="text-[14px] font-semibold text-[#0F172A] leading-snug">{f.t}</p>
-                    <p className="text-[13px] text-[#64748B] mt-0.5 leading-relaxed">{f.d}</p>
+                    <p className="text-[14px] font-semibold text-[#0F172A] leading-snug">{f.title}</p>
+                    <p className="text-[13px] text-[#64748B] mt-0.5 leading-relaxed">{f.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -116,14 +117,14 @@ export default function Servicios() {
                 type="button"
                 onClick={() => setOpen(true)}
                 className="block focus:outline-none w-full cursor-zoom-in"
-                aria-label="Ampliar: catálogo de servicios y precios"
+                aria-label={t("expandAriaLabel")}
                 whileHover={{ scale: 1.02, y: -3 }}
                 whileTap={{ scale: 0.985 }}
                 transition={{ type: "spring", stiffness: 280, damping: 20 }}
               >
                 <PhoneMockup
                   src="/screenshots/servicios-precios-mockup.png"
-                  alt="Catálogo de servicios y precios — AgenditApp"
+                  alt={screenshotAlt}
                   priority
                 />
               </motion.button>
@@ -137,9 +138,9 @@ export default function Servicios() {
                 className="absolute -right-4 top-10 rounded-2xl px-3.5 py-2.5 border border-[#1D4ED8]/10"
                 style={{ background: "white", boxShadow: "0 8px 24px rgba(15,23,42,0.10)" }}
               >
-                <p className="text-[10px] text-[#94A3B8] font-medium uppercase tracking-wide">Precio</p>
-                <p className="text-sm font-bold text-[#0F172A] mt-0.5">$45.000</p>
-                <p className="text-[10px] text-[#94A3B8]">45 min · Manicure gel</p>
+                <p className="text-[10px] text-[#94A3B8] font-medium uppercase tracking-wide">{t("priceLabel")}</p>
+                <p className="text-sm font-bold text-[#0F172A] mt-0.5">{t("demoPrice")}</p>
+                <p className="text-[10px] text-[#94A3B8]">{t("demoDetail")}</p>
               </motion.div>
             </div>
           </motion.div>
@@ -149,7 +150,7 @@ export default function Servicios() {
 
       <ImageLightbox
         src="/screenshots/servicios-precios-mockup.png"
-        alt="Catálogo de servicios y precios — AgenditApp"
+        alt={screenshotAlt}
         open={open}
         onClose={() => setOpen(false)}
       />

@@ -1,0 +1,22 @@
+{
+  "badge": "Tus 3 grandes ganancias",
+  "heading": "¿Qué obtendrás?",
+  "subheading": "Las herramientas más valoradas por nuestros usuarios para automatizar su día a día y escalar sus ventas.",
+  "features": [
+    {
+      "title": "Control que multiplica ingresos",
+      "hook": "Convierte el desorden en claridad.",
+      "description": "Deja atrás las libretas y controla exactamente qué servicios, empleados y clientes te dejan más dinero. Dispara tus ventas con campañas de WhatsApp y programas de fidelidad."
+    },
+    {
+      "title": "Agenda en piloto automático",
+      "hook": "Que tu negocio trabaje para ti.",
+      "description": "Olvídate de contestar chats interminables. Tus clientes reservan 24/7 mientras el sistema confirma automáticamente y envía recordatorios por WhatsApp para acabar con las inasistencias."
+    },
+    {
+      "title": "Prestigio que inspira confianza",
+      "hook": "Destaca por encima del resto.",
+      "description": "Destaca de la competencia con una presencia online impecable bajo tu propia marca y dominio. Administra todo desde tu celular con la tranquilidad de que tu información está 100% segura en la nube."
+    }
+  ]
+}

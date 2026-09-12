@@ -4,41 +4,7 @@ import { useState } from "react";
 import { DemoCtaButton } from "../components/ui/DemoCtaModal";
 import { motion, AnimatePresence, easeOut, type Variants } from "framer-motion";
 import { ChatCircle } from "@phosphor-icons/react";
-
-const FAQS = [
-  {
-    q: "¿Realmente no tiene permanencia?",
-    a: "Correcto. El pago es mes a mes y puedes cancelar cuando quieras sin penalizaciones ni cláusulas. Si te vas, te ayudamos a exportar tus clientes y agenda.",
-  },
-  {
-    q: "¿Los recordatorios salen desde mi número de WhatsApp?",
-    a: "Sí. En los planes Esencial y Marca Propia, los mensajes se envían desde tu número oficial de WhatsApp Business. Tu cliente ve tu marca, no la nuestra.",
-  },
-  {
-    q: "¿Necesito instalar algo o comprar equipos?",
-    a: "No. AgenditApp funciona 100% en la nube. Lo abres desde tu celular, tablet o computadora. Configuramos todo contigo en una llamada de 30 minutos.",
-  },
-  {
-    q: "¿En cuánto tiempo lo tengo funcionando?",
-    a: "En el mismo día. Te ayudamos a cargar servicios, horarios y empleados, y dejamos tu enlace de reservas listo para compartir.",
-  },
-  {
-    q: "¿Y si soy malo con la tecnología?",
-    a: "AgenditApp se diseñó para personas no técnicas. Y nuestro equipo te configura todo gratis al inicio. Si tu mamá puede usar WhatsApp, puede usar AgenditApp.",
-  },
-  {
-    q: "¿Puedo cambiar de plan después?",
-    a: "Sí, hacia arriba o hacia abajo, cuando quieras. Solo pagas la diferencia prorrateada del mes en curso.",
-  },
-  {
-    q: "¿Qué pasa con mis datos y los de mis clientes?",
-    a: "Tu información está cifrada y respaldada en la nube. Solo tú accedes con tu cuenta. Cumplimos con normativas de protección de datos en LatAm.",
-  },
-  {
-    q: "¿Aceptan transferencias o Nequi/Daviplata?",
-    a: "Sí. Aceptamos transferencia bancaria, Nequi, Daviplata y tarjetas internacionales.",
-  },
-];
+import { useTranslations } from "next-intl";
 
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 28 },
@@ -54,6 +20,9 @@ const itemIn: Variants = {
 };
 
 export default function FAQ() {
+  const t = useTranslations("FAQ");
+  const faqs = t.raw("items") as { question: string; answer: string }[];
+
   return (
     <section id="faq" className="py-24 sm:py-28 bg-white border-t border-b border-[#0F172A]/6">
       <div className="max-w-3xl mx-auto px-6 sm:px-8">
@@ -70,10 +39,10 @@ export default function FAQ() {
             className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-widest uppercase mb-5"
             style={{ background: "var(--warm-soft)", color: "var(--warm-deep)" }}
           >
-            Preguntas frecuentes
+            {t("badge")}
           </span>
           <h2 className="text-[clamp(28px,4vw,44px)] font-bold leading-[1.1] tracking-tight text-[#0F172A] text-balance m-0">
-            Antes de empezar,{" "}
+            {t("heading.prefix")}{" "}
             <span
               style={{
                 fontFamily: "var(--font-instrument-serif), Georgia, serif",
@@ -81,7 +50,7 @@ export default function FAQ() {
                 fontWeight: 400,
               }}
             >
-              resolvamos tus dudas.
+              {t("heading.highlight")}
             </span>
           </h2>
         </motion.div>
@@ -94,9 +63,9 @@ export default function FAQ() {
           whileInView="animate"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {FAQS.map((f) => (
-            <motion.div key={f.q} variants={itemIn}>
-              <FaqItem question={f.q} answer={f.a} />
+          {faqs.map((f, i) => (
+            <motion.div key={i} variants={itemIn}>
+              <FaqItem question={f.question} answer={f.answer} />
             </motion.div>
           ))}
         </motion.div>
@@ -111,11 +80,11 @@ export default function FAQ() {
           viewport={{ once: true, amount: 0.4 }}
         >
           <p className="text-sm text-body text-center sm:text-left">
-            ¿Tienes alguna pregunta específica sobre tu negocio?
+            {t("ctaText")}
           </p>
           <DemoCtaButton source="faq" className="flex-shrink-0 inline-flex items-center gap-2 rounded-[10px] bg-brand text-white font-semibold px-4 py-2.5 text-sm hover:bg-brand-hover transition-colors cursor-pointer shadow-sm">
             <ChatCircle size={16} weight="duotone" />
-            Preguntar por WhatsApp
+            {t("ctaButton")}
           </DemoCtaButton>
         </motion.div>
       </div>

@@ -1,0 +1,77 @@
+{
+  "organizationDescription": "Software de agendamiento online y gestión de negocios para salones de belleza, barberías, spas y consultorios en Latinoamérica.",
+  "softwareDescription": "Software de agendamiento online y gestión de negocios para salones de belleza, barberías, spas y consultorios en Latinoamérica. Reservas 24/7, recordatorios automáticos por WhatsApp y gestión completa del negocio.",
+  "websiteDescription": "Sistema de agendamiento online y gestión de citas para negocios de belleza, bienestar y servicios profesionales en Colombia",
+  "services": {
+    "catalogName": "Planes de AgenditApp — Software de Agendamiento Online",
+    "basico": {
+      "name": "Plan Básico",
+      "description": "Para organizar tu agenda y empezar a recibir reservas online. Incluye reservas y citas ilimitadas 24/7, panel administrativo completo, gestión de servicios, empleados y clientes."
+    },
+    "esencial": {
+      "name": "Plan Esencial",
+      "description": "Automatiza WhatsApp y reduce ausencias con recordatorios. Incluye todo lo del plan Básico más recordatorios automáticos por WhatsApp desde tu número Business."
+    },
+    "marca": {
+      "name": "Plan Marca Propia",
+      "description": "Dominio propio y campañas masivas de WhatsApp para crecer. Incluye todo lo del plan Esencial más dominio personalizado y envíos masivos."
+    }
+  },
+  "featureList": [
+    "Reservas online 24/7",
+    "Recordatorios automáticos por WhatsApp",
+    "Calendario visual de citas",
+    "Gestión de servicios y empleados",
+    "Base de datos de clientes",
+    "Comisiones y nómina",
+    "Programa de fidelización",
+    "Campañas masivas por WhatsApp",
+    "Dominio personalizado",
+    "Página de reservas con marca propia",
+    "Análisis de horas pico",
+    "Panel administrativo completo",
+    "Cobro de reservas con Mercado Pago o comprobante de transferencia",
+    "Paquetes de sesiones prepagadas",
+    "Tienda en línea e inventario de insumos"
+  ],
+  "knowsAbout": [
+    "Software de agendamiento",
+    "Gestión de citas",
+    "Automatización de reservas",
+    "Marketing para salones de belleza"
+  ],
+  "faq": [
+    {
+      "question": "¿Cuánto cuesta AgenditApp?",
+      "answer": "Los planes van desde $10 USD/mes (Básico) hasta $30 USD/mes (Marca Propia). Todos son mes a mes, sin contratos ni permanencia. Incluyen reservas ilimitadas y soporte por WhatsApp."
+    },
+    {
+      "question": "¿Tiene permanencia o cláusulas?",
+      "answer": "No. Todos los planes son mes a mes y puedes cancelar cuando quieras sin penalizaciones ni trámites."
+    },
+    {
+      "question": "¿Los recordatorios salen desde mi número de WhatsApp?",
+      "answer": "Sí. En los planes que incluyen WhatsApp, los mensajes se envían desde tu número oficial de WhatsApp Business, no desde un número desconocido."
+    },
+    {
+      "question": "¿Cuántas citas puedo recibir con AgenditApp?",
+      "answer": "Ilimitadas en todos los planes. No hay cobro extra por cantidad de reservas ni por número de clientes."
+    },
+    {
+      "question": "¿Mis clientes necesitan descargar una app para reservar?",
+      "answer": "No. Tus clientes reservan desde un enlace web que puedes compartir por WhatsApp, Instagram o redes sociales. No necesitan instalar nada."
+    },
+    {
+      "question": "¿Qué tipo de negocios pueden usar AgenditApp?",
+      "answer": "Si trabajas con citas o turnos, AgenditApp es para ti. Se usa en salones de belleza, barberías, spas, consultorios médicos, psicólogos, odontólogos, nutricionistas, veterinarias, gimnasios, estudios de fotografía, profesores de música, yoga, danza, tutorías y más."
+    },
+    {
+      "question": "¿Necesito conocimientos técnicos para usar la plataforma?",
+      "answer": "No. AgenditApp es muy intuitivo y fácil de usar. Ofrecemos capacitación inicial y soporte técnico para que empieces desde el primer día."
+    },
+    {
+      "question": "¿Puedo gestionar varios empleados?",
+      "answer": "Sí. Cada empleado tiene su propio horario, servicios y agenda. Puedes ver todo desde un solo panel y gestionar comisiones automáticamente."
+    }
+  ]
+}

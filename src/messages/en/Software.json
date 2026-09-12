@@ -1,0 +1,31 @@
+{
+  "badge": "All-in-one platform",
+  "heading": "The <highlight>most complete</highlight> scheduling and business-management software, built around you",
+  "subheading": "These are the features our customers rely on most to save time, cut no-shows, and grow revenue with a smarter digital calendar.",
+  "features": [
+    {
+      "title": "Loyalty & Retention",
+      "description": "Keep clients coming back with rewards, effortless booking, and automatic reminders that improve every visit."
+    },
+    {
+      "title": "Digital Presence",
+      "description": "A professional booking page with your own domain, responsive design, and built-in SEO to help new clients find you."
+    },
+    {
+      "title": "Campaigns & Growth",
+      "description": "Run targeted WhatsApp campaigns segmented by client type to get stronger results from every promotion."
+    },
+    {
+      "title": "Branding, Security & Support",
+      "description": "A secure, customizable cloud platform with full access, dedicated support, and automatic updates — no extra work on your end."
+    },
+    {
+      "title": "Easy to Use",
+      "description": "Take unlimited online bookings around the clock while easily managing your calendar, services, and hours."
+    },
+    {
+      "title": "Business Management",
+      "description": "Manage staff, clients, commissions, and cash flow, with analytics that keep your whole business under control."
+    }
+  ]
+}

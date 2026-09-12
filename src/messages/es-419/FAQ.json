@@ -1,0 +1,43 @@
+{
+  "badge": "Preguntas frecuentes",
+  "heading": {
+    "prefix": "Antes de empezar,",
+    "highlight": "resolvamos tus dudas."
+  },
+  "ctaText": "¿Tienes alguna pregunta específica sobre tu negocio?",
+  "ctaButton": "Preguntar por WhatsApp",
+  "items": [
+    {
+      "question": "¿Realmente no tiene permanencia?",
+      "answer": "Correcto. El pago es mes a mes y puedes cancelar cuando quieras sin penalizaciones ni cláusulas. Si te vas, te ayudamos a exportar tus clientes y agenda."
+    },
+    {
+      "question": "¿Los recordatorios salen desde mi número de WhatsApp?",
+      "answer": "Sí. En los planes Esencial y Marca Propia, los mensajes se envían desde tu número oficial de WhatsApp Business. Tu cliente ve tu marca, no la nuestra."
+    },
+    {
+      "question": "¿Necesito instalar algo o comprar equipos?",
+      "answer": "No. AgenditApp funciona 100% en la nube. Lo abres desde tu celular, tablet o computadora. Configuramos todo contigo en una llamada de 30 minutos."
+    },
+    {
+      "question": "¿En cuánto tiempo lo tengo funcionando?",
+      "answer": "En el mismo día. Te ayudamos a cargar servicios, horarios y empleados, y dejamos tu enlace de reservas listo para compartir."
+    },
+    {
+      "question": "¿Y si soy malo con la tecnología?",
+      "answer": "AgenditApp se diseñó para personas no técnicas. Y nuestro equipo te configura todo gratis al inicio. Si tu mamá puede usar WhatsApp, puede usar AgenditApp."
+    },
+    {
+      "question": "¿Puedo cambiar de plan después?",
+      "answer": "Sí, hacia arriba o hacia abajo, cuando quieras. Solo pagas la diferencia prorrateada del mes en curso."
+    },
+    {
+      "question": "¿Qué pasa con mis datos y los de mis clientes?",
+      "answer": "Tu información está cifrada y respaldada en la nube. Solo tú accedes con tu cuenta. Cumplimos con normativas de protección de datos en LatAm."
+    },
+    {
+      "question": "¿Aceptan transferencias o Nequi/Daviplata?",
+      "answer": "Sí. Aceptamos transferencia bancaria, Nequi, Daviplata y tarjetas internacionales."
+    }
+  ]
+}

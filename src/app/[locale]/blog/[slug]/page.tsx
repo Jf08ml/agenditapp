@@ -7,6 +7,7 @@ import { getAllSlugs, getPost, getRelatedPosts } from "@/lib/blog";
 import PageHeader from "@/app/(landing)/components/ui/PageHeader";
 import PageFooter from "@/app/(landing)/components/ui/PageFooter";
 import { DemoCtaButton } from "@/app/(landing)/components/ui/DemoCtaModal";
+import { routing } from "@/i18n/routing";
 
 // --- Internal feature comparison table renderer ---
 type FTCol = { name: string; highlight?: boolean; sub?: string };
@@ -272,9 +273,16 @@ function formatDate(iso: string) {
   });
 }
 
+// Sin versión en inglés todavía: se genera solo para el locale por defecto
+// y cualquier /en/blog/* debe devolver 404 en vez de renderizar en español.
 export async function generateStaticParams() {
-  return getAllSlugs().map((slug) => ({ slug }));
+  return getAllSlugs().map((slug) => ({
+    locale: routing.defaultLocale,
+    slug,
+  }));
 }
+
+export const dynamicParams = false;
 
 export async function generateMetadata({
   params,

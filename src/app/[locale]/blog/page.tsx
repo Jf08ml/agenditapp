@@ -4,6 +4,7 @@ import { getAllPosts, getAllCategories } from "@/lib/blog";
 import PageHeader from "@/app/(landing)/components/ui/PageHeader";
 import PageFooter from "@/app/(landing)/components/ui/PageFooter";
 import BlogList from "./BlogList";
+import { routing } from "@/i18n/routing";
 
 export const metadata: Metadata = {
   title: { absolute: "Blog AgenditApp | Guías para Salones, Barberías y Spas" },
@@ -71,3 +72,11 @@ export default function BlogPage() {
     </>
   );
 }
+
+// Sin versión en inglés todavía: se genera solo para el locale por defecto
+// y cualquier /en/* de esta ruta debe devolver 404 en vez de renderizar en español.
+export function generateStaticParams() {
+  return [{ locale: routing.defaultLocale }];
+}
+
+export const dynamicParams = false;

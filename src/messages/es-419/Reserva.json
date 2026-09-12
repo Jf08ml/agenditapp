@@ -1,0 +1,34 @@
+{
+  "badge": "Así de simple",
+  "heading": "Tus clientes reservan en <highlight>4 pasos.</highlight>",
+  "description": "Sin descargar apps. Sin formularios largos. Solo un enlace que compartes por WhatsApp, Instagram o Google.",
+  "steps": [
+    {
+      "alt": "Paso 1: Selecciona servicios y trabajador",
+      "title": "Elige servicio y profesional",
+      "desc": "El cliente selecciona uno o varios servicios y su profesional favorito, o deja que el sistema asigne el disponible."
+    },
+    {
+      "alt": "Paso 2: Selecciona fecha y hora",
+      "title": "Escoge fecha y horario",
+      "desc": "Ve horarios disponibles en tiempo real por trabajador o de todo el equipo, incluso en días distintos si tiene varios servicios."
+    },
+    {
+      "alt": "Paso 3: Resumen de la reserva",
+      "title": "Confirma el resumen",
+      "desc": "El cliente revisa servicios, profesional, fecha, hora y precio antes de confirmar. Todo en un solo vistazo."
+    },
+    {
+      "alt": "Paso 4: Confirmación automática o manual",
+      "title": "Cita confirmada al instante",
+      "desc": "La reserva se confirma automáticamente o pasa a aprobación según tu configuración. WhatsApp notifica al cliente."
+    }
+  ],
+  "highlights": [
+    { "label": "24/7 disponible", "sub": "Reservas sin horario de atención" },
+    { "label": "Sin apps adicionales", "sub": "Solo un enlace que puedes compartir" },
+    { "label": "Confirmación automática", "sub": "O por aprobación manual, tú eliges" }
+  ],
+  "expandAriaLabel": "Ampliar: {alt}",
+  "stepOf": "Paso {current} de {total}"
+}

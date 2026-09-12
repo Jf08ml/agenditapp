@@ -1,0 +1,34 @@
+{
+  "badge": "That simple",
+  "heading": "Your clients book in <highlight>4 steps.</highlight>",
+  "description": "No apps to download. No long forms. Just one link you can share on WhatsApp, Instagram, or Google.",
+  "steps": [
+    {
+      "alt": "Step 1: Select services and staff member",
+      "title": "Choose a service and specialist",
+      "desc": "The client selects one or more services and their favorite specialist, or lets the system assign whoever's available."
+    },
+    {
+      "alt": "Step 2: Select date and time",
+      "title": "Pick a date and time",
+      "desc": "See real-time availability by staff member or across the whole team, even on different days if the client books multiple services."
+    },
+    {
+      "alt": "Step 3: Booking summary",
+      "title": "Confirm the summary",
+      "desc": "The client reviews services, specialist, date, time, and price before confirming — everything at a glance."
+    },
+    {
+      "alt": "Step 4: Automatic or manual confirmation",
+      "title": "Appointment confirmed instantly",
+      "desc": "The booking is confirmed automatically or goes to approval, depending on your settings. WhatsApp notifies the client."
+    }
+  ],
+  "highlights": [
+    { "label": "Available 24/7", "sub": "Bookings with no set business hours" },
+    { "label": "No extra apps", "sub": "Just one link you can share" },
+    { "label": "Automatic confirmation", "sub": "Or manual approval — you choose" }
+  ],
+  "expandAriaLabel": "Expand: {alt}",
+  "stepOf": "Step {current} of {total}"
+}

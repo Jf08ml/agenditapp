@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import PresentacionContent from "../(landing)/components/lp/PresentacionContent";
+import PresentacionContent from "../../(landing)/components/lp/PresentacionContent";
+import { routing } from "@/i18n/routing";
 
 export const metadata: Metadata = {
   title: "AgenditApp — Agendamiento online con WhatsApp automático",
@@ -12,3 +13,11 @@ export const metadata: Metadata = {
 export default function PresentacionPage() {
   return <PresentacionContent />;
 }
+
+// Sin versión en inglés todavía: se genera solo para el locale por defecto
+// y cualquier /en/* de esta ruta debe devolver 404 en vez de renderizar en español.
+export function generateStaticParams() {
+  return [{ locale: routing.defaultLocale }];
+}
+
+export const dynamicParams = false;

@@ -1,0 +1,24 @@
+{
+  "metaTitle": "Online Scheduling Software Pricing 2026 | From $10/mo",
+  "metaDescription": "Plans from $10 USD/month for salons, barbershops, and spas worldwide. Automated WhatsApp reminders from your own number, no card, no contract. Try it free for 7 days.",
+  "breadcrumbHome": "Home",
+  "breadcrumbPrecios": "Pricing",
+  "offers": {
+    "basico": { "description": "24/7 online booking, visual calendar, services and staff management, client database, commissions, loyalty program, custom subdomain." },
+    "esencial": { "description": "Everything in Basic plus WhatsApp reminders from your own number, automated reminders, and a confirm/cancel link for clients." },
+    "marca": { "description": "Everything in Essential plus a custom domain, 2 automated reminders, and bulk WhatsApp campaigns." }
+  },
+  "comparativasIntro": "Coming from another platform?",
+  "faqHeading": "Frequently asked questions",
+  "faq": [
+    { "q": "Is there a contract or cancellation fee?", "a": "No. It's month-to-month and you can cancel anytime with no penalties or contract clauses." },
+    { "q": "Do reminders come from my own WhatsApp number?", "a": "Yes. On plans that include WhatsApp, messages are sent from your official WhatsApp Business number." },
+    { "q": "Is there a limit on bookings or staff?", "a": "No. Unlimited bookings and appointments are included. You can also manage staff, schedules, and commissions." },
+    { "q": "Does it include a website / landing page?", "a": "Yes. A welcome landing page is included. On Own Brand it's more polished and runs on your own domain." },
+    { "q": "Do I need technical knowledge?", "a": "No. We help you with initial setup and support so you can get started quickly." },
+    { "q": "Are there installation or setup fees?", "a": "No. Everything is included in the monthly plan. No hidden costs." },
+    { "q": "How do I pay for my AgenditApp subscription?", "a": "We accept major credit and debit cards, plus bank transfer." },
+    { "q": "Can I charge my clients for their bookings?", "a": "Yes. From the Basic plan onward you can charge a deposit or the full booking amount by card, or accept a bank transfer receipt with no fee. The same methods work for in-house charges, like sales from your online store." },
+    { "q": "Can I sell session packages, like a 4-session massage pack?", "a": "Yes — on the Own Brand plan you can create prepaid session packages, and the system automatically deducts a session each time your client uses one." }
+  ]
+}

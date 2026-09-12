@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { DemoCtaButton } from "./DemoCtaModal";
 
 /* Rutas donde no debe aparecer el FAB global:
@@ -14,12 +15,13 @@ const ROUTES_WITHOUT_GLOBAL_FAB = ["/oferta-registro", "/oferta"];
 
 export default function WhatsAppFAB() {
   const pathname = usePathname();
+  const t = useTranslations("WhatsAppFAB");
   if (ROUTES_WITHOUT_GLOBAL_FAB.includes(pathname)) return null;
 
   return (
     <DemoCtaButton
       source="fab"
-      aria-label="Hablar por WhatsApp"
+      aria-label={t("ariaLabel")}
       className="fixed bottom-5 right-5 z-50 flex items-center justify-center
         w-14 h-14 rounded-full bg-[#25D366] text-white
         shadow-[0_8px_24px_rgba(37,211,102,0.45)]

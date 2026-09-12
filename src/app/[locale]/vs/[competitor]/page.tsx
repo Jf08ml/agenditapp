@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageHeader from "@/app/(landing)/components/ui/PageHeader";
 import PageFooter from "@/app/(landing)/components/ui/PageFooter";
+import { routing } from "@/i18n/routing";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -177,9 +178,16 @@ export type CompetitorSlug = keyof typeof competitors;
 
 // ─── generateStaticParams ─────────────────────────────────────────────────────
 
+// Sin versión en inglés todavía: se genera solo para el locale por defecto
+// y cualquier /en/vs/* debe devolver 404 en vez de renderizar en español.
 export function generateStaticParams() {
-  return Object.keys(competitors).map((slug) => ({ competitor: slug }));
+  return Object.keys(competitors).map((slug) => ({
+    locale: routing.defaultLocale,
+    competitor: slug,
+  }));
 }
+
+export const dynamicParams = false;
 
 // ─── generateMetadata ─────────────────────────────────────────────────────────
 

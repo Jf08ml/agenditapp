@@ -1,0 +1,11 @@
+{
+  "badge": "Payments & sales",
+  "heading": "Get paid, sell packages, and manage your inventory",
+  "description": "All from the same platform — no separate spreadsheets, no manual processes.",
+  "features": [
+    { "title": "Get paid for bookings online", "description": "Accept a deposit or full payment when clients book, with credit/debit card (processing fee applies) or a manual bank transfer confirmation, no fee." },
+    { "title": "Session packages", "description": "Sell prepaid packages — like 4 massage sessions — and the system automatically deducts each session your client uses." },
+    { "title": "Store and inventory", "description": "Sell products from your booking page and track your business's supply inventory, using the same payment methods you use for bookings." }
+  ],
+  "footnote": "Payments, store, and inventory are available from the Basic plan. Session packages are exclusive to the Own Brand plan. <link>See all features →</link>"
+}

@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, type Variants, easeOut } from "framer-motion";
 import { MapPin } from "@phosphor-icons/react";
+import { useTranslations } from "next-intl";
 
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 30 },
@@ -11,76 +12,30 @@ const fadeInUp: Variants = {
 
 const AUTOPLAY_MS = 5000;
 
-const casos = [
-  {
-    nombre: "Estudio Rosa",
-    rol: "Salón de belleza · Neiva, Colombia",
-    iniciales: "LF",
-    ceo: "Luisa Fernanda",
-    web: "estudiorosa.com.co",
-    testimonio:
-      "Desde que usamos AgenditApp, las ausencias bajaron un 60%. Mis clientes agendan solas a cualquier hora y yo puedo concentrarme en el trabajo que me apasiona. ¡Es un cambio total!",
-    stat: "60%",
-    statLabel: "menos ausencias",
-  },
-  {
-    nombre: "Galaxia Glamour",
-    rol: "Beauty Salon · Neiva, Colombia",
-    iniciales: "NM",
-    ceo: "Nataly Martinez",
-    web: "galaxiaglamour.com",
-    testimonio:
-      "La plataforma es súper fácil de usar y los recordatorios automáticos por WhatsApp son un hit con mis clientas. Ahora tenemos agenda llena toda la semana sin tanto esfuerzo.",
-    stat: "3×",
-    statLabel: "más reservas online",
-  },
-  {
-    nombre: "Bastidas Barber Studio",
-    rol: "Barbería profesional · Pereira, Colombia",
-    iniciales: "CB",
-    ceo: "Cristian Bastidas",
-    web: "bastidasbarberstudio.com",
-    testimonio:
-      "Controlo la agenda de todo el equipo desde el celular. Los clientes reservan solos, reciben confirmación y llegan puntuales. AgenditApp nos dio una imagen mucho más profesional.",
-    stat: "100%",
-    statLabel: "citas confirmadas",
-  },
-  {
-    nombre: "CAPI Apoyo Infantil",
-    rol: "Centro terapéutico · Escobedo, México",
-    iniciales: "CA",
-    ceo: "Dirección CAPI",
-    web: "agenda.capiapoyoinfantil.com",
-    testimonio:
-      "Manejar las sesiones de varios terapeutas era caótico. Con AgenditApp todo se organiza solo. Los padres agendan fácilmente y nosotros tenemos control total de los horarios.",
-    stat: "40%",
-    statLabel: "menos admin",
-  },
-  {
-    nombre: "Alpha Man Atelier",
-    rol: "Barbería & Grooming · Ciudad Quesada, Costa Rica",
-    iniciales: "AM",
-    ceo: "Dirección Alpha Man",
-    web: "alphamanatelier.com",
-    testimonio:
-      "Nuestros clientes valoran poder reservar desde Instagram sin llamar. La agenda siempre está actualizada y el panel nos da visibilidad de todo el negocio en tiempo real.",
-    stat: "2×",
-    statLabel: "clientes nuevos",
-  },
-  {
-    nombre: "Espacio Mosaico",
-    rol: "Centro de bienestar · Quilpué, Chile",
-    iniciales: "EM",
-    ceo: "Dirección Mosaico",
-    web: "espaciomosaico.agenditapp.com",
-    testimonio:
-      "Organizar clases grupales e individuales nunca fue tan simple. AgenditApp se adapta perfecto a yoga, pilates y danza. Muy recomendado para centros de bienestar.",
-    stat: "90%",
-    statLabel: "de satisfacción",
-  },
+// Datos estructurales de cada caso (nombre de negocio, iniciales, sitio web,
+// estadística); el texto (rol, autor, testimonio, etiqueta de la stat) viene
+// de las traducciones y se combina con este array por índice.
+const CASOS_DATA = [
+  { nombre: "Estudio Rosa", iniciales: "LF", web: "estudiorosa.com.co", stat: "60%" },
+  { nombre: "Galaxia Glamour", iniciales: "NM", web: "galaxiaglamour.com", stat: "3×" },
+  { nombre: "Bastidas Barber Studio", iniciales: "CB", web: "bastidasbarberstudio.com", stat: "100%" },
+  { nombre: "CAPI Apoyo Infantil", iniciales: "CA", web: "agenda.capiapoyoinfantil.com", stat: "40%" },
+  { nombre: "Alpha Man Atelier", iniciales: "AM", web: "alphamanatelier.com", stat: "2×" },
+  { nombre: "Espacio Mosaico", iniciales: "EM", web: "espaciomosaico.agenditapp.com", stat: "90%" },
 ];
 
-function TestimonialCard({ caso }: { caso: (typeof casos)[number] }) {
+type CasoItem = {
+  nombre: string;
+  iniciales: string;
+  web: string;
+  stat: string;
+  role: string;
+  author: string;
+  quote: string;
+  statLabel: string;
+};
+
+function TestimonialCard({ caso, verifiedLabel }: { caso: CasoItem; verifiedLabel: string }) {
   return (
     <div
       className="relative flex flex-col rounded-[18px] border border-[#0F172A]/8 bg-white p-7 h-full"
@@ -116,7 +71,7 @@ function TestimonialCard({ caso }: { caso: (typeof casos)[number] }) {
           fontStyle: "italic",
         }}
       >
-        &ldquo;{caso.testimonio}&rdquo;
+        &ldquo;{caso.quote}&rdquo;
       </p>
 
       {/* Author */}
@@ -128,11 +83,11 @@ function TestimonialCard({ caso }: { caso: (typeof casos)[number] }) {
           {caso.iniciales}
         </div>
         <div>
-          <p className="text-[14px] font-semibold text-heading leading-none mb-0.5">{caso.ceo}</p>
+          <p className="text-[14px] font-semibold text-heading leading-none mb-0.5">{caso.author}</p>
           <p className="text-[12px] text-muted leading-tight">{caso.nombre}</p>
           <p className="text-[11px] text-muted/70 mt-0.5 inline-flex items-center gap-1">
             <MapPin size={11} weight="duotone" color="#94A3B8" />
-            {caso.rol}
+            {caso.role}
           </p>
         </div>
       </div>
@@ -143,7 +98,7 @@ function TestimonialCard({ caso }: { caso: (typeof casos)[number] }) {
           <svg className="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          Cliente verificado
+          {verifiedLabel}
         </span>
         <a
           href={`https://${caso.web}`}
@@ -162,6 +117,15 @@ function TestimonialCard({ caso }: { caso: (typeof casos)[number] }) {
 }
 
 export default function CasosDeExito() {
+  const t = useTranslations("CasosDeExito");
+  const items = t.raw("items") as {
+    role: string;
+    author: string;
+    quote: string;
+    statLabel: string;
+  }[];
+  const casos: CasoItem[] = CASOS_DATA.map((c, i) => ({ ...c, ...items[i] }));
+
   const [active, setActive] = useState(0);
   const [perView, setPerView] = useState(3);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -218,10 +182,10 @@ export default function CasosDeExito() {
               text-[11px] font-semibold tracking-widest uppercase mb-5"
             style={{ background: "var(--warm-soft)", color: "var(--warm-deep)" }}
           >
-            Casos reales
+            {t("badge")}
           </span>
           <h2 className="text-[clamp(28px,4vw,44px)] font-bold leading-[1.1] tracking-tight text-heading text-balance m-0">
-            No nos creas a nosotros.{" "}
+            {t("heading.prefix")}{" "}
             <span
               style={{
                 fontFamily: "var(--font-instrument-serif), Georgia, serif",
@@ -229,12 +193,11 @@ export default function CasosDeExito() {
                 fontWeight: 400,
               }}
             >
-              Escúchalos a ellas.
+              {t("heading.highlight")}
             </span>
           </h2>
           <p className="mt-4 text-[17px] text-muted leading-relaxed">
-            Desde Colombia hasta Chile y Costa Rica, más de 27.000 citas han sido gestionadas
-            con AgenditApp. Negocios reales, resultados reales.
+            {t("description")}
           </p>
         </motion.div>
 
@@ -253,7 +216,7 @@ export default function CasosDeExito() {
                 className="flex-none px-2.5"
                 style={{ width: `${100 / perView}%` }}
               >
-                <TestimonialCard caso={c} />
+                <TestimonialCard caso={c} verifiedLabel={t("verifiedLabel")} />
               </div>
             ))}
           </div>
@@ -264,7 +227,7 @@ export default function CasosDeExito() {
           <button
             onClick={prev}
             disabled={active === 0}
-            aria-label="Anterior"
+            aria-label={t("prevAriaLabel")}
             className="flex h-9 w-9 items-center justify-center rounded-full border
               border-brand/20 bg-bg-card text-brand shadow-sm
               hover:bg-brand hover:text-white hover:border-brand
@@ -284,7 +247,7 @@ export default function CasosDeExito() {
                 <button
                   key={i}
                   onClick={() => { goTo(i); resetTimer(); }}
-                  aria-label={`Ir a ${casos[i].nombre}`}
+                  aria-label={t("goToAriaLabel", { name: casos[i].nombre })}
                   className={`rounded-full transition-all duration-300 ${
                     isActive
                       ? "w-2 h-2 bg-brand scale-110"
@@ -298,7 +261,7 @@ export default function CasosDeExito() {
           <button
             onClick={next}
             disabled={active === maxActive}
-            aria-label="Siguiente"
+            aria-label={t("nextAriaLabel")}
             className="flex h-9 w-9 items-center justify-center rounded-full border
               border-brand/20 bg-bg-card text-brand shadow-sm
               hover:bg-brand hover:text-white hover:border-brand
@@ -314,9 +277,9 @@ export default function CasosDeExito() {
         {/* Bottom trust line */}
         <div className="mt-10 text-center">
           <p className="text-muted text-sm">
-            Más de{" "}
-            <span className="text-brand font-semibold">27.000 citas gestionadas</span>{" "}
-            en Latinoamérica con AgenditApp
+            {t("trust.prefix")}{" "}
+            <span className="text-brand font-semibold">{t("trust.highlight")}</span>{" "}
+            {t("trust.suffix")}
           </p>
         </div>
       </div>

@@ -1,0 +1,173 @@
+{
+  "header": {
+    "badge": "Plans & pricing",
+    "headingPrefix": "Start free.",
+    "headingHighlight": "No card required.",
+    "subheading": "Sign up and get 7 days with everything included. After that, stay on the free plan forever — or pick a paid plan whenever you're ready.",
+    "advisorCta": "Not sure which plan to pick? Talk to us"
+  },
+  "toggle": {
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "yearlyDiscount": "−17%"
+  },
+  "trialNote": "The first 7 days come with full access the moment you sign up. No credit card required.",
+  "priceUnit": {
+    "free": "/ free forever",
+    "monthly": "/mo",
+    "yearly": "/yr"
+  },
+  "priceNote": {
+    "free": "No card · No contract",
+    "yearly": "2 months free · billed yearly",
+    "monthly": "No contract · Cancel anytime"
+  },
+  "trialRibbon": "7 days of FULL access when you sign up — free forever after that",
+  "expandToggle": {
+    "show": "See more features",
+    "hide": "Hide features"
+  },
+  "comparison": {
+    "heading": "Compare plans",
+    "subheading": "See exactly what's included in each plan.",
+    "featureColumnLabel": "Feature"
+  },
+  "freeCta": "Free",
+  "tip": {
+    "intro": "Not sure which one to pick?",
+    "essentialLead": "Want to cut no-shows →",
+    "essentialPlan": "Essential",
+    "brandLead": "Want to grow with campaigns →",
+    "brandPlan": "Own Brand"
+  },
+  "plans": {
+    "gratuito": {
+      "name": "Free",
+      "badge": "Always free",
+      "tagline": "Start at no cost. Full access for your first 7 days.",
+      "highlights": [
+        "1 staff member included",
+        "Up to 5 services",
+        "Unlimited clients",
+        "24/7 online booking",
+        "Weekly and monthly calendar view",
+        "yourbusiness.agenditapp.com subdomain"
+      ],
+      "ctaLabel": "Start for free"
+    },
+    "basico": {
+      "name": "Basic",
+      "badge": "Starter",
+      "tagline": "Organize your calendar and start taking bookings online.",
+      "highlights": [
+        "Unlimited 24/7 bookings and appointments",
+        "Full admin dashboard",
+        "Manage services, staff, and clients",
+        "your-business.agenditapp.com subdomain"
+      ],
+      "ctaLabel": "Start with Basic"
+    },
+    "esencial": {
+      "name": "Essential",
+      "badge": "Most popular",
+      "tagline": "Automate WhatsApp and cut no-shows with reminders.",
+      "highlights": [
+        "Everything in Basic",
+        "WhatsApp reminders from your own Business number",
+        "1 configurable automated reminder",
+        "One-tap confirm or cancel link for clients"
+      ],
+      "ctaLabel": "Start with Essential"
+    },
+    "marca": {
+      "name": "Own Brand",
+      "badge": "Pro",
+      "tagline": "Your own domain and bulk WhatsApp campaigns to grow.",
+      "highlights": [
+        "Everything in Essential",
+        "Custom domain (yourbrand.com)",
+        "2 automated reminders",
+        "Bulk WhatsApp campaigns",
+        "Prepaid session packages (exclusive)"
+      ],
+      "ctaLabel": "Start with Own Brand"
+    }
+  },
+  "extraFeatures": {
+    "gratuito": [
+      "Basic business analytics",
+      "Basic revenue tracking",
+      "AgenditApp branding visible"
+    ],
+    "basico": [
+      "Business analytics + per-staff commissions / payroll",
+      "Loyalty program to retain clients",
+      "Custom branding (logo, name, and colors)",
+      "Per-staff schedules and availability blocking",
+      "Simple welcome landing page",
+      "Accept card payments for bookings, or upload a bank transfer receipt",
+      "Online store with supply and product inventory"
+    ],
+    "esencial": [
+      "Business analytics + per-staff commissions / payroll",
+      "Loyalty program to retain clients",
+      "Custom branding (logo, name, and colors)",
+      "Configurable booking confirmation message",
+      "Fully editable WhatsApp messages",
+      "Simple welcome landing page",
+      "Accept card payments for bookings, or upload a bank transfer receipt",
+      "Online store with supply and product inventory"
+    ],
+    "marca": [
+      "Business analytics + per-staff commissions / payroll",
+      "Loyalty program to retain clients",
+      "Custom branding (logo, name, and colors)",
+      "Configurable booking confirmation message",
+      "Fully editable WhatsApp messages",
+      "Professional welcome landing page",
+      "Priority support + domain setup assistance",
+      "Accept card payments for bookings, or upload a bank transfer receipt",
+      "Online store with supply and product inventory"
+    ]
+  },
+  "comparisonGroups": [
+    {
+      "group": "Core",
+      "rows": [
+        { "label": "Bookings and appointments (24/7)", "values": { "gratuito": true, "basico": true, "esencial": true, "marca": true } },
+        { "label": "Admin dashboard and visual calendar", "values": { "gratuito": true, "basico": true, "esencial": true, "marca": true } },
+        { "label": "Services and staff", "values": { "gratuito": "1 staff · 5 services", "basico": true, "esencial": true, "marca": true } },
+        { "label": "Business analytics", "values": { "gratuito": "Basic", "basico": true, "esencial": true, "marca": true } },
+        { "label": "Loyalty + custom branding", "values": { "gratuito": false, "basico": true, "esencial": true, "marca": true } }
+      ]
+    },
+    {
+      "group": "Web presence",
+      "rows": [
+        { "label": "Welcome landing page", "values": { "gratuito": false, "basico": "Simple", "esencial": "Simple", "marca": "Professional" } },
+        { "label": "Subdomain (your-business.agenditapp.com)", "values": { "gratuito": true, "basico": true, "esencial": true, "marca": false } },
+        { "label": "Custom domain (yourbrand.com)", "values": { "gratuito": false, "basico": false, "esencial": false, "marca": true } }
+      ]
+    },
+    {
+      "group": "WhatsApp automation",
+      "rows": [
+        { "label": "WhatsApp from your own Business number", "hint": "Messages sent from your own number", "values": { "gratuito": false, "basico": false, "esencial": true, "marca": true } },
+        { "label": "Configurable booking message", "values": { "gratuito": false, "basico": false, "esencial": true, "marca": true } },
+        { "label": "Automated reminders", "values": { "gratuito": false, "basico": false, "esencial": "1 reminder", "marca": "2 reminders" } },
+        { "label": "Editable messages", "values": { "gratuito": false, "basico": false, "esencial": true, "marca": true } },
+        { "label": "Confirm / cancel link", "hint": "Clients confirm or cancel right from WhatsApp", "values": { "gratuito": false, "basico": false, "esencial": true, "marca": true } },
+        { "label": "Bulk WhatsApp campaigns", "values": { "gratuito": false, "basico": false, "esencial": false, "marca": true } }
+      ]
+    },
+    {
+      "group": "Payments & sales",
+      "rows": [
+        { "label": "Accept payments (deposit or full payment)", "hint": "Card payments online, or a bank transfer receipt", "values": { "gratuito": false, "basico": true, "esencial": true, "marca": true } },
+        { "label": "Same methods for in-house charges", "hint": "Store sales and other business charges", "values": { "gratuito": false, "basico": true, "esencial": true, "marca": true } },
+        { "label": "Online store and supply inventory", "values": { "gratuito": false, "basico": true, "esencial": true, "marca": true } },
+        { "label": "Prepaid session packages", "hint": "E.g. a 4-session massage pack, auto-deducted per visit", "values": { "gratuito": false, "basico": false, "esencial": false, "marca": true } }
+      ]
+    }
+  ]
+}

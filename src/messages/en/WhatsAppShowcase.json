@@ -1,0 +1,26 @@
+{
+  "badge": "WhatsApp automation, done right",
+  "heading": {
+    "prefix": "The only booking system that messages clients for you,",
+    "highlight": "from your own number."
+  },
+  "description": "While other platforms charge you per text message, AgenditApp automates confirmations, reminders, and campaigns — sent straight from your own WhatsApp Business number. It's one of the highest open-rate channels out there, and most scheduling tools don't offer it at all.",
+  "bullets": [
+    "Automatic confirmation on every booking",
+    "1 or 2 scheduled reminders",
+    "Clients confirm or cancel with one tap",
+    "Segmented bulk campaigns",
+    "Fully editable messages, in your own voice"
+  ],
+  "phone": {
+    "businessName": "Estudio Rosa",
+    "onlineStatus": "online",
+    "messages": [
+      { "text": "Hi Camila! 👋 Your appointment at Estudio Rosa is confirmed:", "meta": "10:32" },
+      { "text": "✂️ Gel Manicure · 45 min\n📅 Tue, the 12th · 3:00 pm\n💵 $45", "meta": "10:32" },
+      { "text": "Perfect, I'll be there! 💅", "meta": "10:34" },
+      { "text": "Reminder: your appointment is tomorrow at 3:00 pm. Still coming?", "meta": "Mon 5:00 pm" },
+      { "text": "✅ Confirm", "meta": "Mon 5:01 pm" }
+    ]
+  }
+}

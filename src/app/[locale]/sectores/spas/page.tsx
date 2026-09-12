@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import SchemaOrg from "../../(landing)/components/seo/SchemaOrg";
-import PageHeader from "../../(landing)/components/ui/PageHeader";
-import PageFooter from "../../(landing)/components/ui/PageFooter";
-import SectorPageContent from "../../(landing)/components/ui/SectorPageContent";
+import SchemaOrg from "../../../(landing)/components/seo/SchemaOrg";
+import PageHeader from "../../../(landing)/components/ui/PageHeader";
+import PageFooter from "../../../(landing)/components/ui/PageFooter";
+import SectorPageContent from "../../../(landing)/components/ui/SectorPageContent";
+import { routing } from "@/i18n/routing";
 
 export const metadata: Metadata = {
   title: { absolute: "Software para Spas y Centros de Bienestar | WhatsApp 24/7" },
@@ -90,3 +91,11 @@ export default function SpasPage() {
     </>
   );
 }
+
+// Sin versión en inglés todavía: se genera solo para el locale por defecto
+// y cualquier /en/* de esta ruta debe devolver 404 en vez de renderizar en español.
+export function generateStaticParams() {
+  return [{ locale: routing.defaultLocale }];
+}
+
+export const dynamicParams = false;

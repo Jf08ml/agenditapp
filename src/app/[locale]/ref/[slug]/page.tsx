@@ -1,17 +1,25 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import PageHeader from "../../(landing)/components/ui/PageHeader";
-import PageFooter from "../../(landing)/components/ui/PageFooter";
+import PageHeader from "../../../(landing)/components/ui/PageHeader";
+import PageFooter from "../../../(landing)/components/ui/PageFooter";
 import { sources, SOURCE_BADGE } from "../sources";
 import RefPageContent from "./RefPageContent";
+import { routing } from "@/i18n/routing";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
+// Sin versión en inglés todavía: se genera solo para el locale por defecto
+// y cualquier /en/ref/* debe devolver 404 en vez de renderizar en español.
 export function generateStaticParams() {
-  return Object.keys(sources).map((slug) => ({ slug }));
+  return Object.keys(sources).map((slug) => ({
+    locale: routing.defaultLocale,
+    slug,
+  }));
 }
+
+export const dynamicParams = false;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;

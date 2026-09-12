@@ -1,0 +1,26 @@
+{
+  "badge": "WhatsApp es nuestro corazón",
+  "heading": {
+    "prefix": "El único sistema que habla por ti,",
+    "highlight": "en tu número."
+  },
+  "description": "Mientras otros te cobran cada mensaje, nosotros automatizamos confirmación, recordatorios y campañas — todo desde tu WhatsApp Business.",
+  "bullets": [
+    "Confirmación automática al reservar",
+    "1 o 2 recordatorios programables",
+    "Cliente confirma o cancela con 1 toque",
+    "Campañas masivas segmentadas",
+    "Mensajes 100% editables a tu tono"
+  ],
+  "phone": {
+    "businessName": "Estudio Rosa",
+    "onlineStatus": "en línea",
+    "messages": [
+      { "text": "¡Hola Camila! 👋 Tu cita en Estudio Rosa está confirmada:", "meta": "10:32" },
+      { "text": "✂️ Manicure Gel · 45 min\n📅 Martes 12 · 3:00 pm\n💵 $45.000", "meta": "10:32" },
+      { "text": "¡Perfecto, ahí estaré! 💅", "meta": "10:34" },
+      { "text": "Recordatorio: tu cita es mañana a las 3:00 pm. ¿Sigues asistiendo?", "meta": "Lun 5:00 pm" },
+      { "text": "✅ Confirmar", "meta": "Lun 5:01 pm" }
+    ]
+  }
+}

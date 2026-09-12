@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { HeroSideArrow } from "../components/ui/HeroSideArrow";
 import { MobileArrow } from "../components/ui/MobileArrow";
 import Navbar from "../components/ui/Navbar";
@@ -16,6 +17,7 @@ const ImageLightbox = dynamic(
 );
 
 function LiveBookingBadge() {
+  const t = useTranslations("Hero");
   const [secs, setSecs] = useState(12);
   useEffect(() => {
     const id = setInterval(() => setSecs((s) => (s + 1) % 90), 1000);
@@ -37,10 +39,10 @@ function LiveBookingBadge() {
       </div>
       <div>
         <div className="text-[11px] text-[#64748B] leading-tight">
-          reserva confirmada hace {secs}s
+          {t("liveBooking.confirmed", { secs })}
         </div>
         <div className="text-[13px] font-semibold text-[#0F172A] leading-tight">
-          Cata → Galaxia Glamour
+          {t("liveBooking.example")}
         </div>
       </div>
     </motion.div>
@@ -53,6 +55,7 @@ const fadeUp: Variants = {
 };
 
 export default function Hero() {
+  const t = useTranslations("Hero");
   const [open, setOpen] = useState(false);
   const [src, setSrc] = useState<string | null>(null);
   const [alt, setAlt] = useState("");
@@ -132,7 +135,7 @@ export default function Hero() {
                     className="w-1.5 h-1.5 rounded-full animate-pulse"
                     style={{ background: "var(--warm)" }}
                   />
-                  Nuevo · Empieza gratis — sin tarjeta
+                  {t("badge")}
                 </span>
               </motion.div>
 
@@ -143,7 +146,7 @@ export default function Hero() {
                 className="leading-[1.02] tracking-[-0.035em] font-extrabold text-balance m-0"
                 style={{ fontSize: "clamp(36px, 5.5vw, 68px)" }}
               >
-                <span className="text-[#0F172A]">Deja de perseguir citas</span>
+                <span className="text-[#0F172A]">{t("heading.line1")}</span>
                 <br className="hidden lg:block" />
                 {" "}
                 <span
@@ -155,7 +158,7 @@ export default function Hero() {
                     color: "transparent",
                   }}
                 >
-                  por WhatsApp.
+                  {t("heading.highlight")}
                 </span>
                 <br className="hidden lg:block" />
                 {" "}
@@ -169,7 +172,7 @@ export default function Hero() {
                     color: "#0F172A",
                   }}
                 >
-                  Que tu agenda lo haga sola.
+                  {t("heading.line2")}
                 </span>
               </motion.h1>
 
@@ -179,9 +182,7 @@ export default function Hero() {
                 transition={{ duration: 0.7 }}
                 className="mt-6 text-[17px] sm:text-[18px] text-[#334155] leading-[1.6] max-w-[520px] mx-auto lg:mx-0"
               >
-                AgenditApp recibe reservas 24/7, confirma con tus clientes por
-                WhatsApp y reduce las inasistencias hasta un 70% — sin que
-                tengas que mover un dedo.
+                {t("subtitle")}
               </motion.p>
 
               {/* CTAs */}
@@ -200,7 +201,7 @@ export default function Hero() {
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
                     <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.79.47 3.52 1.36 5.06L2.05 22l5.16-1.35a9.94 9.94 0 0 0 4.82 1.23h.01c5.46 0 9.91-4.45 9.91-9.92 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm5.84 14.13c-.25.7-1.45 1.34-2 1.43-.51.08-1.15.11-1.86-.12-.43-.13-.98-.32-1.69-.62-2.97-1.28-4.91-4.27-5.06-4.47-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.47.27-.29.59-.37.79-.37.2 0 .39 0 .56.01.18.01.42-.07.66.5.25.6.84 2.06.91 2.21.07.15.12.33.02.53-.1.2-.15.33-.3.5-.15.18-.31.4-.45.54-.15.15-.3.31-.13.61.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.36 1.46.3.15.47.12.65-.07.18-.2.76-.89.96-1.19.2-.3.4-.25.67-.15.27.1 1.73.82 2.03.97.3.15.5.22.57.35.07.12.07.7-.18 1.4z"/>
                   </svg>
-                  Hablar por WhatsApp
+                  {t("cta.whatsapp")}
                 </DemoCtaButton>
 
                 <Link
@@ -209,7 +210,7 @@ export default function Hero() {
                     border border-[#0F172A]/12 text-[#0F172A] text-[15px] font-semibold
                     bg-white/70 backdrop-blur-sm transition-all hover:bg-white/90"
                 >
-                  Ver planes y precios
+                  {t("cta.pricing")}
                 </Link>
               </motion.div>
 
@@ -234,7 +235,7 @@ export default function Hero() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                Sin tarjeta · Listo en 10 min · Cancela cuando quieras
+                {t("microcopy")}
               </motion.p>
             </motion.div>
 
@@ -313,14 +314,14 @@ export default function Hero() {
                     onClick={() =>
                       openLightbox(
                         "/screenshots/agenda-virtual-desktop-1.png",
-                        "Agenda virtual — AgenditApp",
+                        t("lightboxAlt"),
                       )
                     }
                     className="block w-full focus:outline-none cursor-zoom-in group"
                   >
                     <Image
                       src="/screenshots/agenda-virtual-desktop-1.png"
-                      alt="Vista semanal de citas con columnas por profesional — AgenditApp"
+                      alt={t("screenshotAlt")}
                       width={1280}
                       height={720}
                       className="w-full h-auto object-cover object-top

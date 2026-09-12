@@ -1,0 +1,49 @@
+{
+  "badge": "Personalized demo",
+  "heading": "We'll have your calendar ready",
+  "headingHighlight": "in 30 minutes.",
+  "subheading": "Tell us about your business and we'll reach out on WhatsApp to set up your services and walk you through the full dashboard.",
+  "promises": [
+    "Response in under 1 hour",
+    "Free setup included",
+    "No purchase commitment"
+  ],
+  "waCard": {
+    "title": "Prefer to talk directly?",
+    "subtitle": "An advisor will show you a live demo in under 5 minutes.",
+    "cta": "Chat on WhatsApp"
+  },
+  "form": {
+    "nameLabel": "Your full name",
+    "namePlaceholder": "e.g. Jane Doe",
+    "businessLabel": "Your business name",
+    "businessPlaceholder": "e.g. Glam Nails Studio",
+    "whatsappLabel": "Contact WhatsApp number",
+    "whatsappPlaceholder": "123 456 7890",
+    "whatsappHelper": "Select your country and enter your number. We only use it to contact you about the demo.",
+    "sectorLabel": "Business type",
+    "sectorPlaceholder": "Select an option",
+    "sectorOptions": [
+      "Beauty salon / nails",
+      "Barbershop",
+      "Spa / massage",
+      "Lashes / brows",
+      "Trainer / fitness",
+      "Medical aesthetics",
+      "Academy / courses",
+      "Other"
+    ],
+    "appointmentsLabel": "Appointments per month (approx.)",
+    "appointmentsPlaceholder": "Select a range",
+    "appointmentsOptions": [
+      "Less than 50",
+      "50 - 150",
+      "150 - 300",
+      "More than 300"
+    ],
+    "submit": "I want my personalized demo",
+    "submitting": "Sending...",
+    "success": "Thanks! We received your info. We'll be in touch on WhatsApp shortly.",
+    "error": "Something went wrong. Please try again or message us on WhatsApp."
+  }
+}

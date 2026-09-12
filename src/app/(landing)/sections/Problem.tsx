@@ -1,31 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
-const COLS = [
-  {
-    title: "Sin AgenditApp",
-    tone: "bad" as const,
-    items: [
-      { t: '"¿A qué hora era mi cita?"',      s: "Respondes los mismos chats todos los días." },
-      { t: "Cliente que no llega",             s: "Pierdes el cupo y a otro cliente que sí quería." },
-      { t: "Agenda en libreta",                s: "Cruces de horario, errores y caos los sábados." },
-      { t: "Trabajas hasta tarde",             s: "Contestando mensajes en vez de descansar." },
-      { t: "No sabes cuánto generas",          s: "Sin reportes, sin claridad, sin control." },
-    ],
-  },
-  {
-    title: "Con AgenditApp",
-    tone: "good" as const,
-    items: [
-      { t: "Reservan solas, 24/7",             s: "Tu enlace trabaja mientras duermes." },
-      { t: "Recordatorios automáticos",        s: "Hasta 70% menos ausencias comprobado." },
-      { t: "Agenda visual en la nube",         s: "Sin cruces. Desde cualquier dispositivo." },
-      { t: "WhatsApp en piloto automático",    s: "El sistema confirma, tú atiendes." },
-      { t: "Reportes claros",                  s: "Sabes qué servicio, día y empleado generan más." },
-    ],
-  },
+// Solo se guarda aquí lo estructural (el tono, que determina íconos y
+// colores). El copy (título de columna + texto de cada item) vive en los
+// mensajes de next-intl y se combina por índice con este array.
+const COLS_META = [
+  { tone: "bad" as const },
+  { tone: "good" as const },
 ];
+
+type ColumnCopy = {
+  title: string;
+  items: { title: string; description: string }[];
+};
 
 function XIcon() {
   return (
@@ -44,6 +33,9 @@ function CheckIcon() {
 }
 
 export default function Problem() {
+  const t = useTranslations("Problem");
+  const columns = t.raw("columns") as ColumnCopy[];
+
   return (
     <section className="py-24 sm:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -60,21 +52,21 @@ export default function Problem() {
               text-[11px] font-semibold tracking-widest uppercase mb-5"
             style={{ background: "var(--warm-soft)", color: "var(--warm-deep)" }}
           >
-            El verdadero costo del WhatsApp manual
+            {t("badge")}
           </span>
           <h2 className="text-[clamp(28px,4vw,44px)] font-bold leading-[1.1] tracking-tight text-[#0F172A] text-balance m-0">
-            ¿Te suena familiar?
+            {t("heading")}
           </h2>
           <p className="mt-4 text-[17px] text-[#64748B] leading-relaxed">
-            Cada uno de estos momentos te cuesta tiempo, ingresos y energía.
-            AgenditApp los resuelve antes de que sucedan.
+            {t("subheading")}
           </p>
         </motion.div>
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {COLS.map((col, ci) => {
-            const isBad = col.tone === "bad";
+          {COLS_META.map((meta, ci) => {
+            const col = columns[ci];
+            const isBad = meta.tone === "bad";
             return (
               <motion.div
                 key={ci}
@@ -137,9 +129,9 @@ export default function Problem() {
                           className="text-[15px] font-semibold m-0 leading-snug"
                           style={{ color: isBad ? "#475569" : "#0F172A" }}
                         >
-                          {item.t}
+                          {item.title}
                         </p>
-                        <p className="text-[13px] text-[#64748B] mt-1 m-0">{item.s}</p>
+                        <p className="text-[13px] text-[#64748B] mt-1 m-0">{item.description}</p>
                       </div>
                     </li>
                   ))}

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion, easeOut, type Variants } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 28 },
@@ -18,7 +19,16 @@ const cardV: Variants = {
   animate: { opacity: 1, y: 0, transition: { duration: 0.5, ease: easeOut } },
 };
 
-const features = [
+type Feature = {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  side: "left" | "right";
+};
+
+// Solo datos estructurales (icono, lado); el copy (title/description) viene
+// de los mensajes de next-intl y se combina por índice en el componente.
+const FEATURE_ICONS: Omit<Feature, "title" | "description">[] = [
   {
     icon: (
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -42,9 +52,6 @@ const features = [
         />
       </svg>
     ),
-    title: "Fidelidad y Retención",
-    description:
-      "Fideliza clientes con recompensas y mejora su experiencia con reservas fáciles y recordatorios automáticos.",
     side: "left",
   },
   {
@@ -73,9 +80,6 @@ const features = [
         />
       </svg>
     ),
-    title: "Presencia Digital",
-    description:
-      "Landing profesional con dominio propio, diseño responsive y SEO optimizado para atraer más clientes.",
     side: "left",
   },
   {
@@ -100,9 +104,6 @@ const features = [
         </text>
       </svg>
     ),
-    title: "Campañas y Crecimiento",
-    description:
-      "Envía campañas masivas por WhatsApp, segmentando a tus clientes para lograr mayor efectividad en ventas.",
     side: "left",
   },
   {
@@ -132,9 +133,6 @@ const features = [
         />
       </svg>
     ),
-    title: "Branding, Seguridad y Soporte",
-    description:
-      "Plataforma segura en la nube, personalizable, con acceso total, soporte dedicado y actualizaciones automáticas.",
     side: "right",
   },
   {
@@ -164,9 +162,6 @@ const features = [
         />
       </svg>
     ),
-    title: "Fácil de Usar",
-    description:
-      "Recibe reservas online ilimitadas sin interrupciones, gestionando fácilmente tu agenda, servicios y horarios.",
     side: "right",
   },
   {
@@ -187,15 +182,9 @@ const features = [
         />
       </svg>
     ),
-    title: "Gestión de Negocio",
-    description:
-      "Gestiona empleados, clientes, comisiones y caja, usando analíticas para controlar todo el negocio.",
     side: "right",
   },
 ];
-
-const left = features.filter((f) => f.side === "left");
-const right = features.filter((f) => f.side === "right");
 
 /* ── Flechas animadas estilo Hero — desktop ── */
 const PATHS = [
@@ -359,7 +348,7 @@ function ConnectorLines() {
   );
 }
 
-function FeatureCard({ f }: { f: (typeof features)[0]; i: number }) {
+function FeatureCard({ f }: { f: Feature; i: number }) {
   return (
     <motion.div
       variants={cardV}
@@ -379,6 +368,18 @@ function FeatureCard({ f }: { f: (typeof features)[0]; i: number }) {
 }
 
 export default function Software() {
+  const t = useTranslations("Software");
+  const featureCopy = t.raw("features") as {
+    title: string;
+    description: string;
+  }[];
+  const features: Feature[] = FEATURE_ICONS.map((f, i) => ({
+    ...f,
+    ...featureCopy[i],
+  }));
+  const left = features.filter((f) => f.side === "left");
+  const right = features.filter((f) => f.side === "right");
+
   return (
     <section className="py-20 px-6 max-w-6xl mx-auto">
       {/* ── Header ── */}
@@ -390,16 +391,17 @@ export default function Software() {
         className="text-center max-w-2xl mx-auto mb-14"
       >
         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/8 border border-brand/20 text-brand text-[11px] font-semibold tracking-wider uppercase mb-4">
-          Plataforma completa
+          {t("badge")}
         </span>
         <h2 className="text-3xl md:text-4xl font-semibold text-heading tracking-tight leading-tight">
-          El software de gestión y reservas{" "}
-          <span className="text-brand">más completo</span> a tu medida
+          {t.rich("heading", {
+            highlight: (chunks) => (
+              <span className="text-brand">{chunks}</span>
+            ),
+          })}
         </h2>
         <p className="mt-4 text-base text-body leading-relaxed">
-          Estas son las funciones favoritas de nuestros clientes para ahorrar
-          tiempo, reducir inasistencias y multiplicar sus ingresos gracias a su
-          agenda digital.
+          {t("subheading")}
         </p>
       </motion.div>
 

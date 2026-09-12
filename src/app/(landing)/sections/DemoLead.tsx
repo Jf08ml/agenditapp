@@ -5,6 +5,7 @@ import { useState } from "react";
 import { DemoCtaButton } from "../components/ui/DemoCtaModal";
 import { motion, easeOut, type Variants } from "framer-motion";
 import { ChatCircle } from "@phosphor-icons/react";
+import { useTranslations } from "next-intl";
 import { SelectorPais } from "../components/ui/SelectorPais";
 import { PAISES } from "../components/constants/paises";
 
@@ -18,13 +19,12 @@ const inputClass =
 
 const labelClass = "block text-sm font-medium text-heading mb-1.5";
 
-const PROMISES = [
-  "Respuesta en menos de 1 hora",
-  "Configuración gratis incluida",
-  "Sin compromiso de compra",
-];
-
 export default function DemoLead() {
+  const t = useTranslations("DemoLead");
+  const promises = t.raw("promises") as string[];
+  const sectorOptions = t.raw("form.sectorOptions") as string[];
+  const appointmentsOptions = t.raw("form.appointmentsOptions") as string[];
+
   const [nombre, setNombre] = useState("");
   const [negocio, setNegocio] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
@@ -95,14 +95,14 @@ export default function DemoLead() {
               className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-widest uppercase mb-5"
               style={{ background: "var(--warm-soft)", color: "var(--warm-deep)" }}
             >
-              Demo personalizada
+              {t("badge")}
             </motion.span>
 
             <motion.h2
               variants={fadeInUp}
               className="text-[clamp(28px,4vw,44px)] font-bold leading-[1.1] tracking-tight text-[#0F172A] text-balance m-0"
             >
-              Te dejamos la agenda lista{" "}
+              {t("heading")}{" "}
               <span
                 style={{
                   fontFamily: "var(--font-instrument-serif), Georgia, serif",
@@ -110,7 +110,7 @@ export default function DemoLead() {
                   fontWeight: 400,
                 }}
               >
-                en 30 minutos.
+                {t("headingHighlight")}
               </span>
             </motion.h2>
 
@@ -118,12 +118,11 @@ export default function DemoLead() {
               variants={fadeInUp}
               className="mt-4 text-[17px] text-[#64748B] leading-relaxed"
             >
-              Cuéntanos sobre tu negocio y te contactamos por WhatsApp para
-              configurar tus servicios y mostrarte el panel completo.
+              {t("subheading")}
             </motion.p>
 
             <motion.ul variants={fadeInUp} className="mt-7 flex flex-col gap-3">
-              {PROMISES.map((p) => (
+              {promises.map((p) => (
                 <li key={p} className="flex items-center gap-3 text-[14px] font-medium text-[#0F172A]">
                   <span
                     className="w-[22px] h-[22px] rounded-full flex items-center justify-center flex-shrink-0"
@@ -152,14 +151,14 @@ export default function DemoLead() {
                   <ChatCircle size={20} weight="duotone" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-[14px] font-bold text-[#0F172A]">¿Prefieres hablar directo?</p>
+                  <p className="text-[14px] font-bold text-[#0F172A]">{t("waCard.title")}</p>
                   <p className="text-[12px] text-[#64748B] mt-0.5 leading-snug">
-                    Un asesor te muestra una demo en vivo en menos de 5 minutos.
+                    {t("waCard.subtitle")}
                   </p>
                 </div>
               </div>
               <DemoCtaButton source="demo_lead" className="inline-flex items-center justify-center rounded-[10px] px-4 py-2.5 text-[12px] font-semibold text-white cursor-pointer whitespace-nowrap bg-[#25D366] hover:bg-[#22c35e] transition-colors flex-shrink-0">
-                Hablar por WhatsApp
+                {t("waCard.cta")}
               </DemoCtaButton>
             </motion.div>
           </motion.div>
@@ -177,29 +176,29 @@ export default function DemoLead() {
             >
               <form onSubmit={handleSubmit} className="space-y-5 text-sm">
               <div>
-                <label className={labelClass}>Tu nombre completo</label>
+                <label className={labelClass}>{t("form.nameLabel")}</label>
                 <input
                   required
                   value={nombre}
                   onChange={(e) => setNombre(e.target.value)}
                   className={inputClass}
-                  placeholder="Ej: Ana Pérez"
+                  placeholder={t("form.namePlaceholder")}
                 />
               </div>
 
               <div>
-                <label className={labelClass}>Nombre de tu negocio</label>
+                <label className={labelClass}>{t("form.businessLabel")}</label>
                 <input
                   required
                   value={negocio}
                   onChange={(e) => setNegocio(e.target.value)}
                   className={inputClass}
-                  placeholder="Ej: Glam Nails Studio"
+                  placeholder={t("form.businessPlaceholder")}
                 />
               </div>
 
               <div>
-                <label className={labelClass}>WhatsApp de contacto</label>
+                <label className={labelClass}>{t("form.whatsappLabel")}</label>
                 <div className="flex gap-2">
                   <SelectorPais value={paisCodigo} onChange={setPaisCodigo} />
                   <input
@@ -208,45 +207,39 @@ export default function DemoLead() {
                     value={whatsapp}
                     onChange={(e) => setWhatsapp(e.target.value)}
                     className={`${inputClass} flex-1 min-w-0`}
-                    placeholder="300 123 4567"
+                    placeholder={t("form.whatsappPlaceholder")}
                   />
                 </div>
                 <p className="mt-1.5 text-[11px] text-muted">
-                  Selecciona tu país y escribe el número. Solo lo usamos para contactarte sobre la demo.
+                  {t("form.whatsappHelper")}
                 </p>
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className={labelClass}>Tipo de negocio</label>
+                  <label className={labelClass}>{t("form.sectorLabel")}</label>
                   <select
                     value={sector}
                     onChange={(e) => setSector(e.target.value)}
                     className={inputClass}
                   >
-                    <option value="">Selecciona una opción</option>
-                    <option>Salón de belleza / uñas</option>
-                    <option>Barbería</option>
-                    <option>Spa / masajes</option>
-                    <option>Lashes / cejas</option>
-                    <option>Entrenador / fitness</option>
-                    <option>Estética médica</option>
-                    <option>Academia / cursos</option>
-                    <option>Otro</option>
+                    <option value="">{t("form.sectorPlaceholder")}</option>
+                    {sectorOptions.map((opt) => (
+                      <option key={opt}>{opt}</option>
+                    ))}
                   </select>
                 </div>
                 <div>
-                  <label className={labelClass}>Citas al mes (aprox.)</label>
+                  <label className={labelClass}>{t("form.appointmentsLabel")}</label>
                   <select
                     value={citasMes}
                     onChange={(e) => setCitasMes(e.target.value)}
                     className={inputClass}
                   >
-                    <option value="">Selecciona un rango</option>
-                    <option>Menos de 50</option>
-                    <option>50 - 150</option>
-                    <option>150 - 300</option>
-                    <option>Más de 300</option>
+                    <option value="">{t("form.appointmentsPlaceholder")}</option>
+                    {appointmentsOptions.map((opt) => (
+                      <option key={opt}>{opt}</option>
+                    ))}
                   </select>
                 </div>
               </div>
@@ -262,9 +255,9 @@ export default function DemoLead() {
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
                     </svg>
-                    Enviando...
+                    {t("form.submitting")}
                   </>
-                ) : "Quiero mi demo personalizada"}
+                ) : t("form.submit")}
               </button>
 
               {ok === true && (
@@ -272,7 +265,7 @@ export default function DemoLead() {
                   <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 16 16" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 8l4 4 6-6"/>
                   </svg>
-                  ¡Gracias! Recibimos tus datos. Te contactaremos por WhatsApp muy pronto.
+                  {t("form.success")}
                 </div>
               )}
               {ok === false && (
@@ -281,7 +274,7 @@ export default function DemoLead() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5v4M8 11v1"/>
                     <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.5"/>
                   </svg>
-                  Error al enviar. Intenta de nuevo o escríbenos por WhatsApp.
+                  {t("form.error")}
                 </div>
               )}
             </form>

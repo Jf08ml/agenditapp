@@ -1,0 +1,77 @@
+{
+  "organizationDescription": "Online scheduling and business management software for beauty, wellness, and professional service businesses.",
+  "softwareDescription": "Online scheduling and business management software for salons, barbershops, spas, and clinics. 24/7 online booking, automated WhatsApp reminders, and complete business management.",
+  "websiteDescription": "Online scheduling and appointment management system for beauty, wellness, and professional service businesses",
+  "services": {
+    "catalogName": "AgenditApp Plans — Online Scheduling Software",
+    "basico": {
+      "name": "Basic Plan",
+      "description": "Organize your calendar and start taking bookings online. Includes unlimited 24/7 bookings and appointments, a full admin dashboard, and management of services, staff, and clients."
+    },
+    "esencial": {
+      "name": "Essential Plan",
+      "description": "Automate WhatsApp and cut no-shows with reminders. Includes everything in Basic plus automated WhatsApp reminders sent from your own Business number."
+    },
+    "marca": {
+      "name": "Own Brand Plan",
+      "description": "Your own domain and bulk WhatsApp campaigns to grow. Includes everything in Essential plus a custom domain and bulk messaging."
+    }
+  },
+  "featureList": [
+    "24/7 online booking",
+    "Automated WhatsApp reminders",
+    "Visual appointment calendar",
+    "Services and staff management",
+    "Client database",
+    "Commissions and payroll",
+    "Loyalty program",
+    "Bulk WhatsApp campaigns",
+    "Custom domain",
+    "Branded booking page",
+    "Peak-hours analytics",
+    "Full admin dashboard",
+    "Accept card payments for bookings",
+    "Prepaid session packages",
+    "Online store with supply and product inventory"
+  ],
+  "knowsAbout": [
+    "Appointment scheduling software",
+    "Booking management",
+    "Reservation automation",
+    "Marketing for beauty and wellness businesses"
+  ],
+  "faq": [
+    {
+      "question": "How much does AgenditApp cost?",
+      "answer": "Plans start at $10 USD/month (Basic) up to $30 USD/month (Own Brand). All plans are month-to-month with no contracts. They include unlimited bookings and WhatsApp support."
+    },
+    {
+      "question": "Is there a contract or cancellation fee?",
+      "answer": "No. Every plan is month-to-month and you can cancel anytime with no penalties or paperwork."
+    },
+    {
+      "question": "Do reminders come from my own WhatsApp number?",
+      "answer": "Yes. On plans that include WhatsApp, messages are sent from your official WhatsApp Business number, not from an unknown number."
+    },
+    {
+      "question": "How many bookings can I receive with AgenditApp?",
+      "answer": "Unlimited on every plan. There's no extra charge based on the number of bookings or clients."
+    },
+    {
+      "question": "Do my clients need to download an app to book?",
+      "answer": "No. Your clients book from a web link you can share on WhatsApp, Instagram, or social media. Nothing to install."
+    },
+    {
+      "question": "What kinds of businesses can use AgenditApp?",
+      "answer": "If you work with appointments, AgenditApp is for you. It's used by salons, barbershops, spas, medical practices, psychologists, dentists, nutritionists, veterinary clinics, gyms, photography studios, music/yoga/dance instructors, tutors, and more."
+    },
+    {
+      "question": "Do I need technical knowledge to use the platform?",
+      "answer": "No. AgenditApp is designed to be intuitive and easy to use. We provide onboarding and technical support so you can get started from day one."
+    },
+    {
+      "question": "Can I manage multiple staff members?",
+      "answer": "Yes. Each staff member has their own schedule, services, and calendar. You can see everything from one dashboard and manage commissions automatically."
+    }
+  ]
+}

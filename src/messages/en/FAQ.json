@@ -1,0 +1,43 @@
+{
+  "badge": "Frequently asked questions",
+  "heading": {
+    "prefix": "Before you get started,",
+    "highlight": "let's clear up your questions."
+  },
+  "ctaText": "Have a specific question about your business?",
+  "ctaButton": "Ask us on WhatsApp",
+  "items": [
+    {
+      "question": "Is there really no long-term contract?",
+      "answer": "Correct. It's a month-to-month payment and you can cancel anytime, no penalties or fine print. If you decide to leave, we'll help you export your clients and schedule."
+    },
+    {
+      "question": "Do reminders go out from my own WhatsApp number?",
+      "answer": "Yes. On the Essential and Own Brand plans, messages are sent from your official WhatsApp Business number. Your customers see your brand, not ours."
+    },
+    {
+      "question": "Do I need to install anything or buy equipment?",
+      "answer": "No. AgenditApp runs 100% in the cloud. You open it from your phone, tablet, or computer. We set everything up with you on a 30-minute call."
+    },
+    {
+      "question": "How quickly can I get it up and running?",
+      "answer": "The same day. We help you load your services, hours, and staff, and leave your booking link ready to share."
+    },
+    {
+      "question": "What if I'm not very tech-savvy?",
+      "answer": "AgenditApp was built for non-technical people, and our team sets everything up for you for free when you start. If you can send a text message, you can use AgenditApp."
+    },
+    {
+      "question": "Can I change plans later?",
+      "answer": "Yes, upgrade or downgrade whenever you want. You only pay the prorated difference for the current month."
+    },
+    {
+      "question": "What happens to my data and my clients' data?",
+      "answer": "Your information is encrypted and backed up in the cloud. Only you can access it with your account. We comply with applicable data protection regulations."
+    },
+    {
+      "question": "Do you accept bank transfers or cards?",
+      "answer": "Yes. We accept bank transfers and major credit/debit cards."
+    }
+  ]
+}

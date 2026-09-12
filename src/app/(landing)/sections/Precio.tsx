@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { DemoCtaButton } from "../components/ui/DemoCtaModal";
 import { motion, AnimatePresence, easeOut, type Variants } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 import { Lightbulb } from "@phosphor-icons/react";
 
@@ -23,179 +24,67 @@ const IconChevron = ({ open }: { open: boolean }) => (
 );
 
 // ─── Data ────────────────────────────────────────────────────────────────────
+// Solo los campos estructurales (usados en lógica/estilos/precio) viven aquí.
+// El copy (name, badge, tagline, highlights, ctaLabel) se trae de los mensajes
+// de next-intl bajo "plans.<key>" y se combina con este array en tiempo de
+// render (ver `usePlans()` más abajo), igual para extraFeatures/comparisonGroups.
 type PlanKey = "gratuito" | "basico" | "esencial" | "marca";
 
-const PLANS: Array<{
+const PLAN_STRUCTURE: Array<{
   key: PlanKey;
-  name: string;
   monthlyPrice: number;
-  badge: string;
   badgeStyle: React.CSSProperties;
-  tagline: string;
-  highlights: string[];
-  ctaLabel: string;
   featured?: boolean;
   free?: boolean;
 }> = [
   {
     key: "gratuito",
-    name: "Gratuito",
     monthlyPrice: 0,
-    badge: "Siempre gratis",
     badgeStyle: {
       background: "rgba(37,211,102,0.12)",
       color: "#128C7E",
       border: "1px solid rgba(37,211,102,0.3)",
     },
-    tagline: "Empieza sin costo. Los primeros 7 días con acceso completo a todo.",
-    highlights: [
-      "1 profesional incluido",
-      "Hasta 5 servicios",
-      "Clientes ilimitados",
-      "Reservas online 24/7",
-      "Agenda virtual semanal y mensual",
-      "Subdominio tunegocio.agenditapp.com",
-    ],
-    ctaLabel: "Empezar gratis",
     free: true,
   },
   {
     key: "basico",
-    name: "Básico",
     monthlyPrice: 10,
-    badge: "Starter",
     badgeStyle: {
       background: "color-mix(in srgb, var(--brand) 10%, transparent)",
       color: "var(--brand)",
       border: "1px solid color-mix(in srgb, var(--brand) 25%, transparent)",
     },
-    tagline: "Para organizar tu agenda y empezar a recibir reservas online.",
-    highlights: [
-      "Reservas y citas ilimitadas 24/7",
-      "Panel administrativo completo",
-      "Gestión de servicios, empleados y clientes",
-      "Subdominio tu-negocio.agenditapp.com",
-    ],
-    ctaLabel: "Empezar con el Básico",
   },
   {
     key: "esencial",
-    name: "Esencial",
     monthlyPrice: 20,
-    badge: "Más elegido",
     badgeStyle: { background: "var(--warm-deep)", color: "#fff", border: "none" },
-    tagline: "Automatiza WhatsApp y reduce ausencias con recordatorios.",
-    highlights: [
-      "Todo lo del plan Básico",
-      "WhatsApp desde tu número Business",
-      "1 recordatorio automático configurable",
-      "Enlace para confirmar o cancelar citas",
-    ],
-    ctaLabel: "Empezar con el Esencial",
     featured: true,
   },
   {
     key: "marca",
-    name: "Marca Propia",
     monthlyPrice: 30,
-    badge: "Pro",
     badgeStyle: {
       background: "color-mix(in srgb, #F59E0B 12%, transparent)",
       color: "#B45309",
       border: "1px solid color-mix(in srgb, #F59E0B 30%, transparent)",
     },
-    tagline: "Dominio propio y campañas masivas de WhatsApp para crecer.",
-    highlights: [
-      "Todo lo del plan Esencial",
-      "Dominio propio (tumarca.com)",
-      "2 recordatorios automáticos",
-      "Campañas de WhatsApp (envío masivo)",
-      "Paquetes de sesiones prepagadas (exclusivo)",
-    ],
-    ctaLabel: "Empezar con Marca Propia",
   },
 ];
 
-const EXTRA_FEATURES: Record<PlanKey, string[]> = {
-  gratuito: [
-    "Analíticas básicas del negocio",
-    "Gestión básica de ingresos",
-    "Branding AgenditApp visible",
-  ],
-  basico: [
-    "Analíticas de negocio + comisiones / nómina por empleado",
-    "Sistema de fidelidad para retener clientes",
-    "Branding personalizado (logo, nombre y colores)",
-    "Horarios por empleado y bloqueo de disponibilidad",
-    "Landing de bienvenida sencilla",
-    "Cobro de reservas: Mercado Pago (con comisión) o comprobante de transferencia (sin comisión)",
-    "Tienda en línea con inventario de insumos y productos",
-  ],
-  esencial: [
-    "Analíticas de negocio + comisiones / nómina por empleado",
-    "Sistema de fidelidad para retener clientes",
-    "Branding personalizado (logo, nombre y colores)",
-    "Mensaje de agendamiento configurable",
-    "Mensajes de WhatsApp editables a tu gusto",
-    "Landing de bienvenida sencilla",
-    "Cobro de reservas: Mercado Pago (con comisión) o comprobante de transferencia (sin comisión)",
-    "Tienda en línea con inventario de insumos y productos",
-  ],
-  marca: [
-    "Analíticas de negocio + comisiones / nómina por empleado",
-    "Sistema de fidelidad para retener clientes",
-    "Branding personalizado (logo, nombre y colores)",
-    "Mensaje de agendamiento configurable",
-    "Mensajes de WhatsApp editables a tu gusto",
-    "Landing de bienvenida profesional",
-    "Soporte prioritario + acompañamiento para dominio",
-    "Cobro de reservas: Mercado Pago (con comisión) o comprobante de transferencia (sin comisión)",
-    "Tienda en línea con inventario de insumos y productos",
-  ],
+type PlanCopy = {
+  name: string;
+  badge: string;
+  tagline: string;
+  highlights: string[];
+  ctaLabel: string;
 };
 
-type CompRow = { label: string; hint?: string; values: Record<PlanKey, boolean | string> };
+type Plan = (typeof PLAN_STRUCTURE)[number] & PlanCopy;
 
-const COMPARISON_GROUPS: Array<{ group: string; rows: CompRow[] }> = [
-  {
-    group: "Base",
-    rows: [
-      { label: "Reservas y citas (24/7)", values: { gratuito: true, basico: true, esencial: true, marca: true } },
-      { label: "Panel administrativo y agenda visual", values: { gratuito: true, basico: true, esencial: true, marca: true } },
-      { label: "Servicios y empleados", values: { gratuito: "1 emp · 5 serv", basico: true, esencial: true, marca: true } },
-      { label: "Analíticas del negocio", values: { gratuito: "Básicas", basico: true, esencial: true, marca: true } },
-      { label: "Fidelidad + branding personalizado", values: { gratuito: false, basico: true, esencial: true, marca: true } },
-    ],
-  },
-  {
-    group: "Presencia web",
-    rows: [
-      { label: "Landing de bienvenida", values: { gratuito: false, basico: "Sencilla", esencial: "Sencilla", marca: "Profesional" } },
-      { label: "Subdominio (tu-negocio.agenditapp.com)", values: { gratuito: true, basico: true, esencial: true, marca: false } },
-      { label: "Dominio propio (tumarca.com)", values: { gratuito: false, basico: false, esencial: false, marca: true } },
-    ],
-  },
-  {
-    group: "Automatización WhatsApp",
-    rows: [
-      { label: "WhatsApp desde tu número Business", hint: "Mensajes enviados desde tu propio número", values: { gratuito: false, basico: false, esencial: true, marca: true } },
-      { label: "Mensaje de agendamiento configurable", values: { gratuito: false, basico: false, esencial: true, marca: true } },
-      { label: "Recordatorios automáticos", values: { gratuito: false, basico: false, esencial: "1 recordatorio", marca: "2 recordatorios" } },
-      { label: "Mensajes editables", values: { gratuito: false, basico: false, esencial: true, marca: true } },
-      { label: "Enlace para confirmar / cancelar citas", hint: "El cliente confirma o cancela desde WhatsApp", values: { gratuito: false, basico: false, esencial: true, marca: true } },
-      { label: "Campañas masivas de WhatsApp", values: { gratuito: false, basico: false, esencial: false, marca: true } },
-    ],
-  },
-  {
-    group: "Pagos y ventas",
-    rows: [
-      { label: "Cobro de reservas (abono o pago completo)", hint: "Mercado Pago con comisión, o comprobante de transferencia sin comisión", values: { gratuito: false, basico: true, esencial: true, marca: true } },
-      { label: "Mismos métodos para cobros internos", hint: "Ventas de tienda y otros cobros del negocio", values: { gratuito: false, basico: true, esencial: true, marca: true } },
-      { label: "Tienda en línea e inventario de insumos", values: { gratuito: false, basico: true, esencial: true, marca: true } },
-      { label: "Paquetes de sesiones prepagadas", hint: "Ej: 4 sesiones de masaje, con descuento automático por sesión usada", values: { gratuito: false, basico: false, esencial: false, marca: true } },
-    ],
-  },
-];
+type CompRow = { label: string; hint?: string; values: Record<PlanKey, boolean | string> };
+type CompGroup = { group: string; rows: CompRow[] };
 
 // ─── Animations ──────────────────────────────────────────────────────────────
 const fadeInUp: Variants = {
@@ -234,16 +123,25 @@ function ValueCell({ value }: { value: boolean | string }) {
   );
 }
 
-function PlanCard({ plan, yearly }: { plan: typeof PLANS[number]; yearly: boolean }) {
+function PlanCard({
+  plan,
+  yearly,
+  extras,
+  t,
+}: {
+  plan: Plan;
+  yearly: boolean;
+  extras: string[];
+  t: ReturnType<typeof useTranslations>;
+}) {
   const [expanded, setExpanded] = useState(false);
-  const extras = EXTRA_FEATURES[plan.key];
   const price = yearly ? plan.monthlyPrice * 10 : plan.monthlyPrice;
-  const priceUnit = plan.free ? "/ siempre gratis" : yearly ? "/ año" : "/ mes";
+  const priceUnit = plan.free ? t("priceUnit.free") : yearly ? t("priceUnit.yearly") : t("priceUnit.monthly");
   const priceNote = plan.free
-    ? "Sin tarjeta · Sin permanencia"
+    ? t("priceNote.free")
     : yearly
-    ? "2 meses gratis · facturación anual"
-    : "Sin permanencia · Cancela cuando quieras";
+    ? t("priceNote.yearly")
+    : t("priceNote.monthly");
 
   if (plan.free) {
     return (
@@ -262,7 +160,7 @@ function PlanCard({ plan, yearly }: { plan: typeof PLANS[number]; yearly: boolea
           style={{ background: "rgba(37,211,102,0.12)", color: "#128C7E" }}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[#25D366] animate-pulse flex-shrink-0" />
-          7 días con acceso COMPLETO al registrarte — luego gratis para siempre
+          {t("trialRibbon")}
         </div>
 
         <div className="p-6 flex flex-col flex-1">
@@ -305,7 +203,7 @@ function PlanCard({ plan, yearly }: { plan: typeof PLANS[number]; yearly: boolea
             className="flex items-center gap-1.5 text-xs font-medium text-muted hover:text-body transition-colors mb-4 w-fit"
           >
             <IconChevron open={expanded} />
-            {expanded ? "Ocultar características" : "Ver más características"}
+            {expanded ? t("expandToggle.hide") : t("expandToggle.show")}
           </button>
 
           <AnimatePresence initial={false}>
@@ -407,7 +305,7 @@ function PlanCard({ plan, yearly }: { plan: typeof PLANS[number]; yearly: boolea
               className="flex items-center gap-1.5 text-xs font-medium text-white/60 hover:text-white/90 transition-colors mb-4 w-fit"
             >
               <IconChevron open={expanded} />
-              {expanded ? "Ocultar características" : "Ver más características"}
+              {expanded ? t("expandToggle.hide") : t("expandToggle.show")}
             </button>
 
             <AnimatePresence initial={false}>
@@ -498,7 +396,7 @@ function PlanCard({ plan, yearly }: { plan: typeof PLANS[number]; yearly: boolea
           className="flex items-center gap-1.5 text-xs font-medium text-brand hover:text-brand-hover transition-colors mb-4 w-fit"
         >
           <IconChevron open={expanded} />
-          {expanded ? "Ocultar características" : "Ver más características"}
+          {expanded ? t("expandToggle.hide") : t("expandToggle.show")}
         </button>
 
         <AnimatePresence initial={false}>
@@ -544,6 +442,14 @@ function PlanCard({ plan, yearly }: { plan: typeof PLANS[number]; yearly: boolea
 export default function Precio({ asH1 = false }: { asH1?: boolean }) {
   const [yearly, setYearly] = useState(false);
   const Heading = asH1 ? "h1" : "h2";
+  const t = useTranslations("Precio");
+
+  const plans: Plan[] = PLAN_STRUCTURE.map((p) => ({
+    ...p,
+    ...(t.raw(`plans.${p.key}`) as PlanCopy),
+  }));
+  const extraFeatures = t.raw("extraFeatures") as Record<PlanKey, string[]>;
+  const comparisonGroups = t.raw("comparisonGroups") as CompGroup[];
 
   return (
     <section id="membresia" className="py-20">
@@ -558,18 +464,18 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
           className="text-center max-w-2xl mx-auto mb-10"
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/8 border border-brand/20 text-brand text-[11px] font-semibold tracking-wider uppercase mb-4">
-            Planes y precios
+            {t("header.badge")}
           </span>
           <Heading className="text-3xl md:text-4xl font-semibold text-heading tracking-tight leading-tight">
-            Empieza gratis.{" "}
-            <span className="text-brand">Sin tarjeta.</span>
+            {t("header.headingPrefix")}{" "}
+            <span className="text-brand">{t("header.headingHighlight")}</span>
           </Heading>
           <p className="mt-4 text-base text-body leading-relaxed">
-            Regístrate y obtén 7 días con todo incluido. Después, el plan gratuito para siempre — o elige un plan de pago cuando quieras.
+            {t("header.subheading")}
           </p>
           <div className="mt-5 flex justify-center">
             <DemoCtaButton source="precios" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[10px] border border-brand/25 text-brand text-sm font-medium hover:bg-brand/6 transition-colors cursor-pointer">
-              ¿No sabes qué plan elegir? Habla con un asesor
+              {t("header.advisorCta")}
             </DemoCtaButton>
           </div>
         </motion.div>
@@ -591,7 +497,7 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
                   : "text-muted hover:text-body"
               }`}
             >
-              Mensual
+              {t("toggle.monthly")}
             </button>
             <button
               onClick={() => setYearly(true)}
@@ -601,9 +507,9 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
                   : "text-muted hover:text-body"
               }`}
             >
-              Anual
+              {t("toggle.yearly")}
               <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#25D366] text-white leading-none">
-                −17%
+                {t("toggle.yearlyDiscount")}
               </span>
             </button>
           </div>
@@ -617,8 +523,8 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
           whileInView="animate"
           viewport={{ once: true, amount: 0.15 }}
         >
-          {PLANS.map((plan) => (
-            <PlanCard key={plan.key} plan={plan} yearly={yearly} />
+          {plans.map((plan) => (
+            <PlanCard key={plan.key} plan={plan} yearly={yearly} extras={extraFeatures[plan.key]} t={t} />
           ))}
         </motion.div>
 
@@ -629,7 +535,7 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
           whileInView="animate"
           viewport={{ once: true, amount: 0.5 }}
         >
-          Los primeros 7 días con acceso completo al activar tu cuenta. Sin tarjeta de crédito.
+          {t("trialNote")}
         </motion.p>
 
         {/* ── Comparison table ── */}
@@ -642,8 +548,8 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
         >
           <div className="flex items-end justify-between gap-4 flex-wrap mb-8">
             <div>
-              <h3 className="text-2xl font-semibold text-heading">Comparar planes</h3>
-              <p className="text-body mt-1 text-sm">Revisa en detalle qué incluye cada plan.</p>
+              <h3 className="text-2xl font-semibold text-heading">{t("comparison.heading")}</h3>
+              <p className="text-body mt-1 text-sm">{t("comparison.subheading")}</p>
             </div>
           </div>
 
@@ -654,9 +560,9 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
             {/* Header row */}
             <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr] bg-bg-card">
               <div className="px-6 py-5 border-b border-brand/10">
-                <p className="text-xs font-semibold text-muted uppercase tracking-wider">Funcionalidad</p>
+                <p className="text-xs font-semibold text-muted uppercase tracking-wider">{t("comparison.featureColumnLabel")}</p>
               </div>
-              {PLANS.map((p) => (
+              {plans.map((p) => (
                 p.featured ? (
                   <div key={p.key}
                     className="px-4 pt-5 pb-6 border-l border-transparent"
@@ -667,7 +573,7 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
                     <p className="text-lg font-bold text-white mt-0.5">
                       ${yearly ? p.monthlyPrice * 10 : p.monthlyPrice} USD
                     </p>
-                    <p className="text-[11px] text-white/50">{yearly ? "/ año" : "/ mes"}</p>
+                    <p className="text-[11px] text-white/50">{yearly ? t("priceUnit.yearly") : t("priceUnit.monthly")}</p>
                   </div>
                 ) : p.free ? (
                   <div key={p.key} className="px-4 py-5 border-l border-brand/10 border-b border-brand/10"
@@ -675,7 +581,7 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
                     <p className="text-[10px] font-bold uppercase tracking-widest mb-1.5" style={{ color: "#128C7E" }}>{p.badge}</p>
                     <p className="text-sm font-semibold text-heading">{p.name}</p>
                     <p className="text-lg font-bold mt-0.5" style={{ color: "#128C7E" }}>$0 USD</p>
-                    <p className="text-[11px] text-muted">/ siempre gratis</p>
+                    <p className="text-[11px] text-muted">{t("priceUnit.free")}</p>
                   </div>
                 ) : (
                   <div key={p.key} className="px-4 py-5 border-l border-brand/10 border-b border-brand/10">
@@ -684,14 +590,14 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
                     <p className="text-lg font-bold text-brand mt-0.5">
                       ${yearly ? p.monthlyPrice * 10 : p.monthlyPrice} USD
                     </p>
-                    <p className="text-[11px] text-muted">{yearly ? "/ año" : "/ mes"}</p>
+                    <p className="text-[11px] text-muted">{yearly ? t("priceUnit.yearly") : t("priceUnit.monthly")}</p>
                   </div>
                 )
               ))}
             </div>
 
             {/* Groups */}
-            {COMPARISON_GROUPS.map((group, gi) => (
+            {comparisonGroups.map((group, gi) => (
               <div key={gi}>
                 <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr]"
                   style={{ background: "color-mix(in srgb, var(--brand) 4%, var(--bg-main))" }}>
@@ -706,7 +612,7 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
                       <p className="text-sm text-heading">{row.label}</p>
                       {row.hint && <p className="text-xs text-muted mt-0.5">{row.hint}</p>}
                     </div>
-                    {PLANS.map((p) => (
+                    {plans.map((p) => (
                       <div key={p.key}
                         className={`px-4 py-3.5 border-l border-brand/8 flex items-center justify-center ${
                           p.featured ? "bg-[rgba(232,240,255,0.4)]" : ""
@@ -722,7 +628,7 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
             {/* CTA row */}
             <div className="grid grid-cols-[2fr_1fr_1fr_1fr_1fr] border-t border-brand/10 bg-bg-card">
               <div className="px-6 py-5" />
-              {PLANS.map((p) => (
+              {plans.map((p) => (
                 <div key={p.key}
                   className={`px-4 py-5 border-l border-brand/10 ${p.featured ? "bg-[rgba(232,240,255,0.4)]" : ""}`}>
                   {p.free ? (
@@ -730,7 +636,7 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
                       source={`precio_tabla_${p.key}`}
                       className="w-full px-3 py-2.5 rounded-[10px] text-xs font-bold text-center transition-all flex items-center justify-center bg-brand text-white hover:bg-brand-hover cursor-pointer"
                     >
-                      Gratis
+                      {t("freeCta")}
                     </DemoCtaButton>
                   ) : (
                     <DemoCtaButton
@@ -741,7 +647,7 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
                           : "border border-brand/25 text-brand hover:bg-brand/6"
                       }`}
                     >
-                      ${yearly ? p.monthlyPrice * 10 : p.monthlyPrice} USD {yearly ? "/ año" : "/ mes"}
+                      ${yearly ? p.monthlyPrice * 10 : p.monthlyPrice} USD {yearly ? t("priceUnit.yearly") : t("priceUnit.monthly")}
                     </DemoCtaButton>
                   )}
                 </div>
@@ -751,8 +657,8 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
 
           {/* Mobile: accordion per plan */}
           <div className="lg:hidden flex flex-col gap-4">
-            {PLANS.map((plan) => (
-              <MobileCompare key={plan.key} plan={plan} groups={COMPARISON_GROUPS} yearly={yearly} />
+            {plans.map((plan) => (
+              <MobileCompare key={plan.key} plan={plan} groups={comparisonGroups} yearly={yearly} t={t} />
             ))}
           </div>
 
@@ -765,8 +671,8 @@ export default function Precio({ asH1 = false }: { asH1?: boolean }) {
             }}
           >
             <Lightbulb size={16} weight="duotone" color="#D97706" className="inline mr-1 align-text-bottom" />
-            <span className="font-semibold">¿No sabes cuál elegir?</span>{" "}
-            Si quieres reducir ausencias → <span className="font-medium">Esencial</span>. Si quieres crecer con campañas → <span className="font-medium">Marca Propia</span>.
+            <span className="font-semibold">{t("tip.intro")}</span>{" "}
+            {t("tip.essentialLead")} <span className="font-medium">{t("tip.essentialPlan")}</span>. {t("tip.brandLead")} <span className="font-medium">{t("tip.brandPlan")}</span>.
           </p>
         </motion.div>
       </div>
@@ -779,14 +685,16 @@ function MobileCompare({
   plan,
   groups,
   yearly,
+  t,
 }: {
-  plan: typeof PLANS[number];
-  groups: typeof COMPARISON_GROUPS;
+  plan: Plan;
+  groups: CompGroup[];
   yearly: boolean;
+  t: ReturnType<typeof useTranslations>;
 }) {
   const [open, setOpen] = useState(false);
   const price = plan.free ? 0 : yearly ? plan.monthlyPrice * 10 : plan.monthlyPrice;
-  const priceUnit = plan.free ? "/ siempre gratis" : yearly ? "/ año" : "/ mes";
+  const priceUnit = plan.free ? t("priceUnit.free") : yearly ? t("priceUnit.yearly") : t("priceUnit.monthly");
   const priceColor = plan.free ? "#128C7E" : "var(--brand)";
 
   return (

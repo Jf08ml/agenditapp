@@ -1,0 +1,14 @@
+{
+  "badge": "Location",
+  "heading": "So your clients arrive <highlight>without asking.</highlight>",
+  "description": "Your booking page shows the address, an embedded map, and a direct link to Google Maps or Waze — no more “where is it, exactly?”.",
+  "features": [
+    { "title": "Exact address, always visible", "description": "Neighborhood, city, and landmark exactly as it appears on Google Maps." },
+    { "title": "\"Get directions\" button", "description": "One tap opens the route in Google Maps or Waze right from the client's phone." },
+    { "title": "Easy to share", "description": "Share the link on WhatsApp, Instagram, or Google Business — clients show up without asking." }
+  ],
+  "screenshotAlt": "Business location — AgenditApp",
+  "expandAriaLabel": "Expand: business location",
+  "addressLabel": "Address",
+  "openInMaps": "Open in Maps"
+}

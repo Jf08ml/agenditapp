@@ -1,150 +1,101 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Link as IntlLink } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
 import type { IconWeight } from "@phosphor-icons/react";
 import {
   CalendarBlank, ChatsCircle, Briefcase, Gift, Globe,
   Megaphone, ShieldCheck, Rocket, Lightbulb, GraduationCap,
   CreditCard, Stack, Storefront,
 } from "@phosphor-icons/react/dist/ssr";
-import SchemaOrg from "../(landing)/components/seo/SchemaOrg";
-import { DemoCtaButton } from "../(landing)/components/ui/DemoCtaModal";
-import PageHeader from "../(landing)/components/ui/PageHeader";
-import PageFooter from "../(landing)/components/ui/PageFooter";
+import SchemaOrg from "../../(landing)/components/seo/SchemaOrg";
+import { DemoCtaButton } from "../../(landing)/components/ui/DemoCtaModal";
+import PageHeader from "../../(landing)/components/ui/PageHeader";
+import PageFooter from "../../(landing)/components/ui/PageFooter";
+import { withEnglish } from "@/lib/hreflang";
+import { getPathname } from "@/i18n/navigation";
 
 type PhosphorIcon = React.ComponentType<{ size?: number; weight?: IconWeight; color?: string }>;
 
-export const metadata: Metadata = {
-  title: { absolute: "Funcionalidades del Software de Agendamiento | AgenditApp" },
-  description:
-    "Reservas 24/7, WhatsApp automático, fidelización, gestión de empleados, comisiones y página web — todo en una sola plataforma. Sin permanencia.",
-  alternates: { canonical: "https://agenditapp.com/funcionalidades" },
-  openGraph: {
-    title: "Funcionalidades | Sistema de Agendamiento AgenditApp",
-    description: "Conoce todas las herramientas que ofrece AgenditApp para automatizar reservas, WhatsApp, fidelidad y gestión completa del negocio.",
-    url: "https://agenditapp.com/funcionalidades",
-    images: ["/inicio_page.png"],
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Funcionalidades" });
+  const canonical = `https://agenditapp.com${getPathname({ locale, href: "/funcionalidades" })}`;
 
-const BREADCRUMB_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://agenditapp.com" },
-    { "@type": "ListItem", position: 2, name: "Funcionalidades", item: "https://agenditapp.com/funcionalidades" },
-  ],
-};
+  return {
+    title: { absolute: t("meta.title") },
+    description: t("meta.description"),
+    alternates: {
+      canonical,
+      languages: withEnglish(getPathname({ locale: "en", href: "/funcionalidades" })),
+    },
+    openGraph: {
+      title: t("meta.ogTitle"),
+      description: t("meta.ogDescription"),
+      url: canonical,
+      images: ["/inicio_page.png"],
+    },
+  };
+}
 
-const funcionalidades: { categoria: string; Icon: PhosphorIcon; color: string; features: { nombre: string; descripcion: string }[] }[] = [
-  {
-    categoria: "Agendamiento y Reservas",
-    Icon: CalendarBlank, color: "#1D4ED8",
-    features: [
-      { nombre: "Reservas online 24/7", descripcion: "Tus clientes agendan desde tu página web en cualquier momento, sin llamadas ni esperas." },
-      { nombre: "Citas ilimitadas", descripcion: "Recibe todas las reservas que necesites: sin límites por mes y sin costos por cita." },
-      { nombre: "Agenda visual simple", descripcion: "Calendario intuitivo con vista por día/semana y organización clara por empleado y servicio." },
-      { nombre: "Servicios configurables", descripcion: "Define duración, precio y disponibilidad de cada servicio. Ajusta tu catálogo cuando quieras." },
-      { nombre: "Horarios por empleado y por negocio", descripcion: "Configura horarios y disponibilidad para la reserva online según tu operación real." },
-      { nombre: "Bloqueo de horarios", descripcion: "Marca descansos, reuniones o eventos especiales fácilmente para evitar sobrecupo." },
-    ],
-  },
-  {
-    categoria: "Comunicación y WhatsApp",
-    Icon: ChatsCircle, color: "#25D366",
-    features: [
-      { nombre: "Mensajes por WhatsApp desde tu número", descripcion: "Automatiza mensajes desde tu WhatsApp Business (en planes Esencial y Marca Propia)." },
-      { nombre: "Mensaje automático al agendar", descripcion: "Cada vez que un cliente agenda, recibe un mensaje de confirmación por WhatsApp. El texto es configurable." },
-      { nombre: "Recordatorios automáticos", descripcion: "Reduce ausencias con recordatorios antes de cada cita. En Marca Propia puedes usar 2 recordatorios con horas configurables." },
-      { nombre: "Confirmar asistencia y cancelar desde WhatsApp", descripcion: "Tus clientes pueden confirmar su asistencia o cancelar la cita directamente desde el mensaje." },
-      { nombre: "Mensajes editables (tono de tu marca)", descripcion: "Personaliza los textos de WhatsApp con tu estilo y políticas." },
-      { nombre: "Notificaciones en tiempo real", descripcion: "Recibe alertas instantáneas cuando llega una nueva reserva o un cambio en la cita." },
-    ],
-  },
-  {
-    categoria: "Gestión de Negocio",
-    Icon: Briefcase, color: "#0D9488",
-    features: [
-      { nombre: "Gestión de empleados", descripcion: "Crea empleados, asigna servicios y administra su agenda individual con control total." },
-      { nombre: "Comisiones y nómina por empleado", descripcion: "Calcula comisiones por servicio y lleva control de pagos o nómina de forma organizada." },
-      { nombre: "Gestión de clientes", descripcion: "Base de datos de clientes con historial de citas, observaciones y mejor seguimiento." },
-      { nombre: "Analíticas y reportes", descripcion: "Mide horas pico, servicios más vendidos, rendimiento por empleado y evolución del negocio." },
-      { nombre: "Gestión de caja", descripcion: "Registra pagos, métodos de pago y genera reportes para tener claridad de ingresos." },
-    ],
-  },
-  {
-    categoria: "Pagos y Cobros",
-    Icon: CreditCard, color: "#16A34A",
-    features: [
-      { nombre: "Abonos o pago completo de la reserva", descripcion: "Tus clientes pueden pagar un anticipo o el valor completo de su cita al reservar, para asegurar el cupo y reducir inasistencias. Disponible en los planes Básico, Esencial y Marca Propia." },
-      { nombre: "Mercado Pago integrado", descripcion: "Acepta pagos con tarjeta, PSE y más a través de Mercado Pago. Aplica una comisión por transacción según la tarifa vigente de Mercado Pago." },
-      { nombre: "Comprobante de transferencia", descripcion: "El cliente sube el comprobante de su transferencia y tú lo confirmas desde el panel. Sin comisión por transacción." },
-      { nombre: "Mismos métodos para cobros internos", descripcion: "Usa Mercado Pago o comprobante de transferencia también para ventas de tienda y otros cobros del negocio, no solo para reservas." },
-    ],
-  },
-  {
-    categoria: "Paquetes y Planes de Servicios",
-    Icon: Stack, color: "#0EA5E9",
-    features: [
-      { nombre: "Paquetes de sesiones prepagadas", descripcion: "Vende paquetes de varias sesiones de un mismo servicio —por ejemplo, 4 sesiones de masaje— y el sistema descuenta automáticamente cada sesión que tu cliente utiliza. Exclusivo del plan Marca Propia." },
-      { nombre: "Seguimiento de sesiones restantes", descripcion: "Consulta en cualquier momento cuántas sesiones le quedan a cada cliente de su paquete, sin llevar el conteo aparte." },
-    ],
-  },
-  {
-    categoria: "Tienda e Inventario",
-    Icon: Storefront, color: "#CA8A04",
-    features: [
-      { nombre: "Inventario de insumos", descripcion: "Controla los insumos que usas en cada servicio y evita quedarte sin existencias en el momento menos indicado. Disponible en los planes Básico, Esencial y Marca Propia." },
-      { nombre: "Tienda en línea", descripcion: "Vende productos directamente desde tu página, además de tus servicios por cita." },
-      { nombre: "Control de stock de productos", descripcion: "Visibilidad clara de tus existencias de insumos y de los productos que vendes." },
-    ],
-  },
-  {
-    categoria: "Fidelidad y Retención",
-    Icon: Gift, color: "#DB2777",
-    features: [
-      { nombre: "Sistema de fidelidad", descripcion: "Recompensa clientes frecuentes con beneficios y aumenta la recompra sin esfuerzo." },
-      { nombre: "Mejor experiencia del cliente", descripcion: "Confirmaciones, recordatorios y una reserva fácil hacen que el cliente vuelva más seguido." },
-    ],
-  },
-  {
-    categoria: "Presencia Digital",
-    Icon: Globe, color: "#7C3AED",
-    features: [
-      { nombre: "Landing de bienvenida", descripcion: "Página de bienvenida con tus servicios y botón de reserva. En Marca Propia es más profesional." },
-      { nombre: "Subdominio incluido", descripcion: "En planes Básico y Esencial tienes un subdominio como: tu-negocio.agenditapp.com." },
-      { nombre: "Dominio propio (Marca Propia)", descripcion: "Usa tu propio dominio (ej: tumarca.com) para presencia digital fuerte y más confianza." },
-      { nombre: "Diseño responsive", descripcion: "Tu página se ve perfecta en celulares, tablets y computadoras." },
-      { nombre: "SEO optimizado", descripcion: "Tu sitio está preparado para aparecer en búsquedas de Google." },
-    ],
-  },
-  {
-    categoria: "Campañas y Crecimiento",
-    Icon: Megaphone, color: "#EA580C",
-    features: [
-      { nombre: "Campañas masivas por WhatsApp (Marca Propia)", descripcion: "Envía campañas a tu base de clientes para promociones, reactivación y anuncios importantes." },
-      { nombre: "Segmentación y control", descripcion: "Organiza tu base de clientes para campañas más efectivas." },
-    ],
-  },
-  {
-    categoria: "Branding, Seguridad y Soporte",
-    Icon: ShieldCheck, color: "#475569",
-    features: [
-      { nombre: "Branding personalizado (logo, nombre y colores)", descripcion: "La plataforma se adapta a tu marca para una experiencia más profesional." },
-      { nombre: "Datos seguros en la nube", descripcion: "Tu información está protegida con buenas prácticas de seguridad y respaldos automáticos." },
-      { nombre: "Acceso desde cualquier dispositivo", descripcion: "Administra tu negocio desde celular, tablet o computadora, estés donde estés." },
-      { nombre: "Soporte técnico incluido", descripcion: "Acompañamiento por WhatsApp y correo para resolver dudas y ayudarte a configurar todo." },
-      { nombre: "Actualizaciones automáticas", descripcion: "Siempre tienes mejoras y nuevas funciones sin instalar nada ni pagar extra." },
-    ],
-  },
+// Solo íconos y colores; el texto (categoría, nombre, descripción) viene de
+// las traducciones y se combina con este array por índice.
+const CATEGORY_ICONS: { Icon: PhosphorIcon; color: string }[] = [
+  { Icon: CalendarBlank, color: "#1D4ED8" },
+  { Icon: ChatsCircle, color: "#25D366" },
+  { Icon: Briefcase, color: "#0D9488" },
+  { Icon: CreditCard, color: "#16A34A" },
+  { Icon: Stack, color: "#0EA5E9" },
+  { Icon: Storefront, color: "#CA8A04" },
+  { Icon: Gift, color: "#DB2777" },
+  { Icon: Globe, color: "#7C3AED" },
+  { Icon: Megaphone, color: "#EA580C" },
+  { Icon: ShieldCheck, color: "#475569" },
 ];
 
-const highlights: { Icon: PhosphorIcon; color: string; title: string; desc: string }[] = [
-  { Icon: Rocket,         color: "#1D4ED8", title: "Configuración rápida", desc: "Empieza a recibir reservas rápido. Te ayudamos con la configuración inicial." },
-  { Icon: Lightbulb,      color: "#D97706", title: "Sin permanencia",      desc: "Pago mes a mes. Cancela cuando quieras sin cláusulas ni penalizaciones." },
-  { Icon: GraduationCap,  color: "#4338CA", title: "Fácil de usar",        desc: "Interfaz intuitiva para ti y tu equipo. No necesitas conocimientos técnicos." },
+const HIGHLIGHT_ICONS: { Icon: PhosphorIcon; color: string }[] = [
+  { Icon: Rocket, color: "#1D4ED8" },
+  { Icon: Lightbulb, color: "#D97706" },
+  { Icon: GraduationCap, color: "#4338CA" },
 ];
 
-export default function FuncionalidadesPage() {
+type FeatureCopy = { nombre: string; descripcion: string };
+type CategoryCopy = { categoria: string; features: FeatureCopy[] };
+type HighlightCopy = { title: string; desc: string };
+
+export default async function FuncionalidadesPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Funcionalidades" });
+
+  const categoriesCopy = t.raw("categories") as CategoryCopy[];
+  const highlightsCopy = t.raw("highlights") as HighlightCopy[];
+
+  const funcionalidades = CATEGORY_ICONS.map((icon, idx) => ({
+    ...icon,
+    ...categoriesCopy[idx],
+  }));
+
+  const highlights = HIGHLIGHT_ICONS.map((icon, idx) => ({
+    ...icon,
+    ...highlightsCopy[idx],
+  }));
+
+  const BREADCRUMB_SCHEMA = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: t("breadcrumb.home"), item: "https://agenditapp.com" },
+      { "@type": "ListItem", position: 2, name: t("breadcrumb.current"), item: "https://agenditapp.com/funcionalidades" },
+    ],
+  };
+
   return (
     <>
       <SchemaOrg data={BREADCRUMB_SCHEMA} />
@@ -155,18 +106,17 @@ export default function FuncionalidadesPage() {
         <section className="py-16 sm:py-20 px-4 sm:px-6">
           <div className="max-w-4xl mx-auto text-center">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/8 border border-brand/20 text-brand text-[11px] font-semibold tracking-wider uppercase mb-5">
-              Funcionalidades
+              {t("hero.badge")}
             </span>
             <h1 className="text-4xl sm:text-5xl font-semibold text-heading tracking-tight leading-tight mb-5">
-              Todo lo que necesitas en{" "}
-              <span className="text-brand">una sola plataforma</span>
+              {t("hero.titleStart")}{" "}
+              <span className="text-brand">{t("hero.titleHighlight")}</span>
             </h1>
             <p className="text-lg text-body max-w-2xl mx-auto mb-8 leading-relaxed">
-              AgenditApp te ayuda a automatizar reservas, WhatsApp, fidelidad y
-              la gestión completa del negocio para que crezcas sin complicaciones.
+              {t("hero.subtitle")}
             </p>
             <DemoCtaButton source="funcionalidades" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-[14px] bg-brand text-white text-sm font-semibold hover:bg-brand-hover transition-colors shadow-md cursor-pointer">
-              Solicitar demo gratis
+              {t("hero.cta")}
             </DemoCtaButton>
           </div>
         </section>
@@ -211,7 +161,7 @@ export default function FuncionalidadesPage() {
         <section className="py-14 px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl font-semibold text-heading text-center mb-10">
-              Sin sorpresas ni costos ocultos
+              {t("highlightsSection.heading")}
             </h2>
             <div className="grid md:grid-cols-3 gap-5">
               {highlights.map((h) => (
@@ -240,21 +190,21 @@ export default function FuncionalidadesPage() {
             style={{ background: "linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%)" }}
           >
             <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-4">
-              ¿Listo para optimizar tu negocio?
+              {t("ctaSection.heading")}
             </h2>
             <p className="text-white/75 mb-8 leading-relaxed">
-              Prueba AgenditApp y descubre cómo automatizar tu agenda puede transformar tu día a día.
+              {t("ctaSection.subtitle")}
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <DemoCtaButton source="funcionalidades_cta" className="inline-flex items-center px-7 py-3.5 rounded-[12px] bg-white text-brand font-semibold text-sm hover:bg-white/90 transition-colors cursor-pointer shadow-md">
-                Probar gratis ahora
+                {t("ctaSection.primaryButton")}
               </DemoCtaButton>
-              <Link
+              <IntlLink
                 href="/precios"
                 className="inline-flex items-center px-7 py-3.5 rounded-[12px] border border-white/30 text-white font-medium text-sm hover:bg-white/10 transition-colors"
               >
-                Ver planes y precios
-              </Link>
+                {t("ctaSection.secondaryButton")}
+              </IntlLink>
             </div>
           </div>
         </section>

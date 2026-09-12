@@ -1,0 +1,125 @@
+{
+  "meta": {
+    "title": "Funcionalidades del Software de Agendamiento | AgenditApp",
+    "description": "Reservas 24/7, WhatsApp automático, fidelización, gestión de empleados, comisiones y página web — todo en una sola plataforma. Sin permanencia.",
+    "ogTitle": "Funcionalidades | Sistema de Agendamiento AgenditApp",
+    "ogDescription": "Conoce todas las herramientas que ofrece AgenditApp para automatizar reservas, WhatsApp, fidelidad y gestión completa del negocio."
+  },
+  "breadcrumb": {
+    "home": "Inicio",
+    "current": "Funcionalidades"
+  },
+  "hero": {
+    "badge": "Funcionalidades",
+    "titleStart": "Todo lo que necesitas en",
+    "titleHighlight": "una sola plataforma",
+    "subtitle": "AgenditApp te ayuda a automatizar reservas, WhatsApp, fidelidad y la gestión completa del negocio para que crezcas sin complicaciones.",
+    "cta": "Solicitar demo gratis"
+  },
+  "categories": [
+    {
+      "categoria": "Agendamiento y Reservas",
+      "features": [
+        { "nombre": "Reservas online 24/7", "descripcion": "Tus clientes agendan desde tu página web en cualquier momento, sin llamadas ni esperas." },
+        { "nombre": "Citas ilimitadas", "descripcion": "Recibe todas las reservas que necesites: sin límites por mes y sin costos por cita." },
+        { "nombre": "Agenda visual simple", "descripcion": "Calendario intuitivo con vista por día/semana y organización clara por empleado y servicio." },
+        { "nombre": "Servicios configurables", "descripcion": "Define duración, precio y disponibilidad de cada servicio. Ajusta tu catálogo cuando quieras." },
+        { "nombre": "Horarios por empleado y por negocio", "descripcion": "Configura horarios y disponibilidad para la reserva online según tu operación real." },
+        { "nombre": "Bloqueo de horarios", "descripcion": "Marca descansos, reuniones o eventos especiales fácilmente para evitar sobrecupo." }
+      ]
+    },
+    {
+      "categoria": "Comunicación y WhatsApp",
+      "features": [
+        { "nombre": "Mensajes por WhatsApp desde tu número", "descripcion": "Automatiza mensajes desde tu WhatsApp Business (en planes Esencial y Marca Propia)." },
+        { "nombre": "Mensaje automático al agendar", "descripcion": "Cada vez que un cliente agenda, recibe un mensaje de confirmación por WhatsApp. El texto es configurable." },
+        { "nombre": "Recordatorios automáticos", "descripcion": "Reduce ausencias con recordatorios antes de cada cita. En Marca Propia puedes usar 2 recordatorios con horas configurables." },
+        { "nombre": "Confirmar asistencia y cancelar desde WhatsApp", "descripcion": "Tus clientes pueden confirmar su asistencia o cancelar la cita directamente desde el mensaje." },
+        { "nombre": "Mensajes editables (tono de tu marca)", "descripcion": "Personaliza los textos de WhatsApp con tu estilo y políticas." },
+        { "nombre": "Notificaciones en tiempo real", "descripcion": "Recibe alertas instantáneas cuando llega una nueva reserva o un cambio en la cita." }
+      ]
+    },
+    {
+      "categoria": "Gestión de Negocio",
+      "features": [
+        { "nombre": "Gestión de empleados", "descripcion": "Crea empleados, asigna servicios y administra su agenda individual con control total." },
+        { "nombre": "Comisiones y nómina por empleado", "descripcion": "Calcula comisiones por servicio y lleva control de pagos o nómina de forma organizada." },
+        { "nombre": "Gestión de clientes", "descripcion": "Base de datos de clientes con historial de citas, observaciones y mejor seguimiento." },
+        { "nombre": "Analíticas y reportes", "descripcion": "Mide horas pico, servicios más vendidos, rendimiento por empleado y evolución del negocio." },
+        { "nombre": "Gestión de caja", "descripcion": "Registra pagos, métodos de pago y genera reportes para tener claridad de ingresos." }
+      ]
+    },
+    {
+      "categoria": "Pagos y Cobros",
+      "features": [
+        { "nombre": "Abonos o pago completo de la reserva", "descripcion": "Tus clientes pueden pagar un anticipo o el valor completo de su cita al reservar, para asegurar el cupo y reducir inasistencias. Disponible en los planes Básico, Esencial y Marca Propia." },
+        { "nombre": "Mercado Pago integrado", "descripcion": "Acepta pagos con tarjeta, PSE y más a través de Mercado Pago. Aplica una comisión por transacción según la tarifa vigente de Mercado Pago." },
+        { "nombre": "Comprobante de transferencia", "descripcion": "El cliente sube el comprobante de su transferencia y tú lo confirmas desde el panel. Sin comisión por transacción." },
+        { "nombre": "Mismos métodos para cobros internos", "descripcion": "Usa Mercado Pago o comprobante de transferencia también para ventas de tienda y otros cobros del negocio, no solo para reservas." }
+      ]
+    },
+    {
+      "categoria": "Paquetes y Planes de Servicios",
+      "features": [
+        { "nombre": "Paquetes de sesiones prepagadas", "descripcion": "Vende paquetes de varias sesiones de un mismo servicio —por ejemplo, 4 sesiones de masaje— y el sistema descuenta automáticamente cada sesión que tu cliente utiliza. Exclusivo del plan Marca Propia." },
+        { "nombre": "Seguimiento de sesiones restantes", "descripcion": "Consulta en cualquier momento cuántas sesiones le quedan a cada cliente de su paquete, sin llevar el conteo aparte." }
+      ]
+    },
+    {
+      "categoria": "Tienda e Inventario",
+      "features": [
+        { "nombre": "Inventario de insumos", "descripcion": "Controla los insumos que usas en cada servicio y evita quedarte sin existencias en el momento menos indicado. Disponible en los planes Básico, Esencial y Marca Propia." },
+        { "nombre": "Tienda en línea", "descripcion": "Vende productos directamente desde tu página, además de tus servicios por cita." },
+        { "nombre": "Control de stock de productos", "descripcion": "Visibilidad clara de tus existencias de insumos y de los productos que vendes." }
+      ]
+    },
+    {
+      "categoria": "Fidelidad y Retención",
+      "features": [
+        { "nombre": "Sistema de fidelidad", "descripcion": "Recompensa clientes frecuentes con beneficios y aumenta la recompra sin esfuerzo." },
+        { "nombre": "Mejor experiencia del cliente", "descripcion": "Confirmaciones, recordatorios y una reserva fácil hacen que el cliente vuelva más seguido." }
+      ]
+    },
+    {
+      "categoria": "Presencia Digital",
+      "features": [
+        { "nombre": "Landing de bienvenida", "descripcion": "Página de bienvenida con tus servicios y botón de reserva. En Marca Propia es más profesional." },
+        { "nombre": "Subdominio incluido", "descripcion": "En planes Básico y Esencial tienes un subdominio como: tu-negocio.agenditapp.com." },
+        { "nombre": "Dominio propio (Marca Propia)", "descripcion": "Usa tu propio dominio (ej: tumarca.com) para presencia digital fuerte y más confianza." },
+        { "nombre": "Diseño responsive", "descripcion": "Tu página se ve perfecta en celulares, tablets y computadoras." },
+        { "nombre": "SEO optimizado", "descripcion": "Tu sitio está preparado para aparecer en búsquedas de Google." }
+      ]
+    },
+    {
+      "categoria": "Campañas y Crecimiento",
+      "features": [
+        { "nombre": "Campañas masivas por WhatsApp (Marca Propia)", "descripcion": "Envía campañas a tu base de clientes para promociones, reactivación y anuncios importantes." },
+        { "nombre": "Segmentación y control", "descripcion": "Organiza tu base de clientes para campañas más efectivas." }
+      ]
+    },
+    {
+      "categoria": "Branding, Seguridad y Soporte",
+      "features": [
+        { "nombre": "Branding personalizado (logo, nombre y colores)", "descripcion": "La plataforma se adapta a tu marca para una experiencia más profesional." },
+        { "nombre": "Datos seguros en la nube", "descripcion": "Tu información está protegida con buenas prácticas de seguridad y respaldos automáticos." },
+        { "nombre": "Acceso desde cualquier dispositivo", "descripcion": "Administra tu negocio desde celular, tablet o computadora, estés donde estés." },
+        { "nombre": "Soporte técnico incluido", "descripcion": "Acompañamiento por WhatsApp y correo para resolver dudas y ayudarte a configurar todo." },
+        { "nombre": "Actualizaciones automáticas", "descripcion": "Siempre tienes mejoras y nuevas funciones sin instalar nada ni pagar extra." }
+      ]
+    }
+  ],
+  "highlightsSection": {
+    "heading": "Sin sorpresas ni costos ocultos"
+  },
+  "highlights": [
+    { "title": "Configuración rápida", "desc": "Empieza a recibir reservas rápido. Te ayudamos con la configuración inicial." },
+    { "title": "Sin permanencia", "desc": "Pago mes a mes. Cancela cuando quieras sin cláusulas ni penalizaciones." },
+    { "title": "Fácil de usar", "desc": "Interfaz intuitiva para ti y tu equipo. No necesitas conocimientos técnicos." }
+  ],
+  "ctaSection": {
+    "heading": "¿Listo para optimizar tu negocio?",
+    "subtitle": "Prueba AgenditApp y descubre cómo automatizar tu agenda puede transformar tu día a día.",
+    "primaryButton": "Probar gratis ahora",
+    "secondaryButton": "Ver planes y precios"
+  }
+}

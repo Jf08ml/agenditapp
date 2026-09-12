@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { IconWeight } from "@phosphor-icons/react";
+import { routing } from "@/i18n/routing";
 import {
   Sparkle, Scissors, Flower, Eye, Stethoscope, Tooth, Brain, Barbell,
   Leaf, PawPrint, Syringe, Camera, MusicNotes, Books, Scales, YinYang,
 } from "@phosphor-icons/react/dist/ssr";
-import SchemaOrg from "../(landing)/components/seo/SchemaOrg";
-import { DemoCtaButton } from "../(landing)/components/ui/DemoCtaModal";
-import PageHeader from "../(landing)/components/ui/PageHeader";
-import PageFooter from "../(landing)/components/ui/PageFooter";
+import SchemaOrg from "../../(landing)/components/seo/SchemaOrg";
+import { DemoCtaButton } from "../../(landing)/components/ui/DemoCtaModal";
+import PageHeader from "../../(landing)/components/ui/PageHeader";
+import PageFooter from "../../(landing)/components/ui/PageFooter";
 
 type PIEntry = { Icon: React.ComponentType<{ size?: number; weight?: IconWeight; color?: string }>; color: string };
 const SECTOR_ICON_MAP: Record<string, PIEntry> = {
@@ -171,3 +172,11 @@ export default function SectoresPage() {
     </>
   );
 }
+
+// Sin versión en inglés todavía: se genera solo para el locale por defecto
+// y cualquier /en/* de esta ruta debe devolver 404 en vez de renderizar en español.
+export function generateStaticParams() {
+  return [{ locale: routing.defaultLocale }];
+}
+
+export const dynamicParams = false;

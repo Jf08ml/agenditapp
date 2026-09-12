@@ -1,0 +1,51 @@
+{
+  "cta": {
+    "badge": "Ready?",
+    "heading": "Your next appointment could get booked",
+    "headingHighlight": "while you're reading this.",
+    "subheading": "Join the businesses already managing more than 27,000 appointments with AgenditApp.",
+    "whatsappButton": "Chat on WhatsApp",
+    "pricingButton": "See plans & pricing"
+  },
+  "brand": {
+    "tagline": "The online scheduling platform for beauty, wellness, and professional service businesses.",
+    "requestDemo": "Request a demo"
+  },
+  "productHeader": "Product",
+  "nav": {
+    "features": "Features",
+    "pricing": "Plans & pricing",
+    "sectors": "Industries",
+    "blog": "Blog",
+    "about": "About us",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "security": "Security"
+  },
+  "sectorsHeader": "Industries",
+  "sectorLinks": {
+    "salones": "Beauty salons",
+    "barberias": "Barbershops",
+    "spas": "Spas & massage",
+    "consultorios": "Medical practices",
+    "psicologia": "Psychologists",
+    "odontologia": "Dentists"
+  },
+  "viewAllSectors": "View all industries →",
+  "availableInHeader": "Available in",
+  "comparativasHeader": "Comparisons",
+  "comparativas": {
+    "fresha": "vs Fresha",
+    "agendapro": "vs AgendaPro",
+    "booksy": "vs Booksy",
+    "weibook": "vs Weibook"
+  },
+  "supportHeader": "Support",
+  "trust": {
+    "hours": "WhatsApp support · Mon–Sat",
+    "noCommitment": "No lock-in. Cancel anytime."
+  },
+  "copyright": "© {year} AgenditApp. All rights reserved.",
+  "madeWith": "Made with ❤️ for businesses that live by appointments.",
+  "countriesAvailable": "Colombia · México · Chile · Argentina · Costa Rica and more"
+}

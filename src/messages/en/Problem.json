@@ -1,0 +1,27 @@
+{
+  "badge": "The real cost of manual WhatsApp scheduling",
+  "heading": "Sound familiar?",
+  "subheading": "Every one of these moments costs you time, revenue, and energy. AgenditApp solves them before they happen.",
+  "columns": [
+    {
+      "title": "Without AgenditApp",
+      "items": [
+        { "title": "\"What time was my appointment again?\"", "description": "You're answering the same messages every single day." },
+        { "title": "A client who never shows up", "description": "You lose the slot — and another client who actually wanted it." },
+        { "title": "A paper calendar", "description": "Double-bookings, mistakes, and Saturday chaos." },
+        { "title": "Working late into the night", "description": "Replying to messages instead of switching off." },
+        { "title": "No idea what you're actually earning", "description": "No reports, no clarity, no control." }
+      ]
+    },
+    {
+      "title": "With AgenditApp",
+      "items": [
+        { "title": "Bookings happen on their own, 24/7", "description": "Your booking link works while you sleep." },
+        { "title": "Automatic reminders", "description": "Up to 70% fewer no-shows, proven." },
+        { "title": "A visual calendar in the cloud", "description": "No double-bookings. From any device." },
+        { "title": "WhatsApp on autopilot", "description": "The system confirms — you just show up for clients." },
+        { "title": "Clear reports", "description": "See which service, day, and team member bring in the most." }
+      ]
+    }
+  ]
+}

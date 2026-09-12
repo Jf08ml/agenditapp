@@ -1,13 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
-const STATS = [
-  { n: "+27K", l: "citas gestionadas" },
-  { n: "60%",  l: "menos inasistencias" },
-  { n: "24/7", l: "reservas online" },
-  { n: "4.9★", l: "satisfacción" },
-];
+const STAT_VALUES = ["+27K", "60%", "24/7", "4.9★"];
 
 const LOGOS = [
   "Estudio Rosa",
@@ -21,13 +17,16 @@ const LOGOS = [
 ];
 
 export default function ProofBar() {
+  const t = useTranslations("ProofBar");
+  const statLabels = t.raw("statLabels") as string[];
+
   return (
     <section className="border-t border-b border-[#0F172A]/8 bg-white py-10 sm:py-12">
       <div className="max-w-6xl mx-auto px-6 sm:px-8">
 
         {/* ── Stats: 2×2 en mobile, fila en lg ── */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-8 gap-x-6 sm:gap-x-10 lg:gap-x-14">
-          {STATS.map((s, i) => (
+          {STAT_VALUES.map((value, i) => (
             <motion.div
               key={i}
               className="flex flex-col items-center sm:items-start text-center sm:text-left"
@@ -41,11 +40,11 @@ export default function ProofBar() {
                 className="text-[32px] sm:text-[36px] font-extrabold leading-none tracking-tight"
                 style={{ color: "#1e3a8a" }}
               >
-                {s.n}
+                {value}
               </span>
               {/* Label */}
               <span className="mt-1.5 text-[11px] sm:text-[12px] text-[#64748B] uppercase tracking-widest font-semibold leading-tight">
-                {s.l}
+                {statLabels[i]}
               </span>
             </motion.div>
           ))}
@@ -57,7 +56,7 @@ export default function ProofBar() {
         {/* ── Ticker de logos ── */}
         <div className="mt-6 sm:mt-8">
           <p className="text-center text-[10px] sm:text-[11px] text-[#94A3B8] uppercase tracking-widest font-semibold mb-4">
-            Confían en AgenditApp
+            {t("trustedBy")}
           </p>
           <div
             className="overflow-hidden"

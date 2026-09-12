@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "title": "Terms & Conditions - Online Booking System",
+    "description": "AgenditApp's terms and conditions of use. Learn about our online scheduling software's policies on plans, payments, and platform use."
+  },
+  "badge": "Legal",
+  "title": "Terms & Conditions",
+  "intro": "Welcome to AgenditApp. By using our platform, you agree to the following terms and conditions. Please read them carefully.",
+  "sections": [
+    { "n": "1", "title": "Use of the Service", "body": "Access to the platform is personal and non-transferable. You may not resell, sublicense, or share your login credentials without authorization." },
+    { "n": "2", "title": "Payments and Plans", "body": "All prices are listed in US dollars (USD). Billing is monthly, with no long-term contracts. You may cancel at any time." },
+    { "n": "3", "title": "Liability", "body": "AgenditApp is not responsible for external connectivity failures or issues with third-party integrations (e.g., WhatsApp) that are outside our control." },
+    { "n": "4", "title": "Changes to These Terms", "body": "We reserve the right to update these terms at any time. Active users will be notified of any material changes." }
+  ],
+  "lastUpdated": "Last updated: {date}"
+}

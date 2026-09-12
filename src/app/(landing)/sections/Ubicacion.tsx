@@ -5,17 +5,12 @@ import { useState } from "react";
 import { PhoneMockup } from "../components/ui/PhoneMockup";
 import { motion, easeOut, type Variants } from "framer-motion";
 import { MapPin } from "@phosphor-icons/react";
+import { useTranslations } from "next-intl";
 
 const ImageLightbox = dynamic(
   () => import("../components/images/ImageLightbox"),
   { ssr: false },
 );
-
-const FEATURES = [
-  { t: "Dirección exacta visible",  d: "Barrio, ciudad y referencia tal como aparece en Google Maps." },
-  { t: 'Botón "Cómo llegar"',       d: "Un tap abre la ruta en Google Maps o Waze desde el celular del cliente." },
-  { t: "Fácil de compartir",        d: "Enlace por WhatsApp, Instagram o Google Business — llegan sin preguntar." },
-];
 
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 24 },
@@ -23,7 +18,12 @@ const fadeInUp: Variants = {
 };
 
 export default function Ubicacion() {
+  const t = useTranslations("Ubicacion");
+  const features = t.raw("features") as { title: string; description: string }[];
+
   const [open, setOpen] = useState(false);
+
+  const screenshotAlt = t("screenshotAlt");
 
   return (
     <section id="ubicacion" className="py-24 sm:py-28 bg-white border-t border-b border-[#0F172A]/6">
@@ -49,14 +49,14 @@ export default function Ubicacion() {
                 type="button"
                 onClick={() => setOpen(true)}
                 className="block focus:outline-none w-full cursor-zoom-in"
-                aria-label="Ampliar: ubicación del negocio"
+                aria-label={t("expandAriaLabel")}
                 whileHover={{ scale: 1.02, y: -3 }}
                 whileTap={{ scale: 0.985 }}
                 transition={{ type: "spring", stiffness: 280, damping: 20 }}
               >
                 <PhoneMockup
                   src="/screenshots/ubicacion-mockup.png"
-                  alt="Ubicación del negocio — AgenditApp"
+                  alt={screenshotAlt}
                   priority
                 />
               </motion.button>
@@ -73,8 +73,8 @@ export default function Ubicacion() {
                 <div className="flex items-center gap-2">
                   <MapPin size={16} weight="duotone" color="#1D4ED8" />
                   <div>
-                    <p className="text-[10px] text-[#94A3B8] font-medium">Dirección</p>
-                    <p className="text-xs font-semibold text-[#0F172A]">Abierto en Maps</p>
+                    <p className="text-[10px] text-[#94A3B8] font-medium">{t("addressLabel")}</p>
+                    <p className="text-xs font-semibold text-[#0F172A]">{t("openInMaps")}</p>
                   </div>
                 </div>
               </motion.div>
@@ -95,35 +95,37 @@ export default function Ubicacion() {
                 text-[11px] font-semibold tracking-widest uppercase mb-5"
               style={{ background: "var(--warm-soft)", color: "var(--warm-deep)" }}
             >
-              Ubicación
+              {t("badge")}
             </motion.span>
 
             <motion.h2
               variants={fadeInUp}
               className="text-[clamp(28px,4vw,44px)] font-bold leading-[1.1] tracking-tight text-[#0F172A] text-balance m-0"
             >
-              Que tus clientes lleguen{" "}
-              <span
-                style={{
-                  fontFamily: "var(--font-instrument-serif), Georgia, serif",
-                  fontStyle: "italic",
-                  fontWeight: 400,
-                }}
-              >
-                sin preguntar.
-              </span>
+              {t.rich("heading", {
+                highlight: (chunks) => (
+                  <span
+                    style={{
+                      fontFamily: "var(--font-instrument-serif), Georgia, serif",
+                      fontStyle: "italic",
+                      fontWeight: 400,
+                    }}
+                  >
+                    {chunks}
+                  </span>
+                ),
+              })}
             </motion.h2>
 
             <motion.p
               variants={fadeInUp}
               className="mt-4 text-[17px] text-[#64748B] leading-relaxed"
             >
-              Tu página de reservas muestra la dirección, mapa integrado y acceso
-              directo a Google Maps o Waze. Sin el clásico &ldquo;¿dónde queda?&rdquo;.
+              {t("description")}
             </motion.p>
 
             <div className="mt-8 flex flex-col gap-5">
-              {FEATURES.map((f, i) => (
+              {features.map((f, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 16 }}
@@ -140,8 +142,8 @@ export default function Ubicacion() {
                     0{i + 1}
                   </div>
                   <div>
-                    <p className="text-[15px] font-semibold text-[#0F172A] leading-snug">{f.t}</p>
-                    <p className="text-[13.5px] text-[#64748B] mt-1 leading-relaxed">{f.d}</p>
+                    <p className="text-[15px] font-semibold text-[#0F172A] leading-snug">{f.title}</p>
+                    <p className="text-[13.5px] text-[#64748B] mt-1 leading-relaxed">{f.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -153,7 +155,7 @@ export default function Ubicacion() {
 
       <ImageLightbox
         src="/screenshots/ubicacion-mockup.png"
-        alt="Ubicación del negocio — AgenditApp"
+        alt={screenshotAlt}
         open={open}
         onClose={() => setOpen(false)}
       />

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, easeOut, type Variants } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const fadeInUp: Variants = {
   initial: { opacity: 0, y: 24 },
@@ -57,6 +58,7 @@ function Slider({
 }
 
 export default function ROICalculator() {
+  const t = useTranslations("ROICalculator");
   const [ticket, setTicket] = useState(40000);
   const [noshows, setNoshows] = useState(12);
   const recovered = Math.round(ticket * noshows * 0.7);
@@ -77,10 +79,10 @@ export default function ROICalculator() {
             className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-widest uppercase mb-5"
             style={{ background: "var(--warm-soft)", color: "var(--warm-deep)" }}
           >
-            Calcula tu retorno
+            {t("badge")}
           </span>
           <h2 className="text-[clamp(28px,4vw,44px)] font-bold leading-[1.1] tracking-tight text-[#0F172A] text-balance m-0">
-            Se paga solo con{" "}
+            {t("heading.prefix")}{" "}
             <span
               style={{
                 fontFamily: "var(--font-instrument-serif), Georgia, serif",
@@ -88,12 +90,11 @@ export default function ROICalculator() {
                 fontWeight: 400,
               }}
             >
-              1 cita recuperada al mes.
+              {t("heading.highlight")}
             </span>
           </h2>
           <p className="mt-4 text-base sm:text-[17px] text-[#64748B] leading-relaxed">
-            Promedio: nuestros clientes recuperan entre 8 y 20 citas perdidas al mes
-            gracias a recordatorios automáticos.
+            {t("description")}
           </p>
         </motion.div>
 
@@ -109,7 +110,7 @@ export default function ROICalculator() {
           {/* Sliders */}
           <div className="flex flex-col gap-8">
             <Slider
-              label="Ticket promedio por cita"
+              label={t("ticketLabel")}
               value={ticket}
               setValue={setTicket}
               min={10000}
@@ -118,7 +119,7 @@ export default function ROICalculator() {
               display={fmt(ticket)}
             />
             <Slider
-              label="Inasistencias por mes hoy"
+              label={t("noshowsLabel")}
               value={noshows}
               setValue={setNoshows}
               min={1}
@@ -144,21 +145,21 @@ export default function ROICalculator() {
 
             <div className="relative">
               <p className="text-[13px] font-semibold uppercase tracking-widest opacity-85">
-                Recuperas hasta
+                {t("resultLabel")}
               </p>
               <p
                 className="text-[clamp(40px,6vw,64px)] font-extrabold tracking-tight leading-none my-2 tabular-nums"
               >
                 {fmt(recovered)}
               </p>
-              <p className="text-sm opacity-85">al mes</p>
+              <p className="text-sm opacity-85">{t("resultUnit")}</p>
 
               <div
                 className="mt-6 rounded-[10px] px-4 py-3"
                 style={{ background: "rgba(255,255,255,0.12)" }}
               >
-                <p className="text-[13px] font-bold">Tu inversión se recupera con menos de 1 cita.</p>
-                <p className="text-[12px] opacity-80 mt-1">vs $20 USD del plan Esencial</p>
+                <p className="text-[13px] font-bold">{t("noteBold")}</p>
+                <p className="text-[12px] opacity-80 mt-1">{t("noteSub")}</p>
               </div>
             </div>
           </div>

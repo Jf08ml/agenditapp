@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "title": "Política de Privacidad - Sistema de Agendamiento Online",
+    "description": "Política de privacidad y tratamiento de datos personales de AgenditApp. Conoce cómo protegemos tu información en nuestra plataforma de agendamiento y gestión de citas."
+  },
+  "badge": "Legal",
+  "title": "Política de Privacidad",
+  "intro": "En AgenditApp respetamos y protegemos tu privacidad. Esta política explica cómo recopilamos, usamos y protegemos tu información personal.",
+  "sections": [
+    { "n": "1", "title": "Información que recopilamos", "body": "Al registrarte, podemos solicitar nombre, correo, teléfono, información de tu negocio y preferencias de uso." },
+    { "n": "2", "title": "Uso de datos", "body": "Usamos esta información exclusivamente para prestar el servicio, enviar notificaciones de reservas y comunicaciones relacionadas." },
+    { "n": "3", "title": "Protección", "body": "Implementamos medidas técnicas y organizativas para proteger tu información de accesos no autorizados o usos indebidos." },
+    { "n": "4", "title": "Derechos ARCO" },
+    { "n": "5", "title": "Cookies", "body": "Utilizamos cookies esenciales para el correcto funcionamiento del sitio y para mejorar tu experiencia de uso." }
+  ],
+  "arcoText": "Puedes acceder, rectificar o eliminar tus datos escribiéndonos a <email>soporte@agenditapp.com</email>.",
+  "lastUpdated": "Última actualización: {date}"
+}

@@ -1,0 +1,22 @@
+{
+  "badge": "Your 3 big wins",
+  "heading": "What you'll get",
+  "subheading": "The tools our customers rely on most to automate their day-to-day and grow their sales.",
+  "features": [
+    {
+      "title": "Control that multiplies revenue",
+      "hook": "Turn chaos into clarity.",
+      "description": "Ditch the paper logs and see exactly which services, staff, and clients bring in the most money. Boost sales with WhatsApp campaigns and loyalty programs."
+    },
+    {
+      "title": "Your calendar on autopilot",
+      "hook": "Let your business work for you.",
+      "description": "Stop answering endless messages. Clients book online 24/7 while the system confirms automatically and sends WhatsApp reminders that cut no-shows for good."
+    },
+    {
+      "title": "Credibility that builds trust",
+      "hook": "Stand out from the rest.",
+      "description": "Outshine the competition with a polished online presence under your own brand and domain. Manage everything from your phone, knowing your data is 100% secure in the cloud."
+    }
+  ]
+}

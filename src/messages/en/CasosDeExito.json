@@ -1,0 +1,55 @@
+{
+  "badge": "Real customers",
+  "heading": {
+    "prefix": "Don't take our word for it.",
+    "highlight": "Hear it from them."
+  },
+  "description": "More than 27,000 appointments have been managed with AgenditApp. Real businesses, real results.",
+  "verifiedLabel": "Verified customer",
+  "prevAriaLabel": "Previous",
+  "nextAriaLabel": "Next",
+  "goToAriaLabel": "Go to {name}",
+  "trust": {
+    "prefix": "More than",
+    "highlight": "27,000 appointments managed",
+    "suffix": "with AgenditApp"
+  },
+  "items": [
+    {
+      "role": "Beauty salon · Neiva, Colombia",
+      "author": "Luisa Fernanda",
+      "quote": "Since we started using AgenditApp, no-shows dropped by 60%. My clients book themselves anytime, and I get to focus on the work I actually love. It's been a total game changer!",
+      "statLabel": "fewer no-shows"
+    },
+    {
+      "role": "Beauty Salon · Neiva, Colombia",
+      "author": "Nataly Martinez",
+      "quote": "The platform is super easy to use, and the automatic WhatsApp reminders are a hit with my clients. Now we have a full calendar all week without nearly as much effort.",
+      "statLabel": "more online bookings"
+    },
+    {
+      "role": "Professional barbershop · Pereira, Colombia",
+      "author": "Cristian Bastidas",
+      "quote": "I manage the whole team's schedule right from my phone. Clients book on their own, get their confirmation, and show up on time. AgenditApp gave us a much more professional image.",
+      "statLabel": "appointments confirmed"
+    },
+    {
+      "role": "Therapy center · Escobedo, Mexico",
+      "author": "CAPI Management",
+      "quote": "Managing sessions for several therapists used to be chaotic. With AgenditApp, everything organizes itself. Parents book easily, and we have full control over the schedules.",
+      "statLabel": "less admin work"
+    },
+    {
+      "role": "Barbershop & Grooming · Ciudad Quesada, Costa Rica",
+      "author": "Alpha Man Management",
+      "quote": "Our clients love being able to book straight from Instagram without calling. The calendar is always up to date, and the dashboard gives us real-time visibility into the whole business.",
+      "statLabel": "new clients"
+    },
+    {
+      "role": "Wellness center · Quilpué, Chile",
+      "author": "Mosaico Management",
+      "quote": "Organizing both group and individual classes has never been this simple. AgenditApp adapts perfectly to yoga, pilates, and dance. Highly recommended for wellness centers.",
+      "statLabel": "satisfaction rating"
+    }
+  ]
+}

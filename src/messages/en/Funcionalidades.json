@@ -1,0 +1,125 @@
+{
+  "meta": {
+    "title": "Scheduling Software Features | AgenditApp",
+    "description": "24/7 online booking, automated WhatsApp reminders, client loyalty, staff management, commissions, and a booking website — all in one platform. No contracts.",
+    "ogTitle": "Features | AgenditApp Scheduling System",
+    "ogDescription": "Explore every tool AgenditApp offers to automate bookings, WhatsApp messaging, client loyalty, and complete business management."
+  },
+  "breadcrumb": {
+    "home": "Home",
+    "current": "Features"
+  },
+  "hero": {
+    "badge": "Features",
+    "titleStart": "Everything you need in",
+    "titleHighlight": "one platform",
+    "subtitle": "AgenditApp helps you automate bookings, WhatsApp messaging, client loyalty, and complete business management so you can grow without the hassle.",
+    "cta": "Request a free demo"
+  },
+  "categories": [
+    {
+      "categoria": "Scheduling & Bookings",
+      "features": [
+        { "nombre": "24/7 online booking", "descripcion": "Your clients book from your website anytime, with no phone calls or waiting." },
+        { "nombre": "Unlimited appointments", "descripcion": "Take as many bookings as you need — no monthly limits and no per-appointment fees." },
+        { "nombre": "Simple visual calendar", "descripcion": "An intuitive calendar with day/week views and clear organization by staff member and service." },
+        { "nombre": "Configurable services", "descripcion": "Set the duration, price, and availability of each service. Adjust your catalog whenever you want." },
+        { "nombre": "Staff and business hours", "descripcion": "Configure working hours and availability for online booking to match how your business actually runs." },
+        { "nombre": "Time-off blocking", "descripcion": "Block out breaks, meetings, or special events easily to avoid overbooking." }
+      ]
+    },
+    {
+      "categoria": "Communication & WhatsApp",
+      "features": [
+        { "nombre": "WhatsApp messages from your own number", "descripcion": "Automate messages from your WhatsApp Business number (available on the Essential and Own Brand plans)." },
+        { "nombre": "Automatic booking confirmation", "descripcion": "Every time a client books, they get a WhatsApp confirmation message. The message text is fully customizable." },
+        { "nombre": "Automated reminders", "descripcion": "Cut no-shows with reminders sent before each appointment. On the Own Brand plan, you can send 2 reminders at configurable times." },
+        { "nombre": "Confirm or cancel from WhatsApp", "descripcion": "Your clients can confirm their attendance or cancel their appointment directly from the message." },
+        { "nombre": "Editable messages, in your own voice", "descripcion": "Customize your WhatsApp message text to match your brand's tone and policies." },
+        { "nombre": "Real-time notifications", "descripcion": "Get instant alerts whenever a new booking comes in or an appointment changes." }
+      ]
+    },
+    {
+      "categoria": "Business Management",
+      "features": [
+        { "nombre": "Staff management", "descripcion": "Add staff members, assign services, and manage each person's individual calendar with full control." },
+        { "nombre": "Commissions and payroll per staff member", "descripcion": "Calculate commissions per service and keep organized track of payouts or payroll." },
+        { "nombre": "Client management", "descripcion": "A client database with appointment history, notes, and better follow-up." },
+        { "nombre": "Analytics and reports", "descripcion": "Track peak hours, best-selling services, staff performance, and how your business is growing." },
+        { "nombre": "Cash and revenue tracking", "descripcion": "Log payments and payment methods, and generate reports for clear visibility into your revenue." }
+      ]
+    },
+    {
+      "categoria": "Payments",
+      "features": [
+        { "nombre": "Deposit or full payment at booking", "descripcion": "Clients can pay a deposit or the full price of their appointment when booking, to secure the slot and reduce no-shows. Available on the Basic, Essential, and Own Brand plans." },
+        { "nombre": "Integrated card payments", "descripcion": "Accept credit and debit card payments online through our integrated payment processor. A standard per-transaction processing fee applies." },
+        { "nombre": "Manual payment confirmation", "descripcion": "Clients upload proof of payment and you confirm it from your dashboard yourself. No processing fee." },
+        { "nombre": "Same payment options for other charges", "descripcion": "Use card payments or manual payment confirmation for store sales and other business charges too, not just bookings." }
+      ]
+    },
+    {
+      "categoria": "Packages & Service Plans",
+      "features": [
+        { "nombre": "Prepaid session packages", "descripcion": "Sell packages of multiple sessions for the same service — for example, 4 massage sessions — and the system automatically deducts each session your client uses. Exclusive to the Own Brand plan." },
+        { "nombre": "Remaining session tracking", "descripcion": "Check at any time how many sessions each client has left in their package, with no need for a separate spreadsheet." }
+      ]
+    },
+    {
+      "categoria": "Store & Inventory",
+      "features": [
+        { "nombre": "Supply inventory", "descripcion": "Track the supplies you use for each service and avoid running out at the worst possible moment. Available on the Basic, Essential, and Own Brand plans." },
+        { "nombre": "Online store", "descripcion": "Sell products directly from your page, in addition to your appointment-based services." },
+        { "nombre": "Product stock control", "descripcion": "Clear visibility into your supply levels and the products you sell." }
+      ]
+    },
+    {
+      "categoria": "Loyalty & Retention",
+      "features": [
+        { "nombre": "Loyalty program", "descripcion": "Reward frequent clients with perks and increase repeat visits effortlessly." },
+        { "nombre": "A better client experience", "descripcion": "Confirmations, reminders, and easy booking keep clients coming back more often." }
+      ]
+    },
+    {
+      "categoria": "Online Presence",
+      "features": [
+        { "nombre": "Welcome landing page", "descripcion": "A welcome page with your services and a booking button. On Own Brand, it looks even more professional." },
+        { "nombre": "Subdomain included", "descripcion": "On the Basic and Essential plans, you get a subdomain like: your-business.agenditapp.com." },
+        { "nombre": "Custom domain (Own Brand)", "descripcion": "Use your own domain (e.g., yourbrand.com) for a stronger online presence and more trust." },
+        { "nombre": "Responsive design", "descripcion": "Your page looks great on phones, tablets, and computers." },
+        { "nombre": "SEO optimized", "descripcion": "Your site is built to show up in Google search results." }
+      ]
+    },
+    {
+      "categoria": "Campaigns & Growth",
+      "features": [
+        { "nombre": "Bulk WhatsApp campaigns (Own Brand)", "descripcion": "Send campaigns to your client base for promotions, re-engagement, and important announcements." },
+        { "nombre": "Segmentation and control", "descripcion": "Organize your client base for more effective campaigns." }
+      ]
+    },
+    {
+      "categoria": "Branding, Security & Support",
+      "features": [
+        { "nombre": "Custom branding (logo, name, and colors)", "descripcion": "The platform adapts to your brand for a more professional experience." },
+        { "nombre": "Secure cloud data", "descripcion": "Your information is protected with strong security practices and automatic backups." },
+        { "nombre": "Access from any device", "descripcion": "Manage your business from your phone, tablet, or computer, wherever you are." },
+        { "nombre": "Support included", "descripcion": "Help via WhatsApp and email to answer questions and get everything set up." },
+        { "nombre": "Automatic updates", "descripcion": "Always get improvements and new features with nothing to install and no extra cost." }
+      ]
+    }
+  ],
+  "highlightsSection": {
+    "heading": "No surprises, no hidden fees"
+  },
+  "highlights": [
+    { "title": "Fast setup", "desc": "Start taking bookings quickly. We help you with initial setup." },
+    { "title": "No long-term contracts", "desc": "Pay month to month. Cancel anytime, with no clauses or penalties." },
+    { "title": "Easy to use", "desc": "An intuitive interface for you and your team. No technical skills required." }
+  ],
+  "ctaSection": {
+    "heading": "Ready to streamline your business?",
+    "subtitle": "Try AgenditApp and see how automating your calendar can transform your day-to-day.",
+    "primaryButton": "Try it free now",
+    "secondaryButton": "See plans & pricing"
+  }
+}

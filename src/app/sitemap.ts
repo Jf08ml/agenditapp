@@ -1,6 +1,7 @@
 // src/app/sitemap.ts
 import { MetadataRoute } from "next";
 import { getAllPosts, getLatestPublishedAt } from "@/lib/blog";
+import { getPathname } from "@/i18n/navigation";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://agenditapp.com";
@@ -226,6 +227,39 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: "2026-05-29",
       changeFrequency: "monthly",
       priority: 0.8,
+    },
+    // Versión en inglés — solo las páginas que ya tienen contenido traducido
+    // (ver `pathnames` en src/i18n/routing.ts). El resto de rutas todavía
+    // no tiene versión en inglés y no debe listarse aquí.
+    {
+      url: `${base}${getPathname({ locale: "en", href: "/" })}`,
+      lastModified: "2026-06-10",
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${base}${getPathname({ locale: "en", href: "/precios" })}`,
+      lastModified: "2026-06-10",
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${base}${getPathname({ locale: "en", href: "/funcionalidades" })}`,
+      lastModified: "2026-06-10",
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${base}${getPathname({ locale: "en", href: "/terminos" })}`,
+      lastModified: "2026-05-29",
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${base}${getPathname({ locale: "en", href: "/privacidad" })}`,
+      lastModified: "2026-05-29",
+      changeFrequency: "yearly",
+      priority: 0.3,
     },
     ...blogPosts,
   ];

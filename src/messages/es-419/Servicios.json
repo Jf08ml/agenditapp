@@ -1,0 +1,16 @@
+{
+  "badge": "Catálogo de servicios",
+  "heading": "Tu menú profesional, <highlight>siempre actualizado.</highlight>",
+  "description": "Tus clientes ven precios, duración y descripción antes de reservar. Adiós a “¿cuánto vale?” por WhatsApp.",
+  "features": [
+    { "title": "Precio, duración y detalle", "description": "Configura cada servicio con toda la información. Ideal para combos, paquetes y promos." },
+    { "title": "Organizado por categorías", "description": "Agrupa por tipo: uñas, cabello, faciales, masajes… fácil de navegar." },
+    { "title": "Actualización en tiempo real", "description": "Cambia precios o tiempos cuando quieras. Se refleja al instante." },
+    { "title": "Listo para SEO y Google Maps", "description": "Títulos, descripciones y datos estructurados para que Google te encuentre." }
+  ],
+  "screenshotAlt": "Catálogo de servicios y precios — AgenditApp",
+  "expandAriaLabel": "Ampliar: catálogo de servicios y precios",
+  "priceLabel": "Precio",
+  "demoPrice": "$45.000",
+  "demoDetail": "45 min · Manicure gel"
+}

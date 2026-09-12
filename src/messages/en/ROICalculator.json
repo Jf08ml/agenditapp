@@ -1,0 +1,14 @@
+{
+  "badge": "Calculate your return",
+  "heading": {
+    "prefix": "It pays for itself with",
+    "highlight": "just 1 recovered appointment a month."
+  },
+  "description": "On average, our customers recover between 8 and 20 missed appointments a month thanks to automated reminders.",
+  "ticketLabel": "Average ticket per appointment",
+  "noshowsLabel": "No-shows per month today",
+  "resultLabel": "You recover up to",
+  "resultUnit": "per month",
+  "noteBold": "Your investment pays for itself in less than 1 appointment.",
+  "noteSub": "vs $20/mo on the Essential plan"
+}

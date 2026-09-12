@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { Link as IntlLink } from "@/i18n/navigation";
 import { DemoCtaButton } from "../components/ui/DemoCtaModal";
 import { motion, easeOut, type Variants } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { getWhatsappHref } from "../components/constants";
 import { CO, MX, CL, AR, ES, CR, EC } from "country-flag-icons/react/3x2";
 import { Clock, Lock, ChatCircle, type IconWeight } from "@phosphor-icons/react";
@@ -21,35 +23,44 @@ const itemIn: Variants = {
   animate: { opacity: 1, y: 0, transition: { duration: 0.5, ease: easeOut } },
 };
 
+// "translated: true" marca las rutas que ya tienen versión en inglés
+// (ver pathnames en src/i18n/routing.ts) y por eso usan el Link de
+// next-intl, que resuelve el slug correcto según el locale activo
+// (p.ej. /precios -> /en/pricing). Las demás rutas todavía no tienen
+// contenido en inglés, así que usan next/link con el path literal en
+// español sin importar el locale actual.
 const NAV_LINKS = [
-  { label: "Funcionalidades", href: "/funcionalidades" },
-  { label: "Planes y precios", href: "/precios" },
-  { label: "Sectores", href: "/sectores" },
-  { label: "Blog", href: "/blog" },
-  { label: "Nosotros", href: "/nosotros" },
-  { label: "Términos", href: "/terminos" },
-  { label: "Privacidad", href: "/privacidad" },
-  { label: "Seguridad", href: "/seguridad" },
-];
+  { href: "/funcionalidades", key: "features", translated: true },
+  { href: "/precios", key: "pricing", translated: true },
+  { href: "/sectores", key: "sectors", translated: false },
+  { href: "/blog", key: "blog", translated: false },
+  { href: "/nosotros", key: "about", translated: false },
+  { href: "/terminos", key: "terms", translated: true },
+  { href: "/privacidad", key: "privacy", translated: true },
+  { href: "/seguridad", key: "security", translated: false },
+] as const;
 
 const COMPARATIVAS_LINKS = [
-  { label: "vs Fresha", href: "/vs/fresha" },
-  { label: "vs AgendaPro", href: "/vs/agendapro" },
-  { label: "vs Booksy", href: "/vs/booksy" },
-  { label: "vs Weibook", href: "/vs/weibook" },
-];
+  { href: "/vs/fresha", key: "fresha" },
+  { href: "/vs/agendapro", key: "agendapro" },
+  { href: "/vs/booksy", key: "booksy" },
+  { href: "/vs/weibook", key: "weibook" },
+] as const;
 
 const SECTOR_LINKS = [
-  { label: "Salones de belleza", href: "/sectores/salones-belleza" },
-  { label: "Barberías", href: "/sectores/barberias" },
-  { label: "Spas y masajes", href: "/sectores/spas" },
-  { label: "Consultorios", href: "/sectores/consultorios" },
-  { label: "Psicólogos", href: "/sectores/psicologia" },
-  { label: "Odontólogos", href: "/sectores/odontologia" },
-];
+  { href: "/sectores/salones-belleza", key: "salones" },
+  { href: "/sectores/barberias", key: "barberias" },
+  { href: "/sectores/spas", key: "spas" },
+  { href: "/sectores/consultorios", key: "consultorios" },
+  { href: "/sectores/psicologia", key: "psicologia" },
+  { href: "/sectores/odontologia", key: "odontologia" },
+] as const;
 
 type FlagComponent = React.ComponentType<{ className?: string; title?: string }>;
 
+// Los nombres de país se mantienen en español independientemente del locale:
+// son el eje de "país" (rutas /mx, /cl, etc.), no el eje de idioma, y estas
+// páginas de país no tienen (ni tendrán) versión en inglés.
 const COUNTRY_LINKS: { Flag: FlagComponent; label: string; href: string }[] = [
   { Flag: CO, label: "Colombia",   href: "/" },
   { Flag: MX, label: "México",     href: "/mx" },
@@ -62,10 +73,42 @@ const COUNTRY_LINKS: { Flag: FlagComponent; label: string; href: string }[] = [
 
 type TrustIcon = React.ComponentType<{ size?: number; weight?: IconWeight; color?: string }>;
 
-const TRUST_ITEMS: { Icon: TrustIcon; color: string; text: string }[] = [
-  { Icon: Clock, color: "#1D4ED8", text: "Soporte por WhatsApp · Lun–Sáb" },
-  { Icon: Lock,  color: "#059669", text: "Sin permanencia. Cancela cuando quieras." },
-];
+const TRUST_ITEMS = [
+  { Icon: Clock as TrustIcon, color: "#1D4ED8", key: "hours" },
+  { Icon: Lock as TrustIcon,  color: "#059669", key: "noCommitment" },
+] as const;
+
+type IntlHref = React.ComponentProps<typeof IntlLink>["href"];
+type PlainHref = React.ComponentProps<typeof Link>["href"];
+
+// Acepta el href de cualquiera de los dos Link (el de next-intl, tipado
+// estrictamente contra el mapa de pathnames en routing.ts, o el plano de
+// next/link). El cast interno es seguro porque cada NAV_LINKS.translated
+// determina cuál de los dos Link se usa realmente.
+function FooterNavItem({
+  href,
+  translated,
+  className,
+  children,
+}: {
+  href: IntlHref | PlainHref;
+  translated: boolean;
+  className?: string;
+  children: React.ReactNode;
+}) {
+  if (translated) {
+    return (
+      <IntlLink href={href as IntlHref} className={className}>
+        {children}
+      </IntlLink>
+    );
+  }
+  return (
+    <Link href={href as PlainHref} className={className}>
+      {children}
+    </Link>
+  );
+}
 
 function IconInstagram() {
   return (
@@ -95,6 +138,8 @@ function IconWhatsApp() {
 }
 
 export default function Footer() {
+  const t = useTranslations("Footer");
+
   return (
     <motion.footer
       className="rounded-t-[28px] overflow-hidden mt-8"
@@ -130,14 +175,14 @@ export default function Footer() {
               className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-widest uppercase mb-5"
               style={{ background: "rgba(37,211,102,0.2)", color: "#86efac" }}
             >
-              ¿Listo?
+              {t("cta.badge")}
             </span>
 
             <h2
               className="text-[clamp(26px,4vw,44px)] font-bold leading-[1.1] tracking-tight text-balance m-0 mx-auto"
               style={{ maxWidth: 680, color: "white" }}
             >
-              Tu próxima cita podría reservarse{" "}
+              {t("cta.heading")}{" "}
               <span
                 style={{
                   fontFamily: "var(--font-instrument-serif), Georgia, serif",
@@ -145,7 +190,7 @@ export default function Footer() {
                   fontWeight: 400,
                 }}
               >
-                mientras lees esto.
+                {t("cta.headingHighlight")}
               </span>
             </h2>
 
@@ -153,8 +198,7 @@ export default function Footer() {
               className="mt-4 text-[16px] leading-relaxed mx-auto"
               style={{ color: "rgba(255,255,255,0.8)", maxWidth: 520 }}
             >
-              Únete a los negocios en Latinoamérica que ya gestionan
-              más de 27.000 citas con AgenditApp.
+              {t("cta.subheading")}
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -163,9 +207,9 @@ export default function Footer() {
                 className="inline-flex items-center justify-center rounded-[12px] px-6 py-3.5 text-[15px] font-semibold transition-colors cursor-pointer"
                 style={{ background: "var(--warm)", color: "white" }}
               >
-                Hablar por WhatsApp
+                {t("cta.whatsappButton")}
               </DemoCtaButton>
-              <Link
+              <IntlLink
                 href="/precios"
                 className="inline-flex items-center justify-center rounded-[12px] px-6 py-3.5 text-[15px] font-semibold transition-colors hover:bg-white/15"
                 style={{
@@ -175,8 +219,8 @@ export default function Footer() {
                   backdropFilter: "blur(8px)",
                 }}
               >
-                Ver planes y precios
-              </Link>
+                {t("cta.pricingButton")}
+              </IntlLink>
             </div>
           </div>
         </motion.div>
@@ -189,7 +233,7 @@ export default function Footer() {
           {/* ── Col 1: Brand ── */}
           <motion.div variants={itemIn} className="lg:col-span-1 flex flex-col gap-5">
             <div>
-              <Link href="/" className="inline-block mb-3">
+              <IntlLink href="/" className="inline-block mb-3">
                 <Image
                   src="/logo-text.png"
                   alt="AgenditApp"
@@ -197,10 +241,9 @@ export default function Footer() {
                   height={36}
                   className="h-8 w-auto"
                 />
-              </Link>
+              </IntlLink>
               <p className="text-sm text-muted leading-relaxed">
-                Sistema de agendamiento online para negocios de belleza, bienestar
-                y servicios profesionales en Latinoamérica.
+                {t("brand.tagline")}
               </p>
             </div>
 
@@ -237,24 +280,25 @@ export default function Footer() {
 
             <DemoCtaButton source="footer" className="inline-flex items-center gap-2 rounded-[10px] border border-brand/25 text-brand text-sm font-medium px-4 py-2 hover:bg-brand/6 transition-colors cursor-pointer w-fit">
               <ChatCircle size={16} weight="duotone" />
-              Solicitar demo
+              {t("brand.requestDemo")}
             </DemoCtaButton>
           </motion.div>
 
           {/* ── Col 2: Producto ── */}
           <motion.div variants={itemIn}>
             <p className="text-xs font-bold text-heading uppercase tracking-wider mb-4">
-              Producto
+              {t("productHeader")}
             </p>
             <ul className="flex flex-col gap-2.5">
               {NAV_LINKS.map((l) => (
                 <li key={l.href}>
-                  <Link
+                  <FooterNavItem
                     href={l.href}
+                    translated={l.translated}
                     className="text-sm text-muted hover:text-brand transition-colors"
                   >
-                    {l.label}
-                  </Link>
+                    {t(`nav.${l.key}`)}
+                  </FooterNavItem>
                 </li>
               ))}
             </ul>
@@ -263,7 +307,7 @@ export default function Footer() {
           {/* ── Col 3: Sectores + Países ── */}
           <motion.div variants={itemIn}>
             <p className="text-xs font-bold text-heading uppercase tracking-wider mb-4">
-              Sectores
+              {t("sectorsHeader")}
             </p>
             <ul className="flex flex-col gap-2.5 mb-7">
               {SECTOR_LINKS.map((l) => (
@@ -272,19 +316,19 @@ export default function Footer() {
                     href={l.href}
                     className="text-sm text-muted hover:text-brand transition-colors"
                   >
-                    {l.label}
+                    {t(`sectorLinks.${l.key}`)}
                   </Link>
                 </li>
               ))}
               <li>
                 <Link href="/sectores" className="text-sm hover:text-foreground transition-colors font-medium text-brand/80">
-                  Ver todos los sectores →
+                  {t("viewAllSectors")}
                 </Link>
               </li>
             </ul>
 
             <p className="text-xs font-bold text-heading uppercase tracking-wider mb-3">
-              Disponible en
+              {t("availableInHeader")}
             </p>
             <ul className="flex flex-col gap-2">
               {COUNTRY_LINKS.map((c) => (
@@ -304,7 +348,7 @@ export default function Footer() {
           {/* ── Col 4: Comparativas + Contacto ── */}
           <motion.div variants={itemIn}>
             <p className="text-xs font-bold text-heading uppercase tracking-wider mb-4">
-              Comparativas
+              {t("comparativasHeader")}
             </p>
             <ul className="flex flex-col gap-2.5 mb-7">
               {COMPARATIVAS_LINKS.map((l) => (
@@ -313,22 +357,22 @@ export default function Footer() {
                     href={l.href}
                     className="text-sm text-muted hover:text-brand transition-colors"
                   >
-                    AgenditApp {l.label}
+                    AgenditApp {t(`comparativas.${l.key}`)}
                   </Link>
                 </li>
               ))}
             </ul>
 
             <p className="text-xs font-bold text-heading uppercase tracking-wider mb-3">
-              Soporte
+              {t("supportHeader")}
             </p>
             <ul className="flex flex-col gap-2.5">
               {TRUST_ITEMS.map((item) => (
-                <li key={item.text} className="flex items-start gap-2 text-sm text-muted">
+                <li key={item.key} className="flex items-start gap-2 text-sm text-muted">
                   <span className="shrink-0 mt-0.5">
                     <item.Icon size={16} weight="duotone" color={item.color} />
                   </span>
-                  <span>{item.text}</span>
+                  <span>{t(`trust.${item.key}`)}</span>
                 </li>
               ))}
             </ul>
@@ -341,11 +385,11 @@ export default function Footer() {
           className="mt-10 pt-6 border-t border-brand/10 flex flex-col sm:flex-row items-center justify-between gap-3"
         >
           <p className="text-xs text-muted text-center sm:text-left">
-            © {new Date().getFullYear()} AgenditApp. Todos los derechos reservados.{" "}
-            <span className="text-muted/60">Hecho con ❤️ para negocios que viven de las citas.</span>
+            {t("copyright", { year: new Date().getFullYear() })}{" "}
+            <span className="text-muted/60">{t("madeWith")}</span>
           </p>
           <p className="text-xs text-muted/50 text-center sm:text-right">
-            Colombia · México · Chile · Argentina · Costa Rica y más
+            {t("countriesAvailable")}
           </p>
         </motion.div>
       </div>

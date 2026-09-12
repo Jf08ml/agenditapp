@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import PageHeader from "../(landing)/components/ui/PageHeader";
-import PageFooter from "../(landing)/components/ui/PageFooter";
+import PageHeader from "../../(landing)/components/ui/PageHeader";
+import PageFooter from "../../(landing)/components/ui/PageFooter";
+import { routing } from "@/i18n/routing";
 
 export const metadata: Metadata = {
   title: "Protección de Datos de tus Clientes - AgenditApp",
@@ -500,3 +501,11 @@ export default function SeguridadPage() {
     </>
   );
 }
+
+// Sin versión en inglés todavía: se genera solo para el locale por defecto
+// y cualquier /en/* de esta ruta debe devolver 404 en vez de renderizar en español.
+export function generateStaticParams() {
+  return [{ locale: routing.defaultLocale }];
+}
+
+export const dynamicParams = false;

@@ -1,0 +1,20 @@
+{
+  "badge": "Sectores",
+  "heading": "Hecho para cualquier negocio de citas.",
+  "subheading": "Desde una barbería con un solo asiento hasta un consultorio con 8 profesionales. AgenditApp se adapta.",
+  "items": [
+    "Salones y uñas",
+    "Barberías",
+    "Spas y masajes",
+    "Lashes y cejas",
+    "Consultorios médicos",
+    "Odontología",
+    "Psicología",
+    "Entrenadores",
+    "Academias y clases",
+    "Estética médica"
+  ],
+  "viewAll": "Ver todos los sectores",
+  "availableIn": "Disponible en",
+  "countries": ["Colombia", "México", "Chile", "Argentina", "España", "Costa Rica", "Ecuador"]
+}

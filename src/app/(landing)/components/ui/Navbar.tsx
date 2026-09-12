@@ -2,18 +2,61 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Link as IntlLink } from "@/i18n/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { DemoCtaButton } from "./DemoCtaModal";
 
+// "translated: true" marca las rutas que ya tienen versión en inglés
+// (ver pathnames en src/i18n/routing.ts) y por eso usan el Link de
+// next-intl, que resuelve el slug correcto según el locale activo
+// (p.ej. /precios -> /en/pricing). Las demás rutas todavía no tienen
+// contenido en inglés, así que usan next/link con el path literal en
+// español sin importar el locale actual.
 const NAV_LINKS = [
-  { href: "/funcionalidades", label: "Funciones" },
-  { href: "/sectores", label: "Sectores" },
-  { href: "/precios", label: "Planes" },
-  { href: "/blog", label: "Blog" },
-];
+  { href: "/funcionalidades", key: "features", translated: true },
+  { href: "/sectores", key: "sectors", translated: false },
+  { href: "/precios", key: "pricing", translated: true },
+  { href: "/blog", key: "blog", translated: false },
+] as const;
+
+type IntlHref = React.ComponentProps<typeof IntlLink>["href"];
+type PlainHref = React.ComponentProps<typeof Link>["href"];
+
+// Acepta el href de cualquiera de los dos Link (el de next-intl, tipado
+// estrictamente contra el mapa de pathnames en routing.ts, o el plano de
+// next/link). El cast interno es seguro porque cada NAV_LINKS.translated
+// determina cuál de los dos Link se usa realmente.
+function NavItem({
+  href,
+  translated,
+  className,
+  onClick,
+  children,
+}: {
+  href: IntlHref | PlainHref;
+  translated: boolean;
+  className?: string;
+  onClick?: () => void;
+  children: React.ReactNode;
+}) {
+  if (translated) {
+    return (
+      <IntlLink href={href as IntlHref} className={className} onClick={onClick}>
+        {children}
+      </IntlLink>
+    );
+  }
+  return (
+    <Link href={href as PlainHref} className={className} onClick={onClick}>
+      {children}
+    </Link>
+  );
+}
 
 export default function Navbar() {
+  const t = useTranslations("Navbar");
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -37,7 +80,7 @@ export default function Navbar() {
           >
             {/* Left: logo + nav */}
             <div className="flex items-center gap-6">
-              <Link href="/" className="flex-shrink-0">
+              <IntlLink href="/" className="flex-shrink-0">
                 <Image
                   src="/logo-text.png"
                   alt="AgenditApp"
@@ -46,22 +89,23 @@ export default function Navbar() {
                   priority
                   className={`w-auto object-contain transition-all duration-300 ${scrolled ? "h-8" : "h-10 sm:h-11"}`}
                 />
-              </Link>
+              </IntlLink>
 
               {/* Desktop nav */}
               <nav className="hidden lg:flex items-center gap-1">
                 {NAV_LINKS.map((link) => (
-                  <Link
+                  <NavItem
                     key={link.href}
                     href={link.href}
+                    translated={link.translated}
                     className="relative px-4 py-2 text-sm font-medium text-body rounded-[10px] overflow-hidden group hover:text-brand transition-colors"
                   >
                     <span className="absolute inset-0 bg-brand/0 group-hover:bg-brand/6 rounded-[10px] transition-colors duration-200" />
-                    <span className="relative z-10">{link.label}</span>
+                    <span className="relative z-10">{t(link.key)}</span>
                     <span
                       className="absolute bottom-1.5 left-4 right-4 h-0.5 bg-brand origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full"
                     />
-                  </Link>
+                  </NavItem>
                 ))}
               </nav>
             </div>
@@ -72,7 +116,7 @@ export default function Navbar() {
                 source="navbar_desktop"
                 className="px-5 py-2.5 rounded-[12px] bg-[#25D366] text-white text-sm font-medium hover:bg-[#22c35e] transition-colors shadow-[0_4px_16px_rgba(37,211,102,0.35)]"
               >
-                Hablar por WhatsApp
+                {t("cta")}
               </DemoCtaButton>
             </div>
 
@@ -87,7 +131,7 @@ export default function Navbar() {
               <button
                 onClick={() => setMobileOpen((v) => !v)}
                 className="p-2.5 rounded-[10px] text-body hover:bg-brand/8 transition-colors"
-                aria-label="Menú"
+                aria-label={t("menuAriaLabel")}
               >
                 <motion.svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                   animate={mobileOpen ? "open" : "closed"}>
@@ -121,13 +165,14 @@ export default function Navbar() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 }}
                   >
-                    <Link
+                    <NavItem
                       href={link.href}
+                      translated={link.translated}
                       className="block py-3 px-3 rounded-[10px] text-sm text-body font-medium hover:bg-brand/8 hover:text-brand transition-colors"
                       onClick={() => setMobileOpen(false)}
                     >
-                      {link.label}
-                    </Link>
+                      {t(link.key)}
+                    </NavItem>
                   </motion.div>
                 ))}
                 <motion.div
@@ -141,7 +186,7 @@ export default function Navbar() {
                     className="flex items-center justify-center py-3 px-4 rounded-[12px] bg-[#25D366] text-white font-medium text-sm hover:bg-[#22c35e] transition-colors"
                     onClick={() => setMobileOpen(false)}
                   >
-                    Hablar por WhatsApp
+                    {t("cta")}
                   </DemoCtaButton>
                 </motion.div>
               </motion.nav>

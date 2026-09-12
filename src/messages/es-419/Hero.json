@@ -1,0 +1,20 @@
+{
+  "badge": "Nuevo · Empieza gratis — sin tarjeta",
+  "heading": {
+    "line1": "Deja de perseguir citas",
+    "highlight": "por WhatsApp.",
+    "line2": "Que tu agenda lo haga sola."
+  },
+  "subtitle": "AgenditApp recibe reservas 24/7, confirma con tus clientes por WhatsApp y reduce las inasistencias hasta un 70% — sin que tengas que mover un dedo.",
+  "cta": {
+    "whatsapp": "Hablar por WhatsApp",
+    "pricing": "Ver planes y precios"
+  },
+  "microcopy": "Sin tarjeta · Listo en 10 min · Cancela cuando quieras",
+  "liveBooking": {
+    "confirmed": "reserva confirmada hace {secs}s",
+    "example": "Cata → Galaxia Glamour"
+  },
+  "screenshotAlt": "Vista semanal de citas con columnas por profesional — AgenditApp",
+  "lightboxAlt": "Agenda virtual — AgenditApp"
+}

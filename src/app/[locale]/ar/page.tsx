@@ -5,6 +5,7 @@ import PageHeader from "@/app/(landing)/components/ui/PageHeader";
 import PageFooter from "@/app/(landing)/components/ui/PageFooter";
 import { DemoCtaButton } from "@/app/(landing)/components/ui/DemoCtaModal";
 import PromoPopup from "@/app/(landing)/components/ui/PromoPopup";
+import { routing } from "@/i18n/routing";
 
 export const metadata: Metadata = {
   title: "Software de Agendamiento para Negocios en Argentina",
@@ -299,3 +300,11 @@ export default function ArgentinaPage() {
     </>
   );
 }
+
+// Sin versión en inglés todavía: se genera solo para el locale por defecto
+// y cualquier /en/* de esta ruta debe devolver 404 en vez de renderizar en español.
+export function generateStaticParams() {
+  return [{ locale: routing.defaultLocale }];
+}
+
+export const dynamicParams = false;

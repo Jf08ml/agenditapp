@@ -1,0 +1,49 @@
+{
+  "badge": "Demo personalizada",
+  "heading": "Te dejamos la agenda lista",
+  "headingHighlight": "en 30 minutos.",
+  "subheading": "Cuéntanos sobre tu negocio y te contactamos por WhatsApp para configurar tus servicios y mostrarte el panel completo.",
+  "promises": [
+    "Respuesta en menos de 1 hora",
+    "Configuración gratis incluida",
+    "Sin compromiso de compra"
+  ],
+  "waCard": {
+    "title": "¿Prefieres hablar directo?",
+    "subtitle": "Un asesor te muestra una demo en vivo en menos de 5 minutos.",
+    "cta": "Hablar por WhatsApp"
+  },
+  "form": {
+    "nameLabel": "Tu nombre completo",
+    "namePlaceholder": "Ej: Ana Pérez",
+    "businessLabel": "Nombre de tu negocio",
+    "businessPlaceholder": "Ej: Glam Nails Studio",
+    "whatsappLabel": "WhatsApp de contacto",
+    "whatsappPlaceholder": "300 123 4567",
+    "whatsappHelper": "Selecciona tu país y escribe el número. Solo lo usamos para contactarte sobre la demo.",
+    "sectorLabel": "Tipo de negocio",
+    "sectorPlaceholder": "Selecciona una opción",
+    "sectorOptions": [
+      "Salón de belleza / uñas",
+      "Barbería",
+      "Spa / masajes",
+      "Lashes / cejas",
+      "Entrenador / fitness",
+      "Estética médica",
+      "Academia / cursos",
+      "Otro"
+    ],
+    "appointmentsLabel": "Citas al mes (aprox.)",
+    "appointmentsPlaceholder": "Selecciona un rango",
+    "appointmentsOptions": [
+      "Menos de 50",
+      "50 - 150",
+      "150 - 300",
+      "Más de 300"
+    ],
+    "submit": "Quiero mi demo personalizada",
+    "submitting": "Enviando...",
+    "success": "¡Gracias! Recibimos tus datos. Te contactaremos por WhatsApp muy pronto.",
+    "error": "Error al enviar. Intenta de nuevo o escríbenos por WhatsApp."
+  }
+}

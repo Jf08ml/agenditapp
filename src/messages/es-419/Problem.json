@@ -1,0 +1,27 @@
+{
+  "badge": "El verdadero costo del WhatsApp manual",
+  "heading": "¿Te suena familiar?",
+  "subheading": "Cada uno de estos momentos te cuesta tiempo, ingresos y energía. AgenditApp los resuelve antes de que sucedan.",
+  "columns": [
+    {
+      "title": "Sin AgenditApp",
+      "items": [
+        { "title": "\"¿A qué hora era mi cita?\"", "description": "Respondes los mismos chats todos los días." },
+        { "title": "Cliente que no llega", "description": "Pierdes el cupo y a otro cliente que sí quería." },
+        { "title": "Agenda en libreta", "description": "Cruces de horario, errores y caos los sábados." },
+        { "title": "Trabajas hasta tarde", "description": "Contestando mensajes en vez de descansar." },
+        { "title": "No sabes cuánto generas", "description": "Sin reportes, sin claridad, sin control." }
+      ]
+    },
+    {
+      "title": "Con AgenditApp",
+      "items": [
+        { "title": "Reservan solas, 24/7", "description": "Tu enlace trabaja mientras duermes." },
+        { "title": "Recordatorios automáticos", "description": "Hasta 70% menos ausencias comprobado." },
+        { "title": "Agenda visual en la nube", "description": "Sin cruces. Desde cualquier dispositivo." },
+        { "title": "WhatsApp en piloto automático", "description": "El sistema confirma, tú atiendes." },
+        { "title": "Reportes claros", "description": "Sabes qué servicio, día y empleado generan más." }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, easeOut, type Variants } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 /* ── Animaciones ── */
 const fadeInUp: Variants = {
@@ -58,10 +59,6 @@ const features = [
         />
       </svg>
     ),
-    title: "Control que multiplica ingresos",
-    hook: "Convierte el desorden en claridad.",
-    description:
-      "Deja atrás las libretas y controla exactamente qué servicios, empleados y clientes te dejan más dinero. Dispara tus ventas con campañas de WhatsApp y programas de fidelidad.",
   },
   {
     icon: (
@@ -111,10 +108,6 @@ const features = [
         />
       </svg>
     ),
-    title: "Agenda en piloto automático",
-    hook: "Que tu negocio trabaje para ti.",
-    description:
-      "Olvídate de contestar chats interminables. Tus clientes reservan 24/7 mientras el sistema confirma automáticamente y envía recordatorios por WhatsApp para acabar con las inasistencias.",
   },
   {
     icon: (
@@ -141,10 +134,6 @@ const features = [
         />
       </svg>
     ),
-    title: "Prestigio que inspira confianza",
-    hook: "Destaca por encima del resto.",
-    description:
-      "Destaca de la competencia con una presencia online impecable bajo tu propia marca y dominio. Administra todo desde tu celular con la tranquilidad de que tu información está 100% segura en la nube.",
   },
 ];
 
@@ -884,6 +873,13 @@ function ArrowFromBottom() {
 
 /* ── Componente Principal ── */
 export default function QueObtendras() {
+  const t = useTranslations("QueObtendras");
+  const featuresCopy = t.raw("features") as Array<{
+    title: string;
+    hook: string;
+    description: string;
+  }>;
+
   return (
     <section className="relative px-6 sm:px-8 py-24 sm:py-28 max-w-6xl mx-auto">
       {/* ── Título ── */}
@@ -899,14 +895,13 @@ export default function QueObtendras() {
             text-[11px] font-semibold tracking-widest uppercase mb-5"
           style={{ background: "var(--warm-soft)", color: "var(--warm-deep)" }}
         >
-          Tus 3 grandes ganancias
+          {t("badge")}
         </span>
         <h2 className="text-[clamp(28px,4vw,44px)] font-bold leading-[1.1] tracking-tight text-[#0F172A] text-balance m-0">
-          ¿Qué obtendrás?
+          {t("heading")}
         </h2>
         <p className="mt-4 text-[17px] text-[#64748B] leading-relaxed">
-          Las herramientas más valoradas por nuestros usuarios para automatizar
-          su día a día y escalar sus ventas.
+          {t("subheading")}
         </p>
       </motion.div>
 
@@ -928,46 +923,49 @@ export default function QueObtendras() {
           <ArrowFromBottom />
         </div>
 
-        {features.map((f, i) => (
-          <motion.div
-            key={i}
-            variants={cardVariant}
-            className="flex flex-col items-center text-center transition-transform duration-300 hover:scale-105"
-          >
-            {/* Icono centrado con flecha al costado — 3 columnas fijas */}
-            <div className="flex items-center justify-center mb-5">
-              {/* Columna izquierda — flecha o spacer */}
-              <div className="md:hidden w-[80px] flex-shrink-0 flex justify-end pointer-events-none">
-                {i % 2 !== 0 && <ArrowMobileLeft id={`${i}`} />}
+        {features.map((f, i) => {
+          const copy = featuresCopy[i];
+          return (
+            <motion.div
+              key={i}
+              variants={cardVariant}
+              className="flex flex-col items-center text-center transition-transform duration-300 hover:scale-105"
+            >
+              {/* Icono centrado con flecha al costado — 3 columnas fijas */}
+              <div className="flex items-center justify-center mb-5">
+                {/* Columna izquierda — flecha o spacer */}
+                <div className="md:hidden w-[80px] flex-shrink-0 flex justify-end pointer-events-none">
+                  {i % 2 !== 0 && <ArrowMobileLeft id={`${i}`} />}
+                </div>
+
+                {/* Icono — siempre centrado */}
+                <div className="flex h-[72px] w-[72px] flex-shrink-0 items-center justify-center rounded-[var(--radius-lg)] bg-brand/10 border border-brand/20 shadow-card">
+                  {f.icon}
+                </div>
+
+                {/* Columna derecha — flecha o spacer */}
+                <div className="md:hidden w-[80px] flex-shrink-0 flex justify-start pointer-events-none">
+                  {i % 2 === 0 && <ArrowMobileRight id={`${i}`} />}
+                </div>
               </div>
 
-              {/* Icono — siempre centrado */}
-              <div className="flex h-[72px] w-[72px] flex-shrink-0 items-center justify-center rounded-[var(--radius-lg)] bg-brand/10 border border-brand/20 shadow-card">
-                {f.icon}
-              </div>
+              {/* Etiqueta — la función */}
+              <p className="text-[10px] font-semibold text-brand uppercase tracking-[0.18em] mb-3">
+                {copy.title}
+              </p>
 
-              {/* Columna derecha — flecha o spacer */}
-              <div className="md:hidden w-[80px] flex-shrink-0 flex justify-start pointer-events-none">
-                {i % 2 === 0 && <ArrowMobileRight id={`${i}`} />}
-              </div>
-            </div>
+              {/* Hook — el titular principal */}
+              <h3 className="text-xl font-semibold text-heading leading-snug mb-3">
+                {copy.hook}
+              </h3>
 
-            {/* Etiqueta — la función */}
-            <p className="text-[10px] font-semibold text-brand uppercase tracking-[0.18em] mb-3">
-              {f.title}
-            </p>
-
-            {/* Hook — el titular principal */}
-            <h3 className="text-xl font-semibold text-heading leading-snug mb-3">
-              {f.hook}
-            </h3>
-
-            {/* Descripción — explicación */}
-            <p className="text-sm text-muted leading-relaxed max-w-xs">
-              {f.description}
-            </p>
-          </motion.div>
-        ))}
+              {/* Descripción — explicación */}
+              <p className="text-sm text-muted leading-relaxed max-w-xs">
+                {copy.description}
+              </p>
+            </motion.div>
+          );
+        })}
       </motion.div>
     </section>
   );

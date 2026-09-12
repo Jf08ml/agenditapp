@@ -1,0 +1,55 @@
+{
+  "badge": "Casos reales",
+  "heading": {
+    "prefix": "No nos creas a nosotros.",
+    "highlight": "Escúchalos a ellas."
+  },
+  "description": "Desde Colombia hasta Chile y Costa Rica, más de 27.000 citas han sido gestionadas con AgenditApp. Negocios reales, resultados reales.",
+  "verifiedLabel": "Cliente verificado",
+  "prevAriaLabel": "Anterior",
+  "nextAriaLabel": "Siguiente",
+  "goToAriaLabel": "Ir a {name}",
+  "trust": {
+    "prefix": "Más de",
+    "highlight": "27.000 citas gestionadas",
+    "suffix": "en Latinoamérica con AgenditApp"
+  },
+  "items": [
+    {
+      "role": "Salón de belleza · Neiva, Colombia",
+      "author": "Luisa Fernanda",
+      "quote": "Desde que usamos AgenditApp, las ausencias bajaron un 60%. Mis clientes agendan solas a cualquier hora y yo puedo concentrarme en el trabajo que me apasiona. ¡Es un cambio total!",
+      "statLabel": "menos ausencias"
+    },
+    {
+      "role": "Beauty Salon · Neiva, Colombia",
+      "author": "Nataly Martinez",
+      "quote": "La plataforma es súper fácil de usar y los recordatorios automáticos por WhatsApp son un hit con mis clientas. Ahora tenemos agenda llena toda la semana sin tanto esfuerzo.",
+      "statLabel": "más reservas online"
+    },
+    {
+      "role": "Barbería profesional · Pereira, Colombia",
+      "author": "Cristian Bastidas",
+      "quote": "Controlo la agenda de todo el equipo desde el celular. Los clientes reservan solos, reciben confirmación y llegan puntuales. AgenditApp nos dio una imagen mucho más profesional.",
+      "statLabel": "citas confirmadas"
+    },
+    {
+      "role": "Centro terapéutico · Escobedo, México",
+      "author": "Dirección CAPI",
+      "quote": "Manejar las sesiones de varios terapeutas era caótico. Con AgenditApp todo se organiza solo. Los padres agendan fácilmente y nosotros tenemos control total de los horarios.",
+      "statLabel": "menos admin"
+    },
+    {
+      "role": "Barbería & Grooming · Ciudad Quesada, Costa Rica",
+      "author": "Dirección Alpha Man",
+      "quote": "Nuestros clientes valoran poder reservar desde Instagram sin llamar. La agenda siempre está actualizada y el panel nos da visibilidad de todo el negocio en tiempo real.",
+      "statLabel": "clientes nuevos"
+    },
+    {
+      "role": "Centro de bienestar · Quilpué, Chile",
+      "author": "Dirección Mosaico",
+      "quote": "Organizar clases grupales e individuales nunca fue tan simple. AgenditApp se adapta perfecto a yoga, pilates y danza. Muy recomendado para centros de bienestar.",
+      "statLabel": "de satisfacción"
+    }
+  ]
+}

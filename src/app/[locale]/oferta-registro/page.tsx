@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import OfertaContent from "../(landing)/components/lp/OfertaContent";
-import MetaPixel from "../(landing)/components/lp/MetaPixel";
+import OfertaContent from "../../(landing)/components/lp/OfertaContent";
+import MetaPixel from "../../(landing)/components/lp/MetaPixel";
+import { routing } from "@/i18n/routing";
 
 export const metadata: Metadata = {
   title: "Crea tu cuenta gratis en AgenditApp — Agenda por WhatsApp",
@@ -18,3 +19,11 @@ export default function OfertaRegistroPage() {
     </>
   );
 }
+
+// Sin versión en inglés todavía: se genera solo para el locale por defecto
+// y cualquier /en/* de esta ruta debe devolver 404 en vez de renderizar en español.
+export function generateStaticParams() {
+  return [{ locale: routing.defaultLocale }];
+}
+
+export const dynamicParams = false;
