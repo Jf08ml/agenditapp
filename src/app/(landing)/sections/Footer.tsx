@@ -32,8 +32,8 @@ const itemIn: Variants = {
 const NAV_LINKS = [
   { href: "/funcionalidades", key: "features", translated: true },
   { href: "/precios", key: "pricing", translated: true },
-  { href: "/sectores", key: "sectors", translated: false },
-  { href: "/blog", key: "blog", translated: false },
+  { href: "/sectores", key: "sectors", translated: true },
+  { href: "/blog", key: "blog", translated: true },
   { href: "/nosotros", key: "about", translated: false },
   { href: "/terminos", key: "terms", translated: true },
   { href: "/privacidad", key: "privacy", translated: true },
@@ -321,9 +321,9 @@ export default function Footer() {
                 </li>
               ))}
               <li>
-                <Link href="/sectores" className="text-sm hover:text-foreground transition-colors font-medium text-brand/80">
+                <IntlLink href="/sectores" className="text-sm hover:text-foreground transition-colors font-medium text-brand/80">
                   {t("viewAllSectors")}
-                </Link>
+                </IntlLink>
               </li>
             </ul>
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { IconWeight } from "@phosphor-icons/react";
-import { routing } from "@/i18n/routing";
+import { getTranslations } from "next-intl/server";
 import {
   Sparkle, Scissors, Flower, Eye, Stethoscope, Tooth, Brain, Barbell,
   Leaf, PawPrint, Syringe, Camera, MusicNotes, Books, Scales, YinYang,
@@ -10,6 +10,9 @@ import SchemaOrg from "../../(landing)/components/seo/SchemaOrg";
 import { DemoCtaButton } from "../../(landing)/components/ui/DemoCtaModal";
 import PageHeader from "../../(landing)/components/ui/PageHeader";
 import PageFooter from "../../(landing)/components/ui/PageFooter";
+import { withEnglish } from "@/lib/hreflang";
+import { getPathname } from "@/i18n/navigation";
+import type { Locale } from "@/i18n/routing";
 
 type PIEntry = { Icon: React.ComponentType<{ size?: number; weight?: IconWeight; color?: string }>; color: string };
 const SECTOR_ICON_MAP: Record<string, PIEntry> = {
@@ -31,48 +34,76 @@ const SECTOR_ICON_MAP: Record<string, PIEntry> = {
   "💉":   { Icon: Syringe,    color: "#E11D48" },
 };
 
-export const metadata: Metadata = {
-  title: { absolute: "Software de Agendamiento por Sector | AgenditApp" },
-  description:
-    "Descubre cómo AgenditApp optimiza la gestión de citas para salones de belleza, barberías, spas, consultorios médicos, gimnasios y centros de bienestar.",
-  alternates: { canonical: "https://agenditapp.com/sectores" },
-  openGraph: {
-    title: "Sectores | Software de Agendamiento Profesional",
-    description: "Software de reservas online para salones de belleza, barberías, spas, consultorios y más.",
-    url: "https://agenditapp.com/sectores",
-    images: ["/inicio_page.png"],
-  },
-};
-
-const BREADCRUMB_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Inicio", item: "https://agenditapp.com" },
-    { "@type": "ListItem", position: 2, name: "Sectores", item: "https://agenditapp.com/sectores" },
-  ],
-};
-
-const sectores = [
-  { title: "Salones de Belleza", slug: "salones-belleza", description: "Gestiona citas de corte, color, tratamientos y más. Recordatorios automáticos para reducir ausencias.", icon: "💇‍♀️", keywords: ["manicure", "pedicure", "tintes", "tratamientos capilares"] },
-  { title: "Barberías", slug: "barberias", description: "Agenda de cortes, afeitados y servicios express. Controla tu flujo de clientes sin complicaciones.", icon: "💈", keywords: ["cortes de cabello", "barba", "afeitado", "grooming"] },
-  { title: "Spas y Bienestar", slug: "spas", description: "Reservas para masajes, faciales, terapias. Gestión de terapeutas y salas en tiempo real.", icon: "🧖‍♀️", keywords: ["masajes", "faciales", "hidroterapia", "relajación"] },
-  { title: "Consultorios y Clínicas", slug: "consultorios", description: "Sistema médico de citas con recordatorios. Perfecto para consultas, terapias y atención profesional.", icon: "🏥", keywords: ["consultas médicas", "terapias", "odontología", "psicología"] },
-  { title: "Lash & Brow Studios", slug: "lash-brow", description: "Agenda para extensiones de pestañas, microblading, cejas y servicios de belleza especializados.", icon: "👁️", keywords: ["pestañas", "microblading", "cejas", "lash lift"] },
-  { title: "Gimnasios y Fitness", slug: "gimnasios", description: "Reserva de clases grupales, entrenamiento personal y gestión de horarios para entrenadores.", icon: "🏋️‍♀️", keywords: ["fitness", "crossfit", "yoga", "pilates"] },
-  { title: "Odontología", slug: "odontologia", description: "Sistema de citas para dentistas. Control de tratamientos, recordatorios y seguimiento de pacientes.", icon: "🦷", keywords: ["ortodoncia", "limpieza dental", "cirugía", "tratamientos"] },
-  { title: "Psicología y Terapia", slug: "psicologia", description: "Agenda confidencial para psicólogos, terapeutas y profesionales de salud mental.", icon: "🧠", keywords: ["terapia", "consejería", "salud mental", "sesiones"] },
-  { title: "Nutricionistas", slug: "nutricion", description: "Reserva de consultas nutricionales, seguimiento de planes alimenticios y control de pacientes.", icon: "🥗", keywords: ["nutrición", "dietas", "planes alimenticios", "consultas"] },
-  { title: "Veterinarias", slug: "veterinarias", description: "Agenda de citas para mascotas, grooming, vacunas y consultas veterinarias.", icon: "🐶", keywords: ["mascotas", "grooming", "vacunas", "veterinaria"] },
-  { title: "Escuelas de Danza y Yoga", slug: "danza-yoga", description: "Reserva de clases, talleres y eventos. Gestión de instructores y alumnos.", icon: "💃", keywords: ["danza", "yoga", "pilates", "clases grupales"] },
-  { title: "Profesores de Música", slug: "musica", description: "Agenda de clases particulares, ensayos y talleres musicales.", icon: "🎸", keywords: ["guitarra", "piano", "canto", "clases particulares"] },
-  { title: "Tutores y Academias", slug: "tutorias", description: "Sistema de reservas para clases particulares, refuerzos académicos y tutorías.", icon: "📚", keywords: ["matemáticas", "idiomas", "tutorías", "educación"] },
-  { title: "Fotógrafos y Estudios", slug: "fotografia", description: "Reserva de sesiones fotográficas, eventos y alquiler de estudio.", icon: "📸", keywords: ["fotografía", "sesiones", "eventos", "estudio"] },
-  { title: "Abogados y Asesorías", slug: "abogados", description: "Agenda de consultas legales, reuniones y gestión de expedientes.", icon: "⚖️", keywords: ["legal", "consultas", "asesoría", "derecho"] },
-  { title: "Centros de Estética Médica", slug: "estetica-medica", description: "Agenda para tratamientos estéticos, láser, botox y procedimientos médicos.", icon: "💉", keywords: ["botox", "láser", "tratamientos", "estética"] },
+// Solo datos estructurales (slug/ícono); el copy (title/description/keywords)
+// viene de los mensajes de next-intl bajo "sectors.<slug>" y se combina con
+// este array por slug en el componente.
+const SECTOR_STRUCTURE = [
+  { slug: "salones-belleza", icon: "💇‍♀️" },
+  { slug: "barberias", icon: "💈" },
+  { slug: "spas", icon: "🧖‍♀️" },
+  { slug: "consultorios", icon: "🏥" },
+  { slug: "lash-brow", icon: "👁️" },
+  { slug: "gimnasios", icon: "🏋️‍♀️" },
+  { slug: "odontologia", icon: "🦷" },
+  { slug: "psicologia", icon: "🧠" },
+  { slug: "nutricion", icon: "🥗" },
+  { slug: "veterinarias", icon: "🐶" },
+  { slug: "danza-yoga", icon: "💃" },
+  { slug: "musica", icon: "🎸" },
+  { slug: "tutorias", icon: "📚" },
+  { slug: "fotografia", icon: "📸" },
+  { slug: "abogados", icon: "⚖️" },
+  { slug: "estetica-medica", icon: "💉" },
 ];
 
-export default function SectoresPage() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "SectoresPage" });
+  const canonical = `https://agenditapp.com${getPathname({ locale, href: "/sectores" })}`;
+
+  return {
+    title: { absolute: t("meta.title") },
+    description: t("meta.description"),
+    alternates: {
+      canonical,
+      languages: withEnglish(getPathname({ locale: "en", href: "/sectores" })),
+    },
+    openGraph: {
+      title: t("meta.ogTitle"),
+      description: t("meta.ogDescription"),
+      url: canonical,
+      images: ["/inicio_page.png"],
+    },
+  };
+}
+
+export default async function SectoresPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "SectoresPage" });
+  const canonical = `https://agenditapp.com${getPathname({ locale, href: "/sectores" })}`;
+  const sectorsCopy = t.raw("sectors") as Record<
+    string,
+    { title: string; description: string; keywords: string[] }
+  >;
+  const sectores = SECTOR_STRUCTURE.map((s) => ({ ...s, ...sectorsCopy[s.slug] }));
+
+  const BREADCRUMB_SCHEMA = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: t("breadcrumbHome"), item: "https://agenditapp.com" },
+      { "@type": "ListItem", position: 2, name: t("breadcrumbSectores"), item: canonical },
+    ],
+  };
+
   return (
     <>
       <SchemaOrg data={BREADCRUMB_SCHEMA} />
@@ -83,19 +114,17 @@ export default function SectoresPage() {
         <section className="py-16 sm:py-20 px-4 sm:px-6">
           <div className="max-w-4xl mx-auto text-center">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/8 border border-brand/20 text-brand text-[11px] font-semibold tracking-wider uppercase mb-5">
-              Sectores
+              {t("badge")}
             </span>
             <h1 className="text-4xl sm:text-5xl font-semibold text-heading tracking-tight leading-tight mb-5">
-              Software adaptado a{" "}
-              <span className="text-brand">todos los sectores</span>
+              {t("heading.prefix")}{" "}
+              <span className="text-brand">{t("heading.highlight")}</span>
             </h1>
             <p className="text-lg text-body max-w-2xl mx-auto mb-8 leading-relaxed">
-              AgenditApp se adapta a las necesidades específicas de tu negocio.
-              Automatiza reservas, envía recordatorios y gestiona tu agenda
-              desde cualquier dispositivo.
+              {t("subheading")}
             </p>
             <DemoCtaButton source="sectores" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-[14px] bg-brand text-white text-sm font-semibold hover:bg-brand-hover transition-colors shadow-md cursor-pointer">
-              Consultar por mi sector
+              {t("heroCta")}
             </DemoCtaButton>
           </div>
         </section>
@@ -137,7 +166,7 @@ export default function SectoresPage() {
                     ))}
                   </div>
                   <span className="text-sm font-medium text-brand inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                    Ver más detalles
+                    {t("viewDetails")}
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 16 16" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 3l5 5-5 5" />
                     </svg>
@@ -155,14 +184,13 @@ export default function SectoresPage() {
             style={{ background: "linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%)" }}
           >
             <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-4">
-              ¿No encuentras tu sector?
+              {t("notFoundHeading")}
             </h2>
             <p className="text-white/75 mb-8 leading-relaxed">
-              AgenditApp es flexible y se adapta a cualquier negocio de servicios.
-              Contáctanos y te ayudamos a configurarlo.
+              {t("notFoundBody")}
             </p>
             <DemoCtaButton source="sectores_cta" className="inline-flex items-center px-7 py-3.5 rounded-[12px] bg-white text-brand font-semibold text-sm hover:bg-white/90 transition-colors cursor-pointer shadow-md">
-              Contactar ahora
+              {t("notFoundCta")}
             </DemoCtaButton>
           </div>
         </section>
@@ -172,11 +200,3 @@ export default function SectoresPage() {
     </>
   );
 }
-
-// Sin versión en inglés todavía: se genera solo para el locale por defecto
-// y cualquier /en/* de esta ruta debe devolver 404 en vez de renderizar en español.
-export function generateStaticParams() {
-  return [{ locale: routing.defaultLocale }];
-}
-
-export const dynamicParams = false;

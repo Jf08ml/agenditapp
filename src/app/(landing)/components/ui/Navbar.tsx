@@ -16,9 +16,9 @@ import { DemoCtaButton } from "./DemoCtaModal";
 // español sin importar el locale actual.
 const NAV_LINKS = [
   { href: "/funcionalidades", key: "features", translated: true },
-  { href: "/sectores", key: "sectors", translated: false },
+  { href: "/sectores", key: "sectors", translated: true },
   { href: "/precios", key: "pricing", translated: true },
-  { href: "/blog", key: "blog", translated: false },
+  { href: "/blog", key: "blog", translated: true },
 ] as const;
 
 type IntlHref = React.ComponentProps<typeof IntlLink>["href"];

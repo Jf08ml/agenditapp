@@ -19,6 +19,8 @@ export const routing = defineRouting({
     "/funcionalidades": { en: "/features" },
     "/terminos": { en: "/terms" },
     "/privacidad": { en: "/privacy" },
+    "/sectores": { en: "/industries" },
+    "/blog": "/blog",
   },
 });
 

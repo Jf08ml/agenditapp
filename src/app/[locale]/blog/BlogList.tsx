@@ -19,19 +19,28 @@ function formatDate(iso: string) {
   });
 }
 
-const ALL = "Todos";
+const ALL_SENTINEL = "__all__";
+
+interface BlogListLabels {
+  allCategory: string;
+  noPostsInCategory: string;
+  readingTimeSuffix: string;
+  readArticle: string;
+}
 
 export default function BlogList({
   posts,
   categories,
+  labels,
 }: {
   posts: PostMeta[];
   categories: string[];
+  labels: BlogListLabels;
 }) {
-  const [active, setActive] = useState<string>(ALL);
+  const [active, setActive] = useState<string>(ALL_SENTINEL);
 
-  const filtered = active === ALL ? posts : posts.filter((p) => p.category === active);
-  const filters = [ALL, ...categories];
+  const filtered = active === ALL_SENTINEL ? posts : posts.filter((p) => p.category === active);
+  const filters = [ALL_SENTINEL, ...categories];
 
   return (
     <>
@@ -50,7 +59,7 @@ export default function BlogList({
                   : "bg-bg-card text-body border-brand/15 hover:border-brand/40"
               }`}
             >
-              {cat}
+              {cat === ALL_SENTINEL ? labels.allCategory : cat}
             </button>
           );
         })}
@@ -58,13 +67,13 @@ export default function BlogList({
 
       <div className="max-w-6xl mx-auto">
         {filtered.length === 0 ? (
-          <p className="text-center text-muted py-20">No hay artículos en esta categoría.</p>
+          <p className="text-center text-muted py-20">{labels.noPostsInCategory}</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
             {filtered.map((post, i) => {
               const colorClass = CATEGORY_COLORS[post.category] ?? "bg-brand/10 text-brand";
               // Only feature the first card when showing all posts.
-              const featured = active === ALL && i === 0;
+              const featured = active === ALL_SENTINEL && i === 0;
               return (
                 <Link
                   key={post.slug}
@@ -80,7 +89,7 @@ export default function BlogList({
                     >
                       {post.category}
                     </span>
-                    <span className="text-xs text-muted">{post.readingTime} de lectura</span>
+                    <span className="text-xs text-muted">{post.readingTime} {labels.readingTimeSuffix}</span>
                   </div>
                   <div>
                     <h2
@@ -105,7 +114,7 @@ export default function BlogList({
                       )}
                     </div>
                     <span className="text-sm font-medium text-brand group-hover:gap-2 inline-flex items-center gap-1.5 transition-all">
-                      Leer artículo
+                      {labels.readArticle}
                       <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 16 16" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 3l5 5-5 5" />
                       </svg>

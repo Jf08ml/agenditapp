@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "title": "Scheduling Software by Industry | AgenditApp",
+    "description": "See how AgenditApp streamlines appointment management for salons, barbershops, spas, medical practices, gyms, and wellness centers.",
+    "ogTitle": "Industries | Professional Scheduling Software",
+    "ogDescription": "Online booking software for salons, barbershops, spas, clinics, and more."
+  },
+  "breadcrumbHome": "Home",
+  "breadcrumbSectores": "Industries",
+  "badge": "Industries",
+  "heading": {
+    "prefix": "Software built for",
+    "highlight": "every industry"
+  },
+  "subheading": "AgenditApp adapts to your business's specific needs. Automate bookings, send reminders, and manage your calendar from any device.",
+  "heroCta": "Ask about my industry",
+  "viewDetails": "See more details",
+  "notFoundHeading": "Don't see your industry?",
+  "notFoundBody": "AgenditApp is flexible and adapts to any service business. Reach out and we'll help you set it up.",
+  "notFoundCta": "Contact us now",
+  "sectors": {
+    "salones-belleza": { "title": "Beauty Salons", "description": "Manage haircut, color, and treatment appointments. Automated reminders to cut down on no-shows.", "keywords": ["manicure", "pedicure", "hair color", "hair treatments"] },
+    "barberias": { "title": "Barbershops", "description": "Schedule haircuts, shaves, and express services. Keep your client flow under control, no hassle.", "keywords": ["haircuts", "beard trim", "shaving", "grooming"] },
+    "spas": { "title": "Spas & Wellness", "description": "Bookings for massages, facials, and therapies. Manage therapists and rooms in real time.", "keywords": ["massages", "facials", "hydrotherapy", "relaxation"] },
+    "consultorios": { "title": "Clinics & Practices", "description": "A medical-grade appointment system with reminders. Perfect for consultations, therapy, and professional care.", "keywords": ["medical consultations", "therapy", "dentistry", "psychology"] },
+    "lash-brow": { "title": "Lash & Brow Studios", "description": "Book lash extensions, microblading, brow shaping, and other specialized beauty services.", "keywords": ["lashes", "microblading", "eyebrows", "lash lift"] },
+    "gimnasios": { "title": "Gyms & Fitness Studios", "description": "Book group classes, personal training, and manage trainer schedules.", "keywords": ["fitness", "crossfit", "yoga", "pilates"] },
+    "odontologia": { "title": "Dental Practices", "description": "An appointment system for dentists. Track treatments, reminders, and patient follow-ups.", "keywords": ["orthodontics", "dental cleaning", "surgery", "treatments"] },
+    "psicologia": { "title": "Psychology & Therapy", "description": "A confidential calendar for psychologists, therapists, and mental health professionals.", "keywords": ["therapy", "counseling", "mental health", "sessions"] },
+    "nutricion": { "title": "Nutritionists", "description": "Book nutrition consultations, track meal plans, and manage patient follow-ups.", "keywords": ["nutrition", "diet plans", "meal plans", "consultations"] },
+    "veterinarias": { "title": "Veterinary Clinics", "description": "Schedule pet appointments, grooming, vaccinations, and vet consultations.", "keywords": ["pets", "grooming", "vaccinations", "veterinary"] },
+    "danza-yoga": { "title": "Dance & Yoga Studios", "description": "Book classes, workshops, and events. Manage instructors and students.", "keywords": ["dance", "yoga", "pilates", "group classes"] },
+    "musica": { "title": "Music Teachers", "description": "Schedule private lessons, rehearsals, and music workshops.", "keywords": ["guitar", "piano", "singing", "private lessons"] },
+    "tutorias": { "title": "Tutors & Academies", "description": "A booking system for private lessons, academic support, and tutoring.", "keywords": ["math", "languages", "tutoring", "education"] },
+    "fotografia": { "title": "Photographers & Studios", "description": "Book photo sessions, events, and studio rentals.", "keywords": ["photography", "sessions", "events", "studio"] },
+    "abogados": { "title": "Lawyers & Consultants", "description": "Schedule legal consultations, meetings, and manage case files.", "keywords": ["legal", "consultations", "advisory", "law"] },
+    "estetica-medica": { "title": "Medical Aesthetics Centers", "description": "Schedule aesthetic treatments, laser, botox, and medical procedures.", "keywords": ["botox", "laser", "treatments", "aesthetics"] }
+  }
+}

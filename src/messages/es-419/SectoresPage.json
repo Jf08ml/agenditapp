@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "title": "Software de Agendamiento por Sector | AgenditApp",
+    "description": "Descubre cómo AgenditApp optimiza la gestión de citas para salones de belleza, barberías, spas, consultorios médicos, gimnasios y centros de bienestar.",
+    "ogTitle": "Sectores | Software de Agendamiento Profesional",
+    "ogDescription": "Software de reservas online para salones de belleza, barberías, spas, consultorios y más."
+  },
+  "breadcrumbHome": "Inicio",
+  "breadcrumbSectores": "Sectores",
+  "badge": "Sectores",
+  "heading": {
+    "prefix": "Software adaptado a",
+    "highlight": "todos los sectores"
+  },
+  "subheading": "AgenditApp se adapta a las necesidades específicas de tu negocio. Automatiza reservas, envía recordatorios y gestiona tu agenda desde cualquier dispositivo.",
+  "heroCta": "Consultar por mi sector",
+  "viewDetails": "Ver más detalles",
+  "notFoundHeading": "¿No encuentras tu sector?",
+  "notFoundBody": "AgenditApp es flexible y se adapta a cualquier negocio de servicios. Contáctanos y te ayudamos a configurarlo.",
+  "notFoundCta": "Contactar ahora",
+  "sectors": {
+    "salones-belleza": { "title": "Salones de Belleza", "description": "Gestiona citas de corte, color, tratamientos y más. Recordatorios automáticos para reducir ausencias.", "keywords": ["manicure", "pedicure", "tintes", "tratamientos capilares"] },
+    "barberias": { "title": "Barberías", "description": "Agenda de cortes, afeitados y servicios express. Controla tu flujo de clientes sin complicaciones.", "keywords": ["cortes de cabello", "barba", "afeitado", "grooming"] },
+    "spas": { "title": "Spas y Bienestar", "description": "Reservas para masajes, faciales, terapias. Gestión de terapeutas y salas en tiempo real.", "keywords": ["masajes", "faciales", "hidroterapia", "relajación"] },
+    "consultorios": { "title": "Consultorios y Clínicas", "description": "Sistema médico de citas con recordatorios. Perfecto para consultas, terapias y atención profesional.", "keywords": ["consultas médicas", "terapias", "odontología", "psicología"] },
+    "lash-brow": { "title": "Lash & Brow Studios", "description": "Agenda para extensiones de pestañas, microblading, cejas y servicios de belleza especializados.", "keywords": ["pestañas", "microblading", "cejas", "lash lift"] },
+    "gimnasios": { "title": "Gimnasios y Fitness", "description": "Reserva de clases grupales, entrenamiento personal y gestión de horarios para entrenadores.", "keywords": ["fitness", "crossfit", "yoga", "pilates"] },
+    "odontologia": { "title": "Odontología", "description": "Sistema de citas para dentistas. Control de tratamientos, recordatorios y seguimiento de pacientes.", "keywords": ["ortodoncia", "limpieza dental", "cirugía", "tratamientos"] },
+    "psicologia": { "title": "Psicología y Terapia", "description": "Agenda confidencial para psicólogos, terapeutas y profesionales de salud mental.", "keywords": ["terapia", "consejería", "salud mental", "sesiones"] },
+    "nutricion": { "title": "Nutricionistas", "description": "Reserva de consultas nutricionales, seguimiento de planes alimenticios y control de pacientes.", "keywords": ["nutrición", "dietas", "planes alimenticios", "consultas"] },
+    "veterinarias": { "title": "Veterinarias", "description": "Agenda de citas para mascotas, grooming, vacunas y consultas veterinarias.", "keywords": ["mascotas", "grooming", "vacunas", "veterinaria"] },
+    "danza-yoga": { "title": "Escuelas de Danza y Yoga", "description": "Reserva de clases, talleres y eventos. Gestión de instructores y alumnos.", "keywords": ["danza", "yoga", "pilates", "clases grupales"] },
+    "musica": { "title": "Profesores de Música", "description": "Agenda de clases particulares, ensayos y talleres musicales.", "keywords": ["guitarra", "piano", "canto", "clases particulares"] },
+    "tutorias": { "title": "Tutores y Academias", "description": "Sistema de reservas para clases particulares, refuerzos académicos y tutorías.", "keywords": ["matemáticas", "idiomas", "tutorías", "educación"] },
+    "fotografia": { "title": "Fotógrafos y Estudios", "description": "Reserva de sesiones fotográficas, eventos y alquiler de estudio.", "keywords": ["fotografía", "sesiones", "eventos", "estudio"] },
+    "abogados": { "title": "Abogados y Asesorías", "description": "Agenda de consultas legales, reuniones y gestión de expedientes.", "keywords": ["legal", "consultas", "asesoría", "derecho"] },
+    "estetica-medica": { "title": "Centros de Estética Médica", "description": "Agenda para tratamientos estéticos, láser, botox y procedimientos médicos.", "keywords": ["botox", "láser", "tratamientos", "estética"] }
+  }
+}

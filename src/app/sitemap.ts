@@ -261,6 +261,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.3,
     },
+    {
+      url: `${base}${getPathname({ locale: "en", href: "/sectores" })}`,
+      lastModified: "2026-06-10",
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${base}${getPathname({ locale: "en", href: "/blog" })}`,
+      lastModified: blogIndexLastModified,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
     ...blogPosts,
   ];
 }

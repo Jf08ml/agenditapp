@@ -128,7 +128,7 @@ export default function Sectores() {
 
         {/* CTA ver todos */}
         <div className="mt-10 text-center">
-          <Link
+          <IntlLink
             href="/sectores"
             className="inline-flex items-center gap-2 text-brand hover:text-brand-hover font-medium text-sm transition-colors duration-200"
           >
@@ -136,7 +136,7 @@ export default function Sectores() {
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-          </Link>
+          </IntlLink>
         </div>
 
         {/* Disponible en */}
