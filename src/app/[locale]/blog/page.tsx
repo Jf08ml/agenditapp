@@ -7,7 +7,7 @@ import { Link as IntlLink } from "@/i18n/navigation";
 import BlogList from "./BlogList";
 import { withEnglish } from "@/lib/hreflang";
 import { getPathname } from "@/i18n/navigation";
-import type { Locale } from "@/i18n/routing";
+import { ogLocale, ogAlternateLocale, type Locale } from "@/i18n/routing";
 
 export async function generateMetadata({
   params,
@@ -29,6 +29,8 @@ export async function generateMetadata({
       title: t("meta.ogTitle"),
       description: t("meta.ogDescription"),
       url: canonical,
+      locale: ogLocale(locale),
+      alternateLocale: ogAlternateLocale(locale),
     },
   };
 }

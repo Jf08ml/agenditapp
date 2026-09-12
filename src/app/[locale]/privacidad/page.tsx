@@ -4,11 +4,12 @@ import PageHeader from "../../(landing)/components/ui/PageHeader";
 import PageFooter from "../../(landing)/components/ui/PageFooter";
 import { withEnglish } from "@/lib/hreflang";
 import { getPathname } from "@/i18n/navigation";
+import { ogLocale, ogAlternateLocale, type Locale } from "@/i18n/routing";
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: Locale }>;
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Privacidad" });
@@ -20,6 +21,13 @@ export async function generateMetadata({
     alternates: {
       canonical,
       languages: withEnglish(getPathname({ locale: "en", href: "/privacidad" })),
+    },
+    openGraph: {
+      title: t("meta.title"),
+      description: t("meta.description"),
+      url: canonical,
+      locale: ogLocale(locale),
+      alternateLocale: ogAlternateLocale(locale),
     },
     robots: { index: true, follow: true },
   };

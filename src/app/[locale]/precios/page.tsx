@@ -7,7 +7,7 @@ import PageFooter from "../../(landing)/components/ui/PageFooter";
 import Precio from "../../(landing)/sections/Precio";
 import { withEnglish } from "@/lib/hreflang";
 import { getPathname } from "@/i18n/navigation";
-import type { Locale } from "@/i18n/routing";
+import { ogLocale, ogAlternateLocale, type Locale } from "@/i18n/routing";
 
 export async function generateMetadata({
   params,
@@ -30,6 +30,8 @@ export async function generateMetadata({
       description: t("metaDescription"),
       url: canonical,
       images: ["/inicio_page.png"],
+      locale: ogLocale(locale),
+      alternateLocale: ogAlternateLocale(locale),
     },
   };
 }

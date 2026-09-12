@@ -13,13 +13,14 @@ import PageHeader from "../../(landing)/components/ui/PageHeader";
 import PageFooter from "../../(landing)/components/ui/PageFooter";
 import { withEnglish } from "@/lib/hreflang";
 import { getPathname } from "@/i18n/navigation";
+import { ogLocale, ogAlternateLocale, type Locale } from "@/i18n/routing";
 
 type PhosphorIcon = React.ComponentType<{ size?: number; weight?: IconWeight; color?: string }>;
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: Locale }>;
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Funcionalidades" });
@@ -37,6 +38,8 @@ export async function generateMetadata({
       description: t("meta.ogDescription"),
       url: canonical,
       images: ["/inicio_page.png"],
+      locale: ogLocale(locale),
+      alternateLocale: ogAlternateLocale(locale),
     },
   };
 }

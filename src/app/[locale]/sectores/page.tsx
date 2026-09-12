@@ -12,7 +12,7 @@ import PageHeader from "../../(landing)/components/ui/PageHeader";
 import PageFooter from "../../(landing)/components/ui/PageFooter";
 import { withEnglish } from "@/lib/hreflang";
 import { getPathname } from "@/i18n/navigation";
-import type { Locale } from "@/i18n/routing";
+import { ogLocale, ogAlternateLocale, type Locale } from "@/i18n/routing";
 
 type PIEntry = { Icon: React.ComponentType<{ size?: number; weight?: IconWeight; color?: string }>; color: string };
 const SECTOR_ICON_MAP: Record<string, PIEntry> = {
@@ -77,6 +77,8 @@ export async function generateMetadata({
       description: t("meta.ogDescription"),
       url: canonical,
       images: ["/inicio_page.png"],
+      locale: ogLocale(locale),
+      alternateLocale: ogAlternateLocale(locale),
     },
   };
 }

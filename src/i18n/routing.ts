@@ -25,3 +25,19 @@ export const routing = defineRouting({
 });
 
 export type Locale = (typeof routing.locales)[number];
+
+// og:locale / og:locale:alternate para Open Graph — le dice a Facebook/LinkedIn
+// que esta página tiene una versión en el otro idioma, para que muestren el
+// selector de idioma en la vista previa en vez de indexarlas como duplicadas.
+const OG_LOCALES: Record<Locale, string> = {
+  "es-419": "es_CO",
+  en: "en_US",
+};
+
+export function ogLocale(locale: Locale) {
+  return OG_LOCALES[locale];
+}
+
+export function ogAlternateLocale(locale: Locale) {
+  return locale === routing.defaultLocale ? OG_LOCALES.en : OG_LOCALES["es-419"];
+}

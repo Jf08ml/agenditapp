@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { withEnglish } from "@/lib/hreflang";
-import { routing, type Locale } from "@/i18n/routing";
+import { routing, ogLocale, ogAlternateLocale, type Locale } from "@/i18n/routing";
 import Hero from "../(landing)/sections/Hero";
 import ProofBar from "../(landing)/sections/ProofBar";
 import Problem from "../(landing)/sections/Problem";
@@ -58,7 +58,8 @@ export async function generateMetadata({
           alt: t("ogImageAlt"),
         },
       ],
-      locale: locale === routing.defaultLocale ? "es_CO" : "en_US",
+      locale: ogLocale(locale),
+      alternateLocale: ogAlternateLocale(locale),
       type: "website",
     },
     twitter: {
