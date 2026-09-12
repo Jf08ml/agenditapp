@@ -15,11 +15,13 @@ import Precio from "./Precio.json";
 import PreciosPage from "./PreciosPage.json";
 import Privacidad from "./Privacidad.json";
 import Problem from "./Problem.json";
+import PromoPopup from "./PromoPopup.json";
 import ProofBar from "./ProofBar.json";
 import QueObtendras from "./QueObtendras.json";
 import Reserva from "./Reserva.json";
 import ROICalculator from "./ROICalculator.json";
 import Sectores from "./Sectores.json";
+import SelectorPais from "./SelectorPais.json";
 import Servicios from "./Servicios.json";
 import Software from "./Software.json";
 import Terminos from "./Terminos.json";
@@ -43,11 +45,13 @@ const messages = {
   PreciosPage,
   Privacidad,
   Problem,
+  PromoPopup,
   ProofBar,
   QueObtendras,
   Reserva,
   ROICalculator,
   Sectores,
+  SelectorPais,
   Servicios,
   Software,
   Terminos,

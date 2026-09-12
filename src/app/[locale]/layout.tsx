@@ -122,7 +122,7 @@ export default async function RootLayout({
         />
       </head>
       <body className="font-sans antialiased">
-        <NextIntlClientProvider>
+        <NextIntlClientProvider locale={locale}>
           <Analytics />
           {children}
           <WhatsAppFAB />

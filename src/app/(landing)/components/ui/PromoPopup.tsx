@@ -2,17 +2,12 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { getWhatsappHref } from "../constants";
 
 const STORAGE_KEY = "agp_promo_popup_seen";
 const SHOW_DELAY_MS = 5000;
 const COUNTDOWN_SECONDS = 10 * 60;
-
-const BENEFITS = [
-  "Reservas online 24/7",
-  "Recordatorios automáticos por WhatsApp",
-  "Panel administrativo completo",
-];
 
 function trackPopupEvent(action: string, source: string) {
   if (
@@ -38,6 +33,8 @@ interface PromoPopupProps {
 }
 
 export default function PromoPopup({ source }: PromoPopupProps) {
+  const t = useTranslations("PromoPopup");
+  const benefits = t.raw("benefits") as string[];
   const [open, setOpen] = useState(false);
   const [secondsLeft, setSecondsLeft] = useState(COUNTDOWN_SECONDS);
 
@@ -94,7 +91,7 @@ export default function PromoPopup({ source }: PromoPopupProps) {
           <motion.div
             role="dialog"
             aria-modal="true"
-            aria-label="Oferta especial: 1 mes gratis"
+            aria-label={t("dialogAriaLabel")}
             className="card relative w-[88%] sm:w-full sm:max-w-md overflow-hidden text-center"
             initial={{ opacity: 0, scale: 0.95, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -107,15 +104,15 @@ export default function PromoPopup({ source }: PromoPopupProps) {
               className="flex items-center justify-center gap-2 px-10 py-2.5 text-xs sm:text-sm font-bold text-white"
               style={{ background: "linear-gradient(135deg, var(--warm-deep), var(--danger))" }}
             >
-              <span>⚡ OFERTA FLASH</span>
+              <span>{t("flashBadge")}</span>
               <span className="opacity-60">·</span>
-              <span className="tabular-nums">Termina en {formatCountdown(secondsLeft)}</span>
+              <span className="tabular-nums">{t("timer", { time: formatCountdown(secondsLeft) })}</span>
             </div>
 
             <button
               type="button"
               onClick={close}
-              aria-label="Cerrar"
+              aria-label={t("closeAriaLabel")}
               className="absolute top-1.5 right-1.5 w-7 h-7 flex items-center justify-center rounded-full bg-black/15 text-white hover:bg-black/30 transition-colors"
             >
               ✕
@@ -126,25 +123,24 @@ export default function PromoPopup({ source }: PromoPopupProps) {
                 className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold mb-4"
                 style={{ background: "var(--warm-soft)", color: "var(--warm-deep)" }}
               >
-                🎁 Cupos limitados para nuevos negocios
+                {t("limitedSpots")}
               </div>
 
               <h3 className="text-2xl sm:text-3xl font-semibold text-heading mb-2 leading-tight">
-                Tu primer mes es 100% gratis
+                {t("heading")}
               </h3>
 
               <div className="flex items-center justify-center gap-2 mb-3">
-                <span className="text-sm text-muted line-through">Desde $10 USD/mes</span>
+                <span className="text-sm text-muted line-through">{t("originalPrice")}</span>
                 <span className="text-2xl font-bold text-brand">$0</span>
               </div>
 
               <p className="text-sm text-body mb-5">
-                Activa tu cuenta hoy y empieza a recibir reservas 24/7 sin pagar nada
-                el primer mes. Solo quedan unos pocos cupos disponibles este mes.
+                {t("body")}
               </p>
 
               <ul className="text-left text-sm text-body mb-6 space-y-2 inline-block">
-                {BENEFITS.map((benefit) => (
+                {benefits.map((benefit) => (
                   <li key={benefit} className="flex items-center gap-2">
                     <span className="text-success font-bold">✓</span>
                     {benefit}
@@ -161,11 +157,11 @@ export default function PromoPopup({ source }: PromoPopupProps) {
                 animate={{ scale: [1, 1.03, 1] }}
                 transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
               >
-                Reclamar mi mes gratis por WhatsApp →
+                {t("cta")}
               </motion.a>
 
               <p className="text-xs text-muted mt-4">
-                Sin tarjeta de crédito · Cancela cuando quieras
+                {t("footnote")}
               </p>
             </div>
           </motion.div>

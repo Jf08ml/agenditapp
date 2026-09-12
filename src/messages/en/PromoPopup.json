@@ -1,0 +1,17 @@
+{
+  "dialogAriaLabel": "Special offer: 1 month free",
+  "closeAriaLabel": "Close",
+  "flashBadge": "⚡ FLASH OFFER",
+  "timer": "Ends in {time}",
+  "limitedSpots": "🎁 Limited spots for new businesses",
+  "heading": "Your first month is 100% free",
+  "originalPrice": "From $10 USD/mo",
+  "body": "Activate your account today and start taking bookings 24/7 without paying anything the first month. Only a few spots left this month.",
+  "benefits": [
+    "24/7 online booking",
+    "Automated WhatsApp reminders",
+    "Full admin dashboard"
+  ],
+  "cta": "Claim my free month on WhatsApp →",
+  "footnote": "No credit card required · Cancel anytime"
+}

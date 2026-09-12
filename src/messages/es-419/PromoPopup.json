@@ -1,0 +1,17 @@
+{
+  "dialogAriaLabel": "Oferta especial: 1 mes gratis",
+  "closeAriaLabel": "Cerrar",
+  "flashBadge": "⚡ OFERTA FLASH",
+  "timer": "Termina en {time}",
+  "limitedSpots": "🎁 Cupos limitados para nuevos negocios",
+  "heading": "Tu primer mes es 100% gratis",
+  "originalPrice": "Desde $10 USD/mes",
+  "body": "Activa tu cuenta hoy y empieza a recibir reservas 24/7 sin pagar nada el primer mes. Solo quedan unos pocos cupos disponibles este mes.",
+  "benefits": [
+    "Reservas online 24/7",
+    "Recordatorios automáticos por WhatsApp",
+    "Panel administrativo completo"
+  ],
+  "cta": "Reclamar mi mes gratis por WhatsApp →",
+  "footnote": "Sin tarjeta de crédito · Cancela cuando quieras"
+}

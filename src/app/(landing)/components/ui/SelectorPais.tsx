@@ -9,6 +9,7 @@ import {
 } from "react";
 import { PAISES, type Pais } from "../constants/paises";
 import { Globe } from "@phosphor-icons/react";
+import { useTranslations } from "next-intl";
 
 interface SelectorPaisProps {
   value: string; // ISO code, e.g. "CO"
@@ -16,6 +17,7 @@ interface SelectorPaisProps {
 }
 
 export function SelectorPais({ value, onChange }: SelectorPaisProps) {
+  const t = useTranslations("SelectorPais");
   const seleccionado = value ? (PAISES.find((p) => p.codigo === value) ?? null) : null;
 
   const [busqueda, setBusqueda] = useState("");
@@ -114,7 +116,7 @@ export function SelectorPais({ value, onChange }: SelectorPaisProps) {
         ) : (
           <span className="inline-flex items-center gap-1.5 text-sm text-muted">
             <Globe size={16} weight="duotone" color="#64748B" />
-            País
+            {t("placeholder")}
           </span>
         )}
         <svg
@@ -139,7 +141,7 @@ export function SelectorPais({ value, onChange }: SelectorPaisProps) {
               value={busqueda}
               onChange={(e) => { setBusqueda(e.target.value); }}
               onKeyDown={handleKeyDown}
-              placeholder="Buscar país o código..."
+              placeholder={t("searchPlaceholder")}
               className="w-full rounded-[8px] bg-bg-main border border-brand/15 px-3 py-2 text-sm text-heading placeholder:text-muted focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/15 transition-all"
               autoComplete="off"
               aria-autocomplete="list"
