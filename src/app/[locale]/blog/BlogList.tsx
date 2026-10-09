@@ -9,10 +9,14 @@ const CATEGORY_COLORS: Record<string, string> = {
   "Comparativas": "bg-purple-50 text-purple-700",
   "WhatsApp & Comunicación": "bg-green-50 text-green-700",
   "Guías Prácticas": "bg-amber-50 text-amber-700",
+  "Business Management": "bg-blue-50 text-blue-700",
+  "Comparisons": "bg-purple-50 text-purple-700",
+  "WhatsApp & Communication": "bg-green-50 text-green-700",
+  "Practical Guides": "bg-amber-50 text-amber-700",
 };
 
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("es-CO", {
+function formatDate(iso: string, dateLocale: string) {
+  return new Date(iso).toLocaleDateString(dateLocale, {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -31,10 +35,15 @@ interface BlogListLabels {
 export default function BlogList({
   posts,
   categories,
+  basePath,
+  dateLocale,
   labels,
 }: {
   posts: PostMeta[];
   categories: string[];
+  /** "/blog" o "/en/blog" según el locale activo. */
+  basePath: string;
+  dateLocale: string;
   labels: BlogListLabels;
 }) {
   const [active, setActive] = useState<string>(ALL_SENTINEL);
@@ -77,7 +86,7 @@ export default function BlogList({
               return (
                 <Link
                   key={post.slug}
-                  href={`/blog/${post.slug}`}
+                  href={`${basePath}/${post.slug}`}
                   className={`group bg-bg-card border border-brand/10 rounded-[20px] p-7 hover:border-brand/30 hover:shadow-[0_12px_40px_rgba(29,78,216,0.12)] transition-all flex flex-col gap-4 ${
                     featured ? "lg:col-span-2" : ""
                   }`}
@@ -105,7 +114,7 @@ export default function BlogList({
                   </div>
                   <div className="mt-auto flex items-center justify-between">
                     <div className="flex items-center gap-2 text-xs text-muted">
-                      <span>{formatDate(post.publishedAt)}</span>
+                      <span>{formatDate(post.publishedAt, dateLocale)}</span>
                       {post.author && (
                         <>
                           <span aria-hidden="true">·</span>

@@ -15,5 +15,13 @@
   "allCategory": "Todos",
   "noPostsInCategory": "No hay artículos en esta categoría.",
   "readingTimeSuffix": "de lectura",
-  "readArticle": "Leer artículo"
+  "readArticle": "Leer artículo",
+  "post": {
+    "related": "Artículos relacionados",
+    "backToAll": "Ver todos los artículos",
+    "defaultAuthor": "Equipo AgenditApp",
+    "defaultAuthorTitle": "Especialistas en gestión de negocios de citas",
+    "cta": "Solicitar demo gratis",
+    "blogName": "Blog AgenditApp"
+  }
 }

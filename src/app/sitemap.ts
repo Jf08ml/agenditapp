@@ -8,12 +8,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Keep the blog index "fresh" automatically: use the latest post date.
   const blogIndexLastModified = getLatestPublishedAt() ?? "2026-06-10";
+  const enBlogIndexLastModified = getLatestPublishedAt("en") ?? blogIndexLastModified;
 
   const blogPosts = getAllPosts().map((post) => ({
     url: `${base}/blog/${post.slug}`,
     lastModified: post.publishedAt,
     changeFrequency: "monthly" as const,
     priority: 0.7,
+  }));
+
+  // Artículos traducidos (src/content/blog/en/) — solo los que existen.
+  const enBlogPath = getPathname({ locale: "en", href: "/blog" });
+  const enBlogPosts = getAllPosts("en").map((post) => ({
+    url: `${base}${enBlogPath}/${post.slug}`,
+    lastModified: post.publishedAt,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
   }));
   return [
     {
@@ -268,11 +278,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${base}${getPathname({ locale: "en", href: "/blog" })}`,
-      lastModified: blogIndexLastModified,
+      url: `${base}${enBlogPath}`,
+      lastModified: enBlogIndexLastModified,
       changeFrequency: "weekly",
       priority: 0.7,
     },
     ...blogPosts,
+    ...enBlogPosts,
   ];
 }

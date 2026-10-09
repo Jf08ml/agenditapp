@@ -42,8 +42,8 @@ export default async function BlogPage({
 }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "BlogPage" });
-  const posts = getAllPosts();
-  const categories = getAllCategories();
+  const posts = getAllPosts(locale);
+  const categories = getAllCategories(locale);
 
   return (
     <>
@@ -88,6 +88,8 @@ export default async function BlogPage({
             <BlogList
               posts={posts}
               categories={categories}
+              basePath={getPathname({ locale, href: "/blog" })}
+              dateLocale={locale === "en" ? "en-US" : "es-CO"}
               labels={{
                 allCategory: t("allCategory"),
                 noPostsInCategory: t("noPostsInCategory"),

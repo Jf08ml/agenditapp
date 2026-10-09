@@ -15,5 +15,13 @@
   "allCategory": "All",
   "noPostsInCategory": "No articles in this category yet.",
   "readingTimeSuffix": "read",
-  "readArticle": "Read article"
+  "readArticle": "Read article",
+  "post": {
+    "related": "Related articles",
+    "backToAll": "See all articles",
+    "defaultAuthor": "AgenditApp Team",
+    "defaultAuthorTitle": "Specialists in appointment-based business management",
+    "cta": "Request a free demo",
+    "blogName": "AgenditApp Blog"
+  }
 }

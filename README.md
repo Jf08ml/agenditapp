@@ -55,7 +55,9 @@ excerpt: "Resumen de 1–2 frases que aparece en la card del listado /blog."
 | `WhatsApp & Comunicación` | Verde |
 | `Guías Prácticas` | Ámbar |
 
-Para añadir una categoría nueva, agrégala en el objeto `CATEGORY_COLORS` de [src/app/blog/page.tsx](src/app/blog/page.tsx).
+En inglés las categorías equivalentes son `Business Management`, `Comparisons`, `WhatsApp & Communication` y `Practical Guides`.
+
+Para añadir una categoría nueva, agrégala en el objeto `CATEGORY_COLORS` de [src/app/[locale]/blog/BlogList.tsx](src/app/[locale]/blog/BlogList.tsx).
 
 ## 3. Contenido en Markdown
 
@@ -115,6 +117,25 @@ Las tablas Markdown estándar se renderizan con el estilo del sistema:
 - `/sitemap.xml` — indexado dinámicamente sin cambios adicionales
 
 No necesitas tocar ningún otro archivo.
+
+## 6b. Traducir un artículo al inglés
+
+Las traducciones viven en `src/content/blog/en/`, con su propio slug en inglés:
+
+```
+src/content/blog/en/salon-scheduling-software-cost.mdx
+→ agenditapp.com/en/blog/salon-scheduling-software-cost
+```
+
+El frontmatter es el mismo, con todo traducido (incluida la `category`, ver equivalencias arriba) y un campo extra que apunta al slug original en español:
+
+```yaml
+translationOf: "cuanto-cuesta-software-agendamiento-salon"
+```
+
+Con eso, ambas versiones se enlazan entre sí con `hreflang`, el artículo aparece en `/en/blog` y en el sitemap. Los artículos sin traducción no existen en `/en/blog/*` (devuelven 404).
+
+En el contenido en inglés, enlaza a `/en/blog/<slug-en-inglés>`, `/en/pricing`, `/en/features` o `/en/industries`. Las páginas de sector (`/sectores/*`) y `/vs/*` solo existen en español. Las tablas `<CompareApps />`, `<CompareConsultorios />`, `<CompareWhatsApp />` y `<ComparePricing />` se renderizan solas en el idioma del artículo (datos en `src/app/[locale]/blog/[slug]/compareTables.ts`).
 
 ## 7. Buenas prácticas SEO
 
