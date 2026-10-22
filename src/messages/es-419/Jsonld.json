@@ -6,11 +6,11 @@
     "catalogName": "Planes de AgenditApp — Software de Agendamiento Online",
     "basico": {
       "name": "Plan Básico",
-      "description": "Para organizar tu agenda y empezar a recibir reservas online. Incluye reservas y citas ilimitadas 24/7, panel administrativo completo, gestión de servicios, empleados y clientes."
+      "description": "Para quien trabaja solo y está empezando. Incluye 1 profesional, reservas online 24/7, servicios y clientes ilimitados, y WhatsApp automático (confirmación y 1 recordatorio) para hasta 50 citas al mes."
     },
     "esencial": {
       "name": "Plan Esencial",
-      "description": "Automatiza WhatsApp y reduce ausencias con recordatorios. Incluye todo lo del plan Básico más recordatorios automáticos por WhatsApp desde tu número Business."
+      "description": "WhatsApp sin tope y menos ausencias para negocios en marcha o con equipo. Incluye todo lo del plan Básico más profesionales ilimitados y recordatorios automáticos por WhatsApp sin tope de citas."
     },
     "marca": {
       "name": "Plan Marca Propia",
@@ -43,7 +43,7 @@
   "faq": [
     {
       "question": "¿Cuánto cuesta AgenditApp?",
-      "answer": "Los planes van desde $10 USD/mes (Básico) hasta $30 USD/mes (Marca Propia). Todos son mes a mes, sin contratos ni permanencia. Incluyen reservas ilimitadas y soporte por WhatsApp."
+      "answer": "Los planes van desde $12 USD/mes (Básico) hasta $30 USD/mes (Marca Propia). Todos son mes a mes, sin contratos ni permanencia. Incluyen reservas ilimitadas y soporte por WhatsApp."
     },
     {
       "question": "¿Tiene permanencia o cláusulas?",

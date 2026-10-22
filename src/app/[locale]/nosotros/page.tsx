@@ -285,7 +285,7 @@ export default function NosotrosPage() {
               <p>
                 Construimos AgenditApp desde cero para este contexto:
                 recordatorios que salen del número del propio negocio, planes
-                desde $10 USD al mes, y una plataforma que cualquier dueño de
+                desde $12 USD al mes, y una plataforma que cualquier dueño de
                 salón puede usar desde el primer día sin necesitar un técnico.
               </p>
               <p>

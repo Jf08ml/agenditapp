@@ -8,12 +8,12 @@ import { routing } from "@/i18n/routing";
 export const metadata: Metadata = {
   title: "Software para Lash & Brow Studios | Citas + WhatsApp",
   description:
-    "Sistema de reservas para lash & brow studios: extensiones, microblading, lash lift. WhatsApp desde tu número, ausencias -70%. Desde $10/mes.",
+    "Sistema de reservas para lash & brow studios: extensiones, microblading, lash lift. WhatsApp desde tu número, ausencias -70%. Desde $12/mes.",
   alternates: { canonical: "https://agenditapp.com/sectores/lash-brow" },
   openGraph: {
     title: "Software para Lash & Brow Studios | Citas + WhatsApp",
     description:
-      "Sistema de reservas para lash & brow studios: extensiones, microblading, lash lift. WhatsApp desde tu número, ausencias -70%. Desde $10/mes.",
+      "Sistema de reservas para lash & brow studios: extensiones, microblading, lash lift. WhatsApp desde tu número, ausencias -70%. Desde $12/mes.",
     url: "https://agenditapp.com/sectores/lash-brow",
     images: [{ url: "/og?title=Lash%20%26%20Brow%20Studios&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Lash & Brow Studios — AgenditApp" }],
   },

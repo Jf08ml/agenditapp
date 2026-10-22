@@ -69,7 +69,7 @@ export async function getJsonldSoftware(locale: Locale) {
   featureList: t.raw("featureList") as string[],
   offers: {
     "@type": "AggregateOffer",
-    lowPrice: "10",
+    lowPrice: "12",
     highPrice: "30",
     priceCurrency: "USD",
     offerCount: "3",
@@ -133,9 +133,9 @@ export async function getJsonldServices(locale: Locale) {
         "@type": "Offer",
         name: t("services.basico.name"),
         description: t("services.basico.description"),
-        price: "10",
+        price: "12",
         priceCurrency: "USD",
-        priceSpecification: { "@type": "UnitPriceSpecification", price: "10", priceCurrency: "USD", unitText },
+        priceSpecification: { "@type": "UnitPriceSpecification", price: "12", priceCurrency: "USD", unitText },
         itemOffered: { "@type": "Service", name: `AgenditApp ${t("services.basico.name")}` },
       },
       {

@@ -8,12 +8,12 @@ import { routing } from "@/i18n/routing";
 export const metadata: Metadata = {
   title: "Agenda Online para Psicólogos | Sesiones + Privacidad Total",
   description:
-    "Agenda online para psicólogos: sesiones presenciales/online, recordatorios WhatsApp discretos, control de pagos. Total privacidad. Desde $10/mes.",
+    "Agenda online para psicólogos: sesiones presenciales/online, recordatorios WhatsApp discretos, control de pagos. Total privacidad. Desde $12/mes.",
   alternates: { canonical: "https://agenditapp.com/sectores/psicologia" },
   openGraph: {
     title: "Agenda Online para Psicólogos | Sesiones + Privacidad Total",
     description:
-      "Agenda online para psicólogos: sesiones presenciales/online, recordatorios WhatsApp discretos, control de pagos. Total privacidad. Desde $10/mes.",
+      "Agenda online para psicólogos: sesiones presenciales/online, recordatorios WhatsApp discretos, control de pagos. Total privacidad. Desde $12/mes.",
     url: "https://agenditapp.com/sectores/psicologia",
     images: [{ url: "/og?title=Psic%C3%B3logos%20y%20Terapeutas&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Psicólogos y Terapeutas — AgenditApp" }],
   },
@@ -43,7 +43,7 @@ const FAQS = [
   { q: "¿Puedo gestionar sesiones presenciales y online en el mismo sistema?", a: "Sí. Puedes crear servicios diferenciados (sesión presencial / sesión virtual) con sus respectivos horarios y duración. Cada uno se agenda de forma independiente." },
   { q: "¿Los pacientes pueden cancelar sin avisarme directamente?", a: "Sí. Desde el recordatorio de WhatsApp, el paciente puede cancelar con anticipación haciendo clic en un enlace. Tú recibes la notificación de inmediato y puedes ofrecer ese espacio a otro paciente." },
   { q: "¿Se puede configurar el tiempo entre sesiones para descanso o notas clínicas?", a: "Sí. Puedes agregar tiempo de buffer entre citas al configurar cada servicio, dejando 10 o 15 minutos libres entre pacientes para notas o transición." },
-  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes inician desde $10 USD al mes, sin permanencia. El plan Esencial ($20 USD) incluye recordatorios automáticos por WhatsApp desde tu número de consultorio." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes inician desde $12 USD al mes, sin permanencia, con recordatorios automáticos por WhatsApp desde tu número de consultorio (hasta 50 citas al mes). El plan Esencial ($20 USD) suma profesionales ilimitados y WhatsApp sin tope." },
 ];
 
 const INTRO = (

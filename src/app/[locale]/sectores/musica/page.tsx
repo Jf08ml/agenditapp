@@ -8,12 +8,12 @@ import { routing } from "@/i18n/routing";
 export const metadata: Metadata = {
   title: "Software para Profesores de Música | Clases + WhatsApp 24/7",
   description:
-    "Agenda para profesores de música: clases de guitarra, piano, canto y más. WhatsApp automático para alumnos. Sin permanencia. Desde $10/mes.",
+    "Agenda para profesores de música: clases de guitarra, piano, canto y más. WhatsApp automático para alumnos. Sin permanencia. Desde $12/mes.",
   alternates: { canonical: "https://agenditapp.com/sectores/musica" },
   openGraph: {
     title: "Software para Profesores de Música | Clases + WhatsApp 24/7",
     description:
-      "Agenda para profesores de música: clases de guitarra, piano, canto y más. WhatsApp automático para alumnos. Sin permanencia. Desde $10/mes.",
+      "Agenda para profesores de música: clases de guitarra, piano, canto y más. WhatsApp automático para alumnos. Sin permanencia. Desde $12/mes.",
     url: "https://agenditapp.com/sectores/musica",
     images: [{ url: "/og?title=Profesores%20de%20M%C3%BAsica&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Profesores de Música — AgenditApp" }],
   },
@@ -43,7 +43,7 @@ const FAQS = [
   { q: "¿Se pueden agendar clases recurrentes semanales automáticamente?", a: "Sí. Puedes configurar clases regulares con horario fijo para cada alumno, y el sistema las gestiona semana a semana sin que tengas que reagendar manualmente." },
   { q: "¿Funciona para clases individuales y talleres grupales al mismo tiempo?", a: "Perfectamente. Tienes ambas modalidades: clases individuales con cupo único y talleres o grupos con cupos definidos, todo en la misma plataforma." },
   { q: "¿Los alumnos pueden reservar su primera clase de prueba online?", a: "Sí. Puedes crear un servicio de 'Clase de prueba' con precio especial o gratuito, y los interesados lo reservan directamente desde tu página web." },
-  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes van desde $10 USD al mes, sin permanencia. Cancelas cuando quieras. Incluye reservas ilimitadas y panel administrativo completo." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes van desde $12 USD al mes, sin permanencia. Cancelas cuando quieras. Incluye reservas ilimitadas y panel administrativo completo." },
 ];
 
 const INTRO = (

@@ -25,7 +25,7 @@ const competitors = {
       "Sin permanencia: cancela cuando quieras, sin penalización.",
     ],
     comparison: [
-      { feature: "Precio base", agendit: "Desde $10 USD/mes", competitor: "Gratis con comisiones" },
+      { feature: "Precio base", agendit: "Desde $12 USD/mes", competitor: "Gratis con comisiones" },
       { feature: "Comisión por reserva online", agendit: "0% — sin comisiones", competitor: "Hasta 20% por reserva" },
       { feature: "WhatsApp desde tu número", agendit: "✅ Plan Esencial+", competitor: "❌ No disponible" },
       { feature: "Recordatorios automáticos", agendit: "✅ Configurables", competitor: "✅ Disponible" },
@@ -60,13 +60,13 @@ const competitors = {
     intro: `AgendaPro es una plataforma de agendamiento latinoamericana con varios años en el mercado. Tiene una propuesta sólida para negocios medianos, pero su estructura de precios y la curva de aprendizaje pueden ser una barrera para negocios pequeños e independientes. Aquí analizamos en detalle cuándo tiene más sentido cada opción.`,
     pain: "AgendaPro está bien posicionado para negocios con más de 5 empleados y múltiples sedes. Para una barbería independiente, un salón familiar o un consultorio de un solo profesional, el costo de los planes intermedios de AgendaPro suele exceder los $40–80 USD/mes por funcionalidades que quizás no necesitas.",
     whySwitch: [
-      "AgenditApp empieza desde $10/mes y tiene un plan gratuito permanente — ideal para probar sin compromiso.",
+      "AgenditApp empieza desde $12/mes y tiene un plan gratuito permanente — ideal para probar sin compromiso.",
       "La integración de WhatsApp Business es nativa desde el plan Esencial: sin configuraciones complejas ni integraciones de terceros.",
       "La configuración inicial está lista en menos de 30 minutos con soporte directo por WhatsApp.",
       "Interfaz pensada para negocios unipersonales y equipos pequeños — sin menús innecesarios.",
     ],
     comparison: [
-      { feature: "Precio inicial", agendit: "$0 (plan gratuito) / $10 USD", competitor: "Desde ~$30–40 USD/mes" },
+      { feature: "Precio inicial", agendit: "$0 (plan gratuito) / $12 USD", competitor: "Desde ~$30–40 USD/mes" },
       { feature: "WhatsApp nativo desde tu número", agendit: "✅ Plan Esencial ($20)", competitor: "⚠️ Vía integración adicional" },
       { feature: "Recordatorios automáticos", agendit: "✅ 1–2 configurables", competitor: "✅ Disponible" },
       { feature: "Plan gratuito permanente", agendit: "✅ 1 profesional, 5 servicios", competitor: "❌ Solo trial" },
@@ -103,12 +103,12 @@ const competitors = {
     whySwitch: [
       "AgenditApp te da control total de tu página de reservas con tu marca y dominio — no un perfil dentro de un marketplace.",
       "WhatsApp nativo desde tu número: tus clientes reciben mensajes de tu negocio, no de Booksy.",
-      "Precio más accesible para el mercado latinoamericano: desde $10/mes sin comisiones.",
+      "Precio más accesible para el mercado latinoamericano: desde $12/mes sin comisiones.",
       "Sin dependencia de un ecosistema externo — tus clientes siempre son tuyos.",
     ],
     comparison: [
       { feature: "Modelo de negocio", agendit: "SaaS con suscripción fija", competitor: "Marketplace + suscripción" },
-      { feature: "Precio base", agendit: "Desde $10 USD/mes", competitor: "Desde ~$30–50 USD/mes" },
+      { feature: "Precio base", agendit: "Desde $12 USD/mes", competitor: "Desde ~$30–50 USD/mes" },
       { feature: "WhatsApp desde tu número", agendit: "✅ Plan Esencial+", competitor: "❌ No disponible" },
       { feature: "Dominio y marca propios", agendit: "✅ Plan Marca Propia", competitor: "⚠️ Perfil en Booksy" },
       { feature: "Descubrimiento en marketplace", agendit: "❌ No aplica", competitor: "✅ Visibilidad en Booksy" },
@@ -148,7 +148,7 @@ const competitors = {
       "Plan gratuito permanente para empezar sin riesgo.",
     ],
     comparison: [
-      { feature: "Precio base", agendit: "$0 gratuito / $10 USD", competitor: "Desde ~$30+ USD/mes" },
+      { feature: "Precio base", agendit: "$0 gratuito / $12 USD", competitor: "Desde ~$30+ USD/mes" },
       { feature: "WhatsApp desde tu número", agendit: "✅ Plan Esencial+", competitor: "⚠️ Integración adicional" },
       { feature: "Punto de venta (POS)", agendit: "❌ No incluido", competitor: "✅ Incluido" },
       { feature: "Gestión de inventario", agendit: "❌ No incluido", competitor: "✅ Incluido" },

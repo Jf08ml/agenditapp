@@ -80,15 +80,15 @@ const WHATSAPP_FEATURES = [
 const PLANS = [
   {
     name: "Básico",
-    price: "€9",
-    desc: "Agenda online, gestión de servicios y clientes.",
+    price: "€11",
+    desc: "Agenda online y WhatsApp automático para 1 profesional (hasta 50 citas al mes).",
     plan: "basico",
     featured: false,
   },
   {
     name: "Esencial",
     price: "€19",
-    desc: "Todo lo anterior + WhatsApp automático y recordatorios.",
+    desc: "Todo lo anterior + profesionales ilimitados y WhatsApp sin tope.",
     plan: "esencial",
     featured: true,
   },

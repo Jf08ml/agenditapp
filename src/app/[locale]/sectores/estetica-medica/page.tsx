@@ -8,12 +8,12 @@ import { routing } from "@/i18n/routing";
 export const metadata: Metadata = {
   title: "Software para Estética Médica | Citas Online + WhatsApp",
   description:
-    "Agenda online para centros de estética médica: botox, láser, rellenos. Recordatorios WhatsApp con instrucciones previas. Sin permanencia. Desde $10/mes.",
+    "Agenda online para centros de estética médica: botox, láser, rellenos. Recordatorios WhatsApp con instrucciones previas. Sin permanencia. Desde $12/mes.",
   alternates: { canonical: "https://agenditapp.com/sectores/estetica-medica" },
   openGraph: {
     title: "Software para Estética Médica | Citas Online + WhatsApp",
     description:
-      "Agenda online para centros de estética médica: botox, láser, rellenos. Recordatorios WhatsApp con instrucciones previas. Sin permanencia. Desde $10/mes.",
+      "Agenda online para centros de estética médica: botox, láser, rellenos. Recordatorios WhatsApp con instrucciones previas. Sin permanencia. Desde $12/mes.",
     url: "https://agenditapp.com/sectores/estetica-medica",
     images: [{ url: "/og?title=Est%C3%A9tica%20M%C3%A9dica&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Estética Médica — AgenditApp" }],
   },
@@ -43,7 +43,7 @@ const FAQS = [
   { q: "¿Puedo incluir instrucciones pre y post procedimiento en los recordatorios?", a: "Sí. Los mensajes de WhatsApp son completamente personalizables. Puedes indicar: 'No uses maquillaje el día del procedimiento' o 'Evita el sol por 48 horas' según el tratamiento." },
   { q: "¿Funciona para procedimientos de larga duración como aplicaciones de láser?", a: "Perfectamente. Cada servicio tiene su propia duración configurada, desde 15 minutos hasta varias horas. El sistema bloquea el tiempo necesario automáticamente." },
   { q: "¿Puedo gestionar múltiples médicos o especialistas en el mismo centro?", a: "Sí. Puedes crear un perfil por profesional, asignarles procedimientos específicos y gestionar la disponibilidad de cada uno de forma independiente." },
-  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes comienzan desde $10 USD al mes, sin permanencia. El plan Esencial ($20 USD/mes) incluye recordatorios automáticos por WhatsApp desde el número de tu centro." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes comienzan desde $12 USD al mes, sin permanencia, con recordatorios automáticos por WhatsApp desde el número de tu centro (hasta 50 citas al mes). El plan Esencial ($20 USD/mes) suma profesionales ilimitados y WhatsApp sin tope." },
 ];
 
 const INTRO = (

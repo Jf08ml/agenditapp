@@ -58,11 +58,12 @@
     "basico": {
       "name": "Basic",
       "badge": "Starter",
-      "tagline": "Organize your calendar and start taking bookings online.",
+      "tagline": "For solo professionals getting started: online booking and automated WhatsApp.",
       "highlights": [
-        "Unlimited 24/7 bookings and appointments",
-        "Full admin dashboard",
-        "Manage services, staff, and clients",
+        "1 staff member · unlimited services",
+        "24/7 online booking",
+        "WhatsApp from your number: confirmation and 1 reminder",
+        "Up to 50 appointments a month with WhatsApp",
         "your-business.agenditapp.com subdomain"
       ],
       "ctaLabel": "Start with Basic"
@@ -70,10 +71,11 @@
     "esencial": {
       "name": "Essential",
       "badge": "Most popular",
-      "tagline": "Automate WhatsApp and cut no-shows with reminders.",
+      "tagline": "For growing businesses and teams: unlimited WhatsApp and fewer no-shows.",
       "highlights": [
         "Everything in Basic",
-        "WhatsApp reminders from your own Business number",
+        "Unlimited staff",
+        "WhatsApp with no appointment cap",
         "1 configurable automated reminder",
         "One-tap confirm or cancel link for clients"
       ],
@@ -103,7 +105,9 @@
       "Business analytics + per-staff commissions / payroll",
       "Loyalty program to retain clients",
       "Custom branding (logo, name, and colors)",
-      "Per-staff schedules and availability blocking",
+      "Configurable booking confirmation message",
+      "Fully editable WhatsApp messages",
+      "Schedules and availability blocking",
       "Simple welcome landing page",
       "Accept card payments for bookings, or upload a bank transfer receipt",
       "Online store with supply and product inventory"
@@ -136,7 +140,7 @@
       "rows": [
         { "label": "Bookings and appointments (24/7)", "values": { "gratuito": true, "basico": true, "esencial": true, "marca": true } },
         { "label": "Admin dashboard and visual calendar", "values": { "gratuito": true, "basico": true, "esencial": true, "marca": true } },
-        { "label": "Services and staff", "values": { "gratuito": "1 staff · 5 services", "basico": true, "esencial": true, "marca": true } },
+        { "label": "Services and staff", "values": { "gratuito": "1 staff · 5 services", "basico": "1 staff · unlimited services", "esencial": true, "marca": true } },
         { "label": "Business analytics", "values": { "gratuito": "Basic", "basico": true, "esencial": true, "marca": true } },
         { "label": "Loyalty + custom branding", "values": { "gratuito": false, "basico": true, "esencial": true, "marca": true } }
       ]
@@ -152,11 +156,12 @@
     {
       "group": "WhatsApp automation",
       "rows": [
-        { "label": "WhatsApp from your own Business number", "hint": "Messages sent from your own number", "values": { "gratuito": false, "basico": false, "esencial": true, "marca": true } },
-        { "label": "Configurable booking message", "values": { "gratuito": false, "basico": false, "esencial": true, "marca": true } },
-        { "label": "Automated reminders", "values": { "gratuito": false, "basico": false, "esencial": "1 reminder", "marca": "2 reminders" } },
-        { "label": "Editable messages", "values": { "gratuito": false, "basico": false, "esencial": true, "marca": true } },
-        { "label": "Confirm / cancel link", "hint": "Clients confirm or cancel right from WhatsApp", "values": { "gratuito": false, "basico": false, "esencial": true, "marca": true } },
+        { "label": "WhatsApp from your own Business number", "hint": "Messages sent from your own number", "values": { "gratuito": false, "basico": true, "esencial": true, "marca": true } },
+        { "label": "Configurable booking message", "values": { "gratuito": false, "basico": true, "esencial": true, "marca": true } },
+        { "label": "Automated reminders", "values": { "gratuito": false, "basico": "1 reminder", "esencial": "1 reminder", "marca": "2 reminders" } },
+        { "label": "Appointments with WhatsApp per month", "hint": "A visit with several services counts as one", "values": { "gratuito": false, "basico": "Up to 50", "esencial": "No cap", "marca": "No cap" } },
+        { "label": "Editable messages", "values": { "gratuito": false, "basico": true, "esencial": true, "marca": true } },
+        { "label": "Confirm / cancel link", "hint": "Clients confirm or cancel right from WhatsApp", "values": { "gratuito": false, "basico": true, "esencial": true, "marca": true } },
         { "label": "Bulk WhatsApp campaigns", "values": { "gratuito": false, "basico": false, "esencial": false, "marca": true } }
       ]
     },

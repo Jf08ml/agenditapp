@@ -56,7 +56,7 @@ const BENEFITS: Benefit[] = [
 const FAQ = [
   {
     q: "¿Cuánto cuesta?",
-    a: "Empiezas gratis con 7 días de acceso completo. Después puedes quedarte en el plan gratuito para siempre o elegir un plan desde $10 USD al mes — menos de lo que te cuesta una sola cita a la que el cliente no llegó. Sin permanencia.",
+    a: "Empiezas gratis con 7 días de acceso completo. Después puedes quedarte en el plan gratuito para siempre o elegir un plan desde $12 USD al mes — menos de lo que te cuesta una sola cita a la que el cliente no llegó. Sin permanencia.",
   },
   {
     q: "¿Los recordatorios salen desde mi número?",

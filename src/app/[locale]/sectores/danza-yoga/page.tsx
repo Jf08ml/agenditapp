@@ -8,12 +8,12 @@ import { routing } from "@/i18n/routing";
 export const metadata: Metadata = {
   title: "Software para Escuelas de Danza y Yoga | Clases + WhatsApp",
   description:
-    "Agendamiento para escuelas de danza, yoga y pilates: clases con cupos, gestión de instructores, recordatorios WhatsApp. Reservas 24/7. Desde $10/mes.",
+    "Agendamiento para escuelas de danza, yoga y pilates: clases con cupos, gestión de instructores, recordatorios WhatsApp. Reservas 24/7. Desde $12/mes.",
   alternates: { canonical: "https://agenditapp.com/sectores/danza-yoga" },
   openGraph: {
     title: "Software para Escuelas de Danza y Yoga | Clases + WhatsApp",
     description:
-      "Agendamiento para escuelas de danza, yoga y pilates: clases con cupos, gestión de instructores, recordatorios WhatsApp. Reservas 24/7. Desde $10/mes.",
+      "Agendamiento para escuelas de danza, yoga y pilates: clases con cupos, gestión de instructores, recordatorios WhatsApp. Reservas 24/7. Desde $12/mes.",
     url: "https://agenditapp.com/sectores/danza-yoga",
     images: [{ url: "/og?title=Danza%20y%20Yoga&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Escuelas de Danza y Yoga — AgenditApp" }],
   },

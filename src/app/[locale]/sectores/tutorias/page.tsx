@@ -8,12 +8,12 @@ import { routing } from "@/i18n/routing";
 export const metadata: Metadata = {
   title: "Software para Tutores y Academias | Clases + WhatsApp 24/7",
   description:
-    "Agendamiento para tutores y academias: presencial y virtual, recordatorios WhatsApp para padres y alumnos. Sin permanencia. Desde $10/mes.",
+    "Agendamiento para tutores y academias: presencial y virtual, recordatorios WhatsApp para padres y alumnos. Sin permanencia. Desde $12/mes.",
   alternates: { canonical: "https://agenditapp.com/sectores/tutorias" },
   openGraph: {
     title: "Software para Tutores y Academias | Clases + WhatsApp 24/7",
     description:
-      "Agendamiento para tutores y academias: presencial y virtual, recordatorios WhatsApp para padres y alumnos. Sin permanencia. Desde $10/mes.",
+      "Agendamiento para tutores y academias: presencial y virtual, recordatorios WhatsApp para padres y alumnos. Sin permanencia. Desde $12/mes.",
     url: "https://agenditapp.com/sectores/tutorias",
     images: [{ url: "/og?title=Tutores%20y%20Academias&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Tutores y Academias — AgenditApp" }],
   },
@@ -43,7 +43,7 @@ const FAQS = [
   { q: "¿Se pueden agendar clases recurrentes semanales sin reagendar cada vez?", a: "Sí. Configuras clases con horario fijo para cada alumno (por ejemplo, martes y jueves a las 4pm) y el sistema las gestiona automáticamente semana a semana." },
   { q: "¿Los padres y alumnos reciben recordatorios automáticos antes de cada clase?", a: "Sí. El recordatorio llega por WhatsApp al número que registran al reservar. Puedes configurarlo para que llegue 24h antes o en el horario que prefieras." },
   { q: "¿Funciona para clases presenciales y virtuales al mismo tiempo?", a: "Perfectamente. Puedes crear servicios diferenciados: 'Clase presencial' y 'Clase online', cada uno con su propio precio y duración." },
-  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes comienzan desde $10 USD al mes, sin permanencia. Puedes cancelar cuando quieras. Incluye reservas ilimitadas y panel administrativo completo." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes comienzan desde $12 USD al mes, sin permanencia. Puedes cancelar cuando quieras. Incluye reservas ilimitadas y panel administrativo completo." },
 ];
 
 const INTRO = (

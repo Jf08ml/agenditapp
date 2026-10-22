@@ -69,7 +69,7 @@ export default async function PreciosPage({
       {
         "@type": "Offer",
         name: tJsonld("services.basico.name"),
-        price: "10",
+        price: "12",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",

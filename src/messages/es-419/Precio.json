@@ -58,11 +58,12 @@
     "basico": {
       "name": "Básico",
       "badge": "Starter",
-      "tagline": "Para organizar tu agenda y empezar a recibir reservas online.",
+      "tagline": "Para quien trabaja solo y está empezando: agenda online y WhatsApp automático.",
       "highlights": [
-        "Reservas y citas ilimitadas 24/7",
-        "Panel administrativo completo",
-        "Gestión de servicios, empleados y clientes",
+        "1 profesional · servicios ilimitados",
+        "Reservas online 24/7",
+        "WhatsApp desde tu número: confirmación y 1 recordatorio",
+        "Hasta 50 citas al mes con WhatsApp",
         "Subdominio tu-negocio.agenditapp.com"
       ],
       "ctaLabel": "Empezar con el Básico"
@@ -70,10 +71,11 @@
     "esencial": {
       "name": "Esencial",
       "badge": "Más elegido",
-      "tagline": "Automatiza WhatsApp y reduce ausencias con recordatorios.",
+      "tagline": "Para negocios en marcha o con equipo: WhatsApp sin tope y menos ausencias.",
       "highlights": [
         "Todo lo del plan Básico",
-        "WhatsApp desde tu número Business",
+        "Profesionales ilimitados",
+        "WhatsApp sin tope de citas",
         "1 recordatorio automático configurable",
         "Enlace para confirmar o cancelar citas"
       ],
@@ -103,7 +105,9 @@
       "Analíticas de negocio + comisiones / nómina por empleado",
       "Sistema de fidelidad para retener clientes",
       "Branding personalizado (logo, nombre y colores)",
-      "Horarios por empleado y bloqueo de disponibilidad",
+      "Mensaje de agendamiento configurable",
+      "Mensajes de WhatsApp editables a tu gusto",
+      "Bloqueo de disponibilidad y horarios",
       "Landing de bienvenida sencilla",
       "Cobro de reservas: Mercado Pago (con comisión) o comprobante de transferencia (sin comisión)",
       "Tienda en línea con inventario de insumos y productos"
@@ -136,7 +140,7 @@
       "rows": [
         { "label": "Reservas y citas (24/7)", "values": { "gratuito": true, "basico": true, "esencial": true, "marca": true } },
         { "label": "Panel administrativo y agenda visual", "values": { "gratuito": true, "basico": true, "esencial": true, "marca": true } },
-        { "label": "Servicios y empleados", "values": { "gratuito": "1 emp · 5 serv", "basico": true, "esencial": true, "marca": true } },
+        { "label": "Servicios y empleados", "values": { "gratuito": "1 emp · 5 serv", "basico": "1 emp · serv. ilimitados", "esencial": true, "marca": true } },
         { "label": "Analíticas del negocio", "values": { "gratuito": "Básicas", "basico": true, "esencial": true, "marca": true } },
         { "label": "Fidelidad + branding personalizado", "values": { "gratuito": false, "basico": true, "esencial": true, "marca": true } }
       ]
@@ -152,11 +156,12 @@
     {
       "group": "Automatización WhatsApp",
       "rows": [
-        { "label": "WhatsApp desde tu número Business", "hint": "Mensajes enviados desde tu propio número", "values": { "gratuito": false, "basico": false, "esencial": true, "marca": true } },
-        { "label": "Mensaje de agendamiento configurable", "values": { "gratuito": false, "basico": false, "esencial": true, "marca": true } },
-        { "label": "Recordatorios automáticos", "values": { "gratuito": false, "basico": false, "esencial": "1 recordatorio", "marca": "2 recordatorios" } },
-        { "label": "Mensajes editables", "values": { "gratuito": false, "basico": false, "esencial": true, "marca": true } },
-        { "label": "Enlace para confirmar / cancelar citas", "hint": "El cliente confirma o cancela desde WhatsApp", "values": { "gratuito": false, "basico": false, "esencial": true, "marca": true } },
+        { "label": "WhatsApp desde tu número Business", "hint": "Mensajes enviados desde tu propio número", "values": { "gratuito": false, "basico": true, "esencial": true, "marca": true } },
+        { "label": "Mensaje de agendamiento configurable", "values": { "gratuito": false, "basico": true, "esencial": true, "marca": true } },
+        { "label": "Recordatorios automáticos", "values": { "gratuito": false, "basico": "1 recordatorio", "esencial": "1 recordatorio", "marca": "2 recordatorios" } },
+        { "label": "Citas con WhatsApp al mes", "hint": "Una visita con varios servicios cuenta como una", "values": { "gratuito": false, "basico": "Hasta 50", "esencial": "Sin tope", "marca": "Sin tope" } },
+        { "label": "Mensajes editables", "values": { "gratuito": false, "basico": true, "esencial": true, "marca": true } },
+        { "label": "Enlace para confirmar / cancelar citas", "hint": "El cliente confirma o cancela desde WhatsApp", "values": { "gratuito": false, "basico": true, "esencial": true, "marca": true } },
         { "label": "Campañas masivas de WhatsApp", "values": { "gratuito": false, "basico": false, "esencial": false, "marca": true } }
       ]
     },

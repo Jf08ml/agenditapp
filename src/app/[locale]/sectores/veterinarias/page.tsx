@@ -8,12 +8,12 @@ import { routing } from "@/i18n/routing";
 export const metadata: Metadata = {
   title: "Software para Veterinarias | Citas Online + WhatsApp 24/7",
   description:
-    "Agendamiento online para veterinarias: consultas, grooming y vacunas. WhatsApp desde tu número con recordatorios para dueños de mascotas. Desde $10/mes.",
+    "Agendamiento online para veterinarias: consultas, grooming y vacunas. WhatsApp desde tu número con recordatorios para dueños de mascotas. Desde $12/mes.",
   alternates: { canonical: "https://agenditapp.com/sectores/veterinarias" },
   openGraph: {
     title: "Software para Veterinarias | Citas Online + WhatsApp 24/7",
     description:
-      "Agendamiento online para veterinarias: consultas, grooming y vacunas. WhatsApp desde tu número con recordatorios para dueños de mascotas. Desde $10/mes.",
+      "Agendamiento online para veterinarias: consultas, grooming y vacunas. WhatsApp desde tu número con recordatorios para dueños de mascotas. Desde $12/mes.",
     url: "https://agenditapp.com/sectores/veterinarias",
     images: [{ url: "/og?title=Veterinarias&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Veterinarias — AgenditApp" }],
   },
@@ -43,7 +43,7 @@ const FAQS = [
   { q: "¿Puedo gestionar múltiples veterinarios y el área de grooming al mismo tiempo?", a: "Sí. Crea perfiles separados para cada veterinario y para el servicio de grooming, con sus propias agendas y disponibilidades independientes." },
   { q: "¿Los dueños de mascotas pueden agendar desde su celular sin llamar?", a: "Exactamente. Los dueños reservan desde tu página web 24/7, eligen el tipo de servicio y el horario disponible, y reciben confirmación instantánea por WhatsApp." },
   { q: "¿Se guardan los registros de citas anteriores por mascota?", a: "Sí. En el historial del cliente puedes ver todas las citas pasadas, tipos de servicio y fechas de atención. Esto facilita el seguimiento de vacunas y tratamientos periódicos." },
-  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes van desde $10 USD al mes, sin permanencia. Cancelas cuando quieras. Incluye reservas ilimitadas y recordatorios por WhatsApp en los planes Esencial y Marca Propia." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes van desde $12 USD al mes, sin permanencia. Cancelas cuando quieras. Incluye reservas ilimitadas y recordatorios por WhatsApp desde el plan Básico (hasta 50 citas al mes; sin tope desde el Esencial)." },
 ];
 
 const INTRO = (

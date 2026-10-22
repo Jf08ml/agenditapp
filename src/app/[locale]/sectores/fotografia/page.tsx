@@ -8,12 +8,12 @@ import { routing } from "@/i18n/routing";
 export const metadata: Metadata = {
   title: "Software para Fotógrafos | Reservas de Sesiones + WhatsApp",
   description:
-    "Agenda online para fotógrafos y estudios: sesiones, eventos y alquiler de estudio. Recordatorios WhatsApp con instrucciones de vestuario. Desde $10/mes.",
+    "Agenda online para fotógrafos y estudios: sesiones, eventos y alquiler de estudio. Recordatorios WhatsApp con instrucciones de vestuario. Desde $12/mes.",
   alternates: { canonical: "https://agenditapp.com/sectores/fotografia" },
   openGraph: {
     title: "Software para Fotógrafos | Reservas de Sesiones + WhatsApp",
     description:
-      "Agenda online para fotógrafos y estudios: sesiones, eventos y alquiler de estudio. Recordatorios WhatsApp con instrucciones de vestuario. Desde $10/mes.",
+      "Agenda online para fotógrafos y estudios: sesiones, eventos y alquiler de estudio. Recordatorios WhatsApp con instrucciones de vestuario. Desde $12/mes.",
     url: "https://agenditapp.com/sectores/fotografia",
     images: [{ url: "/og?title=Fot%C3%B3grafos%20y%20Estudios&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Fotógrafos y Estudios — AgenditApp" }],
   },
@@ -43,7 +43,7 @@ const FAQS = [
   { q: "¿Los clientes pueden pagar un anticipo al reservar para asegurar la fecha?", a: "Puedes indicar en el mensaje de confirmación las condiciones de tu anticipo. El control del pago lo gestionas desde tu panel, y puedes registrar abonos y saldos por sesión." },
   { q: "¿Los recordatorios pueden incluir instrucciones de vestuario o llegada?", a: "Sí. Personalizas el mensaje de WhatsApp con las indicaciones de tu sesión: qué ropa traer, a qué hora llegar, qué tener listo. Se envía automáticamente antes de la cita." },
   { q: "¿Puedo gestionar también el alquiler del estudio por horas?", a: "Sí. Crea un servicio de 'Alquiler de estudio' con precio por hora y duración flexible. Modelos, diseñadores y otros fotógrafos pueden reservarlo directamente desde tu web." },
-  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes inician desde $10 USD al mes, sin permanencia. Cancelas cuando quieras sin penalizaciones." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes inician desde $12 USD al mes, sin permanencia. Cancelas cuando quieras sin penalizaciones." },
 ];
 
 const INTRO = (

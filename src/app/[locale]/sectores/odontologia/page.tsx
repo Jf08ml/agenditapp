@@ -8,12 +8,12 @@ import { routing } from "@/i18n/routing";
 export const metadata: Metadata = {
   title: "Software para Odontólogos | Citas Online + WhatsApp 24/7",
   description:
-    "Sistema de citas para odontólogos: agenda por tipo de tratamiento, recordatorios WhatsApp con instrucciones previas y control de pacientes. Desde $10/mes.",
+    "Sistema de citas para odontólogos: agenda por tipo de tratamiento, recordatorios WhatsApp con instrucciones previas y control de pacientes. Desde $12/mes.",
   alternates: { canonical: "https://agenditapp.com/sectores/odontologia" },
   openGraph: {
     title: "Software para Odontólogos | Citas Online + WhatsApp 24/7",
     description:
-      "Sistema de citas para odontólogos: agenda por tipo de tratamiento, recordatorios WhatsApp con instrucciones previas y control de pacientes. Desde $10/mes.",
+      "Sistema de citas para odontólogos: agenda por tipo de tratamiento, recordatorios WhatsApp con instrucciones previas y control de pacientes. Desde $12/mes.",
     url: "https://agenditapp.com/sectores/odontologia",
     images: [{ url: "/og?title=Odont%C3%B3logos&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Odontólogos — AgenditApp" }],
   },
@@ -43,7 +43,7 @@ const FAQS = [
   { q: "¿Los recordatorios pueden incluir indicaciones previas a la cita dental?", a: "Sí. Personalizas el mensaje de recordatorio: 'Recuerda no consumir alimentos 2 horas antes', 'Trae tu radiografía', etc. Se envía automáticamente desde el número de tu consultorio." },
   { q: "¿Puedo gestionar múltiples odontólogos con especialidades distintas?", a: "Sí. Cada odontólogo tiene su perfil, agenda y servicios asignados. Puedes tener general, ortodoncista, endodoncista, etc., todos gestionados desde el mismo panel." },
   { q: "¿Los pacientes pueden agendar sin llamar al consultorio?", a: "Exactamente. Tus pacientes reservan desde tu página web 24/7, eligen el tipo de servicio, el profesional y el horario disponible, sin necesidad de llamar o esperar en lista." },
-  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes comienzan desde $10 USD al mes. Sin permanencia, sin contrato — cancelas cuando quieras. Reservas ilimitadas incluidas en todos los planes." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes comienzan desde $12 USD al mes. Sin permanencia, sin contrato — cancelas cuando quieras. Reservas ilimitadas incluidas en todos los planes." },
 ];
 
 const INTRO = (

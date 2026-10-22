@@ -56,7 +56,7 @@ MDX files read by `src/lib/blog.ts` (gray-matter, every function takes a `locale
 - English translations: `src/content/blog/en/*.mdx` with a **translated slug** and `translationOf: "<spanish-slug>"` in frontmatter. `getPostTranslations` uses that to emit `hreflang` (es/en/x-default) only when both versions exist. Untranslated posts 404 under `/en/blog/*` (`generateStaticParams` only emits slugs that exist per locale). Categories are translated too (`Business Management`, `Comparisons`, `WhatsApp & Communication`, `Practical Guides`).
 - Post page UI strings live in the `BlogPage.post.*` messages; `<Compare*>` table data per locale is in `src/app/[locale]/blog/[slug]/compareTables.ts`.
 - English posts should link to `/en/blog/...`, `/en/pricing`, `/en/features`, `/en/industries` — sector and `vs/*` pages are Spanish-only.
-- When writing posts, only claim features that appear in `src/messages/es-419/Funcionalidades.json` / `Precio.json` (plans: Gratuito $0, Básico $10, Esencial $20 — WhatsApp from here up, Marca Propia $30).
+- When writing posts, only claim features that appear in `src/messages/es-419/Funcionalidades.json` / `Precio.json` (plans: Gratuito $0; Básico $12 — 1 professional, WhatsApp confirmation + 1 reminder for up to 50 appointments/month; Esencial $20 — unlimited professionals and WhatsApp with no cap; Marca Propia $30).
 
 ### Backend / integrations
 

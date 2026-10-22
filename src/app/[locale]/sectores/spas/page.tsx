@@ -8,12 +8,12 @@ import { routing } from "@/i18n/routing";
 export const metadata: Metadata = {
   title: { absolute: "Software para Spas y Centros de Bienestar | WhatsApp 24/7" },
   description:
-    "Sistema de reservas para spas y centros de bienestar: gestiona terapeutas, salas y WhatsApp desde tu número. Reduce ausencias 70%. Desde $10/mes.",
+    "Sistema de reservas para spas y centros de bienestar: gestiona terapeutas, salas y WhatsApp desde tu número. Reduce ausencias 70%. Desde $12/mes.",
   alternates: { canonical: "https://agenditapp.com/sectores/spas" },
   openGraph: {
     title: "Software para Spas y Centros de Bienestar | WhatsApp 24/7",
     description:
-      "Sistema de reservas para spas y centros de bienestar: gestiona terapeutas, salas y WhatsApp desde tu número. Reduce ausencias 70%. Desde $10/mes.",
+      "Sistema de reservas para spas y centros de bienestar: gestiona terapeutas, salas y WhatsApp desde tu número. Reduce ausencias 70%. Desde $12/mes.",
     url: "https://agenditapp.com/sectores/spas",
     images: [{ url: "/og?title=Spas%20y%20Bienestar&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Spas y Centros de Bienestar — AgenditApp" }],
   },
@@ -42,7 +42,7 @@ const FAQS = [
   { q: "¿Puedo gestionar múltiples terapeutas y salas al mismo tiempo?", a: "Sí. AgenditApp permite asignar reservas por terapeuta y por sala de forma independiente, evitando cruces de horario y maximizando la ocupación de tu spa." },
   { q: "¿Puedo configurar paquetes de servicios o combos?", a: "Sí. Puedes crear servicios combinados (por ejemplo, masaje + facial) con una duración y precio únicos, y tus clientes los reservan como un solo paquete." },
   { q: "¿Los recordatorios de WhatsApp pueden incluir instrucciones previas al tratamiento?", a: "Sí. Puedes personalizar el mensaje de recordatorio para incluir indicaciones específicas: llegar sin maquillaje, venir con ropa cómoda, hidratarse antes, etc." },
-  { q: "¿Cuánto cuesta AgenditApp para spas?", a: "Los planes van desde $10 USD/mes (básico) hasta $30 USD/mes (Marca Propia con dominio personalizado). Todos incluyen reservas ilimitadas y sin comisiones por transacción." },
+  { q: "¿Cuánto cuesta AgenditApp para spas?", a: "Los planes van desde $12 USD/mes (Básico) hasta $30 USD/mes (Marca Propia con dominio personalizado). Todos incluyen reservas ilimitadas y sin comisiones por transacción." },
   { q: "¿Hay permanencia o contrato mínimo?", a: "No. Es suscripción mensual, sin permanencia. Cancelas cuando quieras, sin penalizaciones ni trámites complicados." },
 ];
 

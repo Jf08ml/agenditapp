@@ -8,12 +8,12 @@ import { routing } from "@/i18n/routing";
 export const metadata: Metadata = {
   title: "Software para Barberías | Reservas Online + WhatsApp 24/7",
   description:
-    "Sistema de agendamiento para barberías: turnos express, gestión de barberos, recordatorios WhatsApp desde tu número propio. Reservas 24/7. Desde $10/mes.",
+    "Sistema de agendamiento para barberías: turnos express, gestión de barberos, recordatorios WhatsApp desde tu número propio. Reservas 24/7. Desde $12/mes.",
   alternates: { canonical: "https://agenditapp.com/sectores/barberias" },
   openGraph: {
     title: "Software para Barberías | Reservas Online + WhatsApp 24/7",
     description:
-      "Sistema de agendamiento para barberías: turnos express, gestión de barberos, recordatorios WhatsApp desde tu número propio. Reservas 24/7. Desde $10/mes.",
+      "Sistema de agendamiento para barberías: turnos express, gestión de barberos, recordatorios WhatsApp desde tu número propio. Reservas 24/7. Desde $12/mes.",
     url: "https://agenditapp.com/sectores/barberias",
     images: [{ url: "/og?title=Barber%C3%ADas&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Barberías — AgenditApp" }],
   },
@@ -51,7 +51,7 @@ const FAQS = [
   { q: "¿Puedo gestionar múltiples barberos con horarios independientes?", a: "Sí. Puedes crear un perfil por barbero, asignarle servicios específicos y horarios propios. Los clientes pueden elegir a su barbero favorito al reservar." },
   { q: "¿Funciona bien para turnos cortos de 20-30 minutos?", a: "Perfectamente. AgenditApp permite configurar servicios con duraciones desde 15 minutos, ideal para cortes express, barba o arreglos rápidos con alto flujo de clientes." },
   { q: "¿Los clientes pueden reservar desde Instagram o WhatsApp?", a: "Sí. Puedes compartir tu link de reservas en Instagram, WhatsApp y Google. Tus clientes reservan en segundos sin necesidad de llamar ni escribir." },
-  { q: "¿Cuánto cuesta AgenditApp para barberías?", a: "Los planes comienzan desde $10 USD al mes, con reservas ilimitadas y panel administrativo completo. El plan Esencial ($20 USD) incluye recordatorios automáticos por WhatsApp desde tu propio número." },
+  { q: "¿Cuánto cuesta AgenditApp para barberías?", a: "Los planes comienzan desde $12 USD al mes, con reservas ilimitadas y recordatorios automáticos por WhatsApp desde tu propio número (hasta 50 citas al mes). El plan Esencial ($20 USD) suma barberos ilimitados y WhatsApp sin tope." },
   { q: "¿Hay permanencia o contrato mínimo?", a: "No. Es mes a mes, sin permanencia ni cláusulas. Puedes cancelar cuando quieras desde tu panel de administración." },
 ];
 

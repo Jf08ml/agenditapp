@@ -8,12 +8,12 @@ import { routing } from "@/i18n/routing";
 export const metadata: Metadata = {
   title: "Software para Abogados | Citas Online + WhatsApp 24/7",
   description:
-    "Agenda para abogados y bufetes: consultas legales, reuniones presenciales y virtuales, recordatorios WhatsApp. Sin permanencia. Desde $10/mes.",
+    "Agenda para abogados y bufetes: consultas legales, reuniones presenciales y virtuales, recordatorios WhatsApp. Sin permanencia. Desde $12/mes.",
   alternates: { canonical: "https://agenditapp.com/sectores/abogados" },
   openGraph: {
     title: "Software para Abogados | Citas Online + WhatsApp 24/7",
     description:
-      "Agenda para abogados y bufetes: consultas legales, reuniones presenciales y virtuales, recordatorios WhatsApp. Sin permanencia. Desde $10/mes.",
+      "Agenda para abogados y bufetes: consultas legales, reuniones presenciales y virtuales, recordatorios WhatsApp. Sin permanencia. Desde $12/mes.",
     url: "https://agenditapp.com/sectores/abogados",
     images: [{ url: "/og?title=Abogados%20y%20Asesor%C3%ADas&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Abogados y Asesorías — AgenditApp" }],
   },
@@ -43,7 +43,7 @@ const FAQS = [
   { q: "¿Puedo gestionar múltiples abogados con especialidades diferentes?", a: "Sí. Cada abogado tiene su perfil, especialidad y agenda independiente. Los clientes pueden ser asignados según el área legal que necesiten: civil, laboral, penal, familiar, etc." },
   { q: "¿Los recordatorios pueden incluir los documentos que el cliente debe traer?", a: "Sí. Personalizas el mensaje de WhatsApp para incluir: 'Por favor traer: cédula, contrato de arrendamiento y correos de notificación previos'. Se envía automáticamente antes de la cita." },
   { q: "¿Funciona para reuniones virtuales y presenciales en el mismo despacho?", a: "Sí. Puedes crear servicios diferenciados: 'Consulta presencial' y 'Reunión virtual', cada uno con su duración y precio. Ambos se gestionan desde la misma plataforma." },
-  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes inician desde $10 USD al mes, sin permanencia ni contrato mínimo. Puedes cancelar cuando quieras sin trámites." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes inician desde $12 USD al mes, sin permanencia ni contrato mínimo. Puedes cancelar cuando quieras sin trámites." },
 ];
 
 const INTRO = (

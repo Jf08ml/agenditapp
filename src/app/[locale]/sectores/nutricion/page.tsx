@@ -8,12 +8,12 @@ import { routing } from "@/i18n/routing";
 export const metadata: Metadata = {
   title: "Software para Nutricionistas | Citas Online + WhatsApp",
   description:
-    "Agenda para nutricionistas: consultas, controles y seguimiento. WhatsApp desde tu número, pacientes más adherentes. Sin permanencia. Desde $10/mes.",
+    "Agenda para nutricionistas: consultas, controles y seguimiento. WhatsApp desde tu número, pacientes más adherentes. Sin permanencia. Desde $12/mes.",
   alternates: { canonical: "https://agenditapp.com/sectores/nutricion" },
   openGraph: {
     title: "Software para Nutricionistas | Citas Online + WhatsApp",
     description:
-      "Agenda para nutricionistas: consultas, controles y seguimiento. WhatsApp desde tu número, pacientes más adherentes. Sin permanencia. Desde $10/mes.",
+      "Agenda para nutricionistas: consultas, controles y seguimiento. WhatsApp desde tu número, pacientes más adherentes. Sin permanencia. Desde $12/mes.",
     url: "https://agenditapp.com/sectores/nutricion",
     images: [{ url: "/og?title=Nutricionistas&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Nutricionistas — AgenditApp" }],
   },
@@ -43,7 +43,7 @@ const FAQS = [
   { q: "¿Puedo diferenciar la consulta inicial de los controles de seguimiento?", a: "Sí. Crea servicios diferenciados: 'Consulta inicial' (60 min), 'Control mensual' (30 min), 'Análisis corporal' (45 min). Cada uno con su precio y duración específica." },
   { q: "¿Los pacientes pueden reagendar su control de seguimiento solos?", a: "Sí. Desde el recordatorio de WhatsApp, el paciente recibe un enlace para confirmar, cancelar o reprogramar su cita sin necesidad de llamarte." },
   { q: "¿Los recordatorios ayudan a mejorar la adherencia al tratamiento?", a: "Significativamente. Los negocios que usan recordatorios automáticos de AgenditApp reportan reducciones de entre 50% y 70% en inasistencias, lo que mejora directamente los resultados del tratamiento." },
-  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes inician desde $10 USD al mes, sin permanencia ni contrato mínimo. Puedes cancelar cuando quieras." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes inician desde $12 USD al mes, sin permanencia ni contrato mínimo. Puedes cancelar cuando quieras." },
 ];
 
 const INTRO = (

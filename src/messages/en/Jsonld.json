@@ -6,11 +6,11 @@
     "catalogName": "AgenditApp Plans — Online Scheduling Software",
     "basico": {
       "name": "Basic Plan",
-      "description": "Organize your calendar and start taking bookings online. Includes unlimited 24/7 bookings and appointments, a full admin dashboard, and management of services, staff, and clients."
+      "description": "For solo professionals getting started. Includes 1 staff member, 24/7 online booking, unlimited services and clients, and automated WhatsApp (confirmation and 1 reminder) for up to 50 appointments a month."
     },
     "esencial": {
       "name": "Essential Plan",
-      "description": "Automate WhatsApp and cut no-shows with reminders. Includes everything in Basic plus automated WhatsApp reminders sent from your own Business number."
+      "description": "Unlimited WhatsApp and fewer no-shows for growing businesses and teams. Includes everything in Basic plus unlimited staff and automated WhatsApp reminders with no appointment cap."
     },
     "marca": {
       "name": "Own Brand Plan",
@@ -43,7 +43,7 @@
   "faq": [
     {
       "question": "How much does AgenditApp cost?",
-      "answer": "Plans start at $10 USD/month (Basic) up to $30 USD/month (Own Brand). All plans are month-to-month with no contracts. They include unlimited bookings and WhatsApp support."
+      "answer": "Plans start at $12 USD/month (Basic) up to $30 USD/month (Own Brand). All plans are month-to-month with no contracts. They include unlimited bookings and WhatsApp support."
     },
     {
       "question": "Is there a contract or cancellation fee?",

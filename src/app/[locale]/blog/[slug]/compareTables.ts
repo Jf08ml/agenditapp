@@ -31,7 +31,7 @@ export const COMPARE_TABLES: Record<Locale, CompareTables> = {
         { name: "Noona" },
       ],
       rows: [
-        { feature: "Precio mensual", values: ["$10–30 USD", "$30–60 USD", "Gratis + comisión", "$9–49 USD", "$30 USD+", "$8–20 USD", "$15–30 EUR"] },
+        { feature: "Precio mensual", values: ["$12–30 USD", "$30–60 USD", "Gratis + comisión", "$9–49 USD", "$30 USD+", "$8–20 USD", "$15–30 EUR"] },
         { feature: "WhatsApp nativo", values: ["✅", "Parcial", "❌", "❌", "❌", "Limitado", "❌"] },
         { feature: "Soporte en español", values: ["✅", "✅", "❌", "Básico", "❌", "✅", "❌"] },
         { feature: "Diseñado para Colombia", values: ["✅", "Parcial", "❌", "❌", "❌", "❌", "❌"] },
@@ -48,7 +48,7 @@ export const COMPARE_TABLES: Record<Locale, CompareTables> = {
         { name: "Calendly" },
       ],
       rows: [
-        { feature: "Precio mensual", values: ["$10–30 USD", "$30–60 USD", "Gratis + planes", "$10–20 USD"] },
+        { feature: "Precio mensual", values: ["$12–30 USD", "$30–60 USD", "Gratis + planes", "$10–20 USD"] },
         { feature: "WhatsApp nativo", values: ["✅", "Parcial", "❌", "❌"] },
         { feature: "Recordatorios automáticos", values: ["✅", "✅", "✅", "✅"] },
         { feature: "Citas recurrentes", values: ["✅", "✅", "❌", "✅"] },
@@ -85,7 +85,7 @@ export const COMPARE_TABLES: Record<Locale, CompareTables> = {
         { name: "Calendly" },
       ],
       rows: [
-        { feature: "Precio mensual mínimo", values: ["$10 USD", "$25 USD", "Gratis*", "Gratis*", "$16 USD", "$10 USD"] },
+        { feature: "Precio mensual mínimo", values: ["$12 USD", "$25 USD", "Gratis*", "Gratis*", "$16 USD", "$10 USD"] },
         { feature: "WhatsApp nativo", values: ["✅", "❌", "❌", "❌", "❌", "❌"] },
         { feature: "Soporte en español", values: ["✅", "Parcial", "❌", "❌", "❌", "❌"] },
         { feature: "Comisión por transacción", values: ["❌", "❌", "2,19 %+", "2,5 %+", "❌", "❌"] },
@@ -108,7 +108,7 @@ export const COMPARE_TABLES: Record<Locale, CompareTables> = {
         { name: "Noona" },
       ],
       rows: [
-        { feature: "Monthly price", values: ["$10–30 USD", "$30–60 USD", "Free + commission", "$9–49 USD", "$30+ USD", "$8–20 USD", "€15–30"] },
+        { feature: "Monthly price", values: ["$12–30 USD", "$30–60 USD", "Free + commission", "$9–49 USD", "$30+ USD", "$8–20 USD", "€15–30"] },
         { feature: "Native WhatsApp", values: ["✅", "Partial", "❌", "❌", "❌", "Limited", "❌"] },
         { feature: "Spanish-language support", values: ["✅", "✅", "❌", "Basic", "❌", "✅", "❌"] },
         { feature: "Built for Colombia", values: ["✅", "Partial", "❌", "❌", "❌", "❌", "❌"] },
@@ -125,7 +125,7 @@ export const COMPARE_TABLES: Record<Locale, CompareTables> = {
         { name: "Calendly" },
       ],
       rows: [
-        { feature: "Monthly price", values: ["$10–30 USD", "$30–60 USD", "Free + paid plans", "$10–20 USD"] },
+        { feature: "Monthly price", values: ["$12–30 USD", "$30–60 USD", "Free + paid plans", "$10–20 USD"] },
         { feature: "Native WhatsApp", values: ["✅", "Partial", "❌", "❌"] },
         { feature: "Automatic reminders", values: ["✅", "✅", "✅", "✅"] },
         { feature: "Recurring appointments", values: ["✅", "✅", "❌", "✅"] },
@@ -162,7 +162,7 @@ export const COMPARE_TABLES: Record<Locale, CompareTables> = {
         { name: "Calendly" },
       ],
       rows: [
-        { feature: "Lowest monthly price", values: ["$10 USD", "$25 USD", "Free*", "Free*", "$16 USD", "$10 USD"] },
+        { feature: "Lowest monthly price", values: ["$12 USD", "$25 USD", "Free*", "Free*", "$16 USD", "$10 USD"] },
         { feature: "Native WhatsApp", values: ["✅", "❌", "❌", "❌", "❌", "❌"] },
         { feature: "Spanish-language support", values: ["✅", "Partial", "❌", "❌", "❌", "❌"] },
         { feature: "Transaction fee", values: ["❌", "❌", "2.19%+", "2.5%+", "❌", "❌"] },

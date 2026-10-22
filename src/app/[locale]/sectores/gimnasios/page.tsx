@@ -8,12 +8,12 @@ import { routing } from "@/i18n/routing";
 export const metadata: Metadata = {
   title: "Software para Gimnasios y Fitness | Reservas + WhatsApp",
   description:
-    "Agendamiento online para gimnasios: clases grupales con control de cupos, gestión de entrenadores, recordatorios WhatsApp. Reservas 24/7. Desde $10/mes.",
+    "Agendamiento online para gimnasios: clases grupales con control de cupos, gestión de entrenadores, recordatorios WhatsApp. Reservas 24/7. Desde $12/mes.",
   alternates: { canonical: "https://agenditapp.com/sectores/gimnasios" },
   openGraph: {
     title: "Software para Gimnasios y Fitness | Reservas + WhatsApp",
     description:
-      "Agendamiento online para gimnasios: clases grupales con control de cupos, gestión de entrenadores, recordatorios WhatsApp. Reservas 24/7. Desde $10/mes.",
+      "Agendamiento online para gimnasios: clases grupales con control de cupos, gestión de entrenadores, recordatorios WhatsApp. Reservas 24/7. Desde $12/mes.",
     url: "https://agenditapp.com/sectores/gimnasios",
     images: [{ url: "/og?title=Gimnasios%20y%20Fitness&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Gimnasios y Fitness — AgenditApp" }],
   },
@@ -43,7 +43,7 @@ const FAQS = [
   { q: "¿Los alumnos pueden reservar desde el celular sin descargar nada?", a: "Sí. Tus alumnos acceden a tu horario de clases desde el navegador de su celular, eligen la clase y reservan su cupo en menos de un minuto, sin aplicaciones adicionales." },
   { q: "¿Se pueden gestionar entrenadores personales y clases grupales en el mismo sistema?", a: "Perfectamente. Puedes tener servicios de clase grupal (con cupos) y sesiones individuales con entrenador (sin cupos) en la misma plataforma, con agendas separadas por profesional." },
   { q: "¿Funciona para diferentes modalidades como yoga, crossfit y spinning?", a: "Sí. Puedes crear tantos tipos de clase como quieras, cada uno con su duración, cupos, instructor asignado y precio. Todo en una sola plataforma." },
-  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes comienzan desde $10 USD al mes, sin permanencia. Cancelas cuando quieras. El plan Esencial incluye recordatorios automáticos por WhatsApp para confirmar asistencia." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes comienzan desde $12 USD al mes, sin permanencia, con recordatorios automáticos por WhatsApp para confirmar asistencia (hasta 50 citas al mes). Cancelas cuando quieras. El plan Esencial suma entrenadores ilimitados y WhatsApp sin tope." },
 ];
 
 const INTRO = (

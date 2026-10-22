@@ -31,7 +31,7 @@
     {
       "categoria": "Communication & WhatsApp",
       "features": [
-        { "nombre": "WhatsApp messages from your own number", "descripcion": "Automate messages from your WhatsApp Business number (available on the Essential and Own Brand plans)." },
+        { "nombre": "WhatsApp messages from your own number", "descripcion": "Automate messages from your WhatsApp Business number (from the Basic plan, up to 50 appointments a month; no cap from Essential)." },
         { "nombre": "Automatic booking confirmation", "descripcion": "Every time a client books, they get a WhatsApp confirmation message. The message text is fully customizable." },
         { "nombre": "Automated reminders", "descripcion": "Cut no-shows with reminders sent before each appointment. On the Own Brand plan, you can send 2 reminders at configurable times." },
         { "nombre": "Confirm or cancel from WhatsApp", "descripcion": "Your clients can confirm their attendance or cancel their appointment directly from the message." },

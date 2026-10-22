@@ -49,7 +49,7 @@ const PLAN_STRUCTURE: Array<{
   },
   {
     key: "basico",
-    monthlyPrice: 10,
+    monthlyPrice: 12,
     badgeStyle: {
       background: "color-mix(in srgb, var(--brand) 10%, transparent)",
       color: "var(--brand)",

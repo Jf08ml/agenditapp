@@ -31,7 +31,7 @@
     {
       "categoria": "Comunicación y WhatsApp",
       "features": [
-        { "nombre": "Mensajes por WhatsApp desde tu número", "descripcion": "Automatiza mensajes desde tu WhatsApp Business (en planes Esencial y Marca Propia)." },
+        { "nombre": "Mensajes por WhatsApp desde tu número", "descripcion": "Automatiza mensajes desde tu WhatsApp Business (desde el plan Básico, hasta 50 citas al mes; sin tope desde el Esencial)." },
         { "nombre": "Mensaje automático al agendar", "descripcion": "Cada vez que un cliente agenda, recibe un mensaje de confirmación por WhatsApp. El texto es configurable." },
         { "nombre": "Recordatorios automáticos", "descripcion": "Reduce ausencias con recordatorios antes de cada cita. En Marca Propia puedes usar 2 recordatorios con horas configurables." },
         { "nombre": "Confirmar asistencia y cancelar desde WhatsApp", "descripcion": "Tus clientes pueden confirmar su asistencia o cancelar la cita directamente desde el mensaje." },

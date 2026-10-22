@@ -8,12 +8,12 @@ import { routing } from "@/i18n/routing";
 export const metadata: Metadata = {
   title: "Software para Consultorios y Clínicas | Citas Online 24/7",
   description:
-    "Agendamiento online para consultorios y clínicas. Gestión por profesional, recordatorios WhatsApp y reservas 24/7. Sin permanencia. Desde $10/mes.",
+    "Agendamiento online para consultorios y clínicas. Gestión por profesional, recordatorios WhatsApp y reservas 24/7. Sin permanencia. Desde $12/mes.",
   alternates: { canonical: "https://agenditapp.com/sectores/consultorios" },
   openGraph: {
     title: "Software para Consultorios y Clínicas | Citas Online 24/7",
     description:
-      "Agendamiento online para consultorios y clínicas. Gestión por profesional, recordatorios WhatsApp y reservas 24/7. Sin permanencia. Desde $10/mes.",
+      "Agendamiento online para consultorios y clínicas. Gestión por profesional, recordatorios WhatsApp y reservas 24/7. Sin permanencia. Desde $12/mes.",
     url: "https://agenditapp.com/sectores/consultorios",
     images: [{ url: "/og?title=Consultorios%20y%20Cl%C3%ADnicas&subtitle=Software%20de%20Agendamiento%20%C2%B7%20AgenditApp&tag=Sector", width: 1200, height: 630, alt: "Software de Agendamiento para Consultorios y Clínicas — AgenditApp" }],
   },
@@ -43,7 +43,7 @@ const FAQS = [
   { q: "¿Puedo gestionar múltiples profesionales con especialidades distintas?", a: "Absolutamente. Puedes crear perfiles para cada médico, terapeuta o especialista, con sus propios horarios, duraciones de consulta y servicios asignados." },
   { q: "¿Los pacientes pueden reagendar o cancelar sin llamar al consultorio?", a: "Sí. Desde la confirmación de cita, el paciente recibe un enlace para confirmar, cancelar o reprogramar su cita directamente, sin necesidad de llamar." },
   { q: "¿Funciona para diferentes especialidades médicas?", a: "Sí. Puedes configurar duraciones distintas por especialidad: una consulta general de 20 min, una terapia de 60 min, una evaluación inicial de 45 min, etc. Cada servicio tiene su propio tiempo." },
-  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes comienzan desde $10 USD al mes, sin permanencia. Puedes cancelar en cualquier momento. El plan Esencial ($20 USD) incluye recordatorios automáticos por WhatsApp." },
+  { q: "¿Cuánto cuesta y hay permanencia?", a: "Los planes comienzan desde $12 USD al mes, sin permanencia, con recordatorios automáticos por WhatsApp para hasta 50 citas al mes. Puedes cancelar en cualquier momento. El plan Esencial ($20 USD) suma profesionales ilimitados y WhatsApp sin tope." },
 ];
 
 const INTRO = (
