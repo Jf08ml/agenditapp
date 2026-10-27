@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 import { Poppins, Instrument_Serif } from "next/font/google";
 import WhatsAppFAB from "../(landing)/components/ui/WhatsAppFAB";
+import OficinaLandingView from "../(landing)/components/OficinaLandingView";
 import { routing } from "@/i18n/routing";
 
 const poppins = Poppins({
@@ -124,6 +125,7 @@ export default async function RootLayout({
       <body className="font-sans antialiased">
         <NextIntlClientProvider locale={locale}>
           <Analytics />
+          <OficinaLandingView />
           {children}
           <WhatsAppFAB />
         </NextIntlClientProvider>
