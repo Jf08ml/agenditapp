@@ -13,7 +13,7 @@
    "Contact". CTAs de WhatsApp en /oferta y el flotante de soporte de
    /oferta-registro (que también es contacto por WhatsApp, no
    registro); cualquier otro source es un no-op. */
-const OFERTA_CONTACT_NAMES: Record<string, string> = {
+export const OFERTA_CONTACT_NAMES: Record<string, string> = {
   oferta_header: "land1_header",
   oferta_hero_whatsapp: "land1_hero",
   oferta_banda_whatsapp: "land1_oferta",
@@ -27,7 +27,7 @@ const OFERTA_CONTACT_NAMES: Record<string, string> = {
    "CTA Registro". Solo los CTAs de registro en /oferta-registro; el
    botón flotante de esa landing sigue siendo soporte por WhatsApp y
    no se mide aquí. */
-const OFERTA_REGISTRO_NAMES: Record<string, string> = {
+export const OFERTA_REGISTRO_NAMES: Record<string, string> = {
   oferta_header: "land2_header",
   oferta_hero_signup: "land2_hero",
   oferta_banda_signup: "land2_oferta",
