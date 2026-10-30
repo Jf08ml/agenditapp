@@ -8,6 +8,7 @@ import Script from "next/script";
 import { Poppins, Instrument_Serif } from "next/font/google";
 import WhatsAppFAB from "../(landing)/components/ui/WhatsAppFAB";
 import OficinaLandingView from "../(landing)/components/OficinaLandingView";
+import RememberAttribution from "../(landing)/components/RememberAttribution";
 import { routing } from "@/i18n/routing";
 
 const poppins = Poppins({
@@ -126,6 +127,7 @@ export default async function RootLayout({
         <NextIntlClientProvider locale={locale}>
           <Analytics />
           <OficinaLandingView />
+          <RememberAttribution />
           {children}
           <WhatsAppFAB />
         </NextIntlClientProvider>
