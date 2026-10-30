@@ -7,6 +7,7 @@ import {
   type AnchorHTMLAttributes,
 } from "react";
 import { SIGNUP_HREF, getWhatsappHref } from "../constants";
+import { storedAttribution } from "../attribution";
 import {
   trackMetaContactFromSource,
   trackMetaCtaRegistroFromSource,
@@ -97,7 +98,9 @@ export function WhatsAppCtaButton({
    fbclid con los que llegó el visitante se perderían al cruzar. Este
    helper reenvía los query params de la landing al enlace de signup y
    añade `utm_content` con el bloque de origen, para poder atribuir
-   registros a la campaña y al CTA que los generó.
+   registros a la campaña y al CTA que los generó. Si la página actual no
+   trae los UTM (el visitante navegó por la landing), usa los guardados al
+   llegar (ver ../attribution.ts).
    También reenvía _fbp/_fbc por query string: además de las cookies
    compartidas a nivel de dominio raíz .agenditapp.com, esto blinda
    casos límite de ITP o cookies recién creadas antes de cruzar de
@@ -106,6 +109,9 @@ function buildSignupHref(source: string): string {
   const url = new URL(SIGNUP_HREF);
   const current = new URLSearchParams(window.location.search);
   current.forEach((value, key) => url.searchParams.set(key, value));
+  for (const [key, value] of Object.entries(storedAttribution())) {
+    if (!url.searchParams.has(key)) url.searchParams.set(key, value);
+  }
   if (!url.searchParams.has("utm_source")) {
     url.searchParams.set("utm_source", "landing_web");
   }

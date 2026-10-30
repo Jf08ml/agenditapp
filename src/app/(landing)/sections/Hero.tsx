@@ -10,6 +10,7 @@ import { HeroSideArrow } from "../components/ui/HeroSideArrow";
 import { MobileArrow } from "../components/ui/MobileArrow";
 import Navbar from "../components/ui/Navbar";
 import { DemoCtaButton } from "../components/ui/DemoCtaModal";
+import { BTN_BRAND, SignupCtaButton } from "../components/lp/cta";
 
 const ImageLightbox = dynamic(
   () => import("../components/images/ImageLightbox"),
@@ -189,7 +190,7 @@ export default function Hero() {
               <motion.div
                 variants={fadeUp}
                 transition={{ duration: 0.6 }}
-                className="mt-8 flex flex-wrap gap-3 justify-center lg:justify-start"
+                className="relative z-30 mt-8 flex flex-wrap gap-3 justify-center lg:justify-start"
               >
                 <DemoCtaButton
                   source="hero"
@@ -203,6 +204,10 @@ export default function Hero() {
                   </svg>
                   {t("cta.whatsapp")}
                 </DemoCtaButton>
+
+                <SignupCtaButton source="home_hero" className={BTN_BRAND}>
+                  {t("cta.signup")}
+                </SignupCtaButton>
 
                 <Link
                   href="/precios"
