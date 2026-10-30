@@ -9,6 +9,12 @@ export const runtime = "nodejs";
    no responde, no pasa nada (contrato en agenditapp-oficina/docs/CONVERSIONES.md). */
 
 const OFICINA_CAMPAIGN = /^ofi-[a-f0-9]{24}$/;
+/* Robots y navegadores automáticos que ejecutan JavaScript (rastreadores,
+   revisión de anuncios, pruebas): no son visitas. Nombres concretos y la forma
+   "xbot/1.0" o "compatible; ...bot", no "bot" a secas, que descartaría
+   teléfonos reales (por ejemplo, la marca CUBOT). */
+const AUTOMATED_AGENT =
+  /headless|lighthouse|pagespeed|googlebot|bingbot|yandex|baiduspider|applebot|duckduckbot|petalbot|ahrefs|semrush|facebookexternalhit|facebot|meta-external|(?:bot|crawler|spider)[/;]|compatible;[^)]*(?:bot|crawler|spider)/i;
 const UTM_KEYS = {
   utm_source: "utmSource",
   utm_medium: "utmMedium",
@@ -22,6 +28,8 @@ export async function POST(request: Request) {
   const secret = process.env.OFICINA_EVENTS_SECRET;
   const done = new Response(null, { status: 204 });
   if (!url || !secret) return done;
+  const agent = request.headers.get("user-agent") ?? "";
+  if (!agent || AUTOMATED_AGENT.test(agent)) return done;
 
   let input: Record<string, unknown>;
   try {
