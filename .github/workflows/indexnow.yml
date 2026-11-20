@@ -1,0 +1,30 @@
+name: IndexNow
+
+# Después de cada deploy exitoso a producción en Vercel, avisa a Bing y demás
+# buscadores IndexNow de las URLs del sitemap con lastmod reciente.
+# También se puede lanzar a mano desde la pestaña Actions.
+on:
+  deployment_status:
+  workflow_dispatch:
+    inputs:
+      args:
+        description: "Argumentos para scripts/indexnow.mjs (ej. --all, --days=7, /precios /blog/mi-post)"
+        required: false
+        default: "--days=3"
+
+jobs:
+  indexnow:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' &&
+       github.event.deployment.environment == 'Production')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Enviar URLs a IndexNow
+        env:
+          ARGS: ${{ github.event.inputs.args || '--days=3' }}
+        run: node scripts/indexnow.mjs $ARGS

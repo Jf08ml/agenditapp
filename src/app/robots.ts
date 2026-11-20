@@ -7,11 +7,17 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/og", "/_next/static/"],
+        // No bloquear /_next/static/: Google y Bing necesitan el CSS/JS para
+        // renderizar la página y evaluar mobile-friendliness.
+        disallow: ["/api/", "/og"],
       },
       // AI crawlers — permitidos explícitamente para indexación GEO
       { userAgent: "GPTBot", allow: "/" },
+      { userAgent: "OAI-SearchBot", allow: "/" },
       { userAgent: "ChatGPT-User", allow: "/" },
+      { userAgent: "ClaudeBot", allow: "/" },
+      { userAgent: "Claude-SearchBot", allow: "/" },
+      { userAgent: "Claude-User", allow: "/" },
       { userAgent: "PerplexityBot", allow: "/" },
       { userAgent: "Google-Extended", allow: "/" },
       { userAgent: "anthropic-ai", allow: "/" },

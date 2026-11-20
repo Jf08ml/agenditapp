@@ -46,6 +46,7 @@ Wraps the next-intl middleware with a geo-block: requests from `BLOCKED_COUNTRIE
 - Country pages: `src/app/[locale]/{mx,cl,ar,es,cr,ec}/page.tsx` (Colombia is the root).
 - `vs/[competitor]` and `ref/[slug]` hold their data inline (`competitors` object; `ref/sources.ts` / `influencers.ts` for referral partners).
 - `src/app/sitemap.ts` is **mostly hand-maintained** — new static pages must be added manually. Blog posts are added automatically.
+- IndexNow (Bing, Yandex…; not Google): key file `public/b2de4b923360aaccc0a7790aa50fea78.txt` + `scripts/indexnow.mjs` (`npm run indexnow -- [--all | --days=N | /path…] [--dry-run]`), which reads the **live** sitemap. `.github/workflows/indexnow.yml` runs it after every successful Vercel production deploy (URLs with `lastmod` in the last 3 days), so keep `lastModified` in `sitemap.ts` up to date when a page changes.
 - `src/app/og/route.tsx` generates OG images from `?title=&subtitle=&tag=` query params.
 
 ### Blog
